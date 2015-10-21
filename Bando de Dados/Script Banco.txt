@@ -1,0 +1,667 @@
+﻿CREATE SEQUENCE public.unidade_idunidade_seq;
+
+CREATE TABLE public.unidade (
+                idunidade INTEGER NOT NULL DEFAULT nextval('public.unidade_idunidade_seq'),
+                descricao VARCHAR(20) NOT NULL,
+                datacadastro DATE,
+                dataalteracao DATE,
+                CONSTRAINT unidade_pk PRIMARY KEY (idunidade)
+);
+
+
+ALTER SEQUENCE public.unidade_idunidade_seq OWNED BY public.unidade.idunidade;
+
+CREATE SEQUENCE public.idpais_seq;
+
+CREATE TABLE public.pais (
+                idpais INTEGER NOT NULL DEFAULT nextval('public.idpais_seq'),
+                descricao VARCHAR(100) NOT NULL,
+                ddi VARCHAR(4),
+  		sigla VARCHAR(4),
+                datacadastro DATE,
+                dataalteracao DATE,
+                CONSTRAINT pais_pkey PRIMARY KEY (idpais)
+);
+
+
+ALTER SEQUENCE public.idpais_seq OWNED BY public.pais.idpais;
+
+CREATE SEQUENCE public.idmarca_seq;
+
+CREATE TABLE public.marca (
+                idmarca INTEGER NOT NULL DEFAULT nextval('public.idmarca_seq'),
+                descricao VARCHAR(50) NOT NULL,
+                datacadastro DATE,
+                dataalteracao DATE,
+                CONSTRAINT marca_pkey PRIMARY KEY (idmarca)
+);
+
+
+ALTER SEQUENCE public.idmarca_seq OWNED BY public.marca.idmarca;
+
+CREATE SEQUENCE public.idformapagamento_seq;
+
+CREATE TABLE public.formapagamento (
+                idformapagamento INTEGER NOT NULL DEFAULT nextval('public.idformapagamento_seq'),
+                descricao VARCHAR(100) NOT NULL,
+                datacadastro DATE,
+                dataalteracao DATE,
+                CONSTRAINT formapagamento_pkey PRIMARY KEY (idformapagamento)
+);
+
+
+ALTER SEQUENCE public.idformapagamento_seq OWNED BY public.formapagamento.idformapagamento;
+
+CREATE SEQUENCE public.idestado_seq;
+
+CREATE TABLE public.estado (
+                idestado INTEGER NOT NULL DEFAULT nextval('public.idestado_seq'),
+                descricao VARCHAR(100) NOT NULL,
+                uf VARCHAR(3),
+                idpais INTEGER NOT NULL,
+                datacadastro DATE,
+                dataalteracao DATE,
+                CONSTRAINT estado_pkey PRIMARY KEY (idestado)
+);
+
+
+ALTER SEQUENCE public.idestado_seq OWNED BY public.estado.idestado;
+
+CREATE SEQUENCE public.idcondicaopagamento_seq;
+
+CREATE TABLE public.condicaopagamento (
+                idcondicaopagamento INTEGER NOT NULL DEFAULT nextval('public.idcondicaopagamento_seq'),
+                idformapagamento INTEGER NOT NULL,
+                descricao VARCHAR(100) NOT NULL,
+                datacadastro DATE NOT NULL,
+                dataalteracao DATE NOT NULL,
+                CONSTRAINT condicaopagamento_pkey PRIMARY KEY (idcondicaopagamento)
+);
+
+
+ALTER SEQUENCE public.idcondicaopagamento_seq OWNED BY public.condicaopagamento.idcondicaopagamento;
+
+CREATE TABLE public.parcelas (
+                idcondicaopagamento INTEGER NOT NULL,
+                numparcela INTEGER NOT NULL,
+                numdias INTEGER NOT NULL,
+                porcentagem DOUBLE PRECISION,
+                CONSTRAINT parcelas_pkey PRIMARY KEY (idcondicaopagamento, numparcela)
+);
+
+
+CREATE SEQUENCE public.idcidade_seq;
+
+CREATE TABLE public.cidade (
+                idcidade INTEGER NOT NULL DEFAULT nextval('public.idcidade_seq'),
+                descricao VARCHAR(100) NOT NULL,
+                ddd VARCHAR(2),
+                idestado INTEGER NOT NULL,
+                datacadastro DATE,
+                dataalteracao DATE,
+                CONSTRAINT cidade_pkey PRIMARY KEY (idcidade)
+);
+
+
+ALTER SEQUENCE public.idcidade_seq OWNED BY public.cidade.idcidade;
+
+CREATE SEQUENCE public.idfornecedor_seq;
+
+CREATE TABLE public.fornecedor (
+                idfornecedor INTEGER NOT NULL DEFAULT nextval('public.idfornecedor_seq'),
+                nome_razaosocial VARCHAR(100) NOT NULL,
+                logradouro VARCHAR(100) NOT NULL,
+                numero VARCHAR(10) NOT NULL,
+                cep VARCHAR(9),
+                bairro VARCHAR(50) NOT NULL,
+                complemento VARCHAR(50),
+                idcidade INTEGER NOT NULL,
+                email VARCHAR(100),
+                telefone VARCHAR(20),
+                celular VARCHAR(20),
+                cpf_cnpj VARCHAR(18),
+                rg_ie VARCHAR(10),
+                tipopessoa VARCHAR(8) NOT NULL,
+                tipofavorecido VARCHAR(1) NOT NULL,
+                datanasc_fund DATE NOT NULL,
+                idcondicaopagamento INTEGER NOT NULL,
+                datacadastro DATE NOT NULL,
+                dataalteracao DATE NOT NULL,
+                observacao VARCHAR(255),
+                CONSTRAINT fornecedor_pkey PRIMARY KEY (idfornecedor)
+);
+
+
+ALTER SEQUENCE public.idfornecedor_seq OWNED BY public.fornecedor.idfornecedor;
+
+CREATE SEQUENCE public.idcliente_seq;
+
+CREATE TABLE public.cliente (
+                idcliente INTEGER NOT NULL DEFAULT nextval('public.idcliente_seq'),
+                nome_razaosocial VARCHAR(100) NOT NULL,
+                logradouro VARCHAR(100) NOT NULL,
+                numero VARCHAR(10) NOT NULL,
+                cep VARCHAR(9),
+                bairro VARCHAR(50) NOT NULL,
+                complemento VARCHAR(50),
+                idcidade INTEGER NOT NULL,
+                email VARCHAR(100),
+                telefone VARCHAR(20),
+                celular VARCHAR(20),
+                cpf_cnpj VARCHAR(18),
+                rg_ie VARCHAR(10),
+                tipopessoa VARCHAR(8) NOT NULL,
+                idcondicaopagamento INTEGER NOT NULL,
+                datanasc_fund DATE,
+                datacadastro DATE NOT NULL,
+                dataalteracao DATE NOT NULL,
+                observacao VARCHAR(255),
+                CONSTRAINT cliente_pkey PRIMARY KEY (idcliente)
+);
+
+
+ALTER SEQUENCE public.idcliente_seq OWNED BY public.cliente.idcliente;
+
+CREATE SEQUENCE public.idcategoria_seq;
+
+CREATE TABLE public.categoria (
+                idcategoria INTEGER NOT NULL DEFAULT nextval('public.idcategoria_seq'),
+                descricao VARCHAR(100) NOT NULL,
+                datacadastro DATE,
+                dataalteracao DATE,
+                CONSTRAINT categoria_pkey PRIMARY KEY (idcategoria)
+);
+
+
+ALTER SEQUENCE public.idcategoria_seq OWNED BY public.categoria.idcategoria;
+
+CREATE SEQUENCE public.idproduto_seq;
+
+CREATE TABLE public.produto (
+                idproduto INTEGER NOT NULL DEFAULT nextval('public.idproduto_seq'),
+                descricao VARCHAR(60) NOT NULL,
+                idunidade INTEGER,
+                quantidade REAL,
+                icms REAL,
+                ipi REAL,
+                preco_compra DOUBLE PRECISION,
+                preco_venda DOUBLE PRECISION NOT NULL,
+                icms_anterior REAL,
+                ipi_anterior REAL,
+                preco_compra_ant REAL,
+                idmarca INTEGER,
+                idcategoria INTEGER,
+                observacao VARCHAR(255),
+                datacadastro DATE,
+                dataalteracao DATE,
+                CONSTRAINT produto_pkey PRIMARY KEY (idproduto)
+);
+
+
+ALTER SEQUENCE public.idproduto_seq OWNED BY public.produto.idproduto;
+
+CREATE TABLE public.produto_fornecedor (
+                idfornecedor INTEGER NOT NULL,
+                idproduto INTEGER NOT NULL,
+                CONSTRAINT produto_fornecedor_pkey PRIMARY KEY (idfornecedor, idproduto)
+);
+
+
+CREATE SEQUENCE public.idcargo_seq;
+
+CREATE TABLE public.cargo (
+                idcargo INTEGER NOT NULL DEFAULT nextval('public.idcargo_seq'),
+                descricao VARCHAR(100) NOT NULL,
+                datacadastro DATE,
+                dataalteracao DATE NOT NULL,
+                CONSTRAINT cargo_pkey PRIMARY KEY (idcargo)
+);
+
+
+ALTER SEQUENCE public.idcargo_seq OWNED BY public.cargo.idcargo;
+
+CREATE SEQUENCE public.idfuncionario_seq;
+
+CREATE TABLE public.funcionario (
+                idfuncionario INTEGER NOT NULL DEFAULT nextval('public.idfuncionario_seq'),
+                nome VARCHAR(100) NOT NULL,
+                idcargo INTEGER NOT NULL,
+                logradouro VARCHAR(100) NOT NULL,
+                numero VARCHAR(10),
+                cep VARCHAR(9) NOT NULL,
+                bairro VARCHAR(50) NOT NULL,
+                complemento VARCHAR(50),
+                idcidade INTEGER NOT NULL,
+                email VARCHAR(100),
+                telefone VARCHAR(20),
+                celular VARCHAR(20),
+                cpf VARCHAR(14),
+                rg VARCHAR(10),
+                datanascimento DATE NOT NULL,
+                ctps VARCHAR(8),
+                cnh VARCHAR(11),
+                datavencimento DATE,
+                datacadastro DATE NOT NULL,
+                dataalteracao DATE,
+                dataadmissao DATE,
+                datademissao DATE,
+                observacao VARCHAR(255),
+                CONSTRAINT funcionario_pkey PRIMARY KEY (idfuncionario)
+);
+
+
+ALTER SEQUENCE public.idfuncionario_seq OWNED BY public.funcionario.idfuncionario;
+
+CREATE SEQUENCE public.idusuario_seq;
+
+CREATE TABLE public.usuario (
+                idusuario INTEGER NOT NULL DEFAULT nextval('public.idusuario_seq'),
+                login VARCHAR(30) NOT NULL,
+                senha VARCHAR(10) NOT NULL,
+                idfuncionario INTEGER NOT NULL,
+                status VARCHAR(15) NOT NULL,
+                perfil VARCHAR(3) NOT NULL,
+                datacadastro DATE NOT NULL,
+                dataalteracao DATE NOT NULL,
+                CONSTRAINT usuario_pk PRIMARY KEY (idusuario)
+);
+
+
+ALTER SEQUENCE public.idusuario_seq OWNED BY public.usuario.idusuario;
+
+CREATE SEQUENCE public.compra_idcompra_seq;
+
+CREATE TABLE public.compra (
+                idcompra INTEGER NOT NULL DEFAULT nextval('public.compra_idcompra_seq'),
+                numnota INTEGER NOT NULL,
+                serienota VARCHAR(2) NOT NULL,
+                idfornecedor INTEGER NOT NULL,
+                idcondicaopagamento INTEGER NOT NULL,
+                idusuario INTEGER NOT NULL,
+                idtransportadora INTEGER,
+                tipofrete INTEGER NOT NULL,
+                base_icms REAL NOT NULL,
+                valor_frete REAL,
+                total_icms REAL,
+                total_ipi REAL,
+                valor_desconto REAL NOT NULL,
+                total_produto REAL NOT NULL,
+                total_nota REAL NOT NULL,
+                status VARCHAR(15) NOT NULL,
+                datacompra DATE NOT NULL,
+                dataemissao DATE NOT NULL,
+                datacadastro DATE NOT NULL,
+                dataalteracao DATE NOT NULL,
+                observacao VARCHAR(255),
+                CONSTRAINT compra_pkey PRIMARY KEY (idcompra, numnota, serienota, idfornecedor)
+);
+
+
+ALTER SEQUENCE public.compra_idcompra_seq OWNED BY public.compra.idcompra;
+
+CREATE SEQUENCE public.contapagar_idcontapagar_seq;
+
+CREATE TABLE public.contapagar (
+                idcontapagar INTEGER NOT NULL DEFAULT nextval('public.contapagar_idcontapagar_seq'),
+                idcompra INTEGER,
+                numnota INTEGER NOT NULL,
+                serienota VARCHAR(2) NOT NULL,
+                numparcela INTEGER NOT NULL,
+                idfornecedor INTEGER NOT NULL,
+                idusuario INTEGER NOT NULL,
+                idformapagamento INTEGER NOT NULL,
+                dataemissao DATE NOT NULL,
+                datavencimento DATE NOT NULL,
+                datapagamento DATE,
+                valor REAL,
+                multa REAL,
+                juros REAL,
+                desconto REAL,
+                status VARCHAR(15),
+                datacadastro DATE,
+                dataalteracao DATE,
+                observacao VARCHAR(255),
+                CONSTRAINT contapagar_pkey PRIMARY KEY (idcontapagar, numnota, serienota, numparcela, idfornecedor)
+);
+
+
+ALTER SEQUENCE public.contapagar_idcontapagar_seq OWNED BY public.contapagar.idcontapagar;
+
+CREATE TABLE public.produto_compra (
+                idcompra INTEGER NOT NULL,
+                numnota INTEGER NOT NULL,
+                serienota VARCHAR(2) NOT NULL,
+                idfornecedor INTEGER NOT NULL,
+                idproduto INTEGER NOT NULL,
+                ncm_sh VARCHAR(8) NOT NULL,
+                cst INTEGER NOT NULL,
+                cpof INTEGER NOT NULL,
+                unidade VARCHAR(20) NOT NULL,
+                quantidade REAL NOT NULL,
+                precocusto REAL NOT NULL,
+                desconto REAL,
+                valortotal REAL NOT NULL,
+                baseicms REAL NOT NULL,
+                valoricms REAL NOT NULL,
+                valoripi REAL,
+                icms REAL NOT NULL,
+                ipi REAL,
+                CONSTRAINT produto_compra_pkey PRIMARY KEY (idcompra, numnota, serienota, idfornecedor, idproduto)
+);
+
+CREATE SEQUENCE public.numnota_seq;
+
+CREATE TABLE public.venda (
+                numnota INTEGER NOT NULL DEFAULT nextval('public.numnota_seq'),
+                serienota VARCHAR(2) NOT NULL,
+                idordemservico INTEGER,
+                idcliente INTEGER NOT NULL,
+                idcondicaopagamento INTEGER NOT NULL,
+                idusuario INTEGER NOT NULL,
+                status VARCHAR(15),
+                datavenda DATE NOT NULL,
+                dataemissao DATE NOT NULL,
+                datacadastro DATE NOT NULL,
+                dataalteracao DATE NOT NULL,
+                observacao VARCHAR(255),
+                CONSTRAINT venda_pkey PRIMARY KEY (numnota, serienota)
+);
+
+
+ALTER SEQUENCE public.numnota_seq OWNED BY public.venda.numnota;
+
+CREATE SEQUENCE public.produto_venda_idproduto_venda_seq;
+
+CREATE TABLE public.produto_venda (
+                idproduto_venda INTEGER NOT NULL DEFAULT nextval('public.produto_venda_idproduto_venda_seq'),
+                numnota INTEGER NOT NULL,
+                idproduto INTEGER NOT NULL,
+                serienota VARCHAR(2) NOT NULL,
+                valorunitario REAL NOT NULL,
+                quantidade REAL,
+                desconto REAL,
+                CONSTRAINT produto_venda_pkey PRIMARY KEY (idproduto_venda, numnota, idproduto, serienota)
+);
+
+
+ALTER SEQUENCE public.produto_venda_idproduto_venda_seq OWNED BY public.produto_venda.idproduto_venda;
+
+CREATE TABLE public.contareceber (
+                numnota INTEGER NOT NULL,
+                serienota VARCHAR(2) NOT NULL,
+                numparcela INTEGER NOT NULL,
+                idcliente INTEGER NOT NULL,
+                idformapagamento INTEGER NOT NULL,
+                idusuario INTEGER NOT NULL,
+                dataemissao DATE,
+                datavencimento DATE,
+                datapagamento DATE,
+                valor REAL,
+                juros REAL,
+                multa REAL,
+                desconto REAL,
+                status VARCHAR(15) NOT NULL,
+                datacadastro DATE,
+                dataalteracao DATE,
+                observacao VARCHAR(255),
+                CONSTRAINT contareceber_pkey PRIMARY KEY (numnota, serienota, numparcela)
+);
+
+ALTER TABLE public.produto ADD CONSTRAINT unidade_produto_fk
+FOREIGN KEY (idunidade)
+REFERENCES public.unidade (idunidade)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.estado ADD CONSTRAINT estado_idpais_fkey
+FOREIGN KEY (idpais)
+REFERENCES public.pais (idpais)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.produto ADD CONSTRAINT produto_idmarca_fkey
+FOREIGN KEY (idmarca)
+REFERENCES public.marca (idmarca)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.condicaopagamento ADD CONSTRAINT condicaopagamento_idformapagamento_fkey
+FOREIGN KEY (idformapagamento)
+REFERENCES public.formapagamento (idformapagamento)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.contapagar ADD CONSTRAINT contapagar_idformapagamento_fkey
+FOREIGN KEY (idformapagamento)
+REFERENCES public.formapagamento (idformapagamento)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.contareceber ADD CONSTRAINT contareceber_idformapagamento_fkey
+FOREIGN KEY (idformapagamento)
+REFERENCES public.formapagamento (idformapagamento)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.cidade ADD CONSTRAINT cidade_idestado_fkey
+FOREIGN KEY (idestado)
+REFERENCES public.estado (idestado)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.cliente ADD CONSTRAINT cliente_idcondicaopagamento_fkey
+FOREIGN KEY (idcondicaopagamento)
+REFERENCES public.condicaopagamento (idcondicaopagamento)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.compra ADD CONSTRAINT compra_idcondicaopagamento_fkey
+FOREIGN KEY (idcondicaopagamento)
+REFERENCES public.condicaopagamento (idcondicaopagamento)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.parcelas ADD CONSTRAINT parcelas_idcondicaopagamento_fkey
+FOREIGN KEY (idcondicaopagamento)
+REFERENCES public.condicaopagamento (idcondicaopagamento)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.venda ADD CONSTRAINT venda_idcondicaopagamento_fkey
+FOREIGN KEY (idcondicaopagamento)
+REFERENCES public.condicaopagamento (idcondicaopagamento)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.cliente ADD CONSTRAINT cliente_idcidade_fkey
+FOREIGN KEY (idcidade)
+REFERENCES public.cidade (idcidade)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.fornecedor ADD CONSTRAINT fornecedor_idcidade_fkey
+FOREIGN KEY (idcidade)
+REFERENCES public.cidade (idcidade)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.funcionario ADD CONSTRAINT funcionario_idcidade_fkey
+FOREIGN KEY (idcidade)
+REFERENCES public.cidade (idcidade)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.compra ADD CONSTRAINT compra_idfornecedor_fkey
+FOREIGN KEY (idfornecedor)
+REFERENCES public.fornecedor (idfornecedor)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.produto_fornecedor ADD CONSTRAINT produto_fornecedor_idfornecedor_fkey
+FOREIGN KEY (idfornecedor)
+REFERENCES public.fornecedor (idfornecedor)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.contareceber ADD CONSTRAINT contareceber_idcliente_fkey
+FOREIGN KEY (idcliente)
+REFERENCES public.cliente (idcliente)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.venda ADD CONSTRAINT venda_idcliente_fkey
+FOREIGN KEY (idcliente)
+REFERENCES public.cliente (idcliente)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.produto ADD CONSTRAINT produto_idcategoria_fkey
+FOREIGN KEY (idcategoria)
+REFERENCES public.categoria (idcategoria)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.produto_compra ADD CONSTRAINT produto_compra_idproduto_fkey
+FOREIGN KEY (idproduto)
+REFERENCES public.produto (idproduto)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.produto_fornecedor ADD CONSTRAINT produto_fornecedor_idproduto_fkey
+FOREIGN KEY (idproduto)
+REFERENCES public.produto (idproduto)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.produto_venda ADD CONSTRAINT produto_venda_idproduto_fkey
+FOREIGN KEY (idproduto)
+REFERENCES public.produto (idproduto)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.funcionario ADD CONSTRAINT funcionario_idcargo_fkey
+FOREIGN KEY (idcargo)
+REFERENCES public.cargo (idcargo)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.usuario ADD CONSTRAINT funcionario_usuario_fk
+FOREIGN KEY (idfuncionario)
+REFERENCES public.funcionario (idfuncionario)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.venda ADD CONSTRAINT usuario_venda_fk
+FOREIGN KEY (idusuario)
+REFERENCES public.usuario (idusuario)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.compra ADD CONSTRAINT usuario_compra_fk
+FOREIGN KEY (idusuario)
+REFERENCES public.usuario (idusuario)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.contareceber ADD CONSTRAINT usuario_contareceber_fk
+FOREIGN KEY (idusuario)
+REFERENCES public.usuario (idusuario)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.contapagar ADD CONSTRAINT usuario_contapagar_fk
+FOREIGN KEY (idusuario)
+REFERENCES public.usuario (idusuario)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.produto_compra ADD CONSTRAINT produto_compra_idfornecedor_fkey
+FOREIGN KEY (numnota, serienota, idfornecedor, idcompra)
+REFERENCES public.compra (numnota, serienota, idfornecedor, idcompra)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.contareceber ADD CONSTRAINT contareceber_numnota_fkey
+FOREIGN KEY (serienota, numnota)
+REFERENCES public.venda (serienota, numnota)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.produto_venda ADD CONSTRAINT produto_venda_numnota_fkey
+FOREIGN KEY (serienota, numnota)
+REFERENCES public.venda (serienota, numnota)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+
+INSERT INTO unidade (descricao, datacadastro, dataalteracao) VALUES ('MT2',  CURRENT_DATE , CURRENT_DATE );
+INSERT INTO unidade (descricao, datacadastro, dataalteracao) VALUES ('MT',  CURRENT_DATE , CURRENT_DATE );
+INSERT INTO unidade (descricao, datacadastro, dataalteracao) VALUES ('UNI',  CURRENT_DATE , CURRENT_DATE );
+INSERT INTO unidade (descricao, datacadastro, dataalteracao) VALUES ('Q',  CURRENT_DATE , CURRENT_DATE );
+
+INSERT INTO pais (descricao, ddi, datacadastro, dataalteracao) VALUES ('BRASIL','+55', CURRENT_DATE, CURRENT_DATE);
+INSERT INTO estado (descricao, uf, idpais, datacadastro,dataalteracao) VALUES ('PARANA','PR',1,CURRENT_DATE, CURRENT_DATE);
+INSERT INTO cidade (descricao, ddd, idestado, datacadastro,dataalteracao) VALUES ('FOZ DO IGUAÇU','45',1, CURRENT_DATE, CURRENT_DATE);
+
+
+INSERT INTO cargo (descricao, datacadastro,dataalteracao) VALUES ('VENDEDOR', CURRENT_DATE, CURRENT_DATE);
+INSERT INTO funcionario (
+			nome, 
+			idcargo, 
+			logradouro, 
+			numero, 
+			cep, 
+			bairro, 
+			complemento, 
+			idcidade, 
+			email, 
+			telefone, 
+			celular, 
+			cpf, 
+			rg, 
+			datanascimento, 
+			ctps, 
+			cnh, 
+			datavencimento, 
+			datacadastro, 
+			dataalteracao, 
+			dataadmissao, 
+			datademissao, 
+			observacao) 
+			VALUES ('ADMIN', 1, 'RUA', '1234', '85875-000', 'CENTRO', 'CASA', 1, 'email@email.com', '', '', '732.288.769-77', '', '1900-01-01', '12345678', '', NULL, CURRENT_DATE, CURRENT_DATE, NULL, NULL, '');
+
+
+INSERT INTO usuario (login, senha, idfuncionario, status, perfil, datacadastro, dataalteracao) VALUES ('ADMIN', 'ADMIN', 1, 'ATIVO', 'ADM', CURRENT_DATE, CURRENT_DATE);
+
+

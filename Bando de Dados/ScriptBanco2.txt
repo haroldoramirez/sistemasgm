@@ -1,0 +1,42 @@
+CREATE SEQUENCE public.idcfop_seq;
+
+CREATE TABLE public.cfop (
+                idcfop INTEGER NOT NULL DEFAULT nextval('public.idcfop_seq'),
+                nome VARCHAR(100) NOT NULL,
+                numero INTEGER,
+                datacadastro DATE,
+                dataalteracao DATE,
+                CONSTRAINT cfop_pkey PRIMARY KEY (idcfop)
+);
+
+
+ALTER SEQUENCE public.idcfop_seq OWNED BY public.cfop.idcfop;
+
+CREATE SEQUENCE public.idncm_seq;
+
+CREATE TABLE public.ncm (
+                idncm INTEGER NOT NULL DEFAULT nextval('public.idncm_seq'),
+                numero INTEGER NOT NULL,
+                porcentagem_ipi REAL,
+                datacadastro DATE,
+                dataalteracao DATE,
+                CONSTRAINT ncm_pkey PRIMARY KEY (idncm)
+);
+
+
+ALTER SEQUENCE public.idncm_seq OWNED BY public.ncm.idncm;
+
+CREATE SEQUENCE public.idveiculo_seq;
+
+CREATE TABLE public.veiculo (
+                idveiculo INTEGER NOT NULL DEFAULT nextval('public.idveiculo_seq'),
+                antt VARCHAR(20) NOT NULL,
+                placa VARCHAR(8) NOT NULL,
+                uf VARCHAR(2) NOT NULL,
+                datacadastro DATE,
+                dataalteracao DATE,
+                CONSTRAINT veiculo_pkey PRIMARY KEY (idveiculo)
+);
+
+
+ALTER SEQUENCE public.idveiculo_seq OWNED BY public.veiculo.idveiculo;
