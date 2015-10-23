@@ -59,6 +59,7 @@ begin
   umaDaoRelatorio := DaoRelatorio.CrieObjeto;
   umFrmCadCompra  := TFrmCadCompra.Create(nil);
   self.gridConsulta.DataSource := umaCtrlCompra.GetDS;
+  self.btn_Relatorio.Hide;
 end;
 
 procedure TFrmConCompra.btn_NovoClick(Sender: TObject);

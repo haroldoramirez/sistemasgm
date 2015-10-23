@@ -12,6 +12,10 @@ interface
         DataCadastro    : TDateTime;
         DataAlteracao   : TDateTime;
     public
+
+        Constructor CrieObjeto;
+        Destructor Destrua_Se;
+
         Procedure setId (vId : Integer);
         Procedure setAntt (vAntt : String);
         Procedure setPlaca (vPlaca : String);
@@ -31,6 +35,21 @@ implementation
 
 { Veiculo }
 
+constructor Veiculo.CrieObjeto;
+var dataAtual : TDateTime;
+begin
+    antt := '';
+    Placa := '';
+    Uf := '';
+    DataCadastro := dataAtual;
+    DataAlteracao:= dataAtual;
+end;
+
+destructor Veiculo.Destrua_Se;
+begin
+
+end;
+
 function Veiculo.getAntt: String;
 begin
     Result := Antt;
@@ -48,22 +67,22 @@ end;
 
 function Veiculo.getId: integer;
 begin
-  Result := Id;
+    Result := Id;
 end;
 
 function Veiculo.getPlaca: String;
 begin
-  Result := Placa;
+    Result := Placa;
 end;
 
 function Veiculo.getUf: String;
 begin
-  Result := Uf;
+    Result := Uf;
 end;
 
 procedure Veiculo.setAntt(vAntt: String);
 begin
-  Antt := vAntt;
+    Antt := vAntt;
 end;
 
 procedure Veiculo.setDataAlteracao(vDataAlteracao: TDateTime);

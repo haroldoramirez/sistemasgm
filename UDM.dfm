@@ -3822,8 +3822,8 @@
     SQL.Strings = (
       'select * from ncm;')
     Params = <>
-    Left = 632
-    Top = 440
+    Left = 624
+    Top = 424
     object QNcmidncm: TIntegerField
       FieldName = 'idncm'
       Required = True
@@ -3844,8 +3844,8 @@
   end
   object DSNcm: TDataSource
     DataSet = QNcm
-    Left = 728
-    Top = 440
+    Left = 736
+    Top = 424
   end
   object UpdateNcm: TZUpdateSQL
     DeleteSQL.Strings = (
@@ -3867,7 +3867,7 @@
       '  ncm.idncm = :OLD_idncm')
     UseSequenceFieldForRefreshSQL = False
     Left = 856
-    Top = 448
+    Top = 424
     ParamData = <
       item
         DataType = ftUnknown

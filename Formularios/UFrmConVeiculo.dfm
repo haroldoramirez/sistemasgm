@@ -1,19 +1,12 @@
-inherited FrmConPais: TFrmConPais
-  Caption = 'Consulta Pa'#237's'
+inherited FrmConVeiculo: TFrmConVeiculo
+  Caption = 'Consulta Ve'#237'culo'
   PixelsPerInch = 96
   TextHeight = 13
   inherited sGroupBox1: TsGroupBox
     inherited lbl_Descricao: TsLabel
-      Width = 19
-      Caption = 'Pa'#237's'
-      ExplicitWidth = 19
-    end
-    inherited edt_Id: TsEdit
-      MaxLength = 5
-      OnKeyPress = edt_IdKeyPress
-    end
-    inherited edt_Descricao: TsEdit
-      MaxLength = 50
+      Width = 21
+      Caption = 'Antt'
+      ExplicitWidth = 21
     end
     inherited btn_Consultar: TsButton
       OnClick = btn_ConsultarClick
@@ -29,18 +22,12 @@ inherited FrmConPais: TFrmConPais
     inherited btn_Excluir: TsBitBtn
       OnClick = btn_ExcluirClick
     end
-    inherited btn_Sair: TsBitBtn
-      Left = 551
-      ExplicitLeft = 551
-    end
   end
   object gridConsulta: TDBGrid [2]
     Left = 8
     Top = 191
     Width = 638
     Height = 243
-    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
-    ReadOnly = True
     TabOrder = 2
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText

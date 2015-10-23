@@ -61,6 +61,7 @@ begin
   umaDaoRelatorio       := DaoRelatorio.CrieObjeto;
   umFrmCadContasReceber := TFrmCadContasReceber.Create(nil);
   Self.gridConsulta.DataSource := umaCtrlContasReceber.GetDS;
+  self.btn_Relatorio.Hide;
 end;
 
 procedure TFrmConContasReceber.CarregaObj(status, botao: String);

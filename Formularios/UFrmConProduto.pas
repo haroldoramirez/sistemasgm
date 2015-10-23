@@ -124,6 +124,7 @@ begin
   umaDaoRelatorio := DaoRelatorio.CrieObjeto;
   umFrmCadProduto := TFrmCadProduto.Create(nil);
   Self.gridConsulta.DataSource := umaCtrlProduto.GetDS;
+  self.btn_Relatorio.Hide;
 end;
 
 procedure TFrmConProduto.desabilitaCampos;

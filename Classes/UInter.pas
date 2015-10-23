@@ -8,7 +8,8 @@ interface
     UCondicaoPagamento, UFrmConCondicaoPagamento, UVenda, UFrmConVenda,
     UCargo, UFrmConCargo, UContasReceber, UFrmConContasReceber, UCompra,
     UFrmConCompra, UUsuario, UFrmConUsuario, UTransportadora, UFrmConTransportadora, UContasPagar,
-    UFrmConContasPagar, UUnidade, UFrmConUnidade;
+    UFrmConContasPagar, UUnidade, UFrmConUnidade, UVeiculo, UFrmConVeiculo,
+    UFrmConNcm, UNcm;
     type Interfaces = class
 
     protected
@@ -31,6 +32,8 @@ interface
         umFrmConUsuario           : TFrmConUsuario;
         umFrmConTransportadora    : TFrmConTransportadora;
         umFrmConUnidade           : TFrmConUnidade;
+        umFrmConVeiculo           : TFrmConVeiculo;
+        umFrmConNcm               : TFrmConNcm;
     public
         constructor CrieObj;
         destructor  Destrua_se;
@@ -54,6 +57,8 @@ interface
         procedure PecaDadosUsuario (vUsuario:Usuario);
         procedure PecaDadosTransportadora (vTransportadora:Transportadora);
         procedure PecaDadosUnidade (vUnidade:Unidade);
+        procedure PecaDadosVeiculo (vVeiculo:Veiculo);
+        procedure PecaDadosNcm (vNcm:Ncm);
     end;
 
 implementation
@@ -81,6 +86,8 @@ begin
     umFrmConUsuario           := TFrmConUsuario.Create(nil);
     umFrmConTransportadora    := TFrmConTransportadora.Create(nil);
     umFrmConUnidade           := TFrmConUnidade.Create(nil);
+    umFrmConVeiculo           := TFrmConVeiculo.Create(nil);
+    umFrmConNcm               := TFrmConNcm.Create(nil);
 end;
 
 destructor Interfaces.Destrua_se;
@@ -104,6 +111,8 @@ begin
     umFrmConUsuario.Free;
     umFrmConTransportadora.Free;
     umFrmConUnidade.Free;
+    umFrmConVeiculo.Free;
+    umFrmConNcm.Free;
 end;
 
 procedure Interfaces.PecaDadosCargo(vCargo: Cargo);
@@ -185,6 +194,12 @@ begin
     umFrmConMarca.showmodal;
 end;
 
+procedure Interfaces.PecaDadosNcm(vNcm: Ncm);
+begin
+    umFrmConNcm.ConhecaObj(vNcm);
+    umFrmConNcm.ShowModal;
+end;
+
 procedure Interfaces.PecaDadosPais(vPais: Pais);
 begin
     umFrmConPais.ConhecaObj(vPais);
@@ -213,6 +228,12 @@ procedure Interfaces.PecaDadosUsuario(vUsuario: Usuario);
 begin
     umFrmConUsuario.ConhecaObj(vUsuario);
     umFrmConUsuario.ShowModal;
+end;
+
+procedure Interfaces.PecaDadosVeiculo(vVeiculo: Veiculo);
+begin
+    umFrmConVeiculo.ConhecaObj(vVeiculo);
+    umFrmConVeiculo.ShowModal;
 end;
 
 procedure Interfaces.PecaDadosVenda(vVenda: Venda);

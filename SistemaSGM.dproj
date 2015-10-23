@@ -254,16 +254,34 @@
 			</DCCReference>
 			<DCCReference Include="Dao\UDaoRelatorio.pas"/>
 			<DCCReference Include="Classes\UCalcProduto.pas">
-				<Form>,
+				<Form>
   UNcm in &apos;Classes\UNcm.pas&apos;,
-  UCfop in &apos;Classes\UCfop.pas&apos;;
+  UCfop in &apos;Classes\UCfop.pas&apos;,
+  UNcm in &apos;Classes\UNcm.pas&apos;,
+  UCfop in &apos;Classes\UCfop.pas&apos;,
+  UVeiculo in &apos;Classes\UVeiculo.pas&apos;;
 
 {$R *.res</Form>
 			</DCCReference>
-			<DCCReference Include="Classes\UNcm.pas"/>
 			<DCCReference Include="Classes\UCfop.pas"/>
+			<DCCReference Include="Classes\UNcm.pas"/>
 			<DCCReference Include="Classes\UVeiculo.pas"/>
-			<None Include="ModelSupport_SistemaSGM\default.txaPackage"/>
+			<DCCReference Include="Dao\UDaoVeiculo.pas"/>
+			<DCCReference Include="Controller\UCtrlVeiculo.pas"/>
+			<DCCReference Include="Formularios\UFrmConVeiculo.pas">
+				<Form>FrmConVeiculo</Form>
+			</DCCReference>
+			<DCCReference Include="Formularios\UFrmCadVeiculo.pas">
+				<Form>FrmCadVeiculo</Form>
+			</DCCReference>
+			<DCCReference Include="Formularios\UFrmConNcm.pas">
+				<Form>FrmConNcm</Form>
+			</DCCReference>
+			<DCCReference Include="Formularios\UFrmCadNcm.pas">
+				<Form>FrmCadNcm</Form>
+			</DCCReference>
+			<DCCReference Include="Controller\UCtrlNcm.pas"/>
+			<DCCReference Include="Dao\UDaoNcm.pas"/>
 			<None Include="ModelSupport_SistemaSGM\default.txvpck"/>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>

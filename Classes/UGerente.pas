@@ -8,7 +8,8 @@ uses
   UFuncionario, UMarca, UCategoria, UFormaPagamento, UProduto, UCondicaoPagamento,
   UFrmConCondicaoPagamento, UVenda, UFrmConVenda, UCargo, UFrmConCargo, UContasReceber,
   UCompra, UUsuario, UTransportadora, sSkinManager, jpeg, ExtCtrls,
-  UContasPagar, UUnidade, UDaoRelatorio, StdCtrls, sCheckBox;
+  UContasPagar, UUnidade, UDaoRelatorio, StdCtrls, sCheckBox,
+  UVeiculo, uNcm;
 
 type
   TGerente = class(TForm)
@@ -39,6 +40,8 @@ type
     mniransportadora1: TMenuItem;
     Unidade1: TMenuItem;
     Usurio1: TMenuItem;
+    Veculo1: TMenuItem;
+    Ncm1: TMenuItem;
     procedure Pas1Click(Sender: TObject);
     procedure mniCidade1Click(Sender: TObject);
     procedure mniCliente1Click(Sender: TObject);
@@ -60,6 +63,8 @@ type
     procedure mniContasaPagar1Click(Sender: TObject);
     procedure Unidade1Click(Sender: TObject);
     procedure Usurio1Click(Sender: TObject);
+    procedure Veculo1Click(Sender: TObject);
+    procedure Ncm1Click(Sender: TObject);
   private
     umaInter             : Interfaces;
     umPais               : Pais;
@@ -81,6 +86,8 @@ type
     umaTransportadora    : Fornecedor;
     umaContasPagar       : ContasPagar;
     umaUnidade           : Unidade;
+    umVeiculo            : Veiculo;
+    umNcm                : Ncm;
 
 
   public
@@ -89,7 +96,7 @@ type
     vCategoria:Categoria; vFormaPagamento:FormaPagamento; vProduto:Produto;
     vCondicaoPagamento:CondicaoPagamento; vVenda:Venda; vCargo:Cargo; vContasReceber:ContasReceber;
     vCompra:Compra; vUsuario:Usuario; vTransportadora:Fornecedor;
-    vContasPagar:ContasPagar; vUnidade:Unidade);
+    vContasPagar:ContasPagar; vUnidade:Unidade; vVeiculo:Veiculo; vNcm:Ncm);
   end;
 
 var
@@ -108,7 +115,8 @@ procedure TGerente.ConhecaObj(vInter: Interfaces; vPais:Pais; vEstado:Estado;
           vCidade:Cidade; vCliente:Cliente; vFornecedor:Fornecedor; vFuncionario:Funcionario;
           vMarca:Marca; vCategoria:Categoria; vFormaPagamento:FormaPagamento; vProduto:Produto;
           vCondicaoPagamento : CondicaoPagamento; vVenda : Venda; vCargo:Cargo;
-          vContasReceber: ContasReceber; vCompra:Compra; vUsuario:Usuario; vTransportadora:Fornecedor; vContasPagar:ContasPagar; vUnidade:Unidade);
+          vContasReceber: ContasReceber; vCompra:Compra; vUsuario:Usuario; vTransportadora:Fornecedor; vContasPagar:ContasPagar; vUnidade:Unidade;
+          vVeiculo: Veiculo; vNcm: Ncm);
 begin
     umaInter             := vInter;
     umPais               := vPais;
@@ -130,6 +138,8 @@ begin
     umUsuario            := vUsuario;
     umaTransportadora    := vFornecedor;
     umaUnidade           := vUnidade;
+    umVeiculo            := vVeiculo;
+    umNcm                 := vNcm;
 end;
 
 procedure TGerente.mniCadastrarFuncionrio1Click(Sender: TObject);
@@ -217,6 +227,11 @@ begin
     umaInter.PecaDadosVenda(umaVenda);
 end;
 
+procedure TGerente.Ncm1Click(Sender: TObject);
+begin
+    umaInter.PecaDadosNcm(umNcm);
+end;
+
 procedure TGerente.Pas1Click(Sender: TObject);
 begin
      umaInter.PecaDadosPais(umPais);
@@ -232,9 +247,16 @@ begin
     umaInter.PecaDadosUsuario(umUsuario);
 end;
 
+procedure TGerente.Veculo1Click(Sender: TObject);
+begin
+    umaInter.PecaDadosVeiculo(umVeiculo);
+end;
+
 procedure TGerente.mniSair1Click(Sender: TObject);
 begin
     Close;
 end;
 
 end.
+
+

@@ -2,7 +2,9 @@ unit UDaoPais;
 
 interface
       uses uDao, DB, SysUtils, Messages, uPais;
+
       type DaoPais = class(Dao)
+
       private
 
       protected

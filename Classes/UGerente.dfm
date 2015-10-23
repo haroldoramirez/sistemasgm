@@ -48,6 +48,14 @@ object Gerente: TGerente
         Caption = 'Transportadora'
         OnClick = mniransportadora1Click
       end
+      object Veculo1: TMenuItem
+        Caption = 'Ve'#237'culo'
+        OnClick = Veculo1Click
+      end
+      object Ncm1: TMenuItem
+        Caption = 'Ncm'
+        OnClick = Ncm1Click
+      end
     end
     object mniLocalidades1: TMenuItem
       Caption = 'Localidades'

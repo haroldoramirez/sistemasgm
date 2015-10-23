@@ -5,7 +5,8 @@ interface
     UFuncionario, UMarca, UCategoria, UFormaPagamento, UProduto, UFrmConProduto,
     UCondicaoPagamento, UFrmConCondicaoPagamento, UVenda, UFrmConVenda, UCargo,
     UContasReceber, UCompra, UUsuario, UTransportadora,
-    UContasPagar, UUnidade, UFrmAutenticacao;
+    UContasPagar, UUnidade, UFrmAutenticacao,
+    UVeiculo, UNcm;
     type Aplicacao = class
 
     private
@@ -32,6 +33,8 @@ interface
           umaTransportadora    : Fornecedor;
           umaUnidade           : Unidade;
           umFrmAutenticacao    : TFrmAutenticacao;
+          umVeiculo            : Veiculo;
+          umNcm                : Ncm;
     public
           usuarioLogado : Usuario;
           constructor CrieObjeto;
@@ -70,6 +73,8 @@ begin
      umUsuario            := Usuario.CrieObjeto;
      umaTransportadora    := Fornecedor.CrieObjeto;
      umaUnidade           := Unidade.CrieObjeto;
+     umVeiculo            := Veiculo.CrieObjeto;
+     umNcm                := Ncm.CrieObjeto;
 end;
 
 destructor Aplicacao.Destrua_se;
@@ -95,6 +100,8 @@ begin
     umUsuario.Destrua_Se;
     umaTransportadora.Destrua_se;
     umaUnidade.Destrua_Se;
+    umVeiculo.Destrua_Se;
+    umNcm.Destrua_Se;
 end;
 
 procedure Aplicacao.Execute_se;
@@ -108,7 +115,28 @@ begin
     perfilUser    := umUsuario.getPerfil;
     if umFrmAutenticacao.permitido then
     begin
-      umGerente.ConhecaObj(umaInter, umPais, umEstado, umaCidade, umCliente, umFornecedor, umFuncionario, umaMarca, umaCategoria, umaFormaPagamento, umProduto, umaCondicaoPagamento, umaVenda, umCargo, umaContasReceber, umaCompra, umUsuario, umaTransportadora, umaContasPagar, umaUnidade);
+      umGerente.ConhecaObj(umaInter,
+                             umPais,
+                             umEstado,
+                             umaCidade,
+                             umCliente,
+                             umFornecedor,
+                             umFuncionario,
+                             umaMarca,
+                             umaCategoria,
+                             umaFormaPagamento,
+                             umProduto,
+                             umaCondicaoPagamento,
+                             umaVenda,
+                             umCargo,
+                             umaContasReceber,
+                             umaCompra,
+                             umUsuario,
+                             umaTransportadora,
+                             umaContasPagar,
+                             umaUnidade,
+                             umVeiculo,
+                             umNcm);
       umGerente.showmodal;
     end;
 end;

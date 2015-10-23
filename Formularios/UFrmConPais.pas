@@ -11,7 +11,6 @@ uses
 type
   TFrmConPais = class(TFrmConsulta)
     gridConsulta: TDBGrid;
-    procedure FormActivate(Sender: TObject);
     procedure btn_NovoClick(Sender: TObject);
     procedure btn_EditarClick(Sender: TObject);
     procedure btn_ExcluirClick(Sender: TObject);
@@ -122,10 +121,4 @@ begin
   CampoNumero(Sender,Key);
 end;
 
-procedure TFrmConPais.FormActivate(Sender: TObject);
-begin
-  inherited;
-//  gridConsulta.columns[1].width:=235;
-//  gridConsulta.columns[2].width:=50;
-end;
 end.

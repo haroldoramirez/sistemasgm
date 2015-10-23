@@ -142,6 +142,7 @@ begin
   umaDaoRelatorio := DaoRelatorio.CrieObjeto;
   umFrmCadVenda   := TFrmCadVenda.Create(nil);
   self.gridConsulta.DataSource := umaCtrlVenda.GetDS;
+  self.btn_Relatorio.Hide;
 end;
 
 procedure TFrmConVenda.FormActivate(Sender: TObject);

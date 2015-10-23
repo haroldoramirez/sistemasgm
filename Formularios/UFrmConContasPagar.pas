@@ -63,8 +63,8 @@ begin
   umaDaoRelatorio     := DaoRelatorio.CrieObjeto;
   umaCtrlFornecedor   := CtrlFornecedor.CrieObjeto;
   umFrmCadContasPagar := TFrmCadContasPagar.Create(nil);
-//  umaCtrlFornecedor.AtualizaGrid;
   Self.gridConsulta.DataSource := umaCtrlContasPagar.GetDS;
+  self.btn_Relatorio.Hide;
 
 end;
 

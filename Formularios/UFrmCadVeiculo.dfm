@@ -1,12 +1,18 @@
-inherited FrmCadPais: TFrmCadPais
-  Caption = 'Cadastro Pa'#237's'
-  ClientHeight = 224
-  ClientWidth = 381
-  ExplicitWidth = 387
-  ExplicitHeight = 253
+inherited FrmCadVeiculo: TFrmCadVeiculo
+  Caption = 'Cadastro de Ve'#237'culo'
+  ClientHeight = 220
+  ClientWidth = 393
+  ExplicitWidth = 399
+  ExplicitHeight = 249
   PixelsPerInch = 96
   TextHeight = 13
-  object lbl_Codigo: TsLabel [0]
+  inherited lbl5: TsLabel
+    Left = 271
+    Top = 8
+    ExplicitLeft = 271
+    ExplicitTop = 8
+  end
+  object lbl_Codigo: TsLabel [1]
     Left = 8
     Top = 10
     Width = 33
@@ -19,12 +25,12 @@ inherited FrmCadPais: TFrmCadPais
     Font.Name = 'Tahoma'
     Font.Style = []
   end
-  object lbl_Pais: TsLabel [1]
+  object lbl_Pais: TsLabel [2]
     Left = 8
     Top = 61
-    Width = 28
+    Width = 30
     Height = 13
-    Caption = 'Pa'#237's *'
+    Caption = 'Antt *'
     ParentFont = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4276545
@@ -32,12 +38,12 @@ inherited FrmCadPais: TFrmCadPais
     Font.Name = 'Tahoma'
     Font.Style = []
   end
-  object lbl_DDI: TsLabel [2]
-    Left = 311
+  object lbl_DDI: TsLabel [3]
+    Left = 339
     Top = 61
-    Width = 18
+    Width = 13
     Height = 13
-    Caption = 'DDI'
+    Caption = 'UF'
     ParentFont = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4276545
@@ -45,7 +51,7 @@ inherited FrmCadPais: TFrmCadPais
     Font.Name = 'Tahoma'
     Font.Style = []
   end
-  object lbl_DataCadastro: TsLabel [3]
+  object lbl_DataCadastro: TsLabel [4]
     Left = 8
     Top = 111
     Width = 70
@@ -58,7 +64,7 @@ inherited FrmCadPais: TFrmCadPais
     Font.Name = 'Tahoma'
     Font.Style = []
   end
-  object lbl_DataUltAlteracao: TsLabel [4]
+  object lbl_DataUltAlteracao: TsLabel [5]
     Left = 121
     Top = 111
     Width = 72
@@ -71,18 +77,12 @@ inherited FrmCadPais: TFrmCadPais
     Font.Name = 'Tahoma'
     Font.Style = []
   end
-  inherited lbl5: TsLabel
-    Left = 259
-    Top = 10
-    ExplicitLeft = 259
-    ExplicitTop = 10
-  end
-  object sLabel1: TsLabel [6]
-    Left = 243
+  object sLabel2: TsLabel [6]
+    Left = 235
     Top = 61
-    Width = 22
+    Width = 25
     Height = 13
-    Caption = 'Sigla'
+    Caption = 'Placa'
     ParentFont = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4276545
@@ -91,26 +91,24 @@ inherited FrmCadPais: TFrmCadPais
     Font.Style = []
   end
   inherited sGroupBox1: TsGroupBox
-    Top = 158
-    Width = 365
-    TabOrder = 5
-    ExplicitTop = 158
-    ExplicitWidth = 365
+    Top = 157
+    Width = 377
+    TabOrder = 4
+    ExplicitTop = 157
+    ExplicitWidth = 377
     inherited btn_Salvar: TsBitBtn
-      Left = 199
-      Top = 12
+      Left = 209
+      Top = 14
       OnClick = btn_SalvarClick
-      ExplicitLeft = 199
-      ExplicitTop = 12
+      ExplicitLeft = 209
+      ExplicitTop = 14
     end
     inherited btn_Sair: TsBitBtn
-      Left = 281
-      Top = 12
-      ExplicitLeft = 281
-      ExplicitTop = 12
+      Left = 290
+      ExplicitLeft = 290
     end
   end
-  object edt_IdPais: TsEdit
+  object edt_IdVeiculo: TsEdit
     Left = 8
     Top = 29
     Width = 65
@@ -135,7 +133,7 @@ inherited FrmCadPais: TFrmCadPais
     BoundLabel.MaxWidth = 0
     BoundLabel.UseSkinColor = True
   end
-  object edt_Pais: TsEdit
+  object edt_Antt: TsEdit
     Left = 8
     Top = 80
     Width = 213
@@ -147,7 +145,7 @@ inherited FrmCadPais: TFrmCadPais
     Font.Height = -11
     Font.Name = 'Tahoma'
     Font.Style = []
-    MaxLength = 50
+    MaxLength = 20
     ParentFont = False
     TabOrder = 1
     SkinData.SkinSection = 'EDIT'
@@ -161,10 +159,10 @@ inherited FrmCadPais: TFrmCadPais
     BoundLabel.MaxWidth = 0
     BoundLabel.UseSkinColor = True
   end
-  object edt_DDI: TsEdit
-    Left = 311
+  object edt_Uf: TsEdit
+    Left = 339
     Top = 80
-    Width = 62
+    Width = 34
     Height = 21
     CharCase = ecUpperCase
     Color = clWhite
@@ -173,7 +171,7 @@ inherited FrmCadPais: TFrmCadPais
     Font.Height = -11
     Font.Name = 'Tahoma'
     Font.Style = []
-    MaxLength = 4
+    MaxLength = 2
     ParentFont = False
     TabOrder = 3
     SkinData.SkinSection = 'EDIT'
@@ -203,7 +201,7 @@ inherited FrmCadPais: TFrmCadPais
     Font.Style = []
     MaxLength = 10
     ParentFont = False
-    TabOrder = 4
+    TabOrder = 5
     Text = '  /  /    '
     BoundLabel.Indent = 0
     BoundLabel.Font.Charset = DEFAULT_CHARSET
@@ -249,10 +247,10 @@ inherited FrmCadPais: TFrmCadPais
     GlyphMode.Blend = 0
     GlyphMode.Grayed = False
   end
-  object edt_Sigla: TsEdit
-    Left = 243
+  object edt_Placa: TsEdit
+    Left = 235
     Top = 80
-    Width = 62
+    Width = 90
     Height = 21
     CharCase = ecUpperCase
     Color = clWhite
@@ -261,7 +259,7 @@ inherited FrmCadPais: TFrmCadPais
     Font.Height = -11
     Font.Name = 'Tahoma'
     Font.Style = []
-    MaxLength = 3
+    MaxLength = 8
     ParentFont = False
     TabOrder = 2
     SkinData.SkinSection = 'EDIT'
