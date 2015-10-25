@@ -67,7 +67,7 @@ begin
         end
         else
             sql := sql+e;
-        sql := sql+' numero like '+quotedstr('%'+inttostr(umNcm.getNumero)+'%');
+        sql := sql+' numero = '+quotedstr(inttostr(umNcm.getNumero));
     end;
     with umDM do
     begin
@@ -194,12 +194,12 @@ begin
 
             QNcm.ExecSQL;
             Commit;
-            result := 'O Ncm "' + IntToStr(umNcm.getNumero) + '" foi salvo com sucesso!';
+            result := 'O Ncm foi salvo com sucesso!';
         except
           on e: Exception do
           begin
               rollback;
-              Result := 'Não foi possível salvar o Ncm ' + IntToStr(umNcm.getNumero) + 'Erro: '+e.Message;
+              Result := 'Não foi possível salvar o Ncm Erro: '+e.Message;
           end;
         end;
     end;

@@ -6,6 +6,11 @@ inherited FrmConNcm: TFrmConNcm
   PixelsPerInch = 96
   TextHeight = 13
   inherited sGroupBox1: TsGroupBox
+    inherited lbl_Descricao: TsLabel
+      Width = 37
+      Caption = 'N'#250'mero'
+      ExplicitWidth = 37
+    end
     inherited btn_Consultar: TsButton
       OnClick = btn_ConsultarClick
     end
