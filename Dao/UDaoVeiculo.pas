@@ -105,7 +105,6 @@ begin
         umVeiculo.setDataAlteracao(QVeiculodataalteracao.AsDateTime);
     end;
     result := umVeiculo;
-    Self.AtualizaGrid;
 end;
 
 constructor DaoVeiculo.CrieObjeto;

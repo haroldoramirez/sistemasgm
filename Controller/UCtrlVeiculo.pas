@@ -17,7 +17,6 @@ interface
           function Carrega(obj:TObject): TObject;    override;
           function Buscar(obj : TObject) : Boolean;  override;
           function Excluir(obj : TObject) : string ; override;
-
 end;
 
 implementation

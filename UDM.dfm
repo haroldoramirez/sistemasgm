@@ -3895,4 +3895,85 @@
         ParamType = ptUnknown
       end>
   end
+  object QCfop: TZQuery
+    Connection = DB
+    UpdateObject = UpdateCfop
+    Active = True
+    SQL.Strings = (
+      'select * from cfop;')
+    Params = <>
+    Left = 624
+    Top = 488
+    object QCfopidcfop: TIntegerField
+      FieldName = 'idcfop'
+      Required = True
+    end
+    object QCfopnome: TWideStringField
+      FieldName = 'nome'
+      Required = True
+      Size = 100
+    end
+    object QCfopnumero: TIntegerField
+      FieldName = 'numero'
+    end
+    object QCfopdatacadastro: TDateField
+      FieldName = 'datacadastro'
+    end
+    object QCfopdataalteracao: TDateField
+      FieldName = 'dataalteracao'
+    end
+  end
+  object DSCfop: TDataSource
+    DataSet = QCfop
+    Left = 736
+    Top = 488
+  end
+  object UpdateCfop: TZUpdateSQL
+    DeleteSQL.Strings = (
+      'DELETE FROM cfop'
+      'WHERE'
+      '  cfop.idcfop = :OLD_idcfop')
+    InsertSQL.Strings = (
+      'INSERT INTO cfop'
+      '  (nome, numero, datacadastro, dataalteracao)'
+      'VALUES'
+      '  (:nome, :numero, :datacadastro, :dataalteracao)')
+    ModifySQL.Strings = (
+      'UPDATE cfop SET'
+      '  nome = :nome,'
+      '  numero = :numero,'
+      '  datacadastro = :datacadastro,'
+      '  dataalteracao = :dataalteracao'
+      'WHERE'
+      '  cfop.idcfop = :OLD_idcfop')
+    UseSequenceFieldForRefreshSQL = False
+    Left = 856
+    Top = 488
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'nome'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'numero'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'datacadastro'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'dataalteracao'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'OLD_idcfop'
+        ParamType = ptUnknown
+      end>
+  end
 end

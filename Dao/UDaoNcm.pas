@@ -99,12 +99,12 @@ begin
           end;
 
         umNcm.setId(QNcmidncm.AsInteger);
+        umNcm.setNumero(QNcmnumero.AsInteger);
         umNcm.setPorcentagem_Ipi(QNcmporcentagem_ipi.AsFloat);
         umNcm.setDataCadastro(QNcmdatacadastro.AsDateTime);
         umNcm.setDataAlteracao(QNcmdataalteracao.AsDateTime);
     end;
     result := umNcm;
-    Self.AtualizaGrid;
 end;
 
 constructor DaoNcm.CrieObjeto;

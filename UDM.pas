@@ -366,6 +366,14 @@ type
     QNcmporcentagem_ipi: TFloatField;
     QNcmdatacadastro: TDateField;
     QNcmdataalteracao: TDateField;
+    QCfop: TZQuery;
+    DSCfop: TDataSource;
+    UpdateCfop: TZUpdateSQL;
+    QCfopidcfop: TIntegerField;
+    QCfopnome: TWideStringField;
+    QCfopnumero: TIntegerField;
+    QCfopdatacadastro: TDateField;
+    QCfopdataalteracao: TDateField;
 
   private
     { Private declarations }

@@ -138,7 +138,9 @@ uses
   UFrmConNcm in 'Formularios\UFrmConNcm.pas' {FrmConNcm},
   UFrmCadNcm in 'Formularios\UFrmCadNcm.pas' {FrmCadNcm},
   UCtrlNcm in 'Controller\UCtrlNcm.pas',
-  UDaoNcm in 'Dao\UDaoNcm.pas';
+  UDaoNcm in 'Dao\UDaoNcm.pas',
+  UDaoCfop in 'Dao\UDaoCfop.pas',
+  UCtrlCfop in 'Controller\UCtrlCfop.pas';
 
 {$R *.res}
 
