@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, UFrmConsulta, sSkinManager, Buttons, sBitBtn, StdCtrls, sButton,
-  sEdit, sLabel, sGroupBox, UNcm, UFrmCadNcm, UCtrlNcm, Grids, DBGrids;
+  sEdit, sLabel, sGroupBox, UNcm, UFrmCadNcm, UCtrlNcm, Grids, DBGrids, uComuns;
 
 type
   TFrmConNcm = class(TFrmConsulta)
@@ -34,7 +34,7 @@ implementation
 { TFrmConNcm }
 
 procedure TFrmConNcm.btn_ConsultarClick(Sender: TObject);
-  var
+var
     consNcm: Ncm;
 begin
   inherited;
@@ -86,7 +86,7 @@ end;
 
 procedure TFrmConNcm.btn_NovoClick(Sender: TObject);
 begin
-    inherited;
+  inherited;
   if umNcm.getId <> 0 then
      umNcm.CrieObjeto;
   umFrmCadNcm.btn_Salvar.Caption := 'Salvar';

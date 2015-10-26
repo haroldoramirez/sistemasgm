@@ -1,9 +1,14 @@
 inherited FrmConUnidade: TFrmConUnidade
   Caption = 'Consulta Unidade'
   OnActivate = FormActivate
+  ExplicitWidth = 660
+  ExplicitHeight = 471
   PixelsPerInch = 96
   TextHeight = 13
   inherited sGroupBox1: TsGroupBox
+    inherited edt_Id: TsEdit
+      NumbersOnly = True
+    end
     inherited btn_Consultar: TsButton
       OnClick = btn_ConsultarClick
     end

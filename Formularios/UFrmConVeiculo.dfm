@@ -1,5 +1,7 @@
 inherited FrmConVeiculo: TFrmConVeiculo
   Caption = 'Consulta Ve'#237'culo'
+  ExplicitWidth = 660
+  ExplicitHeight = 471
   PixelsPerInch = 96
   TextHeight = 13
   inherited sGroupBox1: TsGroupBox
@@ -7,6 +9,9 @@ inherited FrmConVeiculo: TFrmConVeiculo
       Width = 21
       Caption = 'Antt'
       ExplicitWidth = 21
+    end
+    inherited edt_Id: TsEdit
+      NumbersOnly = True
     end
     inherited btn_Consultar: TsButton
       OnClick = btn_ConsultarClick

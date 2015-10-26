@@ -1,11 +1,14 @@
 inherited FrmConMarca: TFrmConMarca
   Caption = 'Consultar Marca'
   OnActivate = FormActivate
+  ExplicitWidth = 660
+  ExplicitHeight = 471
   PixelsPerInch = 96
   TextHeight = 13
   inherited sGroupBox1: TsGroupBox
     inherited edt_Id: TsEdit
       MaxLength = 5
+      NumbersOnly = True
       OnKeyPress = edt_IdKeyPress
     end
     inherited btn_Consultar: TsButton

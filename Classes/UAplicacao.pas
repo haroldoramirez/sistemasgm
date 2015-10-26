@@ -6,7 +6,7 @@ interface
     UCondicaoPagamento, UFrmConCondicaoPagamento, UVenda, UFrmConVenda, UCargo,
     UContasReceber, UCompra, UUsuario, UTransportadora,
     UContasPagar, UUnidade, UFrmAutenticacao,
-    UVeiculo, UNcm;
+    UVeiculo, UNcm, uCfop;
     type Aplicacao = class
 
     private
@@ -35,6 +35,7 @@ interface
           umFrmAutenticacao    : TFrmAutenticacao;
           umVeiculo            : Veiculo;
           umNcm                : Ncm;
+          umCfop               : Cfop;
     public
           usuarioLogado : Usuario;
           constructor CrieObjeto;
@@ -75,6 +76,7 @@ begin
      umaUnidade           := Unidade.CrieObjeto;
      umVeiculo            := Veiculo.CrieObjeto;
      umNcm                := Ncm.CrieObjeto;
+     umCfop               := Cfop.CrieObjeto;
 end;
 
 destructor Aplicacao.Destrua_se;
@@ -102,6 +104,7 @@ begin
     umaUnidade.Destrua_Se;
     umVeiculo.Destrua_Se;
     umNcm.Destrua_Se;
+    umCfop.Destrua_Se;
 end;
 
 procedure Aplicacao.Execute_se;
@@ -136,7 +139,8 @@ begin
                              umaContasPagar,
                              umaUnidade,
                              umVeiculo,
-                             umNcm);
+                             umNcm,
+                             umCfop);
       umGerente.showmodal;
     end;
 end;

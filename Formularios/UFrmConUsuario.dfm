@@ -1,5 +1,7 @@
 inherited FrmConUsuario: TFrmConUsuario
   Caption = 'Consulta Usu'#225'rio'
+  ExplicitWidth = 660
+  ExplicitHeight = 471
   PixelsPerInch = 96
   TextHeight = 13
   inherited sGroupBox1: TsGroupBox
@@ -9,6 +11,7 @@ inherited FrmConUsuario: TFrmConUsuario
       ExplicitWidth = 27
     end
     inherited edt_Id: TsEdit
+      NumbersOnly = True
       OnKeyPress = edt_IdKeyPress
     end
     inherited btn_Consultar: TsButton

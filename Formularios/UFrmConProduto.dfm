@@ -16,6 +16,7 @@ inherited FrmConProduto: TFrmConProduto
     inherited edt_Id: TsEdit
       Top = 36
       MaxLength = 5
+      NumbersOnly = True
       OnKeyPress = edt_IdKeyPress
       ExplicitTop = 36
     end

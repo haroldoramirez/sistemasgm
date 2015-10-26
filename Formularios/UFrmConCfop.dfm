@@ -1,20 +1,10 @@
-inherited FrmConFuncionario: TFrmConFuncionario
-  Caption = 'Consulta Funcion'#225'rio'
+inherited FrmConCfop: TFrmConCfop
+  Caption = 'FrmConCfop'
   ExplicitWidth = 660
   ExplicitHeight = 471
   PixelsPerInch = 96
   TextHeight = 13
   inherited sGroupBox1: TsGroupBox
-    inherited lbl_Descricao: TsLabel
-      Width = 27
-      Caption = 'Nome'
-      ExplicitWidth = 27
-    end
-    inherited edt_Id: TsEdit
-      MaxLength = 5
-      NumbersOnly = True
-      OnKeyPress = edt_IdKeyPress
-    end
     inherited btn_Consultar: TsButton
       OnClick = btn_ConsultarClick
     end
@@ -35,7 +25,6 @@ inherited FrmConFuncionario: TFrmConFuncionario
     Top = 191
     Width = 638
     Height = 243
-    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
     TabOrder = 2
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText

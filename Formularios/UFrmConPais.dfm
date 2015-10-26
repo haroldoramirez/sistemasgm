@@ -1,5 +1,7 @@
 inherited FrmConPais: TFrmConPais
   Caption = 'Consulta Pa'#237's'
+  ExplicitWidth = 660
+  ExplicitHeight = 471
   PixelsPerInch = 96
   TextHeight = 13
   inherited sGroupBox1: TsGroupBox
@@ -10,6 +12,7 @@ inherited FrmConPais: TFrmConPais
     end
     inherited edt_Id: TsEdit
       MaxLength = 5
+      NumbersOnly = True
       OnKeyPress = edt_IdKeyPress
     end
     inherited edt_Descricao: TsEdit

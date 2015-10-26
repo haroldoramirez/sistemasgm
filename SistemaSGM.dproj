@@ -284,6 +284,12 @@
 			<DCCReference Include="Dao\UDaoNcm.pas"/>
 			<DCCReference Include="Dao\UDaoCfop.pas"/>
 			<DCCReference Include="Controller\UCtrlCfop.pas"/>
+			<DCCReference Include="Formularios\UFrmConCfop.pas">
+				<Form>FrmConCfop</Form>
+			</DCCReference>
+			<DCCReference Include="Formularios\UFrmCadCfop.pas">
+				<Form>FrmCadCfop</Form>
+			</DCCReference>
 			<None Include="ModelSupport_SistemaSGM\default.txvpck"/>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>

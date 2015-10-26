@@ -140,7 +140,9 @@ uses
   UCtrlNcm in 'Controller\UCtrlNcm.pas',
   UDaoNcm in 'Dao\UDaoNcm.pas',
   UDaoCfop in 'Dao\UDaoCfop.pas',
-  UCtrlCfop in 'Controller\UCtrlCfop.pas';
+  UCtrlCfop in 'Controller\UCtrlCfop.pas',
+  UFrmConCfop in 'Formularios\UFrmConCfop.pas' {FrmConCfop},
+  UFrmCadCfop in 'Formularios\UFrmCadCfop.pas' {FrmCadCfop};
 
 {$R *.res}
 

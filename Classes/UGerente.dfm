@@ -56,6 +56,10 @@ object Gerente: TGerente
         Caption = 'Ncm'
         OnClick = Ncm1Click
       end
+      object Cfop1: TMenuItem
+        Caption = 'Cfop'
+        OnClick = Cfop1Click
+      end
     end
     object mniLocalidades1: TMenuItem
       Caption = 'Localidades'

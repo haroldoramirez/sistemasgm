@@ -19,7 +19,6 @@ interface
           function Excluir(obj : TObject) : string ; override;
           procedure AtualizaGrid;
           procedure Ordena(campo: string);
-
       end;
 
 implementation

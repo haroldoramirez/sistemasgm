@@ -1,5 +1,5 @@
 inherited FrmConNcm: TFrmConNcm
-  Caption = 'FrmConNcm'
+  Caption = 'Consulta Ncm'
   ClientWidth = 655
   ExplicitWidth = 661
   ExplicitHeight = 471
@@ -10,6 +10,10 @@ inherited FrmConNcm: TFrmConNcm
       Width = 37
       Caption = 'N'#250'mero'
       ExplicitWidth = 37
+    end
+    inherited edt_Id: TsEdit
+      Top = 30
+      ExplicitTop = 30
     end
     inherited btn_Consultar: TsButton
       OnClick = btn_ConsultarClick

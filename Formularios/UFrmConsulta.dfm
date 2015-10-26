@@ -60,6 +60,7 @@ object FrmConsulta: TFrmConsulta
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = []
+      NumbersOnly = True
       ParentFont = False
       TabOrder = 0
       SkinData.SkinSection = 'EDIT'

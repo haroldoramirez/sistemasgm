@@ -9,7 +9,8 @@ interface
     UCargo, UFrmConCargo, UContasReceber, UFrmConContasReceber, UCompra,
     UFrmConCompra, UUsuario, UFrmConUsuario, UTransportadora, UFrmConTransportadora, UContasPagar,
     UFrmConContasPagar, UUnidade, UFrmConUnidade, UVeiculo, UFrmConVeiculo,
-    UFrmConNcm, UNcm;
+    UFrmConNcm, UNcm,
+    UFrmConCfop, UCfop;
     type Interfaces = class
 
     protected
@@ -34,6 +35,7 @@ interface
         umFrmConUnidade           : TFrmConUnidade;
         umFrmConVeiculo           : TFrmConVeiculo;
         umFrmConNcm               : TFrmConNcm;
+        umFrmConCfop              : TFrmConCfop;
     public
         constructor CrieObj;
         destructor  Destrua_se;
@@ -59,6 +61,7 @@ interface
         procedure PecaDadosUnidade (vUnidade:Unidade);
         procedure PecaDadosVeiculo (vVeiculo:Veiculo);
         procedure PecaDadosNcm (vNcm:Ncm);
+        procedure PecaDadosCfop (vCfop:Cfop);
     end;
 
 implementation
@@ -88,6 +91,7 @@ begin
     umFrmConUnidade           := TFrmConUnidade.Create(nil);
     umFrmConVeiculo           := TFrmConVeiculo.Create(nil);
     umFrmConNcm               := TFrmConNcm.Create(nil);
+    umFrmConCfop              := TFrmConCfop.Create(nil);
 end;
 
 destructor Interfaces.Destrua_se;
@@ -113,6 +117,7 @@ begin
     umFrmConUnidade.Free;
     umFrmConVeiculo.Free;
     umFrmConNcm.Free;
+    umFrmConCfop.Free;
 end;
 
 procedure Interfaces.PecaDadosCargo(vCargo: Cargo);
@@ -125,6 +130,12 @@ procedure Interfaces.PecaDadosCategoria(vCategoria: Categoria);
 begin
     umFrmConCategoria.ConhecaObj(vCategoria);
     umFrmConCategoria.showmodal;
+end;
+
+procedure Interfaces.PecaDadosCfop(vCfop: Cfop);
+begin
+    umFrmConCfop.ConhecaObj(vCfop);
+    umFrmConCfop.ShowModal;
 end;
 
 procedure Interfaces.PecaDadosCidade(vCidade: Cidade);
