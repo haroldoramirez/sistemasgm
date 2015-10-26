@@ -3,7 +3,7 @@ object FrmCadContasPagar: TFrmCadContasPagar
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  Caption = 'Pagar Contas a Pagar'
+  Caption = 'Contas a Pagar'
   ClientHeight = 623
   ClientWidth = 503
   Color = clBtnFace

@@ -1077,11 +1077,11 @@ begin
     ShowMessage('Favor informar a Data de Compra!');
     edt_DataCompra.SetFocus
   end
-  else if self.edt_Transportadora.Text = '' then
-  begin
-    ShowMessage('Favor informar a Transportadora! ');
-    edt_IdTransportadora.SetFocus;
-  end
+//  else if self.edt_Transportadora.Text = '' then
+//  begin
+//    ShowMessage('Favor informar a Transportadora! ');
+//    edt_IdTransportadora.SetFocus;
+//  end
   else if self.edt_BaseICMS.Text = '' then
   begin
     ShowMessage('Favor informar o valor da Base de Cálculo ICMS da Nota! ');

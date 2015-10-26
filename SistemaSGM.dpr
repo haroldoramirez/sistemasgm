@@ -120,14 +120,7 @@ uses
   UFrmAutenticacao in 'Formularios\UFrmAutenticacao.pas' {FrmAutenticacao},
   UDMRelatorio in 'UDMRelatorio.pas' {DmRelatorio},
   UDaoRelatorio in 'Dao\UDaoRelatorio.pas',
-  UCalcProduto in 'Classes\UCalcProduto.pas' {
-  UNcm in 'Classes\UNcm.pas',
-  UCfop in 'Classes\UCfop.pas',
-  UNcm in 'Classes\UNcm.pas',
-  UCfop in 'Classes\UCfop.pas',
-  UVeiculo in 'Classes\UVeiculo.pas';
-
-{$R *.res},
+  UCalcProduto in 'Classes\UCalcProduto.pas',
   UCfop in 'Classes\UCfop.pas',
   UNcm in 'Classes\UNcm.pas',
   UVeiculo in 'Classes\UVeiculo.pas',

@@ -1,10 +1,15 @@
 inherited FrmConCfop: TFrmConCfop
-  Caption = 'FrmConCfop'
+  Caption = 'Consulta CFOP'
   ExplicitWidth = 660
   ExplicitHeight = 471
   PixelsPerInch = 96
   TextHeight = 13
   inherited sGroupBox1: TsGroupBox
+    inherited lbl_Descricao: TsLabel
+      Width = 27
+      Caption = 'Nome'
+      ExplicitWidth = 27
+    end
     inherited btn_Consultar: TsButton
       OnClick = btn_ConsultarClick
     end

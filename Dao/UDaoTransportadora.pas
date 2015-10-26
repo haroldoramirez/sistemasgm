@@ -202,7 +202,7 @@ begin
             on e:Exception do
             begin
                 rollback;
-                if pos('chave estrangeira',e.Message)>0 then
+                if pos('violates foreign key',e.Message)>0 then
                     result := 'Ocorreu um erro! A Transportadora não pode ser excluída pois ja está sendo usado pelo sistema.'
                 else
                     result := 'Ocorreu um erro! Transportadora não foi excluída. Erro: '+e.Message;

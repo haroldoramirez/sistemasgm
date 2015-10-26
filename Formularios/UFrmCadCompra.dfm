@@ -187,6 +187,7 @@ object FrmCadCompra: TFrmCadCompra
       Top = 28
       Width = 30
       Height = 25
+      Hint = 'Consultar'
       DoubleBuffered = True
       Glyph.Data = {
         36040000424D3604000000000000360000002800000010000000100000000100
@@ -224,6 +225,8 @@ object FrmCadCompra: TFrmCadCompra
         6A0094777951A38C8DB6B8A3A1ECC9B4B0EDC1AEAFE0BBA6A895BBA8A827BEAA
         AA00BDAAAA00BDAAAA00BDAAAA00BDAAAA00BDAAAA00BDAAAA00}
       ParentDoubleBuffered = False
+      ParentShowHint = False
+      ShowHint = True
       TabOrder = 4
       OnClick = btn_BuscarFornecedorClick
       SkinData.SkinSection = 'BUTTON'
@@ -231,7 +234,7 @@ object FrmCadCompra: TFrmCadCompra
   end
   object sGroupBox1: TsGroupBox
     Left = 8
-    Top = 183
+    Top = 190
     Width = 951
     Height = 239
     Caption = 'Produto'
@@ -527,6 +530,8 @@ object FrmCadCompra: TFrmCadCompra
         6A0094777951A38C8DB6B8A3A1ECC9B4B0EDC1AEAFE0BBA6A895BBA8A827BEAA
         AA00BDAAAA00BDAAAA00BDAAAA00BDAAAA00BDAAAA00BDAAAA00}
       ParentDoubleBuffered = False
+      ParentShowHint = False
+      ShowHint = False
       TabOrder = 2
       OnClick = btn_BuscarProdutoClick
       SkinData.SkinSection = 'BUTTON'
@@ -652,11 +657,11 @@ object FrmCadCompra: TFrmCadCompra
       BoundLabel.UseSkinColor = True
     end
     object btn_Add_Produto: TsBitBtn
-      Left = 878
-      Top = 72
+      Left = 414
+      Top = 33
       Width = 30
-      Height = 25
-      Hint = 'Adicionar'
+      Height = 26
+      Hint = 'Adicionar Produto'
       DoubleBuffered = True
       Glyph.Data = {
         36040000424D3604000000000000360000002800000010000000100000000100
@@ -694,15 +699,18 @@ object FrmCadCompra: TFrmCadCompra
         FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
         FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00}
       ParentDoubleBuffered = False
+      ParentShowHint = False
+      ShowHint = True
       TabOrder = 16
       OnClick = btn_Add_ProdutoClick
       SkinData.SkinSection = 'BUTTON'
     end
     object btn_LimparProdutos: TsBitBtn
-      Left = 913
-      Top = 72
+      Left = 450
+      Top = 33
       Width = 30
       Height = 25
+      Hint = 'Remover Produto'
       DoubleBuffered = True
       Glyph.Data = {
         36040000424D3604000000000000360000002800000010000000100000000100
@@ -740,6 +748,8 @@ object FrmCadCompra: TFrmCadCompra
         FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
         FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00}
       ParentDoubleBuffered = False
+      ParentShowHint = False
+      ShowHint = True
       TabOrder = 17
       OnClick = btn_LimparProdutosClick
       SkinData.SkinSection = 'BUTTON'
@@ -1147,7 +1157,7 @@ object FrmCadCompra: TFrmCadCompra
     object edt_CondicaoPagamento: TsEdit
       Left = 64
       Top = 37
-      Width = 235
+      Width = 244
       Height = 21
       Color = clWhite
       Enabled = False
@@ -1198,7 +1208,7 @@ object FrmCadCompra: TFrmCadCompra
       BoundLabel.UseSkinColor = True
     end
     object btn_BuscarCondicaoPagamento: TsBitBtn
-      Left = 306
+      Left = 314
       Top = 35
       Width = 30
       Height = 25
@@ -1239,6 +1249,8 @@ object FrmCadCompra: TFrmCadCompra
         6A0094777951A38C8DB6B8A3A1ECC9B4B0EDC1AEAFE0BBA6A895BBA8A827BEAA
         AA00BDAAAA00BDAAAA00BDAAAA00BDAAAA00BDAAAA00BDAAAA00}
       ParentDoubleBuffered = False
+      ParentShowHint = False
+      ShowHint = False
       TabOrder = 2
       OnClick = btn_BuscarCondicaoPagamentoClick
       SkinData.SkinSection = 'BUTTON'
@@ -1246,7 +1258,7 @@ object FrmCadCompra: TFrmCadCompra
     object gridParcelas: TStringGrid
       Left = 10
       Top = 64
-      Width = 400
+      Width = 403
       Height = 105
       ColCount = 4
       DefaultColWidth = 93
@@ -1297,6 +1309,8 @@ object FrmCadCompra: TFrmCadCompra
         FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
         FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00}
       ParentDoubleBuffered = False
+      ParentShowHint = False
+      ShowHint = False
       TabOrder = 3
       OnClick = btn_GerarParcelasClick
       SkinData.SkinSection = 'BUTTON'
@@ -1343,6 +1357,8 @@ object FrmCadCompra: TFrmCadCompra
         FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
         FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00}
       ParentDoubleBuffered = False
+      ParentShowHint = False
+      ShowHint = False
       TabOrder = 4
       OnClick = btn_LimparParcelasClick
       SkinData.SkinSection = 'BUTTON'
@@ -1453,6 +1469,7 @@ object FrmCadCompra: TFrmCadCompra
       Top = 28
       Width = 30
       Height = 25
+      Hint = 'Consultar'
       DoubleBuffered = True
       Enabled = False
       Glyph.Data = {
@@ -1491,6 +1508,8 @@ object FrmCadCompra: TFrmCadCompra
         6A0094777951A38C8DB6B8A3A1ECC9B4B0EDC1AEAFE0BBA6A895BBA8A827BEAA
         AA00BDAAAA00BDAAAA00BDAAAA00BDAAAA00BDAAAA00BDAAAA00}
       ParentDoubleBuffered = False
+      ParentShowHint = False
+      ShowHint = True
       TabOrder = 2
       OnClick = btn_BuscarFuncionarioClick
       SkinData.SkinSection = 'BUTTON'

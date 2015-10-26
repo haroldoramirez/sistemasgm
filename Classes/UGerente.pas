@@ -188,7 +188,7 @@ end;
 
 procedure TGerente.mniContasaReceber1Click(Sender: TObject);
 begin
-    umaInter.PecaDadosContasReceber(umaContasReceber);
+    //umaInter.PecaDadosContasReceber(umaContasReceber);
 end;
 
 procedure TGerente.mniEstado1Click(Sender: TObject);
@@ -228,7 +228,7 @@ end;
 
 procedure TGerente.mniVenda1Click(Sender: TObject);
 begin
-    umaInter.PecaDadosVenda(umaVenda);
+  //umaInter.PecaDadosVenda(umaVenda);
 end;
 
 procedure TGerente.Ncm1Click(Sender: TObject);

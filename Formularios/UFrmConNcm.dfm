@@ -2,7 +2,6 @@ inherited FrmConNcm: TFrmConNcm
   Caption = 'Consulta Ncm'
   ClientWidth = 655
   ExplicitWidth = 661
-  ExplicitHeight = 471
   PixelsPerInch = 96
   TextHeight = 13
   inherited sGroupBox1: TsGroupBox
