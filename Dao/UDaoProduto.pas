@@ -1,7 +1,7 @@
 unit UDaoProduto;
 interface
   uses uDao, DB, SysUtils, Messages, UProduto, UDaoMarca, UDaoCategoria,
-  UProdutoFornecedor, UFornecedor, UDaoUnidade, UEndereco;
+  UProdutoFornecedor, UFornecedor, UDaoUnidade, UDaoNcm, UEndereco;
   type DaoProduto = class(Dao)
   private
   protected
@@ -10,6 +10,7 @@ interface
      umaDaoCategoria     : DaoCategoria;
      umaDaoUnidade       : DaoUnidade;
      umaFornecedor       : Fornecedor;
+     umaDaoNcm           : DaoNcm;
      umProdutoFornecedor : ProdutoFornecedor;
   public
       Constructor CrieObjeto;
@@ -118,7 +119,9 @@ begin
       umProduto.setId(QProdutoidproduto.AsInteger);
       umProduto.setDescricao(QProdutodescricao.AsString);
       umProduto.setQuantidade(QProdutoquantidade.AsFloat);
+      umProduto.setUnidade(QProdutounidade.AsString);
       umProduto.setICMS(QProdutoicms.AsFloat);
+      umProduto.setCst(QProdutocst.AsString);
       umProduto.setIPI(QProdutoipi.AsFloat);
       umProduto.setPrecoCompra(QProdutopreco_compra.AsFloat);
       umProduto.setICMSAnterior(QProdutoicms_anterior.AsFloat);
@@ -137,9 +140,9 @@ begin
       umProduto.getUmaCategoria.setId(QProdutoidcategoria.AsInteger);
       umaDaoCategoria.Carrega(umProduto.getUmaCategoria);
 
-      // Busca Categoria referente a Produto
-      umProduto.getUmaUnidade.setId(QProdutoidunidade.AsInteger);
-      umaDaoUnidade.Carrega(umProduto.getUmaUnidade);
+      // Busca NCM referente a Produto
+      umProduto.getUmNcm.setId(QProdutoidncm.AsInteger);
+      umaDaoNcm.Carrega(umProduto.getUmNcm);
     end;
     result := umProduto;
     Self.AtualizaGrid;
@@ -208,6 +211,7 @@ begin
    umaDaoMarca         := DaoMarca.CrieObjeto;
    umaDaoCategoria     := DaoCategoria.CrieObjeto;
    umaDaoUnidade       := DaoUnidade.CrieObjeto;
+   umaDaoNcm           := DaoNcm.CrieObjeto;
    umProdutoFornecedor := ProdutoFornecedor.CrieObjeto;
 end;
 
@@ -254,6 +258,7 @@ begin
    (umDM.QProduto.FieldByName('ipi_anterior') as TFloatField).DisplayFormat := '0.00';
    (umDM.QProduto.FieldByName('preco_compra_ant') as TFloatField).DisplayFormat := '0.00';
 
+   umDM.QProduto.FieldByName('cst').DisplayLabel := 'CST';
    umDM.QProduto.FieldByName('icms').DisplayLabel := 'ICMS';
    umDM.QProduto.FieldByName('ipi').DisplayLabel := 'IPI';
    umDM.QProduto.FieldByName('preco_compra').DisplayLabel := 'Média Compra';
@@ -288,10 +293,12 @@ begin
               QProduto.Params.ParamByName('OLD_idproduto').Value := umProduto.getId;
             end;
             QProduto.Params.ParamByName('descricao').Value := umProduto.getDescricao;
-            QProduto.Params.ParamByName('idunidade').Value := umProduto.getUmaUnidade.getId;
+            QProduto.Params.ParamByName('unidade').Value := umProduto.getUnidade;
+            QProduto.Params.ParamByName('idncm').Value := umProduto.getUmNcm.getId;
             QProduto.Params.ParamByName('quantidade').Value := umProduto.getQuantidade;
             QProduto.Params.ParamByName('idmarca').Value := umProduto.getUmaMarca.getId;
             QProduto.Params.ParamByName('idcategoria').Value := umProduto.getUmaCategoria.getId;
+            QProduto.Params.ParamByName('cst').Value := umProduto.getCst;
             QProduto.Params.ParamByName('icms').Value := umProduto.getICMS;
             QProduto.Params.ParamByName('ipi').Value := umProduto.getIPI;
             QProduto.Params.ParamByName('preco_compra').Value := umProduto.getPrecoCompra;

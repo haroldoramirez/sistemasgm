@@ -234,7 +234,7 @@ object FrmCadCompra: TFrmCadCompra
   end
   object sGroupBox1: TsGroupBox
     Left = 8
-    Top = 190
+    Top = 183
     Width = 951
     Height = 239
     Caption = 'Produto'
@@ -336,7 +336,7 @@ object FrmCadCompra: TFrmCadCompra
       Top = 58
       Width = 27
       Height = 13
-      Caption = 'CPOF'
+      Caption = 'CFOP'
       ParentFont = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4276545
@@ -412,9 +412,9 @@ object FrmCadCompra: TFrmCadCompra
     object lbl_NCM: TsLabel
       Left = 10
       Top = 58
-      Width = 39
+      Width = 22
       Height = 13
-      Caption = 'NCM/SH'
+      Caption = 'NCM'
       ParentFont = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4276545
@@ -538,7 +538,7 @@ object FrmCadCompra: TFrmCadCompra
     end
     object gridProduto: TStringGrid
       Left = 10
-      Top = 101
+      Top = 100
       Width = 933
       Height = 130
       ColCount = 15
@@ -794,7 +794,6 @@ object FrmCadCompra: TFrmCadCompra
       MaxLength = 8
       ParentFont = False
       TabOrder = 5
-      OnKeyPress = edt_CPOFKeyPress
       SkinData.SkinSection = 'EDIT'
       BoundLabel.Indent = 0
       BoundLabel.Font.Charset = DEFAULT_CHARSET
@@ -953,7 +952,6 @@ object FrmCadCompra: TFrmCadCompra
       MaxLength = 8
       ParentFont = False
       TabOrder = 3
-      OnKeyPress = edt_CPOFKeyPress
       SkinData.SkinSection = 'EDIT'
       BoundLabel.Indent = 0
       BoundLabel.Font.Charset = DEFAULT_CHARSET
@@ -979,7 +977,6 @@ object FrmCadCompra: TFrmCadCompra
       MaxLength = 3
       ParentFont = False
       TabOrder = 4
-      OnKeyPress = edt_CPOFKeyPress
       SkinData.SkinSection = 'EDIT'
       BoundLabel.Indent = 0
       BoundLabel.Font.Charset = DEFAULT_CHARSET

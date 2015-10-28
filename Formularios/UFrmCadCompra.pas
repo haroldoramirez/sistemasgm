@@ -333,13 +333,10 @@ begin
    Self.btn_BuscarTransportadora.Enabled := True;
    Self.edt_IdProduto.Enabled := True;
    Self.btn_BuscarProduto.Enabled := True;
-   Self.edt_NCM.Enabled := True;
-   Self.edt_CST.Enabled := True;
    Self.edt_CPOF.Enabled := True;
    Self.edt_Quantidade.Enabled := True;
    Self.edt_PrecoCusto.Enabled := True;
    Self.edt_Desconto.Enabled := True;
-//   Self.edt_Total.Enabled := True;
    Self.edt_BCICMS.Enabled := True;
    Self.edt_ValorICMS.Enabled := True;
    Self.edt_ValorIPI.Enabled := True;
@@ -464,6 +461,7 @@ begin
         Self.edt_Fornecedor.Text := umaCompra.getUmFornecedor.getNome_RazaoSoCial;
         Self.edt_IdCondicaoPagamento.Text := IntToStr(umaCompra.getUmFornecedor.getUmaCondicaoPgto.getId);
         Self.edt_CondicaoPagamento.Text := umaCompra.getUmFornecedor.getUmaCondicaoPgto.getDescricao;
+
         //Adiciona a Condicao Pagamento na Compra
         addCondicaoPgto(umaCompra.getUmFornecedor.getUmaCondicaoPgto);
         VerificaNota;
@@ -495,6 +493,7 @@ begin
       self.edt_Fornecedor.Text    := umaCompra.getUmFornecedor.getNome_RazaoSoCial;
       Self.edt_IdCondicaoPagamento.Text := IntToStr(umaCompra.getUmFornecedor.getUmaCondicaoPgto.getId);
       Self.edt_CondicaoPagamento.Text := umaCompra.getUmFornecedor.getUmaCondicaoPgto.getDescricao;
+
       //Adiciona a Condicao Pagamento na Compra
       addCondicaoPgto(umaCompra.getUmFornecedor.getUmaCondicaoPgto);
       VerificaNota;
@@ -611,15 +610,6 @@ end;
 procedure TFrmCadCompra.btn_BuscarTransportadoraClick(Sender: TObject);
 begin
       BuscarFavorecido('T', 'Transportadora');
-//    umFrmConTransportadora := TFrmConTransportadora.Create(nil);
-//    umFrmConTransportadora.ConhecaObj(umaCompra.getUmFornecedor);
-//    umFrmConTransportadora.btn_Sair.Caption := 'Selecionar';
-//    umFrmConTransportadora.ShowModal;
-//    if (umaCompra.getUmaTransportadora.getId <> 0) then
-//    begin
-//      self.edt_IdTransportadora.Text := inttostr(umaCompra.getUmaTransportadora.getId);
-//      self.edt_Transportadora.Text    := umaCompra.getUmaTransportadora.getNome_RazaoSoCial;
-//    end;
 end;
 
 procedure TFrmCadCompra.edt_IdProdutoExit(Sender: TObject);
@@ -651,7 +641,9 @@ begin
         umaCtrlProduto.Carrega(umaCompra.getUmProdutoCompra);
         self.edt_IdProduto.Text  := inttostr(umaCompra.getUmProdutoCompra.getId);
         self.edt_Produto.Text    := umaCompra.getUmProdutoCompra.getDescricao;
-        self.edt_Unidade.Text    := umaCompra.getumProdutoCompra.getUmaUnidade.getDescricao;
+        self.edt_Unidade.Text    := umaCompra.getumProdutoCompra.getUnidade;
+        self.edt_CPOF.Text       := IntToStr(umaCompra.getumProdutoCompra.getCPOF);
+        self.edt_CST.Text        := umaCompra.getumProdutoCompra.getCST;
       end;
       umProduto := Produto.CrieObjeto;
       umaCtrlProduto.Buscar(umProduto);
@@ -682,7 +674,9 @@ begin
     begin
       self.edt_IdProduto.Text  := inttostr(umaCompra.getUmProdutoCompra.getId);
       self.edt_Produto.Text    := umaCompra.getUmProdutoCompra.getDescricao;
-      self.edt_Unidade.Text    := umaCompra.getumProdutoCompra.getUmaUnidade.getDescricao;
+      self.edt_Unidade.Text    := umaCompra.getumProdutoCompra.getUnidade;
+      self.edt_CST.Text        := umaCompra.getumProdutoCompra.getCST;
+      self.edt_NCM.Text        := IntToStr(umaCompra.getumProdutoCompra.getUmNcm.getNumero);
     end;
 end;
 
@@ -1077,11 +1071,6 @@ begin
     ShowMessage('Favor informar a Data de Compra!');
     edt_DataCompra.SetFocus
   end
-//  else if self.edt_Transportadora.Text = '' then
-//  begin
-//    ShowMessage('Favor informar a Transportadora! ');
-//    edt_IdTransportadora.SetFocus;
-//  end
   else if self.edt_BaseICMS.Text = '' then
   begin
     ShowMessage('Favor informar o valor da Base de Cálculo ICMS da Nota! ');
@@ -1596,7 +1585,7 @@ begin
 
     self.gridProduto.Cells[0,0] := 'Código';
     self.gridProduto.Cells[1,0] := 'Decrição';
-    self.gridProduto.Cells[2,0] := 'NCM/SH';
+    self.gridProduto.Cells[2,0] := 'NCM';
     self.gridProduto.Cells[3,0] := 'CST';
     self.gridProduto.Cells[4,0] := 'CPOF';
     self.gridProduto.Cells[5,0] := 'Unid.';

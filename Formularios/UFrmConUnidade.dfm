@@ -6,9 +6,6 @@ inherited FrmConUnidade: TFrmConUnidade
   PixelsPerInch = 96
   TextHeight = 13
   inherited sGroupBox1: TsGroupBox
-    inherited edt_Id: TsEdit
-      NumbersOnly = True
-    end
     inherited btn_Consultar: TsButton
       OnClick = btn_ConsultarClick
     end

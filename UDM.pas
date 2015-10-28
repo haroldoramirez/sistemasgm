@@ -335,7 +335,6 @@ type
     UpdateTransportadora: TZUpdateSQL;
     QProdutoidproduto: TIntegerField;
     QProdutodescricao: TWideStringField;
-    QProdutoidunidade: TIntegerField;
     QProdutoquantidade: TFloatField;
     QProdutoicms: TFloatField;
     QProdutoipi: TFloatField;
@@ -374,6 +373,9 @@ type
     QCfopnumero: TIntegerField;
     QCfopdatacadastro: TDateField;
     QCfopdataalteracao: TDateField;
+    QProdutocst: TWideStringField;
+    QProdutoidncm: TIntegerField;
+    QProdutounidade: TWideStringField;
 
   private
     { Private declarations }

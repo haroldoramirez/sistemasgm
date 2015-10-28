@@ -52,14 +52,6 @@ object Gerente: TGerente
         Caption = 'Ve'#237'culo'
         OnClick = Veculo1Click
       end
-      object Ncm1: TMenuItem
-        Caption = 'Ncm'
-        OnClick = Ncm1Click
-      end
-      object Cfop1: TMenuItem
-        Caption = 'Cfop'
-        OnClick = Cfop1Click
-      end
     end
     object mniLocalidades1: TMenuItem
       Caption = 'Localidades'
@@ -90,9 +82,13 @@ object Gerente: TGerente
         Caption = 'Categoria'
         OnClick = mniCategoria1Click
       end
-      object Unidade1: TMenuItem
-        Caption = 'Unidade'
-        OnClick = Unidade1Click
+      object NCM2: TMenuItem
+        Caption = 'NCM'
+        OnClick = NCM2Click
+      end
+      object CFOP2: TMenuItem
+        Caption = 'CFOP'
+        OnClick = CFOP2Click
       end
     end
     object mniCompraVenda1: TMenuItem

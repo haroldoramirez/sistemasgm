@@ -38,11 +38,10 @@ type
     mniVenda1: TMenuItem;
     mniSair1: TMenuItem;
     mniransportadora1: TMenuItem;
-    Unidade1: TMenuItem;
     Usurio1: TMenuItem;
     Veculo1: TMenuItem;
-    Ncm1: TMenuItem;
-    Cfop1: TMenuItem;
+    NCM2: TMenuItem;
+    CFOP2: TMenuItem;
     procedure Pas1Click(Sender: TObject);
     procedure mniCidade1Click(Sender: TObject);
     procedure mniCliente1Click(Sender: TObject);
@@ -67,6 +66,8 @@ type
     procedure Veculo1Click(Sender: TObject);
     procedure Ncm1Click(Sender: TObject);
     procedure Cfop1Click(Sender: TObject);
+    procedure NCM2Click(Sender: TObject);
+    procedure CFOP2Click(Sender: TObject);
   private
     umaInter             : Interfaces;
     umPais               : Pais;
@@ -236,6 +237,11 @@ begin
     umaInter.PecaDadosNcm(umNcm);
 end;
 
+procedure TGerente.NCM2Click(Sender: TObject);
+begin
+    umaInter.PecaDadosNcm(umNcm);
+end;
+
 procedure TGerente.Pas1Click(Sender: TObject);
 begin
      umaInter.PecaDadosPais(umPais);
@@ -257,6 +263,11 @@ begin
 end;
 
 procedure TGerente.Cfop1Click(Sender: TObject);
+begin
+    umaInter.PecaDadosCfop(umCfop);
+end;
+
+procedure TGerente.CFOP2Click(Sender: TObject);
 begin
     umaInter.PecaDadosCfop(umCfop);
 end;

@@ -1,13 +1,15 @@
 unit UProduto;
 
 interface
-    uses UGenerico, UMarca, UCategoria, UUnidade;
+    uses UGenerico, UMarca, UCategoria, UUnidade, UNcm;
     type Produto = class(Generico)
 
     protected
         umaMarca       : Marca;
         umaCategoria   : Categoria;
-        umaUnidade     : Unidade;
+        unidade        : string[4];
+        umNcm          : Ncm;
+        cst            : string[4];
         quantidade     : Real;
         icms           : Real;
         ipi            : Real;
@@ -23,7 +25,9 @@ interface
 
         Procedure setUmaMarca (vUmaMarca : Marca);
         Procedure setUmaCategoria (vUmaCategoria : Categoria);
-        Procedure setUmaUnidade (vUnidade : Unidade);
+        Procedure setUnidade (vUnidade : String);
+        Procedure setUmNcm (vNcm : Ncm);
+        Procedure setCst (vCst : String);
         Procedure setQuantidade (vQuantidade : Real);
         Procedure setICMS (vICMS : Real);
         Procedure setIPI (vIPI : Real);
@@ -36,7 +40,9 @@ interface
 
         Function getUmaMarca       : Marca;
         Function getUmaCategoria   : Categoria;
-        Function getUmaUnidade     : Unidade;
+        Function getUnidade        : String;
+        Function getUmNcm          : Ncm;
+        Function getCst            : String;
         Function getQuantidade     : Real;
         Function getICMS           : Real;
         Function getIPI            : Real;
@@ -57,7 +63,9 @@ begin
     inherited;
     umaMarca       := Marca.CrieObjeto;
     umaCategoria   := Categoria.CrieObjeto;
-    umaUnidade     := Unidade.CrieObjeto;
+    unidade        := '';
+    umNcm          := Ncm.CrieObjeto;
+    cst            := '';
     quantidade     := 0;
     icms           := 0;
     ipi            := 0;
@@ -72,6 +80,11 @@ end;
 destructor Produto.Destrua_Se;
 begin
 
+end;
+
+function Produto.getCst: String;
+begin
+    Result := cst;
 end;
 
 function Produto.getICMS: Real;
@@ -129,9 +142,19 @@ begin
     Result := umaMarca;
 end;
 
-function Produto.getUmaUnidade: Unidade;
+function Produto.getUmNcm: Ncm;
 begin
-    Result := umaUnidade;
+    Result := umNcm;
+end;
+
+function Produto.getUnidade: String;
+begin
+    Result := unidade;
+end;
+
+procedure Produto.setCst(vCst: String);
+begin
+    cst := vCst;
 end;
 
 procedure Produto.setICMS(vICMS: Real);
@@ -189,9 +212,14 @@ begin
     umaMarca := vUmaMarca;
 end;
 
-procedure Produto.setUmaUnidade(vUnidade: Unidade);
+procedure Produto.setUmNcm(vNcm: Ncm);
 begin
-    umaUnidade := vUnidade;
+    umNcm := vNcm;
+end;
+
+procedure Produto.setUnidade(vUnidade: String);
+begin
+    unidade := vUnidade;
 end;
 
 end.

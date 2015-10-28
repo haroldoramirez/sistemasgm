@@ -1170,8 +1170,9 @@
       Required = True
       Size = 60
     end
-    object QProdutoidunidade: TIntegerField
-      FieldName = 'idunidade'
+    object QProdutounidade: TWideStringField
+      FieldName = 'unidade'
+      Size = 4
     end
     object QProdutoquantidade: TFloatField
       FieldName = 'quantidade'
@@ -1204,6 +1205,13 @@
     object QProdutoidcategoria: TIntegerField
       FieldName = 'idcategoria'
     end
+    object QProdutocst: TWideStringField
+      FieldName = 'cst'
+      Size = 4
+    end
+    object QProdutoidncm: TIntegerField
+      FieldName = 'idncm'
+    end
     object QProdutoobservacao: TWideStringField
       FieldName = 'observacao'
       Size = 255
@@ -1227,25 +1235,24 @@
       '  produto.idproduto = :OLD_idproduto')
     InsertSQL.Strings = (
       'INSERT INTO produto'
-      '  (descricao, idunidade, quantidade, icms, ipi, preco_compra, '
-      'preco_venda, '
       
-        '   icms_anterior, ipi_anterior, preco_compra_ant, idmarca, idcat' +
-        'egoria, '
-      '   observacao, datacadastro, dataalteracao)'
+        '  (descricao, quantidade, icms, ipi, preco_compra, preco_venda, ' +
+        'icms_anterior, '
+      
+        '   ipi_anterior, preco_compra_ant, idmarca, idcategoria, observa' +
+        'cao, datacadastro, '
+      '   dataalteracao, cst, idncm, unidade)'
       'VALUES'
       
-        '  (:descricao, :idunidade, :quantidade, :icms, :ipi, :preco_comp' +
-        'ra, '
-      ':preco_venda, '
+        '  (:descricao, :quantidade, :icms, :ipi, :preco_compra, :preco_v' +
+        'enda, :icms_anterior, '
       
-        '   :icms_anterior, :ipi_anterior, :preco_compra_ant, :idmarca, :' +
-        'idcategoria, '
-      '   :observacao, :datacadastro, :dataalteracao)')
+        '   :ipi_anterior, :preco_compra_ant, :idmarca, :idcategoria, :ob' +
+        'servacao, '
+      '   :datacadastro, :dataalteracao, :cst, :idncm, :unidade)')
     ModifySQL.Strings = (
       'UPDATE produto SET'
       '  descricao = :descricao,'
-      '  idunidade = :idunidade,'
       '  quantidade = :quantidade,'
       '  icms = :icms,'
       '  ipi = :ipi,'
@@ -1258,7 +1265,10 @@
       '  idcategoria = :idcategoria,'
       '  observacao = :observacao,'
       '  datacadastro = :datacadastro,'
-      '  dataalteracao = :dataalteracao'
+      '  dataalteracao = :dataalteracao,'
+      '  cst = :cst,'
+      '  idncm = :idncm,'
+      '  unidade = :unidade'
       'WHERE'
       '  produto.idproduto = :OLD_idproduto')
     UseSequenceFieldForRefreshSQL = False
@@ -1268,11 +1278,6 @@
       item
         DataType = ftUnknown
         Name = 'descricao'
-        ParamType = ptUnknown
-      end
-      item
-        DataType = ftUnknown
-        Name = 'idunidade'
         ParamType = ptUnknown
       end
       item
@@ -1338,6 +1343,21 @@
       item
         DataType = ftUnknown
         Name = 'dataalteracao'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cst'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'idncm'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'unidade'
         ParamType = ptUnknown
       end
       item

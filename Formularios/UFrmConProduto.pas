@@ -133,16 +133,18 @@ begin
   begin
     edt_Descricao.Enabled := False;
     edt_IdMarca.Enabled := False;
+    edt_IdNcm.Enabled := False;
     edt_IdCategoria.Enabled := False;
-    edt_IdUnidade.Enabled := False;
+    edt_Unidade.Enabled := False;
     edt_Quantidade.Enabled := False;
+    edt_Cst.Enabled := False;
     edt_ICMS.Enabled := False;
     edt_IPI.Enabled := False;
     edt_PrecoVenda.Enabled := False;
     edt_Observacao.Enabled := False;
     btn_BuscarMarca.Enabled := False;
     btn_BuscarCategoria.Enabled := False;
-    btn_BuscarUnidade.Enabled := False;
+    btn_BuscaNcm.Enabled := false;
   end;
 end;
 

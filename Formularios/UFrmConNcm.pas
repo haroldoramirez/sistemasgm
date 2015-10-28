@@ -14,6 +14,7 @@ type
     procedure btn_NovoClick(Sender: TObject);
     procedure btn_EditarClick(Sender: TObject);
     procedure btn_ExcluirClick(Sender: TObject);
+    procedure btn_SairClick(Sender: TObject);
   private
     { Private declarations }
     umNcm : Ncm;
@@ -39,9 +40,10 @@ var
 begin
   inherited;
     consNcm := Ncm.CrieObjeto;
-    consNcm.setNumero(StrToInt(edt_Descricao.text));
     if edt_Id.Text <> '' then
         consNcm.setId(strtoint(edt_Id.Text));
+    if (edt_Descricao.Text <> '') and (strtoint(edt_Descricao.Text) <> 0) then
+       consNcm.setNumero(strtoint(edt_Descricao.text));
     if not umaCtrlNcm.Buscar(consNcm) then
         MessageDlg('Nenhum registro encontrado!',  mtInformation, [mbOK], 0);
     consNcm.destrua_se;
@@ -92,6 +94,17 @@ begin
   umFrmCadNcm.btn_Salvar.Caption := 'Salvar';
   umFrmCadNcm.ConhecaObj(umNcm, umaCtrlNcm);
   umFrmCadNcm.ShowModal;
+end;
+
+procedure TFrmConNcm.btn_SairClick(Sender: TObject);
+begin
+  inherited;
+  if self.btn_Sair.Caption = 'Selecionar' then
+  begin
+    umNcm.setId(0);
+    umNcm := Ncm(umaCtrlNcm.carrega(umNcm));
+  end;
+  umFrmCadNcm.Free;
 end;
 
 procedure TFrmConNcm.ConhecaObj(vNcm: Ncm);

@@ -1,5 +1,5 @@
 inherited FrmCadCfop: TFrmCadCfop
-  Caption = 'Cadastro de Cfop'
+  Caption = 'Cadastro de CFOP'
   ClientHeight = 215
   ClientWidth = 328
   ExplicitWidth = 334

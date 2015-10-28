@@ -7,7 +7,8 @@ uses
   Dialogs, UFrmCadastro, StdCtrls, Buttons, sBitBtn, sGroupBox, Mask, sMaskEdit,
   sCustomComboEdit, sTooledit, sEdit, sLabel, Grids, DBGrids, sMemo, UProduto,
   UFrmConMarca, UMarca, UFrmConCategoria, UCategoria, UCtrlMarca, UCtrlCategoria,
-  UCtrlProduto, UUnidade, UFrmConUnidade, UCtrlUnidade, UComuns, UFrmViewFornecedor;
+  UCtrlProduto, UUnidade, UFrmConUnidade, UCtrlUnidade, UNcm, UFrmConNcm, UCtrlNcm,
+  UComuns, UFrmViewFornecedor;
 
 type
   TFrmCadProduto = class(TFrmCadastro)
@@ -21,8 +22,6 @@ type
     lbl_Descricao: TsLabel;
     edt_IdProduto: TsEdit;
     edt_Descricao: TsEdit;
-    edt_IdUnidade: TsEdit;
-    lbl_IdUnidade: TsLabel;
     sGroupBox2: TsGroupBox;
     lbl1: TsLabel;
     lbl_Categoria: TsLabel;
@@ -40,8 +39,6 @@ type
     edt_DataCadastro: TsDateEdit;
     edt_DataUltAlteracao: TsDateEdit;
     edt_Unidade: TsEdit;
-    btn_BuscarUnidade: TsBitBtn;
-    lbl_Unidade: TsLabel;
     sGroupBox8: TsGroupBox;
     edt_MediaValorCompra: TsEdit;
     lbl_PrecoCusto: TsLabel;
@@ -53,14 +50,20 @@ type
     lbl_ICMS: TsLabel;
     edt_IPI: TsEdit;
     lbl_IPI: TsLabel;
+    sLabel2: TsLabel;
+    sLabel3: TsLabel;
+    edt_IdNcm: TsEdit;
+    edt_numero: TsEdit;
+    btn_BuscaNcm: TsBitBtn;
+    edt_Cst: TsEdit;
+    sLabel4: TsLabel;
+    lbl_Cst: TLabel;
     procedure btn_BuscarMarcaClick(Sender: TObject);
     procedure btn_BuscarCategoriaClick(Sender: TObject);
     procedure edt_IdMarcaExit(Sender: TObject);
     procedure edt_IdCategoriaExit(Sender: TObject);
     procedure btn_SalvarClick(Sender: TObject);
     procedure btn_SairClick(Sender: TObject);
-    procedure btn_BuscarUnidadeClick(Sender: TObject);
-    procedure edt_IdUnidadeExit(Sender: TObject);
     procedure edt_IdUnidadeKeyPress(Sender: TObject; var Key: Char);
     procedure edt_IdMarcaKeyPress(Sender: TObject; var Key: Char);
     procedure edt_IdCategoriaKeyPress(Sender: TObject; var Key: Char);
@@ -73,6 +76,9 @@ type
     procedure edt_IPIEnter(Sender: TObject);
     procedure edt_PrecoVendaEnter(Sender: TObject);
     procedure btn_BuscarFornecedoresClick(Sender: TObject);
+    procedure btn_BuscaNcmClick(Sender: TObject);
+    procedure edt_IdNcmExit(Sender: TObject);
+    procedure edt_IdNcmKeyPress(Sender: TObject; var Key: Char);
   private
     umProduto           : Produto;
     umaCtrlProduto      : CtrlProduto;
@@ -82,6 +88,8 @@ type
     umaCtrlCategoria    : CtrlCategoria;
     umFrmConUnidade     : TFrmConUnidade;
     umaCtrlUnidade      : CtrlUnidade;
+    umFrmConNcm         : TFrmConNcm;
+    umaCtrlNcm          : CtrlNcm;
     umFrmViewFornecedor : TFrmViewFornecedor;
   public
       procedure ConhecaObj(vProduto: Produto; vCtrlProduto: CtrlProduto);
@@ -98,6 +106,17 @@ implementation
 {$R *.dfm}
 
 { TFrmCadProduto }
+
+procedure TFrmCadProduto.btn_BuscaNcmClick(Sender: TObject);
+begin
+  inherited;
+  umFrmConNcm := TFrmConNcm.Create(nil);
+  umFrmConNcm.ConhecaObj(umProduto.getUmNcm);
+  umFrmConNcm.btn_Sair.Caption := 'Selecionar';
+  umFrmConNcm.ShowModal;
+  self.edt_IdNcm.Text  := inttostr(umProduto.getUmNcm.getId);
+  self.edt_numero.Text := inttostr(umProduto.getUmNcm.getNumero);
+end;
 
 procedure TFrmCadProduto.btn_BuscarCategoriaClick(Sender: TObject);
 begin
@@ -121,16 +140,16 @@ begin
   self.edt_Marca.Text    := umProduto.getUmaMarca.getDescricao;
 end;
 
-procedure TFrmCadProduto.btn_BuscarUnidadeClick(Sender: TObject);
-begin
-  inherited;
-  umFrmConUnidade := TFrmConUnidade.Create(nil);
-  umFrmConUnidade.ConhecaObj(umProduto.getUmaUnidade);
-  umFrmConUnidade.btn_Sair.Caption := 'Selecionar';
-  umFrmConUnidade.ShowModal;
-  self.edt_IdUnidade.Text  := inttostr(umProduto.getUmaUnidade.getId);
-  self.edt_Unidade.Text    := umProduto.getUmaUnidade.getDescricao;
-end;
+//procedure TFrmCadProduto.btn_BuscarUnidadeClick(Sender: TObject);
+//begin
+//  inherited;
+//  umFrmConUnidade := TFrmConUnidade.Create(nil);
+//  umFrmConUnidade.ConhecaObj(umProduto.getUmaUnidade);
+//  umFrmConUnidade.btn_Sair.Caption := 'Selecionar';
+//  umFrmConUnidade.ShowModal;
+//  self.edt_IdUnidade.Text  := inttostr(umProduto.getUmaUnidade.getId);
+//  self.edt_Unidade.Text    := umProduto.getUmaUnidade.getDescricao;
+//end;
 
 procedure TFrmCadProduto.btn_BuscarFornecedoresClick(Sender: TObject);
 begin
@@ -146,16 +165,28 @@ var
 begin
     dataAtual := Date;
   inherited;
+  if (edt_Cst.Text = '') then
+  begin
+      ShowMessage('Campo Cst não pode estar em branco!');
+      edt_Cst.SetFocus;
+  end
+  else
+  if (edt_Unidade.Text = '') then
+  begin
+      ShowMessage('Campo Unidade não pode estar em branco!');
+      edt_Unidade.SetFocus;
+  end
+  else
   if (edt_Descricao.Text = '') then
     begin
-        ShowMessage('Campo Descrição não pode estar em branco!');
+        ShowMessage('Campo Produto não pode estar em branco!');
         edt_Descricao.SetFocus;
     end
   else
-  if (edt_Unidade.Text = '') then
+  if (edt_numero.Text = '') then
     begin
-        ShowMessage('Campo Unidade não pode estar em branco!');
-        edt_Descricao.SetFocus;
+        ShowMessage('É necessário adicionar um NCM para o produto!');
+        edt_IdNcm.SetFocus;
     end
   else
     if (edt_Marca.Text = '') then
@@ -184,8 +215,10 @@ begin
             edt_IPI.Text := IntToStr(0);
           umProduto.getUmaMarca.setId(StrToInt(edt_IdMarca.Text));
           umProduto.getUmaCategoria.setId(StrToInt(edt_IdCategoria.Text));
-          umProduto.getUmaUnidade.setId(StrToInt(edt_IdUnidade.Text));
+          umProduto.setUnidade(edt_Unidade.Text);
+          umProduto.getUmNcm.setId(StrToInt(edt_IdNcm.Text));
           umProduto.setQuantidade(StrToFloat(edt_Quantidade.Text));
+          umProduto.setCst(edt_Cst.Text);
           umProduto.setICMS(StrToFloat(edt_ICMS.Text));
           umProduto.setIPI(StrToFloat(edt_IPI.Text));
           umProduto.setDescricao(edt_Descricao.Text);
@@ -214,12 +247,14 @@ procedure TFrmCadProduto.CarregaObj;
 begin
     self.edt_IdProduto.Text         := inttostr(umProduto.getId);
     self.edt_Descricao.Text         := umProduto.getDescricao;
-    self.edt_IdUnidade.Text         := inttostr(umProduto.getUmaUnidade.getId);
-    self.edt_Unidade.Text           := umProduto.getUmaUnidade.getDescricao;
+    self.edt_Unidade.Text           := umProduto.getUnidade;
+    self.edt_IdNcm.Text             := inttostr(umProduto.getUmNcm.getId);
+    self.edt_numero.Text            := inttostr(umProduto.getUmNcm.getNumero);
     self.edt_IdMarca.Text           := inttostr(umProduto.getUmaMarca.getId);
     self.edt_Marca.Text             := umProduto.getUmaMarca.getDescricao;
     self.edt_IdCategoria.Text       := inttostr(umProduto.getUmaCategoria.getId);
     self.edt_Categoria.Text         := umProduto.getUmaCategoria.getDescricao;
+    self.edt_Cst.Text               := umProduto.getCst;
     self.edt_Quantidade.Text        := FormatFloat('#0.000', umProduto.getQuantidade);
     self.edt_ICMS.Text              := FormatFloat('#0.00', umProduto.getICMS);
     self.edt_IPI.Text               := FormatFloat('#0.00', umProduto.getIPI);
@@ -302,43 +337,43 @@ begin
     end;
 end;
 
-procedure TFrmCadProduto.edt_IdUnidadeExit(Sender: TObject);
-var  umaUnidade : Unidade;
-begin
-  inherited;
-  if Self.edt_IdUnidade.Text <> '' then
-    begin
-      Self.edt_Unidade.Clear;
-      umaCtrlUnidade := CtrlUnidade.CrieObjeto;
-      umProduto.getUmaUnidade.setId(StrToInt(Self.edt_IdUnidade.Text));
-      umProduto.getUmaUnidade.setDescricao(Self.edt_Unidade.Text);
-      if not umaCtrlUnidade.Buscar(umProduto.getUmaUnidade) then
-        begin
-            MessageDlg('Nenhum registro encontrado!',  mtInformation, [mbOK], 0);
-            self.edt_IdUnidade.Clear;
-            self.edt_Unidade.Clear;
-        end
-      else
-        begin
-            umaCtrlUnidade.Carrega(umProduto.getUmaUnidade);
-            Self.edt_IdUnidade.Text := IntToStr(umProduto.getUmaUnidade.getId);
-            Self.edt_Unidade.Text := umProduto.getUmaUnidade.getDescricao;
-        end;
-      umaUnidade := Unidade.CrieObjeto;
-      umaCtrlUnidade.Buscar(umaUnidade);
-    end
-  else
-    begin
-      self.edt_IdUnidade.Clear;
-      self.edt_Unidade.Clear;
-    end;
-end;
+//procedure TFrmCadProduto.edt_IdUnidadeExit(Sender: TObject);
+//var  umaUnidade : Unidade;
+//begin
+//  inherited;
+//  if Self.edt_IdUnidade.Text <> '' then
+//    begin
+//      Self.edt_Unidade.Clear;
+//      umaCtrlUnidade := CtrlUnidade.CrieObjeto;
+//      umProduto.getUmaUnidade.setId(StrToInt(Self.edt_IdUnidade.Text));
+//      umProduto.getUmaUnidade.setDescricao(Self.edt_Unidade.Text);
+//      if not umaCtrlUnidade.Buscar(umProduto.getUmaUnidade) then
+//        begin
+//            MessageDlg('Nenhum registro encontrado!',  mtInformation, [mbOK], 0);
+//            self.edt_IdUnidade.Clear;
+//            self.edt_Unidade.Clear;
+//        end
+//      else
+//        begin
+//            umaCtrlUnidade.Carrega(umProduto.getUmaUnidade);
+//            Self.edt_IdUnidade.Text := IntToStr(umProduto.getUmaUnidade.getId);
+//            Self.edt_Unidade.Text := umProduto.getUmaUnidade.getDescricao;
+//        end;
+//      umaUnidade := Unidade.CrieObjeto;
+//      umaCtrlUnidade.Buscar(umaUnidade);
+//    end
+//  else
+//    begin
+//      self.edt_IdUnidade.Clear;
+//      self.edt_Unidade.Clear;
+//    end;
+//end;
 
 procedure TFrmCadProduto.HabilitaCampos;
 begin
   Self.edt_Descricao.Enabled := True;
   Self.edt_IdMarca.Enabled := True;
-  Self.edt_IdUnidade.Enabled := True;
+  Self.edt_Unidade.Enabled := True;
   Self.edt_IdCategoria.Enabled := True;
   Self.edt_ICMS.Enabled := True;
   Self.edt_IPI.Enabled := True;
@@ -346,7 +381,6 @@ begin
   Self.edt_Observacao.Enabled := True;
   Self.btn_BuscarMarca.Enabled := True;
   Self.btn_BuscarCategoria.Enabled := True;
-  Self.btn_BuscarUnidade.Enabled := True;
 end;
 
 procedure TFrmCadProduto.LimpaCampos;
@@ -355,13 +389,15 @@ begin
   dataAtual := Date;
   self.edt_IdProduto.Clear;
   self.edt_Descricao.Clear;
-  Self.edt_IdUnidade.Clear;
   self.edt_Unidade.Clear;
   self.edt_IdMarca.Clear;
   self.edt_Marca.Clear;
+  self.edt_IdNcm.Clear;
+  self.edt_numero.Clear;
   self.edt_IdCategoria.Clear;
   self.edt_Categoria.Clear;
   self.edt_Quantidade.Text := IntToStr(0);
+  self.edt_Cst.Clear;
   self.edt_ICMS.Text := IntToStr(0);
   self.edt_IPI.Text := IntToStr(0);
   self.edt_MediaValorCompra.Text := IntToStr(0);
@@ -385,6 +421,44 @@ begin
 end;
 
 procedure TFrmCadProduto.edt_IdMarcaKeyPress(Sender: TObject; var Key: Char);
+begin
+  inherited;
+  CampoNumero(Sender, Key);
+end;
+
+procedure TFrmCadProduto.edt_IdNcmExit(Sender: TObject);
+var  umNcm : Ncm;
+begin
+  inherited;
+  if Self.edt_IdNcm.Text <> '' then
+    begin
+      Self.edt_numero.Clear;
+      umaCtrlNcm := CtrlNcm.CrieObjeto;
+      umProduto.getUmNcm.setId(StrToInt(Self.edt_IdNcm.Text));
+      umProduto.getUmNcm.setNumero(0);
+      if not umaCtrlNcm.Buscar(umProduto.getUmNcm) then
+        begin
+            MessageDlg('Nenhum registro encontrado!',  mtInformation, [mbOK], 0);
+            self.edt_IdNcm.Clear;
+            self.edt_numero.Clear;
+        end
+      else
+        begin
+            umaCtrlNcm.Carrega(umProduto.getUmNcm);
+            Self.edt_IdNcm.Text := IntToStr(umProduto.getUmNcm.getId);
+            Self.edt_numero.Text := IntToStr(umProduto.getUmNcm.getNumero);
+        end;
+      umNcm := Ncm.CrieObjeto;
+      umaCtrlNcm.Buscar(umNcm);
+    end
+  else
+    begin
+      self.edt_IdNcm.Clear;
+      self.edt_numero.Clear;
+    end;
+end;
+
+procedure TFrmCadProduto.edt_IdNcmKeyPress(Sender: TObject; var Key: Char);
 begin
   inherited;
   CampoNumero(Sender, Key);
