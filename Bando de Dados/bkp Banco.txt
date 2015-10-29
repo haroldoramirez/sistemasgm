@@ -1,4 +1,4 @@
-﻿CREATE SEQUENCE public.unidade_idunidade_seq;
+CREATE SEQUENCE public.unidade_idunidade_seq;
 
 CREATE TABLE public.unidade (
                 idunidade INTEGER NOT NULL DEFAULT nextval('public.unidade_idunidade_seq'),
@@ -335,7 +335,7 @@ CREATE TABLE public.produto_compra (
                 idproduto INTEGER NOT NULL,
                 ncm_sh VARCHAR(8) NOT NULL,
                 cst INTEGER NOT NULL,
-                cfop INTEGER NOT NULL,
+                cpof INTEGER NOT NULL,
                 unidade VARCHAR(20) NOT NULL,
                 quantidade REAL NOT NULL,
                 precocusto REAL NOT NULL,

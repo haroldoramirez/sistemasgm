@@ -2543,6 +2543,10 @@
     Params = <>
     Left = 332
     Top = 368
+    object QProdutoCompraidcompra: TIntegerField
+      FieldName = 'idcompra'
+      Required = True
+    end
     object QProdutoCompranumnota: TIntegerField
       FieldName = 'numnota'
       Required = True
@@ -2560,21 +2564,17 @@
       FieldName = 'idproduto'
       Required = True
     end
-    object QProdutoCompraidcompra: TIntegerField
-      FieldName = 'idcompra'
-      Required = True
-    end
     object QProdutoComprancm_sh: TWideStringField
       FieldName = 'ncm_sh'
-      Size = 8
-    end
-    object QProdutoCompraunidade: TWideStringField
-      FieldName = 'unidade'
       Required = True
-      Size = 3
+      Size = 8
     end
     object QProdutoCompracst: TIntegerField
       FieldName = 'cst'
+      Required = True
+    end
+    object QProdutoCompraunidade: TWideStringField
+      FieldName = 'unidade'
       Required = True
     end
     object QProdutoCompraquantidade: TFloatField
@@ -2602,7 +2602,6 @@
     end
     object QProdutoCompravaloripi: TFloatField
       FieldName = 'valoripi'
-      Required = True
     end
     object QProdutoCompraicms: TFloatField
       FieldName = 'icms'
@@ -2610,7 +2609,6 @@
     end
     object QProdutoCompraipi: TFloatField
       FieldName = 'ipi'
-      Required = True
     end
     object QProdutoCompraidcfop: TIntegerField
       FieldName = 'idcfop'
@@ -2620,142 +2618,6 @@
     DataSet = QProdutoCompra
     Left = 423
     Top = 368
-  end
-  object UpdateProdutoCompra: TZUpdateSQL
-    DeleteSQL.Strings = (
-      'DELETE FROM produto_compra'
-      'WHERE'
-      '  produto_compra.idcompra = :OLD_idcompra AND'
-      '  produto_compra.numnota = :OLD_numnota AND'
-      '  produto_compra.serienota = :OLD_serienota AND'
-      '  produto_compra.idfornecedor = :OLD_idfornecedor AND'
-      '  produto_compra.idproduto = :OLD_idproduto')
-    InsertSQL.Strings = (
-      'INSERT INTO produto_compra'
-      
-        '  (ncm_sh, cst, unidade, quantidade, precocusto, desconto, valor' +
-        'total, '
-      '   baseicms, valoricms, valoripi, icms, ipi, idcfop)'
-      'VALUES'
-      
-        '  (:ncm_sh, :cst, :unidade, :quantidade, :precocusto, :desconto,' +
-        ' :valortotal, '
-      '   :baseicms, :valoricms, :valoripi, :icms, :ipi, :idcfop)')
-    ModifySQL.Strings = (
-      'UPDATE produto_compra SET'
-      '  ncm_sh = :ncm_sh,'
-      '  cst = :cst,'
-      '  unidade = :unidade,'
-      '  quantidade = :quantidade,'
-      '  precocusto = :precocusto,'
-      '  desconto = :desconto,'
-      '  valortotal = :valortotal,'
-      '  baseicms = :baseicms,'
-      '  valoricms = :valoricms,'
-      '  valoripi = :valoripi,'
-      '  icms = :icms,'
-      '  ipi = :ipi,'
-      '  idcfop = :idcfop'
-      'WHERE'
-      '  produto_compra.idcompra = :OLD_idcompra AND'
-      '  produto_compra.numnota = :OLD_numnota AND'
-      '  produto_compra.serienota = :OLD_serienota AND'
-      '  produto_compra.idfornecedor = :OLD_idfornecedor AND'
-      '  produto_compra.idproduto = :OLD_idproduto')
-    UseSequenceFieldForRefreshSQL = False
-    Left = 528
-    Top = 368
-    ParamData = <
-      item
-        DataType = ftUnknown
-        Name = 'ncm_sh'
-        ParamType = ptUnknown
-      end
-      item
-        DataType = ftUnknown
-        Name = 'cst'
-        ParamType = ptUnknown
-      end
-      item
-        DataType = ftUnknown
-        Name = 'unidade'
-        ParamType = ptUnknown
-      end
-      item
-        DataType = ftUnknown
-        Name = 'quantidade'
-        ParamType = ptUnknown
-      end
-      item
-        DataType = ftUnknown
-        Name = 'precocusto'
-        ParamType = ptUnknown
-      end
-      item
-        DataType = ftUnknown
-        Name = 'desconto'
-        ParamType = ptUnknown
-      end
-      item
-        DataType = ftUnknown
-        Name = 'valortotal'
-        ParamType = ptUnknown
-      end
-      item
-        DataType = ftUnknown
-        Name = 'baseicms'
-        ParamType = ptUnknown
-      end
-      item
-        DataType = ftUnknown
-        Name = 'valoricms'
-        ParamType = ptUnknown
-      end
-      item
-        DataType = ftUnknown
-        Name = 'valoripi'
-        ParamType = ptUnknown
-      end
-      item
-        DataType = ftUnknown
-        Name = 'icms'
-        ParamType = ptUnknown
-      end
-      item
-        DataType = ftUnknown
-        Name = 'ipi'
-        ParamType = ptUnknown
-      end
-      item
-        DataType = ftUnknown
-        Name = 'idcfop'
-        ParamType = ptUnknown
-      end
-      item
-        DataType = ftUnknown
-        Name = 'OLD_idcompra'
-        ParamType = ptUnknown
-      end
-      item
-        DataType = ftUnknown
-        Name = 'OLD_numnota'
-        ParamType = ptUnknown
-      end
-      item
-        DataType = ftUnknown
-        Name = 'OLD_serienota'
-        ParamType = ptUnknown
-      end
-      item
-        DataType = ftUnknown
-        Name = 'OLD_idfornecedor'
-        ParamType = ptUnknown
-      end
-      item
-        DataType = ftUnknown
-        Name = 'OLD_idproduto'
-        ParamType = ptUnknown
-      end>
   end
   object QCompra: TZQuery
     Connection = DB
@@ -3956,6 +3818,180 @@
       item
         DataType = ftUnknown
         Name = 'OLD_idcfop'
+        ParamType = ptUnknown
+      end>
+  end
+  object UpdateProdutoCompra: TZUpdateSQL
+    DeleteSQL.Strings = (
+      'DELETE FROM produto_compra'
+      'WHERE'
+      '  produto_compra.numnota = :OLD_numnota AND'
+      '  produto_compra.serienota = :OLD_serienota AND'
+      '  produto_compra.idfornecedor = :OLD_idfornecedor AND'
+      '  produto_compra.idproduto = :OLD_idproduto AND'
+      '  produto_compra.idcompra = :OLD_idcompra')
+    InsertSQL.Strings = (
+      'INSERT INTO produto_compra'
+      
+        '  (numnota, serienota, idfornecedor, idproduto, idcompra, idcpof' +
+        ', unidade, '
+      
+        '   quantidade, precocusto, desconto, valortotal, baseicms, valor' +
+        'icms, '
+      'valoripi, '
+      '   icms, ipi, ncm_sh, cst)'
+      'VALUES'
+      
+        '  (:numnota, :serienota, :idfornecedor, :idproduto, :idcompra, :' +
+        'idcpof, '
+      ':unidade, '
+      
+        '   :quantidade, :precocusto, :desconto, :valortotal, :baseicms, ' +
+        ':valoricms, '
+      '   :valoripi, :icms, :ipi, :ncm_sh, :cst)')
+    ModifySQL.Strings = (
+      'UPDATE produto_compra SET'
+      '  numnota = :numnota,'
+      '  serienota = :serienota,'
+      '  idfornecedor = :idfornecedor,'
+      '  idproduto = :idproduto,'
+      '  idcompra = :idcompra,'
+      '  idcpof = :idcpof,'
+      '  unidade = :unidade,'
+      '  quantidade = :quantidade,'
+      '  precocusto = :precocusto,'
+      '  desconto = :desconto,'
+      '  valortotal = :valortotal,'
+      '  baseicms = :baseicms,'
+      '  valoricms = :valoricms,'
+      '  valoripi = :valoripi,'
+      '  icms = :icms,'
+      '  ipi = :ipi,'
+      '  ncm_sh = :ncm_sh,'
+      '  cst = :cst'
+      'WHERE'
+      '  produto_compra.numnota = :OLD_numnota AND'
+      '  produto_compra.serienota = :OLD_serienota AND'
+      '  produto_compra.idfornecedor = :OLD_idfornecedor AND'
+      '  produto_compra.idproduto = :OLD_idproduto AND'
+      '  produto_compra.idcompra = :OLD_idcompra')
+    UseSequenceFieldForRefreshSQL = False
+    Left = 528
+    Top = 368
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'numnota'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'serienota'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'idfornecedor'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'idproduto'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'idcompra'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'idcpof'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'unidade'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'quantidade'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'precocusto'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'desconto'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'valortotal'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'baseicms'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'valoricms'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'valoripi'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'icms'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'ipi'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'ncm_sh'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'cst'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'OLD_numnota'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'OLD_serienota'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'OLD_idfornecedor'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'OLD_idproduto'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'OLD_idcompra'
         ParamType = ptUnknown
       end>
   end

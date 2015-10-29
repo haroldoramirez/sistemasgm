@@ -751,6 +751,9 @@ begin
       if Self.edt_CPOF.Text <> '' then
         umaCompra.getUmProdutoCompra.getUmCfop.setId(StrToInt(Self.edt_IdCFOP.Text));
 
+      // se tirar o setDecricao não aparece o ID nem a descrição do produto na grid
+      umaCompra.getumProdutoCompra.setId(strtoint(Self.edt_IdProduto.Text));
+      umaCompra.getumProdutoCompra.setDescricao(Self.edt_Produto.Text);
       umaCompra.getUmProdutoCompra.setNCMSH(Self.edt_NCM.Text);
       umaCompra.getUmProdutoCompra.setCSTCompra(Self.edt_CST.Text);
       umaCompra.getUmProdutoCompra.setUnidadeCompra(Self.edt_Unidade.Text);
@@ -978,6 +981,9 @@ end;
 
 procedure TFrmCadCompra.btn_BuscarCondicaoPagamentoClick(Sender: TObject);
 begin
+  if (umaCompra.getUmProdutoCompra = nil) or (umaCompra.getUmProdutoCompra.getId <> 0)then
+      umaCompra.CrieObejtoProduto;
+
   umFrmConCondicaoPagamento := TFrmConCondicaoPagamento.Create(nil);
   umFrmConCondicaoPagamento.ConhecaObj(umaCompra.getUmaCondicaoPagamento);
   umFrmConCondicaoPagamento.btn_Sair.Caption := 'Selecionar';
@@ -1105,92 +1111,92 @@ begin
   valoricmsAux := StrToFloat(self.edt_TotalICMS.Text);
   valoripiAux  := StrToFloat(self.edt_TotalIpi.Text);
 
-  if self.edt_NumeroNota.Text = '' then
+  if (self.edt_NumeroNota.Text = '') and (self.btn_Salvar.Caption = 'Salvar') then
   begin
     ShowMessage('Favor inserir o número da Nota! ');
     edt_SerieNota.SetFocus;
   end
-  else if self.edt_SerieNota.Text = '' then
+  else if (self.edt_SerieNota.Text = '') and (self.btn_Salvar.Caption = 'Salvar') then
   begin
     ShowMessage('Favor inserir a serie da Nota! ');
     edt_SerieNota.SetFocus;
   end
-  else if self.edt_Fornecedor.Text = '' then
+  else if (self.edt_Fornecedor.Text = '') and (self.btn_Salvar.Caption = 'Salvar') then
   begin
     ShowMessage('Favor inserir um Fornecedor! ');
     edt_IdFornecedor.SetFocus;
   end
-  else if self.edt_IdFuncionario.Text = '' then
+  else if (self.edt_IdFuncionario.Text = '') and (self.btn_Salvar.Caption = 'Salvar') then
   begin
     ShowMessage('Campo funcionário não pode estar me branco! ');
     edt_IdFuncionario.SetFocus;
   end
-  else if edt_DataEmissao.Date = StrToDate('30/12/1899') then
+  else if (edt_DataEmissao.Date = StrToDate('30/12/1899')) and (self.btn_Salvar.Caption = 'Salvar') then
   begin
     ShowMessage('Favor informar a Data de Emissão!');
     edt_DataEmissao.SetFocus
   end
-  else if edt_DataCompra.Date = StrToDate('30/12/1899') then
+  else if (edt_DataCompra.Date = StrToDate('30/12/1899')) and (self.btn_Salvar.Caption = 'Salvar') then
   begin
     ShowMessage('Favor informar a Data de Compra!');
     edt_DataCompra.SetFocus
   end
-  else if self.edt_BaseICMS.Text = '' then
+  else if (self.edt_BaseICMS.Text = '') and (self.btn_Salvar.Caption = 'Salvar') then
   begin
     ShowMessage('Favor informar o valor da Base de Cálculo ICMS da Nota! ');
     edt_BaseICMS.SetFocus;
   end
-  else if self.edt_TotalICMS.Text = '' then
+  else if (self.edt_TotalICMS.Text = '') and (self.btn_Salvar.Caption = 'Salvar') then
   begin
     ShowMessage('Favor informar o valor Total do ICMS da Nota! ');
     edt_TotalICMS.SetFocus;
   end
-  else if self.edt_TotalIpi.Text = '' then
+  else if (self.edt_TotalIpi.Text = '') and (self.btn_Salvar.Caption = 'Salvar') then
   begin
     ShowMessage('Favor informar o valor Total do IPI da Nota! ');
     edt_TotalIPI.SetFocus;
   end
-  else if self.edt_TotalProduto.Text = '' then
+  else if (self.edt_TotalProduto.Text = '') and (self.btn_Salvar.Caption = 'Salvar') then
   begin
     ShowMessage('Favor informar o valor Total do Produto da Nota! ');
     edt_TotalProduto.SetFocus;
   end
-  else if self.edt_TotalNota.Text = '' then
+  else if (self.edt_TotalNota.Text = '') and (self.btn_Salvar.Caption = 'Salvar') then
   begin
     ShowMessage('Favor informar o valor Total da Nota! ');
     edt_TotalNota.SetFocus;
   end
-  else if self.gridProduto.RowCount <= 1then
+  else if (self.gridProduto.RowCount <= 1) and (self.btn_Salvar.Caption = 'Salvar') then
   begin
     ShowMessage('Compra tem que ter no minímo 1 produto! ');
     edt_IdProduto.SetFocus;
   end
-  else if self.gridParcelas.RowCount <= 1then
+  else if (self.gridParcelas.RowCount <= 1) and (self.btn_Salvar.Caption = 'Salvar') then
   begin
     ShowMessage('Favor gerar as parcelas! ');
     btn_GerarParcelas.SetFocus;
   end
-  else if baseicmsAux <> baseicms then
+  else if (baseicmsAux <> baseicms) and (self.btn_Salvar.Caption = 'Salvar') then
   begin
     MessageDlg('A soma da base de cálculo de cada produto não confere com a base de cálculo da nota!', mtInformation, [mbOK], 0);
     edt_BaseICMS.SetFocus;
   end
-  else if valoricmsAux <> valoricms then
+  else if (valoricmsAux <> valoricms) and (self.btn_Salvar.Caption = 'Salvar') then
   begin
     MessageDlg('A soma do valor do ICMS de cada produto não confere com o valor total do ICMS da nota!', mtInformation, [mbOK], 0);
     edt_TotalICMS.SetFocus;
   end
-  else if descontoAux <> desconto then
+  else if (descontoAux <> desconto) and (self.btn_Salvar.Caption = 'Salvar') then
   begin
     MessageDlg('A soma do valor do Desconto de cada produto não confere com o valor total do Desconto da nota!', mtInformation, [mbOK], 0);
     edt_ValorDesconto.SetFocus;
   end
-  else if valoripiAux <> valoripi then
+  else if (valoripiAux <> valoripi) and (self.btn_Salvar.Caption = 'Salvar') then
   begin
     MessageDlg('A soma do valor do IPI de cada produto não confere com o valor total do IPI da nota!', mtInformation, [mbOK], 0);
     edt_TotalIPI.SetFocus;
   end
-  else if totalAux <> total then
+  else if (totalAux <> total) and (self.btn_Salvar.Caption = 'Salvar') then
   begin
     MessageDlg('A soma do Total de cada produto não confere com o valor total do Produto da nota!', mtInformation, [mbOK], 0);
     edt_TotalProduto.SetFocus;
@@ -1656,7 +1662,7 @@ begin
     self.gridProduto.Cells[1,0] := 'Decrição';
     self.gridProduto.Cells[2,0] := 'NCM';
     self.gridProduto.Cells[3,0] := 'CST';
-    self.gridProduto.Cells[4,0] := 'CPOF';
+    self.gridProduto.Cells[4,0] := 'CFOP';
     self.gridProduto.Cells[5,0] := 'Unid.';
     self.gridProduto.Cells[6,0] := 'Quant.';
     self.gridProduto.Cells[7,0] := 'V.Unitário';

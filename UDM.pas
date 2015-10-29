@@ -63,7 +63,6 @@ type
     UpdateUsuario: TZUpdateSQL;
     QProdutoCompra: TZQuery;
     DSProdutoCompra: TDataSource;
-    UpdateProdutoCompra: TZUpdateSQL;
     QCompra: TZQuery;
     DSCompra: TDataSource;
     UpdateCompra: TZUpdateSQL;
@@ -203,21 +202,6 @@ type
     UpdateProdutoFornecedor: TZUpdateSQL;
     QProdutoFornecedoridfornecedor: TIntegerField;
     QProdutoFornecedoridproduto: TIntegerField;
-    QProdutoCompranumnota: TIntegerField;
-    QProdutoCompraserienota: TWideStringField;
-    QProdutoCompraidfornecedor: TIntegerField;
-    QProdutoCompraidproduto: TIntegerField;
-    QProdutoCompraidcompra: TIntegerField;
-    QProdutoCompraunidade: TWideStringField;
-    QProdutoCompraquantidade: TFloatField;
-    QProdutoCompraprecocusto: TFloatField;
-    QProdutoCompradesconto: TFloatField;
-    QProdutoCompravalortotal: TFloatField;
-    QProdutoComprabaseicms: TFloatField;
-    QProdutoCompravaloricms: TFloatField;
-    QProdutoCompravaloripi: TFloatField;
-    QProdutoCompraicms: TFloatField;
-    QProdutoCompraipi: TFloatField;
     QEstadopaís: TStringField;
     QCidadeestado: TStringField;
     QContasRecebercliente: TStringField;
@@ -245,7 +229,6 @@ type
     QCompraobservacao: TWideStringField;
     QCompracondiçãoPgto: TStringField;
     QComprafornecedor: TStringField;
-    QProdutoComprancm_sh: TWideStringField;
     QVendacondiçãoPgto: TStringField;
     QVendacliente: TStringField;
     QCompratransportadora: TStringField;
@@ -374,8 +357,25 @@ type
     QProdutocst: TWideStringField;
     QProdutoidncm: TIntegerField;
     QProdutounidade: TWideStringField;
+    QProdutoCompraidcompra: TIntegerField;
+    QProdutoCompranumnota: TIntegerField;
+    QProdutoCompraserienota: TWideStringField;
+    QProdutoCompraidfornecedor: TIntegerField;
+    QProdutoCompraidproduto: TIntegerField;
+    QProdutoComprancm_sh: TWideStringField;
     QProdutoCompracst: TIntegerField;
+    QProdutoCompraunidade: TWideStringField;
+    QProdutoCompraquantidade: TFloatField;
+    QProdutoCompraprecocusto: TFloatField;
+    QProdutoCompradesconto: TFloatField;
+    QProdutoCompravalortotal: TFloatField;
+    QProdutoComprabaseicms: TFloatField;
+    QProdutoCompravaloricms: TFloatField;
+    QProdutoCompravaloripi: TFloatField;
+    QProdutoCompraicms: TFloatField;
+    QProdutoCompraipi: TFloatField;
     QProdutoCompraidcfop: TIntegerField;
+    UpdateProdutoCompra: TZUpdateSQL;
 
   private
     { Private declarations }
