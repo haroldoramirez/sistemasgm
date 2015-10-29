@@ -14,6 +14,7 @@ type
     procedure btn_NovoClick(Sender: TObject);
     procedure btn_EditarClick(Sender: TObject);
     procedure btn_ExcluirClick(Sender: TObject);
+    procedure btn_SairClick(Sender: TObject);
   private
     umFrmCadCfop : TFrmCadCfop;
     umaCtrlCfop : CtrlCfop;
@@ -92,6 +93,18 @@ begin
   umFrmCadCfop.btn_Salvar.Caption := 'Salvar';
   umFrmCadCfop.ConhecaObj(umCfop, umaCtrlCfop);
   umFrmCadCfop.ShowModal;
+end;
+
+procedure TFrmConCfop.btn_SairClick(Sender: TObject);
+begin
+  inherited;
+  if self.btn_Sair.Caption = 'Selecionar' then
+  begin
+    umCfop.setId(0);
+    umCfop := Cfop(umaCtrlCfop.carrega(umCfop));
+  end;
+  umFrmCadCfop.Free;
+
 end;
 
 procedure TFrmConCfop.ConhecaObj(vCfop: Cfop);

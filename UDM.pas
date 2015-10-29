@@ -208,7 +208,6 @@ type
     QProdutoCompraidfornecedor: TIntegerField;
     QProdutoCompraidproduto: TIntegerField;
     QProdutoCompraidcompra: TIntegerField;
-    QProdutoCompracpof: TIntegerField;
     QProdutoCompraunidade: TWideStringField;
     QProdutoCompraquantidade: TFloatField;
     QProdutoCompraprecocusto: TFloatField;
@@ -247,7 +246,6 @@ type
     QCompracondiçãoPgto: TStringField;
     QComprafornecedor: TStringField;
     QProdutoComprancm_sh: TWideStringField;
-    QProdutoCompracst: TIntegerField;
     QVendacondiçãoPgto: TStringField;
     QVendacliente: TStringField;
     QCompratransportadora: TStringField;
@@ -376,6 +374,8 @@ type
     QProdutocst: TWideStringField;
     QProdutoidncm: TIntegerField;
     QProdutounidade: TWideStringField;
+    QProdutoCompracst: TIntegerField;
+    QProdutoCompraidcfop: TIntegerField;
 
   private
     { Private declarations }

@@ -1,13 +1,13 @@
 unit UProdutoCompra;
 
 interface
-    uses UProduto;
+    uses UProduto, UCfop;
     type ProdutoCompra = class(Produto)
     private
     protected
-        cpof                 : Integer;
+        umCfop               : Cfop;
         ncm_sh               : string[8];
-        cst                  : string[3];
+        cst_compra           : string[3];
         unidade_compra       : string[3];
         quantidade_compra    : Real;
         valorUnitario_compra : Real;
@@ -23,9 +23,9 @@ interface
         Constructor CrieObjeto;
         Destructor Destrua_Se;
 
-        Procedure setCPOF (vCPOF : Integer);
+        Procedure setUmCfop (vCfop : Cfop);
         Procedure setNCMSH (vNCMSH : String);
-        Procedure setCST (vCST : String);
+        Procedure setCSTCompra (vCSTCompra : String);
         Procedure setUnidadeCompra (vUnidade : String);
         Procedure setQuantidadeCompra (vQuantidade : Real);
         Procedure setValorUnitarioCompra (vPrecoCusto : Real);
@@ -37,9 +37,9 @@ interface
         Procedure setValorIcmsCompra (vValorIcms : Real);
         Procedure setValorIpiCompra (vValorIpi : Real);
 
-        Function getCPOF : Integer;
+        Function getUmCfop : Cfop;
         Function getNCMSH : String;
-        Function getCST : String;
+        Function getCSTCompra : String;
         Function getUnidadeCompra : String;
         Function getQuantidadeCompra : Real;
         Function getValorUnitarioCompra : Real;
@@ -59,9 +59,9 @@ implementation
 constructor ProdutoCompra.CrieObjeto;
 begin
     inherited;
-    cpof              := 0;
+    umCfop            := Cfop.CrieObjeto;
     ncm_sh            := '';
-    cst               := '';
+    cst_compra        := '';
     unidade_compra    := '';
     quantidade_compra := 0.0;
     valorUnitario_compra := 0.0;
@@ -84,14 +84,14 @@ begin
     Result := baseIcms_compra;
 end;
 
-function ProdutoCompra.getCPOF: Integer;
+function ProdutoCompra.getUmCfop: Cfop;
 begin
-   Result := cpof;
+   Result := umCfop;
 end;
 
-function ProdutoCompra.getCST: String;
+function ProdutoCompra.getCSTCompra: String;
 begin
-   Result := cst;
+   Result := cst_compra;
 end;
 
 function ProdutoCompra.getDescontoCompra: Real;
@@ -149,14 +149,14 @@ begin
    baseIcms_compra := vBaseIcms;
 end;
 
-procedure ProdutoCompra.setCPOF(vCPOF: Integer);
+procedure ProdutoCompra.setUmCfop(vCfop: Cfop);
 begin
-   cpof := vCPOF;
+   umCfop := vCfop;
 end;
 
-procedure ProdutoCompra.setCST(vCST: String);
+procedure ProdutoCompra.setCSTCompra(vCSTCompra: String);
 begin
-    cst := vCST;
+    cst_compra := vCSTCompra;
 end;
 
 procedure ProdutoCompra.setDescontoCompra(vDesconto: Real);

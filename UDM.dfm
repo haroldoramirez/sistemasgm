@@ -1155,7 +1155,6 @@
   object QProduto: TZQuery
     Connection = DB
     UpdateObject = UpdateProduto
-    Active = True
     SQL.Strings = (
       'select * from produto;')
     Params = <>
@@ -2569,17 +2568,14 @@
       FieldName = 'ncm_sh'
       Size = 8
     end
-    object QProdutoCompracst: TIntegerField
-      FieldName = 'cst'
-    end
-    object QProdutoCompracpof: TIntegerField
-      FieldName = 'cpof'
-      Required = True
-    end
     object QProdutoCompraunidade: TWideStringField
       FieldName = 'unidade'
       Required = True
       Size = 3
+    end
+    object QProdutoCompracst: TIntegerField
+      FieldName = 'cst'
+      Required = True
     end
     object QProdutoCompraquantidade: TFloatField
       FieldName = 'quantidade'
@@ -2616,6 +2612,9 @@
       FieldName = 'ipi'
       Required = True
     end
+    object QProdutoCompraidcfop: TIntegerField
+      FieldName = 'idcfop'
+    end
   end
   object DSProdutoCompra: TDataSource
     DataSet = QProdutoCompra
@@ -2626,36 +2625,26 @@
     DeleteSQL.Strings = (
       'DELETE FROM produto_compra'
       'WHERE'
+      '  produto_compra.idcompra = :OLD_idcompra AND'
       '  produto_compra.numnota = :OLD_numnota AND'
       '  produto_compra.serienota = :OLD_serienota AND'
       '  produto_compra.idfornecedor = :OLD_idfornecedor AND'
-      '  produto_compra.idproduto = :OLD_idproduto AND'
-      '  produto_compra.idcompra = :OLD_idcompra')
+      '  produto_compra.idproduto = :OLD_idproduto')
     InsertSQL.Strings = (
       'INSERT INTO produto_compra'
       
-        '  (numnota, serienota, idfornecedor, idproduto, idcompra, cpof, ' +
-        'unidade, '
-      
-        '   quantidade, precocusto, desconto, valortotal, baseicms, valor' +
-        'icms, valoripi, '
-      '   icms, ipi, ncm_sh, cst)'
+        '  (ncm_sh, cst, unidade, quantidade, precocusto, desconto, valor' +
+        'total, '
+      '   baseicms, valoricms, valoripi, icms, ipi, idcfop)'
       'VALUES'
       
-        '  (:numnota, :serienota, :idfornecedor, :idproduto, :idcompra, :' +
-        'cpof, :unidade, '
-      
-        '   :quantidade, :precocusto, :desconto, :valortotal, :baseicms, ' +
-        ':valoricms, '
-      '   :valoripi, :icms, :ipi, :ncm_sh, :cst)')
+        '  (:ncm_sh, :cst, :unidade, :quantidade, :precocusto, :desconto,' +
+        ' :valortotal, '
+      '   :baseicms, :valoricms, :valoripi, :icms, :ipi, :idcfop)')
     ModifySQL.Strings = (
       'UPDATE produto_compra SET'
-      '  numnota = :numnota,'
-      '  serienota = :serienota,'
-      '  idfornecedor = :idfornecedor,'
-      '  idproduto = :idproduto,'
-      '  idcompra = :idcompra,'
-      '  cpof = :cpof,'
+      '  ncm_sh = :ncm_sh,'
+      '  cst = :cst,'
       '  unidade = :unidade,'
       '  quantidade = :quantidade,'
       '  precocusto = :precocusto,'
@@ -2666,46 +2655,25 @@
       '  valoripi = :valoripi,'
       '  icms = :icms,'
       '  ipi = :ipi,'
-      '  ncm_sh = :ncm_sh,'
-      '  cst = :cst'
+      '  idcfop = :idcfop'
       'WHERE'
+      '  produto_compra.idcompra = :OLD_idcompra AND'
       '  produto_compra.numnota = :OLD_numnota AND'
       '  produto_compra.serienota = :OLD_serienota AND'
       '  produto_compra.idfornecedor = :OLD_idfornecedor AND'
-      '  produto_compra.idproduto = :OLD_idproduto AND'
-      '  produto_compra.idcompra = :OLD_idcompra')
+      '  produto_compra.idproduto = :OLD_idproduto')
     UseSequenceFieldForRefreshSQL = False
     Left = 528
     Top = 368
     ParamData = <
       item
         DataType = ftUnknown
-        Name = 'numnota'
+        Name = 'ncm_sh'
         ParamType = ptUnknown
       end
       item
         DataType = ftUnknown
-        Name = 'serienota'
-        ParamType = ptUnknown
-      end
-      item
-        DataType = ftUnknown
-        Name = 'idfornecedor'
-        ParamType = ptUnknown
-      end
-      item
-        DataType = ftUnknown
-        Name = 'idproduto'
-        ParamType = ptUnknown
-      end
-      item
-        DataType = ftUnknown
-        Name = 'idcompra'
-        ParamType = ptUnknown
-      end
-      item
-        DataType = ftUnknown
-        Name = 'cpof'
+        Name = 'cst'
         ParamType = ptUnknown
       end
       item
@@ -2760,12 +2728,12 @@
       end
       item
         DataType = ftUnknown
-        Name = 'ncm_sh'
+        Name = 'idcfop'
         ParamType = ptUnknown
       end
       item
         DataType = ftUnknown
-        Name = 'cst'
+        Name = 'OLD_idcompra'
         ParamType = ptUnknown
       end
       item
@@ -2786,11 +2754,6 @@
       item
         DataType = ftUnknown
         Name = 'OLD_idproduto'
-        ParamType = ptUnknown
-      end
-      item
-        DataType = ftUnknown
-        Name = 'OLD_idcompra'
         ParamType = ptUnknown
       end>
   end

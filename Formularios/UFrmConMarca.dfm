@@ -8,7 +8,6 @@ inherited FrmConMarca: TFrmConMarca
   inherited sGroupBox1: TsGroupBox
     inherited edt_Id: TsEdit
       MaxLength = 5
-      NumbersOnly = True
       OnKeyPress = edt_IdKeyPress
     end
     inherited btn_Consultar: TsButton

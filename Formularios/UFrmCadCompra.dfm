@@ -267,7 +267,7 @@ object FrmCadCompra: TFrmCadCompra
       Font.Style = []
     end
     object lbl_Quantidade: TsLabel
-      Left = 271
+      Left = 357
       Top = 58
       Width = 43
       Height = 13
@@ -280,7 +280,7 @@ object FrmCadCompra: TFrmCadCompra
       Font.Style = []
     end
     object lbl_Preco: TsLabel
-      Left = 337
+      Left = 423
       Top = 58
       Width = 56
       Height = 13
@@ -293,7 +293,7 @@ object FrmCadCompra: TFrmCadCompra
       Font.Style = []
     end
     object lbl_ICMS: TsLabel
-      Left = 733
+      Left = 819
       Top = 58
       Width = 39
       Height = 13
@@ -306,7 +306,7 @@ object FrmCadCompra: TFrmCadCompra
       Font.Style = []
     end
     object lbl_IPI: TsLabel
-      Left = 799
+      Left = 885
       Top = 58
       Width = 28
       Height = 13
@@ -319,7 +319,7 @@ object FrmCadCompra: TFrmCadCompra
       Font.Style = []
     end
     object lbl_Unidade: TsLabel
-      Left = 206
+      Left = 292
       Top = 58
       Width = 39
       Height = 13
@@ -332,7 +332,7 @@ object FrmCadCompra: TFrmCadCompra
       Font.Style = []
     end
     object lbl_CPOF: TsLabel
-      Left = 140
+      Left = 182
       Top = 58
       Width = 27
       Height = 13
@@ -345,7 +345,7 @@ object FrmCadCompra: TFrmCadCompra
       Font.Style = []
     end
     object lbl_Desconto: TsLabel
-      Left = 403
+      Left = 489
       Top = 58
       Width = 45
       Height = 13
@@ -358,7 +358,7 @@ object FrmCadCompra: TFrmCadCompra
       Font.Style = []
     end
     object lbl_Total: TsLabel
-      Left = 469
+      Left = 555
       Top = 58
       Width = 24
       Height = 13
@@ -371,7 +371,7 @@ object FrmCadCompra: TFrmCadCompra
       Font.Style = []
     end
     object lbl_BCIMCMS: TsLabel
-      Left = 535
+      Left = 621
       Top = 58
       Width = 42
       Height = 13
@@ -384,7 +384,7 @@ object FrmCadCompra: TFrmCadCompra
       Font.Style = []
     end
     object lbl_ValorICMS: TsLabel
-      Left = 601
+      Left = 687
       Top = 58
       Width = 35
       Height = 13
@@ -397,7 +397,7 @@ object FrmCadCompra: TFrmCadCompra
       Font.Style = []
     end
     object lbl_ValorIPI: TsLabel
-      Left = 667
+      Left = 753
       Top = 58
       Width = 24
       Height = 13
@@ -428,6 +428,19 @@ object FrmCadCompra: TFrmCadCompra
       Width = 19
       Height = 13
       Caption = 'CST'
+      ParentFont = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4276545
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+    end
+    object sLabel3: TsLabel
+      Left = 145
+      Top = 58
+      Width = 23
+      Height = 13
+      Caption = 'C'#243'd.'
       ParentFont = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4276545
@@ -550,7 +563,7 @@ object FrmCadCompra: TFrmCadCompra
       TabOrder = 18
     end
     object edt_ICMS: TsEdit
-      Left = 733
+      Left = 819
       Top = 74
       Width = 56
       Height = 21
@@ -577,7 +590,7 @@ object FrmCadCompra: TFrmCadCompra
       BoundLabel.UseSkinColor = True
     end
     object edt_PrecoCusto: TsEdit
-      Left = 337
+      Left = 423
       Top = 74
       Width = 56
       Height = 21
@@ -604,7 +617,7 @@ object FrmCadCompra: TFrmCadCompra
       BoundLabel.UseSkinColor = True
     end
     object edt_IPI: TsEdit
-      Left = 799
+      Left = 885
       Top = 74
       Width = 56
       Height = 21
@@ -630,7 +643,7 @@ object FrmCadCompra: TFrmCadCompra
       BoundLabel.UseSkinColor = True
     end
     object edt_Quantidade: TsEdit
-      Left = 271
+      Left = 357
       Top = 74
       Width = 56
       Height = 21
@@ -755,7 +768,7 @@ object FrmCadCompra: TFrmCadCompra
       SkinData.SkinSection = 'BUTTON'
     end
     object edt_Unidade: TsEdit
-      Left = 206
+      Left = 292
       Top = 74
       Width = 55
       Height = 21
@@ -781,7 +794,7 @@ object FrmCadCompra: TFrmCadCompra
       BoundLabel.UseSkinColor = True
     end
     object edt_CPOF: TsEdit
-      Left = 140
+      Left = 182
       Top = 74
       Width = 56
       Height = 21
@@ -806,7 +819,7 @@ object FrmCadCompra: TFrmCadCompra
       BoundLabel.UseSkinColor = True
     end
     object edt_Desconto: TsEdit
-      Left = 403
+      Left = 489
       Top = 74
       Width = 56
       Height = 21
@@ -833,7 +846,7 @@ object FrmCadCompra: TFrmCadCompra
       BoundLabel.UseSkinColor = True
     end
     object edt_Total: TsEdit
-      Left = 469
+      Left = 555
       Top = 74
       Width = 56
       Height = 21
@@ -861,7 +874,7 @@ object FrmCadCompra: TFrmCadCompra
       BoundLabel.UseSkinColor = True
     end
     object edt_BCICMS: TsEdit
-      Left = 535
+      Left = 621
       Top = 74
       Width = 56
       Height = 21
@@ -887,7 +900,7 @@ object FrmCadCompra: TFrmCadCompra
       BoundLabel.UseSkinColor = True
     end
     object edt_ValorICMS: TsEdit
-      Left = 601
+      Left = 687
       Top = 74
       Width = 56
       Height = 21
@@ -913,7 +926,7 @@ object FrmCadCompra: TFrmCadCompra
       BoundLabel.UseSkinColor = True
     end
     object edt_ValorIPI: TsEdit
-      Left = 667
+      Left = 753
       Top = 74
       Width = 56
       Height = 21
@@ -977,6 +990,81 @@ object FrmCadCompra: TFrmCadCompra
       MaxLength = 3
       ParentFont = False
       TabOrder = 4
+      SkinData.SkinSection = 'EDIT'
+      BoundLabel.Indent = 0
+      BoundLabel.Font.Charset = DEFAULT_CHARSET
+      BoundLabel.Font.Color = clWindowText
+      BoundLabel.Font.Height = -11
+      BoundLabel.Font.Name = 'Tahoma'
+      BoundLabel.Font.Style = []
+      BoundLabel.Layout = sclLeft
+      BoundLabel.MaxWidth = 0
+      BoundLabel.UseSkinColor = True
+    end
+    object btn_BuscarCFOP: TsBitBtn
+      Left = 244
+      Top = 72
+      Width = 30
+      Height = 25
+      DoubleBuffered = True
+      Glyph.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        2000000000000004000000000000000000000000000000000000643F3F00653F
+        3F00674242006B474700714D4D00775555007E5C5C008C686600244574000435
+        7700093876000938760008357304043B8088404A65B68B605C52643F3F00653F
+        3F00674242006B474700714D4D00775555007E5C5C008C686600244574000435
+        77000938760009347104023E85981388E0FF54AEE4FF738CA8C1643F3F00653F
+        3F00674242006B474700714D4D00775555007E5C5C008C686600244574000435
+        770009346F05023E85981087E1FF82E6FEFF6EDBFDFF0F83DD87643F3F00653F
+        3F00674242006B474700714D4D00775555007E5C5C008C686600214475000432
+        7309023E86991086E1FF81E4FEFF75DCF8FF1086DE990879DA05643F3F00653F
+        3F00674242006A4646006F4B4B00765353007C5A5A008C686500384B6D000039
+        81801388E1FF82E6FEFF75DCF8FF0F85DE9A0978D7020C7BDA00643F3F00653F
+        3F00664141146A46476B734F50A6795858B7815F6091866566437F5D5B22464D
+        67B64FA2D8FF6EDBFBFF1086DE9A0978D7030C7CDA000C7BDA00643F3E00643E
+        3F3D6A4849D7927368F9BFAB9FD9D1C1BDD1BEABA3E2A08682F58F7273EBB08A
+        83F55A7391B5097EDD83097ADA030C7CDA000C7CDA000C7BDA00633E3F256A47
+        47E9B78263DBF9E2A999FEFEE493FEFEFC94FEFEE893F3DDAEABB8988AF1AE92
+        92F68E8895271178D100057BE000087BDD00087BDD00087ADD006442469A9F61
+        47EEFEA85F95FED19196FEEEBA99FEF9CC99FEF1BE99FED89793F5AA6EAAB697
+        8EF6AB9190478C8D9A00768BA500798CA300798CA300798BA300714D4CE1D567
+        2CBAFE8B3B92FEA86395FEC18195FECE8F95FEC48596FEAB6794FE8F4196D696
+        73EBAF9FA295B1959100B6969100B5969100B5969100B5969100865B53EBE851
+        09A2F971229BFC9953B0FEAF6BB7FEAB68A9FDA25DA3FDA560B9FEAA63DEE9A7
+        78FCB7A6A8B3B19B9B00B29D9D00B29D9D00B29D9D00B29D9D00845C57E8E875
+        31D0FEAD66E4FECC8EF7FEDA9FF8FEDDA3F3FEDBA0EFFED89DF8FECB88F9E6B1
+        8CFFBDABAEA3B6A2A100B7A3A300B7A3A300B7A3A300B7A3A3007E5D5FBBCC95
+        6FFFFED38FF7FEE0A5F5FEEBB7F5FEF0C1F6FEF0C1F7FEECB5F5FEDB9EF6D7BA
+        A9FFBDADAF67BBA8A800BCA8A800BCA8A800BCA8A800BCA8A8007B5D5F509B79
+        73FFEDC292FDFEF2BAF4FEF5CCF5FEF7D7F5FEF8D7F5FEF5C9F5E8D2B5FFC5B2
+        B4D7BCA9A913BDAAAA00BDAAAA00BDAAAA00BDAAAA00BDAAAA007E5E5E008B6D
+        6F79A88D86FFDDC9ABFFF9EDD0FDFBF6E3FCF7F0E0FFE0CFBFFFC5B4B4E2BDAA
+        AA3BBDAAAA00BDAAAA00BDAAAA00BDAAAA00BDAAAA00BDAAAA007E5E5E008A6A
+        6A0094777951A38C8DB6B8A3A1ECC9B4B0EDC1AEAFE0BBA6A895BBA8A827BEAA
+        AA00BDAAAA00BDAAAA00BDAAAA00BDAAAA00BDAAAA00BDAAAA00}
+      ParentDoubleBuffered = False
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 19
+      OnClick = btn_BuscarCFOPClick
+      SkinData.SkinSection = 'BUTTON'
+    end
+    object edt_IdCFOP: TsEdit
+      Left = 145
+      Top = 74
+      Width = 31
+      Height = 21
+      Color = clWhite
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 4276545
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      MaxLength = 8
+      ParentFont = False
+      TabOrder = 20
+      OnExit = edt_IdCFOPExit
+      OnKeyPress = edt_IdCFOPKeyPress
       SkinData.SkinSection = 'EDIT'
       BoundLabel.Indent = 0
       BoundLabel.Font.Charset = DEFAULT_CHARSET

@@ -3,7 +3,7 @@ unit UDaoCompra;
 interface
       uses uDao, DB, SysUtils, Messages, UCompra, UDaoFornecedor, UDaoProduto,
       UDaoCondicaoPagamento, UDaoFuncionario, UDaoTransportadora, UDaoContasPagar,
-      UContasPagar, UDaoUsuario, Dialogs;
+      UContasPagar, UDaoUsuario, UDaoCfop, Dialogs;
 
       type DaoCompra = class(Dao)
       private
@@ -17,6 +17,7 @@ interface
          umaDaoTransportadora    : DaoTransportadora;
          umaDaoContasPagar       : DaoContasPagar;
          umaContaPagar           : ContasPagar;
+         umaDaoCfop              : DaoCfop;
       public
           Constructor CrieObjeto;
           Destructor Destrua_se;
@@ -208,8 +209,12 @@ begin
           UmaCompra.getUmProdutoCompra.setId(QProdutoCompraidproduto.AsInteger);
           umaDaoProduto.Carrega(UmaCompra.getUmProdutoCompra);      //Buscar Descricao do Produto
           UmaCompra.getUmProdutoCompra.setNCMSH(QProdutoComprancm_sh.AsString);
-          UmaCompra.getUmProdutoCompra.setCST(QProdutoCompracst.AsString);
-          UmaCompra.getUmProdutoCompra.setCPOF(QProdutoCompracpof.AsInteger);
+          UmaCompra.getUmProdutoCompra.setCSTCompra(QProdutoCompracst.AsString);
+
+          //Busca CFOP referente a Compra
+          umaCompra.getumProdutoCompra.getUmCfop.setId(QProdutoCompraidcfop.AsInteger);
+          umaDaoCfop.Carrega(umaCompra.getumProdutoCompra.getUmCfop);
+
           UmaCompra.getUmProdutoCompra.setUnidadeCompra(QProdutoCompraunidade.AsString);
           UmaCompra.getUmProdutoCompra.setQuantidadeCompra(StrToFloat(FormatFloat('#0.000', QProdutoCompraquantidade.AsFloat)));
           UmaCompra.getUmProdutoCompra.setValorUnitarioCompra(StrToFloat(FormatFloat('#0.0000', QProdutoCompraprecocusto.AsFloat)));
@@ -238,6 +243,7 @@ begin
   umaDaoTransportadora    := DaoTransportadora.CrieObjeto;
   umaDaoContasPagar       := DaoContasPagar.CrieObjeto;
   umaContaPagar           := ContasPagar.CrieObjeto;
+  umaDaoCfop              := DaoCfop.CrieObjeto;
 end;
 
 destructor DaoCompra.Destrua_se;
@@ -413,8 +419,8 @@ begin
                 QProdutoCompra.Params.ParamByName('idfornecedor').Value := umaCompra.getUmFornecedor.getId;
                 QProdutoCompra.Params.ParamByName('idproduto').Value := umaCompra.getProdutoCompra(i-1).getId;
                 QProdutoCompra.Params.ParamByName('ncm_sh').Value := umaCompra.getProdutoCompra(i-1).getNCMSH;
-                QProdutoCompra.Params.ParamByName('cst').Value := umaCompra.getProdutoCompra(i-1).getCST;
-                QProdutoCompra.Params.ParamByName('cpof').Value := umaCompra.getProdutoCompra(i-1).getCPOF;
+                QProdutoCompra.Params.ParamByName('cst').Value := umaCompra.getProdutoCompra(i-1).getCSTCompra;
+                QProdutoCompra.Params.ParamByName('idcfop').Value := umaCompra.getProdutoCompra(i-1).getUmCfop.getId;
                 QProdutoCompra.Params.ParamByName('unidade').Value := umaCompra.getProdutoCompra(i-1).getUnidadeCompra;
                 QProdutoCompra.Params.ParamByName('quantidade').Value := umaCompra.getProdutoCompra(i-1).getQuantidadeCompra;
 

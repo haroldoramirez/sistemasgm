@@ -10,7 +10,8 @@ uses
   UCtrlFuncionario, UProduto, UFrmConProduto, UCtrlProduto, UCondicaoPagamento,
   UFrmConCondicaoPagamento, UCtrlCondicaoPagamento, sMemo, ExtCtrls, UComuns,
   UProdutoCompra, UUsuario, UCtrlUsuario, UFrmConUsuario, UTransportadora,
-  UCtrlTransportadora, UFrmConTransportadora, UValidacao;
+  UCtrlTransportadora, UFrmConTransportadora, UCfop, UCtrlCfop, UFrmConCfop,
+  UValidacao;
 
 type
   TFrmCadCompra = class(TForm)
@@ -114,6 +115,9 @@ type
     edt_CST: TsEdit;
     lbl_NCM: TsLabel;
     lbl_CST: TsLabel;
+    btn_BuscarCFOP: TsBitBtn;
+    edt_IdCFOP: TsEdit;
+    sLabel3: TsLabel;
     procedure btn_SairClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure edt_NumeroNotaKeyPress(Sender: TObject; var Key: Char);
@@ -172,6 +176,9 @@ type
     procedure edt_TotalExit(Sender: TObject);
     procedure edt_TotalNotaChange(Sender: TObject);
     procedure edt_ICMSExit(Sender: TObject);
+    procedure btn_BuscarCFOPClick(Sender: TObject);
+    procedure edt_IdCFOPExit(Sender: TObject);
+    procedure edt_IdCFOPKeyPress(Sender: TObject; var Key: Char);
   private
       umaCompra                 : Compra;
       umaCtrlCompra             : CtrlCompra;
@@ -192,6 +199,9 @@ type
       umaTransportadora         : Fornecedor;
       umFrmConTransportadora    : TFrmConTransportadora;
       umaCtrlTransportadora     : CtrlTransportadora;
+      umCfop                    : Cfop;
+      umaCtrlCfop               : CtrlCfop;
+      umFrmConCfop              : TFrmConCfop;
   public
       desconto, total, baseicms, valoricms, valoripi, valordesconto, valorfrete, totalnota, valordescontoAux, valorfreteAux  : Real;
       totalItemAnt, descItemAnt, descItemAux : Real;
@@ -333,7 +343,9 @@ begin
    Self.btn_BuscarTransportadora.Enabled := True;
    Self.edt_IdProduto.Enabled := True;
    Self.btn_BuscarProduto.Enabled := True;
+   Self.edt_IdCFOP.Enabled := True;
    Self.edt_CPOF.Enabled := True;
+   Self.btn_BuscarCFOP.Enabled := True;
    Self.edt_Quantidade.Enabled := True;
    Self.edt_PrecoCusto.Enabled := True;
    Self.edt_Desconto.Enabled := True;
@@ -642,8 +654,10 @@ begin
         self.edt_IdProduto.Text  := inttostr(umaCompra.getUmProdutoCompra.getId);
         self.edt_Produto.Text    := umaCompra.getUmProdutoCompra.getDescricao;
         self.edt_Unidade.Text    := umaCompra.getumProdutoCompra.getUnidade;
-        self.edt_CPOF.Text       := IntToStr(umaCompra.getumProdutoCompra.getCPOF);
+        self.edt_IdCFOP.Text     := IntToStr(umaCompra.getumProdutoCompra.getUmCfop.getId);
+        self.edt_CPOF.Text       := IntToStr(umaCompra.getumProdutoCompra.getUmCfop.getNumero);
         self.edt_CST.Text        := umaCompra.getumProdutoCompra.getCST;
+        self.edt_NCM.Text        := IntToStr(umaCompra.getumProdutoCompra.getUmNcm.getNumero);
       end;
       umProduto := Produto.CrieObjeto;
       umaCtrlProduto.Buscar(umProduto);
@@ -735,10 +749,10 @@ begin
       if (edt_ValorIPI.Text = '') then
         edt_ValorIPI.Text := FloatToStr(0);
       if Self.edt_CPOF.Text <> '' then
-        umaCompra.getUmProdutoCompra.setCPOF(StrToInt(Self.edt_CPOF.Text));
+        umaCompra.getUmProdutoCompra.getUmCfop.setId(StrToInt(Self.edt_IdCFOP.Text));
 
       umaCompra.getUmProdutoCompra.setNCMSH(Self.edt_NCM.Text);
-      umaCompra.getUmProdutoCompra.setCST(Self.edt_CST.Text);
+      umaCompra.getUmProdutoCompra.setCSTCompra(Self.edt_CST.Text);
       umaCompra.getUmProdutoCompra.setUnidadeCompra(Self.edt_Unidade.Text);
       umaCompra.getUmProdutoCompra.setQuantidadeCompra(StrToFloat(Self.edt_Quantidade.Text));
       umaCompra.getUmProdutoCompra.setValorUnitarioCompra(StrToFloat(Self.edt_PrecoCusto.Text));
@@ -770,6 +784,7 @@ begin
       Self.edt_Produto.Clear;
       Self.edt_NCM.Clear;
       Self.edt_CST.Clear;
+      Self.edt_IdCFOP.Clear;
       Self.edt_CPOF.Clear;
       Self.edt_Unidade.Clear;
       Self.edt_Quantidade.Clear;
@@ -827,8 +842,8 @@ begin
         self.gridProduto.Cells[0, i]  := IntToStr(umaCompra.getProdutoCompra(i-1).getId);
         self.gridProduto.Cells[1, i]  := umaCompra.getProdutoCompra(i-1).getDescricao;
         self.gridProduto.Cells[2, i]  := umaCompra.getProdutoCompra(i-1).getNCMSH;
-        self.gridProduto.Cells[3, i]  := umaCompra.getProdutoCompra(i-1).getCST;
-        self.gridProduto.Cells[4, i]  := IntToStr(umaCompra.getProdutoCompra(i-1).getCPOF);
+        self.gridProduto.Cells[3, i]  := umaCompra.getProdutoCompra(i-1).getCSTCompra;
+        self.gridProduto.Cells[4, i]  := IntToStr(umaCompra.getProdutoCompra(i-1).getUmCfop.getNumero);
         self.gridProduto.Cells[5, i]  := umaCompra.getProdutoCompra(i-1).getUnidadeCompra;
         self.gridProduto.Cells[6, i]  := FormatFloat('#0.000', umaCompra.getProdutoCompra(i-1).getQuantidadeCompra);
         self.gridProduto.Cells[7, i]  := FormatFloat('#0.00', umaCompra.getProdutoCompra(i-1).getValorUnitarioCompra);
@@ -879,6 +894,41 @@ begin
   end;
 end;
 
+procedure TFrmCadCompra.edt_IdCFOPExit(Sender: TObject);
+var  umCfop : Cfop;
+begin
+  inherited;
+  if Self.edt_IdCfop.Text <> '' then
+    begin
+      if (umaCompra.getUmProdutoCompra = nil) or (umaCompra.getUmProdutoCompra.getId <> 0)then
+        umaCompra.CrieObejtoProduto;
+
+      Self.edt_CPOF.Clear;
+      umaCtrlCfop := CtrlCfop.CrieObjeto;
+      umaCompra.getumProdutoCompra.getUmCfop.setId(StrToInt(Self.edt_IdCfop.Text));
+      umaCompra.getumProdutoCompra.getUmCfop.setNumero(0);
+      if not umaCtrlCfop.Buscar(umaCompra.getumProdutoCompra.getUmCfop) then
+        begin
+            MessageDlg('Nenhum registro encontrado!',  mtInformation, [mbOK], 0);
+            self.edt_IdCfop.Clear;
+            self.edt_CPOF.Clear;
+        end
+      else
+        begin
+            umaCtrlCfop.Carrega(umaCompra.getumProdutoCompra.getUmCfop);
+            Self.edt_IdCfop.Text := IntToStr(umaCompra.getumProdutoCompra.getUmCfop.getId);
+            Self.edt_CPOF.Text := IntToStr(umaCompra.getumProdutoCompra.getUmCfop.getNumero);
+        end;
+      umCfop := Cfop.CrieObjeto;
+      umaCtrlCfop.Buscar(umCfop);
+    end
+  else
+    begin
+      self.edt_IdCfop.Clear;
+      self.edt_CPOF.Clear;
+    end;
+end;
+
 procedure TFrmCadCompra.edt_IdCondicaoPagamentoExit(Sender: TObject);
 begin
   if Self.edt_IdCondicaoPagamento.Text <> '' then
@@ -910,6 +960,20 @@ begin
    self.edt_IdCondicaoPagamento.Clear;
    self.edt_CondicaoPagamento.Clear;
   end;
+end;
+
+procedure TFrmCadCompra.btn_BuscarCFOPClick(Sender: TObject);
+begin
+  inherited;
+  if (umaCompra.getUmProdutoCompra = nil) or (umaCompra.getUmProdutoCompra.getId <> 0)then
+      umaCompra.CrieObejtoProduto;
+
+  umFrmConCfop := TFrmConCfop.Create(nil);
+  umFrmConCfop.ConhecaObj(umaCompra.getumProdutoCompra.getUmCfop);
+  umFrmConCfop.btn_Sair.Caption := 'Selecionar';
+  umFrmConCfop.ShowModal;
+  self.edt_IdCfop.Text := inttostr(umaCompra.getumProdutoCompra.getUmCfop.getId);
+  self.edt_CPOF.Text   := inttostr(umaCompra.getumProdutoCompra.getUmCfop.getNumero);
 end;
 
 procedure TFrmCadCompra.btn_BuscarCondicaoPagamentoClick(Sender: TObject);
@@ -1505,6 +1569,11 @@ end;
 procedure TFrmCadCompra.edt_CPOFKeyPress(Sender: TObject; var Key: Char);
 begin
   CampoNumero(Sender,Key);
+end;
+
+procedure TFrmCadCompra.edt_IdCFOPKeyPress(Sender: TObject; var Key: Char);
+begin
+   CampoNumero(Sender,Key);
 end;
 
 procedure TFrmCadCompra.edt_QuantidadeKeyPress(Sender: TObject; var Key: Char);
