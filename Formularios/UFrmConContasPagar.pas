@@ -65,7 +65,6 @@ begin
   umFrmCadContasPagar := TFrmCadContasPagar.Create(nil);
   Self.gridConsulta.DataSource := umaCtrlContasPagar.GetDS;
   self.btn_Relatorio.Hide;
-
 end;
 
 procedure TFrmConContasPagar.CarregaObj(status: String; botao:String);

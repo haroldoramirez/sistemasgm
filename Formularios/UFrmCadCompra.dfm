@@ -360,9 +360,9 @@ object FrmCadCompra: TFrmCadCompra
     object lbl_Total: TsLabel
       Left = 555
       Top = 58
-      Width = 24
+      Width = 37
       Height = 13
-      Caption = 'Total'
+      Caption = 'V. Total'
       ParentFont = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4276545

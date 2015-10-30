@@ -337,10 +337,11 @@ begin
   umaCtrlFornecedor := vCtrlFornecedor;
   Self.HabilitaCampos;
   Self.LimpaCampos;
+  Self.grpBox_Produtos.Hide;
   if umFornecedor.getId = 0 then
     umFornecedor.LimparListaProduto;
-  if TipoFavorecido = 'Cadastro Transportadora' then
-    Self.grpBox_Produtos.Hide;
+//  if TipoFavorecido = 'Cadastro Transportadora' then
+//    Self.grpBox_Produtos.Hide;
 end;
 
 procedure TFrmCadFornecedor.HabilitaCampos;

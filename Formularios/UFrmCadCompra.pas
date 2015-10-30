@@ -208,6 +208,7 @@ type
       procedure ConhecaObj(vCompra: Compra; vCtrlCompra: CtrlCompra);
       procedure HabilitaCampos;
       procedure DesbilitaCampos;
+      procedure DesabilitaCamposProduto;
       procedure LimpaCampos;
       procedure CarregaObj;
       function VerificaNota : Boolean;
@@ -246,6 +247,7 @@ begin
    umaCtrlCompra := vCtrlCompra;
    Self.DesbilitaCampos;
    self.LimpaCampos;
+   Self.btn_BuscarFuncionario.Hide;
    if umaCompra.getNumNota = 0 then
    begin
       umaCompra.LimparListaProduto;
@@ -303,6 +305,20 @@ begin
   DesbilitaCampos;
 end;
 
+procedure TFrmCadCompra.DesabilitaCamposProduto;
+begin
+   Self.edt_IdCFOP.Enabled := True;
+   Self.btn_BuscarCFOP.Enabled := True;
+   Self.edt_Quantidade.Enabled := True;
+   Self.edt_PrecoCusto.Enabled := True;
+   Self.edt_Desconto.Enabled := True;
+   Self.edt_BCICMS.Enabled := True;
+   Self.edt_ValorICMS.Enabled := True;
+   Self.edt_ValorIPI.Enabled := True;
+   Self.edt_ICMS.Enabled := True;
+   Self.edt_IPI.Enabled := True;
+end;
+
 procedure TFrmCadCompra.DesbilitaCampos;
 var i : Integer;
 begin
@@ -334,8 +350,6 @@ end;
 
 procedure TFrmCadCompra.HabilitaCampos;
 begin
-   Self.edt_IdFuncionario.Enabled := True;
-   Self.btn_BuscarFuncionario.Enabled := True;
    Self.edt_BaseICMS.Enabled := True;
    Self.edt_TotalICMS.Enabled := True;
    Self.edt_ValorFrete.Enabled := True;
@@ -345,17 +359,6 @@ begin
    Self.btn_BuscarTransportadora.Enabled := True;
    Self.edt_IdProduto.Enabled := True;
    Self.btn_BuscarProduto.Enabled := True;
-   Self.edt_IdCFOP.Enabled := True;
-   Self.edt_CPOF.Enabled := True;
-   Self.btn_BuscarCFOP.Enabled := True;
-   Self.edt_Quantidade.Enabled := True;
-   Self.edt_PrecoCusto.Enabled := True;
-   Self.edt_Desconto.Enabled := True;
-   Self.edt_BCICMS.Enabled := True;
-   Self.edt_ValorICMS.Enabled := True;
-   Self.edt_ValorIPI.Enabled := True;
-   Self.edt_ICMS.Enabled := True;
-   Self.edt_IPI.Enabled := True;
    Self.btn_Add_Produto.Enabled := True;
    Self.btn_LimparProdutos.Enabled := True;
    Self.edt_TotalProduto.Enabled := True;
@@ -661,7 +664,7 @@ begin
         self.edt_CST.Text        := umaCompra.getumProdutoCompra.getCST;
         self.edt_NCM.Text        := IntToStr(umaCompra.getumProdutoCompra.getUmNcm.getNumero);
 
-      //HabilitaCamposProduto
+      self.DesabilitaCamposProduto;
       end;
       umProduto := Produto.CrieObjeto;
       umaCtrlProduto.Buscar(umProduto);
@@ -695,7 +698,7 @@ begin
       self.edt_Unidade.Text    := umaCompra.getumProdutoCompra.getUnidade;
       self.edt_CST.Text        := umaCompra.getumProdutoCompra.getCST;
       self.edt_NCM.Text        := IntToStr(umaCompra.getumProdutoCompra.getUmNcm.getNumero);
-      //HabilitaCamposProduto
+      self.DesabilitaCamposProduto;
     end;
 end;
 
@@ -705,6 +708,11 @@ begin
     begin
         ShowMessage('Favor selecionar um produto!');
         edt_IdProduto.SetFocus;
+    end
+    else if edt_CPOF.Text = '' then
+    begin
+        ShowMessage('Campo CFOP não pode estar em branco!');
+        edt_IdCFOP.SetFocus;
     end
     else if edt_Quantidade.Text = '' then
     begin
@@ -723,7 +731,7 @@ begin
     end
     else if (StrToFloat(edt_PrecoCusto.Text) <= 0)then
     begin
-        ShowMessage('Valor muito baixo!');
+        ShowMessage('Valor Unitário muito baixo!');
         edt_PrecoCusto.SetFocus;
     end
     else if (edt_Desconto.Text <> '') and (StrToFloat(edt_Desconto.Text) > 100) then

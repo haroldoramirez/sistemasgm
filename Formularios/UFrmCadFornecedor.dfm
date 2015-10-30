@@ -3,6 +3,7 @@ inherited FrmCadFornecedor: TFrmCadFornecedor
   ClientHeight = 586
   ClientWidth = 813
   OnActivate = FormActivate
+  ExplicitTop = -1
   ExplicitWidth = 819
   ExplicitHeight = 615
   PixelsPerInch = 96
@@ -562,7 +563,7 @@ inherited FrmCadFornecedor: TFrmCadFornecedor
       Font.Style = []
     end
     object lbl_Bairro: TsLabel
-      Left = 499
+      Left = 470
       Top = 19
       Width = 37
       Height = 13
@@ -614,7 +615,7 @@ inherited FrmCadFornecedor: TFrmCadFornecedor
       Font.Style = []
     end
     object lbl_Cidade: TsLabel
-      Left = 371
+      Left = 346
       Top = 60
       Width = 42
       Height = 13
@@ -627,8 +628,8 @@ inherited FrmCadFornecedor: TFrmCadFornecedor
       Font.Style = []
     end
     object lbl_UF: TsLabel
-      Left = 722
-      Top = 60
+      Left = 757
+      Top = 63
       Width = 13
       Height = 13
       Caption = 'UF'
@@ -720,7 +721,7 @@ inherited FrmCadFornecedor: TFrmCadFornecedor
     object edt_Numero: TsEdit
       Left = 404
       Top = 36
-      Width = 85
+      Width = 60
       Height = 21
       CharCase = ecUpperCase
       Color = clWhite
@@ -745,9 +746,9 @@ inherited FrmCadFornecedor: TFrmCadFornecedor
       BoundLabel.UseSkinColor = True
     end
     object edt_Bairro: TsEdit
-      Left = 499
+      Left = 470
       Top = 36
-      Width = 213
+      Width = 242
       Height = 21
       CharCase = ecUpperCase
       Color = clWhite
@@ -799,7 +800,7 @@ inherited FrmCadFornecedor: TFrmCadFornecedor
     object edt_IdCidade: TsEdit
       Left = 304
       Top = 77
-      Width = 60
+      Width = 36
       Height = 21
       CharCase = ecUpperCase
       Color = clWhite
@@ -826,9 +827,9 @@ inherited FrmCadFornecedor: TFrmCadFornecedor
       BoundLabel.UseSkinColor = True
     end
     object edt_Cidade: TsEdit
-      Left = 371
+      Left = 346
       Top = 77
-      Width = 305
+      Width = 368
       Height = 21
       CharCase = ecUpperCase
       Color = clWhite
@@ -853,9 +854,9 @@ inherited FrmCadFornecedor: TFrmCadFornecedor
       BoundLabel.UseSkinColor = True
     end
     object edt_UF: TsEdit
-      Left = 722
+      Left = 756
       Top = 77
-      Width = 65
+      Width = 31
       Height = 21
       CharCase = ecUpperCase
       Color = clWhite
@@ -934,7 +935,7 @@ inherited FrmCadFornecedor: TFrmCadFornecedor
       BoundLabel.UseSkinColor = True
     end
     object btn_BuscarCidade: TsBitBtn
-      Left = 682
+      Left = 720
       Top = 75
       Width = 30
       Height = 25
