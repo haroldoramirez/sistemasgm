@@ -135,7 +135,7 @@ begin
     edt_IdMarca.Enabled := False;
     edt_IdNcm.Enabled := False;
     edt_IdCategoria.Enabled := False;
-    edt_Unidade.Enabled := False;
+    comboBoxUnidade.Enabled := False;
     edt_Quantidade.Enabled := False;
     edt_Cst.Enabled := False;
     edt_ICMS.Enabled := False;

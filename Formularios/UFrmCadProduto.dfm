@@ -2,7 +2,6 @@ inherited FrmCadProduto: TFrmCadProduto
   Caption = 'Cadastra Produto'
   ClientHeight = 490
   ClientWidth = 464
-  ExplicitTop = -22
   ExplicitWidth = 470
   ExplicitHeight = 519
   PixelsPerInch = 96
@@ -600,31 +599,6 @@ inherited FrmCadProduto: TFrmCadProduto
       GlyphMode.Grayed = False
     end
   end
-  object edt_Unidade: TsEdit
-    Left = 143
-    Top = 26
-    Width = 52
-    Height = 21
-    Color = clWhite
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = 4276545
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    MaxLength = 4
-    ParentFont = False
-    TabOrder = 2
-    SkinData.SkinSection = 'EDIT'
-    BoundLabel.Indent = 0
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'Tahoma'
-    BoundLabel.Font.Style = []
-    BoundLabel.Layout = sclLeft
-    BoundLabel.MaxWidth = 0
-    BoundLabel.UseSkinColor = True
-  end
   object sGroupBox8: TsGroupBox
     Left = 229
     Top = 217
@@ -958,5 +932,17 @@ inherited FrmCadProduto: TFrmCadProduto
     BoundLabel.Layout = sclLeft
     BoundLabel.MaxWidth = 0
     BoundLabel.UseSkinColor = True
+  end
+  object comboBoxUnidade: TComboBox
+    Left = 144
+    Top = 26
+    Width = 64
+    Height = 21
+    TabOrder = 2
+    Items.Strings = (
+      'K'
+      'G'
+      'UNI'
+      'Q')
   end
 end

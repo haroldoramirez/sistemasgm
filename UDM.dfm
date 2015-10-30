@@ -1155,6 +1155,7 @@
   object QProduto: TZQuery
     Connection = DB
     UpdateObject = UpdateProduto
+    Active = True
     SQL.Strings = (
       'select * from produto;')
     Params = <>
@@ -3833,7 +3834,7 @@
     InsertSQL.Strings = (
       'INSERT INTO produto_compra'
       
-        '  (numnota, serienota, idfornecedor, idproduto, idcompra, idcpof' +
+        '  (numnota, serienota, idfornecedor, idproduto, idcompra, idcfop' +
         ', unidade, '
       
         '   quantidade, precocusto, desconto, valortotal, baseicms, valor' +
@@ -3843,7 +3844,7 @@
       'VALUES'
       
         '  (:numnota, :serienota, :idfornecedor, :idproduto, :idcompra, :' +
-        'idcpof, '
+        'idcfop, '
       ':unidade, '
       
         '   :quantidade, :precocusto, :desconto, :valortotal, :baseicms, ' +
@@ -3856,7 +3857,7 @@
       '  idfornecedor = :idfornecedor,'
       '  idproduto = :idproduto,'
       '  idcompra = :idcompra,'
-      '  idcpof = :idcpof,'
+      '  idcfop = :idcfop,'
       '  unidade = :unidade,'
       '  quantidade = :quantidade,'
       '  precocusto = :precocusto,'
@@ -3906,7 +3907,7 @@
       end
       item
         DataType = ftUnknown
-        Name = 'idcpof'
+        Name = 'idcfop'
         ParamType = ptUnknown
       end
       item

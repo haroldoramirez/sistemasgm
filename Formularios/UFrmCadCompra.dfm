@@ -560,7 +560,7 @@ object FrmCadCompra: TFrmCadCompra
       RowCount = 1
       FixedRows = 0
       Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
-      TabOrder = 18
+      TabOrder = 20
     end
     object edt_ICMS: TsEdit
       Left = 819
@@ -575,7 +575,7 @@ object FrmCadCompra: TFrmCadCompra
       Font.Style = []
       MaxLength = 10
       ParentFont = False
-      TabOrder = 14
+      TabOrder = 16
       OnExit = edt_ICMSExit
       OnKeyPress = edt_ICMSKeyPress
       SkinData.SkinSection = 'EDIT'
@@ -602,7 +602,7 @@ object FrmCadCompra: TFrmCadCompra
       Font.Style = []
       MaxLength = 10
       ParentFont = False
-      TabOrder = 8
+      TabOrder = 10
       OnExit = edt_PrecoCustoExit
       OnKeyPress = edt_PrecoCustoKeyPress
       SkinData.SkinSection = 'EDIT'
@@ -629,7 +629,7 @@ object FrmCadCompra: TFrmCadCompra
       Font.Style = []
       MaxLength = 10
       ParentFont = False
-      TabOrder = 15
+      TabOrder = 17
       OnKeyPress = edt_IPIKeyPress
       SkinData.SkinSection = 'EDIT'
       BoundLabel.Indent = 0
@@ -655,7 +655,7 @@ object FrmCadCompra: TFrmCadCompra
       Font.Style = []
       MaxLength = 10
       ParentFont = False
-      TabOrder = 7
+      TabOrder = 9
       OnExit = edt_QuantidadeExit
       OnKeyPress = edt_QuantidadeKeyPress
       SkinData.SkinSection = 'EDIT'
@@ -714,7 +714,7 @@ object FrmCadCompra: TFrmCadCompra
       ParentDoubleBuffered = False
       ParentShowHint = False
       ShowHint = True
-      TabOrder = 16
+      TabOrder = 18
       OnClick = btn_Add_ProdutoClick
       SkinData.SkinSection = 'BUTTON'
     end
@@ -763,7 +763,7 @@ object FrmCadCompra: TFrmCadCompra
       ParentDoubleBuffered = False
       ParentShowHint = False
       ShowHint = True
-      TabOrder = 17
+      TabOrder = 19
       OnClick = btn_LimparProdutosClick
       SkinData.SkinSection = 'BUTTON'
     end
@@ -781,7 +781,7 @@ object FrmCadCompra: TFrmCadCompra
       Font.Style = []
       MaxLength = 3
       ParentFont = False
-      TabOrder = 6
+      TabOrder = 8
       SkinData.SkinSection = 'EDIT'
       BoundLabel.Indent = 0
       BoundLabel.Font.Charset = DEFAULT_CHARSET
@@ -806,7 +806,7 @@ object FrmCadCompra: TFrmCadCompra
       Font.Style = []
       MaxLength = 8
       ParentFont = False
-      TabOrder = 5
+      TabOrder = 6
       SkinData.SkinSection = 'EDIT'
       BoundLabel.Indent = 0
       BoundLabel.Font.Charset = DEFAULT_CHARSET
@@ -831,7 +831,7 @@ object FrmCadCompra: TFrmCadCompra
       Font.Style = []
       MaxLength = 10
       ParentFont = False
-      TabOrder = 9
+      TabOrder = 11
       OnExit = edt_DescontoExit
       OnKeyPress = edt_DescontoKeyPress
       SkinData.SkinSection = 'EDIT'
@@ -859,7 +859,7 @@ object FrmCadCompra: TFrmCadCompra
       Font.Style = []
       MaxLength = 10
       ParentFont = False
-      TabOrder = 10
+      TabOrder = 12
       OnExit = edt_TotalExit
       OnKeyPress = edt_TotalKeyPress
       SkinData.SkinSection = 'EDIT'
@@ -886,7 +886,7 @@ object FrmCadCompra: TFrmCadCompra
       Font.Style = []
       MaxLength = 10
       ParentFont = False
-      TabOrder = 11
+      TabOrder = 13
       OnKeyPress = edt_BCICMSKeyPress
       SkinData.SkinSection = 'EDIT'
       BoundLabel.Indent = 0
@@ -912,7 +912,7 @@ object FrmCadCompra: TFrmCadCompra
       Font.Style = []
       MaxLength = 10
       ParentFont = False
-      TabOrder = 12
+      TabOrder = 14
       OnKeyPress = edt_ValorICMSKeyPress
       SkinData.SkinSection = 'EDIT'
       BoundLabel.Indent = 0
@@ -938,7 +938,7 @@ object FrmCadCompra: TFrmCadCompra
       Font.Style = []
       MaxLength = 10
       ParentFont = False
-      TabOrder = 13
+      TabOrder = 15
       OnKeyPress = edt_ValorIPIKeyPress
       SkinData.SkinSection = 'EDIT'
       BoundLabel.Indent = 0
@@ -1045,7 +1045,7 @@ object FrmCadCompra: TFrmCadCompra
       ParentDoubleBuffered = False
       ParentShowHint = False
       ShowHint = False
-      TabOrder = 19
+      TabOrder = 7
       OnClick = btn_BuscarCFOPClick
       SkinData.SkinSection = 'BUTTON'
     end
@@ -1062,7 +1062,7 @@ object FrmCadCompra: TFrmCadCompra
       Font.Style = []
       MaxLength = 8
       ParentFont = False
-      TabOrder = 20
+      TabOrder = 5
       OnExit = edt_IdCFOPExit
       OnKeyPress = edt_IdCFOPKeyPress
       SkinData.SkinSection = 'EDIT'
@@ -1483,8 +1483,8 @@ object FrmCadCompra: TFrmCadCompra
       Font.Style = []
     end
     object lbl3: TsLabel
-      Left = 291
-      Top = 9
+      Left = 296
+      Top = 3
       Width = 114
       Height = 13
       Caption = 'Campos Obrigat'#243'rios(*)'

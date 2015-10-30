@@ -219,10 +219,12 @@ type
       procedure CarregaGridProduto;
       function VerificaProduto : Boolean;
       procedure MediaPonderada(qtdCompra : Real; precoCompra : Real);
+
       //Parcelas
       procedure LimpaGridParcelas(verifica : Boolean);
       procedure CarregaParcelas;
       procedure HabilitaParcelas;
+
       //Condicao Pagamento
       procedure addCondicaoPgto(vCondicaoPgto : CondicaoPagamento);
   end;
@@ -658,6 +660,8 @@ begin
         self.edt_CPOF.Text       := IntToStr(umaCompra.getumProdutoCompra.getUmCfop.getNumero);
         self.edt_CST.Text        := umaCompra.getumProdutoCompra.getCST;
         self.edt_NCM.Text        := IntToStr(umaCompra.getumProdutoCompra.getUmNcm.getNumero);
+
+      //HabilitaCamposProduto
       end;
       umProduto := Produto.CrieObjeto;
       umaCtrlProduto.Buscar(umProduto);
@@ -691,6 +695,7 @@ begin
       self.edt_Unidade.Text    := umaCompra.getumProdutoCompra.getUnidade;
       self.edt_CST.Text        := umaCompra.getumProdutoCompra.getCST;
       self.edt_NCM.Text        := IntToStr(umaCompra.getumProdutoCompra.getUmNcm.getNumero);
+      //HabilitaCamposProduto
     end;
 end;
 
@@ -903,8 +908,8 @@ begin
   inherited;
   if Self.edt_IdCfop.Text <> '' then
     begin
-      if (umaCompra.getUmProdutoCompra = nil) or (umaCompra.getUmProdutoCompra.getId <> 0)then
-        umaCompra.CrieObejtoProduto;
+//      if (umaCompra.getUmProdutoCompra = nil) or (umaCompra.getUmProdutoCompra.getId <> 0)then
+//        umaCompra.CrieObejtoProduto;
 
       Self.edt_CPOF.Clear;
       umaCtrlCfop := CtrlCfop.CrieObjeto;
@@ -968,9 +973,6 @@ end;
 procedure TFrmCadCompra.btn_BuscarCFOPClick(Sender: TObject);
 begin
   inherited;
-  if (umaCompra.getUmProdutoCompra = nil) or (umaCompra.getUmProdutoCompra.getId <> 0)then
-      umaCompra.CrieObejtoProduto;
-
   umFrmConCfop := TFrmConCfop.Create(nil);
   umFrmConCfop.ConhecaObj(umaCompra.getumProdutoCompra.getUmCfop);
   umFrmConCfop.btn_Sair.Caption := 'Selecionar';
@@ -1114,7 +1116,7 @@ begin
   if (self.edt_NumeroNota.Text = '') and (self.btn_Salvar.Caption = 'Salvar') then
   begin
     ShowMessage('Favor inserir o número da Nota! ');
-    edt_SerieNota.SetFocus;
+    edt_NumeroNota.SetFocus;
   end
   else if (self.edt_SerieNota.Text = '') and (self.btn_Salvar.Caption = 'Salvar') then
   begin
@@ -1250,7 +1252,7 @@ begin
             umaCompra.setDataAlteracao(dataAtual);
           umaCompra.setObservacao(edt_Observacao.Text);
 
-          umaCompra.setTipo(True); //Garantir que os dados vem de um Compra
+          umaCompra.setTipo(True); //Garantir que os dados vem de uma Compra
 
           msg := umaCtrlCompra.Salvar(UmaCompra);
           if (Copy(msg,0,11) = 'Esse Número') then

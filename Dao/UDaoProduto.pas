@@ -145,7 +145,7 @@ begin
       umaDaoNcm.Carrega(umProduto.getUmNcm);
     end;
     result := umProduto;
-//    Self.AtualizaGrid;
+    Self.AtualizaGrid;
 end;
 
 function DaoProduto.CarregarFornececor(obj: TObject): TObject;

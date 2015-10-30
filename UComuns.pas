@@ -20,7 +20,7 @@ end;
 procedure CampoReal (Sender: TObject; var Key: Char; Campo : String);
 var i : Integer;
 begin
-   if (Campo = '') then                //Verificar se o campo ta vazio na primeira vez
+   if (Campo = '') then                //Verificar se o campo esta vazio na primeira vez
   begin
     if (not(key in ['0'..'9', #8])) then
        Key := #0;

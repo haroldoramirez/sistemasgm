@@ -38,7 +38,6 @@ type
     lbl_DataUltAlteracao: TsLabel;
     edt_DataCadastro: TsDateEdit;
     edt_DataUltAlteracao: TsDateEdit;
-    edt_Unidade: TsEdit;
     sGroupBox8: TsGroupBox;
     edt_MediaValorCompra: TsEdit;
     lbl_PrecoCusto: TsLabel;
@@ -58,6 +57,7 @@ type
     edt_Cst: TsEdit;
     sLabel4: TsLabel;
     lbl_Cst: TLabel;
+    comboBoxUnidade: TComboBox;
     procedure btn_BuscarMarcaClick(Sender: TObject);
     procedure btn_BuscarCategoriaClick(Sender: TObject);
     procedure edt_IdMarcaExit(Sender: TObject);
@@ -140,17 +140,6 @@ begin
   self.edt_Marca.Text    := umProduto.getUmaMarca.getDescricao;
 end;
 
-//procedure TFrmCadProduto.btn_BuscarUnidadeClick(Sender: TObject);
-//begin
-//  inherited;
-//  umFrmConUnidade := TFrmConUnidade.Create(nil);
-//  umFrmConUnidade.ConhecaObj(umProduto.getUmaUnidade);
-//  umFrmConUnidade.btn_Sair.Caption := 'Selecionar';
-//  umFrmConUnidade.ShowModal;
-//  self.edt_IdUnidade.Text  := inttostr(umProduto.getUmaUnidade.getId);
-//  self.edt_Unidade.Text    := umProduto.getUmaUnidade.getDescricao;
-//end;
-
 procedure TFrmCadProduto.btn_BuscarFornecedoresClick(Sender: TObject);
 begin
   inherited;
@@ -167,14 +156,14 @@ begin
   inherited;
   if (edt_Cst.Text = '') then
   begin
-      ShowMessage('Campo Cst não pode estar em branco!');
+      ShowMessage('Campo CST não pode estar em branco!');
       edt_Cst.SetFocus;
   end
   else
-  if (edt_Unidade.Text = '') then
+  if (comboBoxUnidade.Text = '') then
   begin
-      ShowMessage('Campo Unidade não pode estar em branco!');
-      edt_Unidade.SetFocus;
+      ShowMessage('Uma Unidade deve ser selecionada!');
+      comboBoxUnidade.SetFocus;
   end
   else
   if (edt_Descricao.Text = '') then
@@ -215,7 +204,7 @@ begin
             edt_IPI.Text := IntToStr(0);
           umProduto.getUmaMarca.setId(StrToInt(edt_IdMarca.Text));
           umProduto.getUmaCategoria.setId(StrToInt(edt_IdCategoria.Text));
-          umProduto.setUnidade(edt_Unidade.Text);
+          umProduto.setUnidade(comboBoxUnidade.Text);
           umProduto.getUmNcm.setId(StrToInt(edt_IdNcm.Text));
           umProduto.setQuantidade(StrToFloat(edt_Quantidade.Text));
           umProduto.setCst(edt_Cst.Text);
@@ -247,7 +236,7 @@ procedure TFrmCadProduto.CarregaObj;
 begin
     self.edt_IdProduto.Text         := inttostr(umProduto.getId);
     self.edt_Descricao.Text         := umProduto.getDescricao;
-    self.edt_Unidade.Text           := umProduto.getUnidade;
+    self.comboBoxUnidade.Text       := umProduto.getUnidade;
     self.edt_IdNcm.Text             := inttostr(umProduto.getUmNcm.getId);
     self.edt_numero.Text            := inttostr(umProduto.getUmNcm.getNumero);
     self.edt_IdMarca.Text           := inttostr(umProduto.getUmaMarca.getId);
@@ -337,43 +326,11 @@ begin
     end;
 end;
 
-//procedure TFrmCadProduto.edt_IdUnidadeExit(Sender: TObject);
-//var  umaUnidade : Unidade;
-//begin
-//  inherited;
-//  if Self.edt_IdUnidade.Text <> '' then
-//    begin
-//      Self.edt_Unidade.Clear;
-//      umaCtrlUnidade := CtrlUnidade.CrieObjeto;
-//      umProduto.getUmaUnidade.setId(StrToInt(Self.edt_IdUnidade.Text));
-//      umProduto.getUmaUnidade.setDescricao(Self.edt_Unidade.Text);
-//      if not umaCtrlUnidade.Buscar(umProduto.getUmaUnidade) then
-//        begin
-//            MessageDlg('Nenhum registro encontrado!',  mtInformation, [mbOK], 0);
-//            self.edt_IdUnidade.Clear;
-//            self.edt_Unidade.Clear;
-//        end
-//      else
-//        begin
-//            umaCtrlUnidade.Carrega(umProduto.getUmaUnidade);
-//            Self.edt_IdUnidade.Text := IntToStr(umProduto.getUmaUnidade.getId);
-//            Self.edt_Unidade.Text := umProduto.getUmaUnidade.getDescricao;
-//        end;
-//      umaUnidade := Unidade.CrieObjeto;
-//      umaCtrlUnidade.Buscar(umaUnidade);
-//    end
-//  else
-//    begin
-//      self.edt_IdUnidade.Clear;
-//      self.edt_Unidade.Clear;
-//    end;
-//end;
-
 procedure TFrmCadProduto.HabilitaCampos;
 begin
   Self.edt_Descricao.Enabled := True;
   Self.edt_IdMarca.Enabled := True;
-  Self.edt_Unidade.Enabled := True;
+  Self.comboBoxUnidade.Enabled := True;
   Self.edt_IdCategoria.Enabled := True;
   Self.edt_ICMS.Enabled := True;
   Self.edt_IPI.Enabled := True;
@@ -389,7 +346,6 @@ begin
   dataAtual := Date;
   self.edt_IdProduto.Clear;
   self.edt_Descricao.Clear;
-  self.edt_Unidade.Clear;
   self.edt_IdMarca.Clear;
   self.edt_Marca.Clear;
   self.edt_IdNcm.Clear;
