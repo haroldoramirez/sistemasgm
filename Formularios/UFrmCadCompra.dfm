@@ -269,9 +269,9 @@ object FrmCadCompra: TFrmCadCompra
     object lbl_Quantidade: TsLabel
       Left = 357
       Top = 58
-      Width = 43
+      Width = 56
       Height = 13
-      Caption = 'Quant. *'
+      Caption = 'Quantidade'
       ParentFont = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4276545
@@ -295,9 +295,9 @@ object FrmCadCompra: TFrmCadCompra
     object lbl_ICMS: TsLabel
       Left = 819
       Top = 58
-      Width = 39
+      Width = 36
       Height = 13
-      Caption = 'ICMS %'
+      Caption = '%ICMS'
       ParentFont = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4276545
@@ -308,9 +308,9 @@ object FrmCadCompra: TFrmCadCompra
     object lbl_IPI: TsLabel
       Left = 885
       Top = 58
-      Width = 28
+      Width = 25
       Height = 13
-      Caption = 'IPI %'
+      Caption = '%IPI'
       ParentFont = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4276545
@@ -796,7 +796,7 @@ object FrmCadCompra: TFrmCadCompra
     object edt_CPOF: TsEdit
       Left = 182
       Top = 74
-      Width = 56
+      Width = 61
       Height = 21
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
@@ -1002,7 +1002,7 @@ object FrmCadCompra: TFrmCadCompra
       BoundLabel.UseSkinColor = True
     end
     object btn_BuscarCFOP: TsBitBtn
-      Left = 244
+      Left = 250
       Top = 72
       Width = 30
       Height = 25

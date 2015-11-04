@@ -1653,36 +1653,36 @@ begin
     self.gridParcelas.Cells[2,0] := 'Porcentagem';
     self.gridParcelas.Cells[3,0] := 'Valor R$';
 
-    self.gridProduto.ColWidths[1] := 260;
+    self.gridProduto.ColWidths[1] := 230;
     self.gridProduto.ColWidths[2] := 51;
     self.gridProduto.ColWidths[3] := 35;
-    self.gridProduto.ColWidths[4] := 39;
-    self.gridProduto.ColWidths[5] := 40;
-    self.gridProduto.ColWidths[6] := 49;
-    self.gridProduto.ColWidths[7] := 57;
-    self.gridProduto.ColWidths[8] := 41;
-    self.gridProduto.ColWidths[9] := 57;
-    self.gridProduto.ColWidths[10] := 57;
+    self.gridProduto.ColWidths[4] := 55;
+    self.gridProduto.ColWidths[5] := 48;
+    self.gridProduto.ColWidths[6] := 63;
+    self.gridProduto.ColWidths[7] := 59;
+    self.gridProduto.ColWidths[8] := 65;
+    self.gridProduto.ColWidths[9] := 59;
+    self.gridProduto.ColWidths[10] := 59;
     self.gridProduto.ColWidths[11] := 40;
     self.gridProduto.ColWidths[12] := 40;
     self.gridProduto.ColWidths[13] := 40;
     self.gridProduto.ColWidths[14] := 40;
 
     self.gridProduto.Cells[0,0] := 'Código';
-    self.gridProduto.Cells[1,0] := 'Decrição';
+    self.gridProduto.Cells[1,0] := 'Decrição do Produto';
     self.gridProduto.Cells[2,0] := 'NCM';
     self.gridProduto.Cells[3,0] := 'CST';
     self.gridProduto.Cells[4,0] := 'CFOP';
-    self.gridProduto.Cells[5,0] := 'Unid.';
-    self.gridProduto.Cells[6,0] := 'Quant.';
+    self.gridProduto.Cells[5,0] := 'Unidade';
+    self.gridProduto.Cells[6,0] := 'Quantidade';
     self.gridProduto.Cells[7,0] := 'V.Unitário';
-    self.gridProduto.Cells[8,0] := 'V.Desc.';
+    self.gridProduto.Cells[8,0] := 'Desconto';
     self.gridProduto.Cells[9,0] := 'V.Total';
     self.gridProduto.Cells[10,0] := 'BC.ICMS';
     self.gridProduto.Cells[11,0] := 'V.ICMS';
     self.gridProduto.Cells[12,0] := 'V.IPI';
-    self.gridProduto.Cells[13,0] := 'ICMS%';
-    self.gridProduto.Cells[14,0] := 'IPI%';
+    self.gridProduto.Cells[13,0] := '%ICMS';
+    self.gridProduto.Cells[14,0] := '%IPI';
 
     for count := 0 to Self.ComponentCount - 1 do
       if Self.Components[count] is TsEdit then

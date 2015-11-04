@@ -171,15 +171,15 @@ begin
             QCondicaoPagamento.ExecSQL;
 
             Commit;
-            result := 'CondicaoPagamento excluído com sucesso!';
+            result := 'CondicaoPagamento excluída com sucesso!';
         except
             on e:Exception do
             begin
                 rollback;
                 if pos('violates foreign key',e.Message)>0 then
-                    result := 'Ocorreu um erro! O CondicaoPagamento não pode ser excluído pois ja está sendo usado pelo sistema.'
+                    result := 'Ocorreu um erro! A CondicaoPagamento não pode ser excluída pois ja está sendo usado pelo sistema.'
                 else
-                    result := 'Ocorreu um erro! CondicaoPagamento não foi excluído. Erro: '+e.Message;
+                    result := 'Ocorreu um erro! CondicaoPagamento não foi excluída. Erro: '+e.Message;
             end;
         end;
     end;
