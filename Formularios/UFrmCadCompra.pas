@@ -215,6 +215,9 @@ type
       procedure BuscarFavorecido(T:string; Tipo:String);
       procedure CalcItemProduto;
 
+      //calcula o valor total da nova o valor do desconto e a base de calc ICMS
+      procedure CalcValorNota;
+
       //Produto
       procedure LimpaGridProduto;
       procedure CarregaGridProduto;
@@ -791,6 +794,7 @@ begin
       umaCompra.addProdutoCompra(umaCompra.getUmProdutoCompra);
 
       CarregaGridProduto;
+      CalcValorNota;
 
       LimpaGridParcelas(True);
       Self.edt_IdCondicaoPagamentoExit(Sender);
@@ -916,9 +920,6 @@ begin
   inherited;
   if Self.edt_IdCfop.Text <> '' then
     begin
-//      if (umaCompra.getUmProdutoCompra = nil) or (umaCompra.getUmProdutoCompra.getId <> 0)then
-//        umaCompra.CrieObejtoProduto;
-
       Self.edt_CPOF.Clear;
       umaCtrlCfop := CtrlCfop.CrieObjeto;
       umaCompra.getumProdutoCompra.getUmCfop.setId(StrToInt(Self.edt_IdCfop.Text));
@@ -1405,6 +1406,24 @@ begin
     edt_BCICMS.Text := FormatFloat('#0.00', totalItem);
 end;
 
+procedure TFrmCadCompra.CalcValorNota;
+var
+  valorTotalProduto, valorProdutoItem, valorProdutoNOTA, valorTotalICMS, valoricmsNOTA,
+  valorDescontoNOTA, valorTotalDesconto : Real;
+begin
+    valorProdutoNOTA := StrToFloat(edt_Total.Text);
+    valorTotalProduto :=  valorTotalProduto + valorProdutoNOTA;
+    edt_TotalNota.Text := FormatFloat('#0.00', valorTotalProduto);
+
+    valoricmsNOTA := StrToFloat(edt_BCICMS.Text);
+    valorTotalICMS := valorTotalICMS + valoricmsNOTA;
+    edt_BaseICMS.Text := FormatFloat('#0.00', valorTotalICMS);
+
+    valorDescontoNOTA := StrToFloat(edt_Desconto.Text);
+    valorTotalDesconto := valorTotalDesconto + valorDescontoNOTA;
+    edt_ValorDesconto.Text := FormatFloat('#0.00', valorTotalDesconto);
+end;
+
 //-----Campos dos Calculos-----//
 procedure TFrmCadCompra.edt_QuantidadeExit(Sender: TObject);
 begin
@@ -1661,8 +1680,8 @@ begin
     self.gridProduto.ColWidths[6] := 63;
     self.gridProduto.ColWidths[7] := 59;
     self.gridProduto.ColWidths[8] := 65;
-    self.gridProduto.ColWidths[9] := 59;
-    self.gridProduto.ColWidths[10] := 59;
+    self.gridProduto.ColWidths[9] := 49;
+    self.gridProduto.ColWidths[10] := 49;
     self.gridProduto.ColWidths[11] := 40;
     self.gridProduto.ColWidths[12] := 40;
     self.gridProduto.ColWidths[13] := 40;

@@ -116,12 +116,14 @@ begin
       end;
     end
     else
-      if self.btn_Salvar.Caption = 'Excluir' then
+    begin
+    if self.btn_Salvar.Caption = 'Excluir' then
       begin
         msg := umaCtrlEstado.Excluir(UmEstado);
         showmessage(msg);
         close;
       end;
+    end;
 end;
 
 procedure TFrmCadEstado.CarregaObj;

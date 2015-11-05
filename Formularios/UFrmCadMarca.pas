@@ -66,18 +66,27 @@ begin
   else
   if self.btn_Salvar.Caption = 'Salvar' then
     begin
-        UmMarca.setDescricao(edt_Marca.Text);
-        UmMarca.setDataCadastro(edt_DataCadastro.Date);
-        if self.edt_DataUltAlteracao.Date <> dataAtual then
-          UmMarca.setDataAlteracao(dataAtual);
-         msg := umaCtrlMarca.Salvar(UmMarca);
-        if Copy(msg,0,16) = 'Ocorreu um erro!' then
-            Application.MessageBox(PChar(msg), 'Erro!', MB_OK + MB_ICONSTOP)
-        else
-            ShowMessage(msg);
+      UmMarca.setDescricao(edt_Marca.Text);
+      UmMarca.setDataCadastro(edt_DataCadastro.Date);
+      if self.edt_DataUltAlteracao.Date <> dataAtual then
+        UmMarca.setDataAlteracao(dataAtual);
+      msg := umaCtrlMarca.Salvar(UmMarca);
+      if Copy(msg,0,4) = 'Esta' then
+      begin
+        ShowMessage(msg);
+        edt_Marca.SetFocus;
+      end
+      else
+      begin
+      if Copy(msg,0,16) = 'Ocorreu um erro!' then
+          Application.MessageBox(PChar(msg), 'Erro!', MB_OK + MB_ICONSTOP)
+      else
+          ShowMessage(msg);
         Close;
+      end;
     end
   else
+    begin
     if self.btn_Salvar.Caption = 'Excluir' then
       begin
           msg := umaCtrlMarca.Excluir(umMarca);
@@ -85,6 +94,7 @@ begin
           self.HabilitaCampos;
           close;
       end;
+    end;
 end;
 
 procedure TFrmCadMarca.HabilitaCampos;

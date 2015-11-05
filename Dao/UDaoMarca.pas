@@ -168,7 +168,15 @@ begin
             beginTrans;
             QMarca.Close;
             if umMarca.getId = 0 then
+            begin
+              if(Self.Buscar(umMarca)) then
+                begin
+                  Result := 'Esta Marca já existe!';
+                  Self.AtualizaGrid;
+                  Exit;
+                end;
                 QMarca.SQL := UpdateMarca.InsertSQL
+            end
             else
             begin
                 QMarca.SQL := UpdateMarca.ModifySQL;

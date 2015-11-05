@@ -1,9 +1,9 @@
 inherited FrmCadEstado: TFrmCadEstado
   Caption = 'Cadastro Estado'
-  ClientHeight = 274
+  ClientHeight = 268
   ClientWidth = 390
   ExplicitWidth = 396
-  ExplicitHeight = 303
+  ExplicitHeight = 297
   PixelsPerInch = 96
   TextHeight = 13
   object lbl_IdEstado: TsLabel [0]

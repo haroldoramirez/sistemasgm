@@ -238,7 +238,7 @@ object FrmCadCompra: TFrmCadCompra
     Width = 951
     Height = 239
     Caption = 'Produto'
-    TabOrder = 6
+    TabOrder = 5
     SkinData.SkinSection = 'GROUPBOX'
     object lbl_IdProduto: TsLabel
       Left = 10
@@ -296,7 +296,7 @@ object FrmCadCompra: TFrmCadCompra
       Left = 624
       Top = 58
       Width = 36
-      Height = 14
+      Height = 13
       Caption = '%ICMS'
       ParentFont = False
       Font.Charset = DEFAULT_CHARSET
@@ -575,7 +575,7 @@ object FrmCadCompra: TFrmCadCompra
       Font.Style = []
       MaxLength = 10
       ParentFont = False
-      TabOrder = 16
+      TabOrder = 13
       OnExit = edt_ICMSExit
       OnKeyPress = edt_ICMSKeyPress
       SkinData.SkinSection = 'EDIT'
@@ -629,7 +629,7 @@ object FrmCadCompra: TFrmCadCompra
       Font.Style = []
       MaxLength = 10
       ParentFont = False
-      TabOrder = 17
+      TabOrder = 14
       OnKeyPress = edt_IPIKeyPress
       SkinData.SkinSection = 'EDIT'
       BoundLabel.Indent = 0
@@ -886,7 +886,7 @@ object FrmCadCompra: TFrmCadCompra
       Font.Style = []
       MaxLength = 10
       ParentFont = False
-      TabOrder = 13
+      TabOrder = 15
       OnKeyPress = edt_BCICMSKeyPress
       SkinData.SkinSection = 'EDIT'
       BoundLabel.Indent = 0
@@ -912,7 +912,7 @@ object FrmCadCompra: TFrmCadCompra
       Font.Style = []
       MaxLength = 10
       ParentFont = False
-      TabOrder = 14
+      TabOrder = 16
       OnKeyPress = edt_ValorICMSKeyPress
       SkinData.SkinSection = 'EDIT'
       BoundLabel.Indent = 0
@@ -938,7 +938,7 @@ object FrmCadCompra: TFrmCadCompra
       Font.Style = []
       MaxLength = 10
       ParentFont = False
-      TabOrder = 15
+      TabOrder = 17
       OnKeyPress = edt_ValorIPIKeyPress
       SkinData.SkinSection = 'EDIT'
       BoundLabel.Indent = 0
@@ -1178,7 +1178,7 @@ object FrmCadCompra: TFrmCadCompra
     Top = 606
     Width = 951
     Height = 58
-    TabOrder = 10
+    TabOrder = 11
     SkinData.SkinSection = 'GROUPBOX'
     object btn_Salvar: TsBitBtn
       Left = 777
@@ -1676,7 +1676,7 @@ object FrmCadCompra: TFrmCadCompra
     Width = 951
     Height = 61
     Caption = 'C'#225'lculo do Imposto'
-    TabOrder = 5
+    TabOrder = 6
     SkinData.SkinSection = 'GROUPBOX'
     object lbl_Frete: TsLabel
       Left = 294
@@ -2116,7 +2116,7 @@ object FrmCadCompra: TFrmCadCompra
     Top = 540
     Width = 253
     Height = 60
-    TabOrder = 11
+    TabOrder = 10
     SkinData.SkinSection = 'GROUPBOX'
     object sLabel1: TsLabel
       Left = 10

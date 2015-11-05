@@ -1,9 +1,9 @@
 inherited FrmCadMarca: TFrmCadMarca
   Caption = 'Cadastro Marca'
-  ClientHeight = 221
-  ClientWidth = 380
-  ExplicitWidth = 386
-  ExplicitHeight = 250
+  ClientHeight = 215
+  ClientWidth = 377
+  ExplicitWidth = 383
+  ExplicitHeight = 244
   PixelsPerInch = 96
   TextHeight = 13
   object lbl_Codigo: TsLabel [0]
