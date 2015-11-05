@@ -2,7 +2,6 @@ inherited FrmCadCliente: TFrmCadCliente
   Caption = 'Cadastro Cliente'
   ClientHeight = 606
   ClientWidth = 514
-  ExplicitTop = -165
   ExplicitWidth = 520
   ExplicitHeight = 635
   PixelsPerInch = 96
@@ -385,6 +384,7 @@ inherited FrmCadCliente: TFrmCadCliente
       Font.Name = 'Tahoma'
       Font.Style = []
       MaxLength = 10
+      NumbersOnly = True
       ParentFont = False
       TabOrder = 1
       SkinData.SkinSection = 'EDIT'

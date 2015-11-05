@@ -20,7 +20,7 @@ object FrmCadCompra: TFrmCadCompra
   object sGroupBox3: TsGroupBox
     Left = 8
     Top = 2
-    Width = 532
+    Width = 514
     Height = 60
     TabOrder = 0
     SkinData.SkinSection = 'GROUPBOX'
@@ -40,9 +40,9 @@ object FrmCadCompra: TFrmCadCompra
     object lbl_SerieNota: TsLabel
       Left = 81
       Top = 13
-      Width = 59
+      Width = 30
       Height = 13
-      Caption = 'S'#233'rie Nota *'
+      Caption = 'S'#233'rie*'
       ParentFont = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4276545
@@ -51,7 +51,7 @@ object FrmCadCompra: TFrmCadCompra
       Font.Style = []
     end
     object lbl_IdFornecedor: TsLabel
-      Left = 157
+      Left = 125
       Top = 13
       Width = 33
       Height = 13
@@ -64,7 +64,7 @@ object FrmCadCompra: TFrmCadCompra
       Font.Style = []
     end
     object lbl_Fornecedor: TsLabel
-      Left = 218
+      Left = 196
       Top = 13
       Width = 64
       Height = 13
@@ -106,7 +106,7 @@ object FrmCadCompra: TFrmCadCompra
     object edt_SerieNota: TsEdit
       Left = 78
       Top = 30
-      Width = 65
+      Width = 33
       Height = 21
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
@@ -130,7 +130,7 @@ object FrmCadCompra: TFrmCadCompra
       BoundLabel.UseSkinColor = True
     end
     object edt_IdFornecedor: TsEdit
-      Left = 157
+      Left = 125
       Top = 30
       Width = 55
       Height = 21
@@ -157,7 +157,7 @@ object FrmCadCompra: TFrmCadCompra
       BoundLabel.UseSkinColor = True
     end
     object edt_Fornecedor: TsEdit
-      Left = 216
+      Left = 196
       Top = 30
       Width = 273
       Height = 21
@@ -183,7 +183,7 @@ object FrmCadCompra: TFrmCadCompra
       BoundLabel.UseSkinColor = True
     end
     object btn_BuscarFornecedor: TsBitBtn
-      Left = 493
+      Left = 475
       Top = 28
       Width = 30
       Height = 25
@@ -234,7 +234,7 @@ object FrmCadCompra: TFrmCadCompra
   end
   object sGroupBox1: TsGroupBox
     Left = 8
-    Top = 183
+    Top = 118
     Width = 951
     Height = 239
     Caption = 'Produto'
@@ -268,7 +268,7 @@ object FrmCadCompra: TFrmCadCompra
     end
     object lbl_Quantidade: TsLabel
       Left = 357
-      Top = 58
+      Top = 59
       Width = 56
       Height = 13
       Caption = 'Quantidade'
@@ -281,7 +281,7 @@ object FrmCadCompra: TFrmCadCompra
     end
     object lbl_Preco: TsLabel
       Left = 423
-      Top = 58
+      Top = 59
       Width = 56
       Height = 13
       Caption = 'V. Unit'#225'rio*'
@@ -293,10 +293,10 @@ object FrmCadCompra: TFrmCadCompra
       Font.Style = []
     end
     object lbl_ICMS: TsLabel
-      Left = 819
+      Left = 624
       Top = 58
       Width = 36
-      Height = 13
+      Height = 14
       Caption = '%ICMS'
       ParentFont = False
       Font.Charset = DEFAULT_CHARSET
@@ -306,8 +306,8 @@ object FrmCadCompra: TFrmCadCompra
       Font.Style = []
     end
     object lbl_IPI: TsLabel
-      Left = 885
-      Top = 58
+      Left = 695
+      Top = 59
       Width = 25
       Height = 13
       Caption = '%IPI'
@@ -320,10 +320,10 @@ object FrmCadCompra: TFrmCadCompra
     end
     object lbl_Unidade: TsLabel
       Left = 292
-      Top = 58
-      Width = 39
+      Top = 59
+      Width = 48
       Height = 13
-      Caption = 'Unidade'
+      Caption = 'Unidade *'
       ParentFont = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4276545
@@ -334,9 +334,9 @@ object FrmCadCompra: TFrmCadCompra
     object lbl_CPOF: TsLabel
       Left = 182
       Top = 58
-      Width = 27
+      Width = 36
       Height = 13
-      Caption = 'CFOP'
+      Caption = 'CFOP *'
       ParentFont = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4276545
@@ -346,10 +346,10 @@ object FrmCadCompra: TFrmCadCompra
     end
     object lbl_Desconto: TsLabel
       Left = 489
-      Top = 58
-      Width = 45
+      Top = 59
+      Width = 58
       Height = 13
-      Caption = 'Desconto'
+      Caption = 'V. Desconto'
       ParentFont = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4276545
@@ -359,7 +359,7 @@ object FrmCadCompra: TFrmCadCompra
     end
     object lbl_Total: TsLabel
       Left = 555
-      Top = 58
+      Top = 59
       Width = 37
       Height = 13
       Caption = 'V. Total'
@@ -371,8 +371,8 @@ object FrmCadCompra: TFrmCadCompra
       Font.Style = []
     end
     object lbl_BCIMCMS: TsLabel
-      Left = 621
-      Top = 58
+      Left = 762
+      Top = 59
       Width = 42
       Height = 13
       Caption = 'BC.ICMS'
@@ -384,7 +384,7 @@ object FrmCadCompra: TFrmCadCompra
       Font.Style = []
     end
     object lbl_ValorICMS: TsLabel
-      Left = 687
+      Left = 831
       Top = 58
       Width = 35
       Height = 13
@@ -397,7 +397,7 @@ object FrmCadCompra: TFrmCadCompra
       Font.Style = []
     end
     object lbl_ValorIPI: TsLabel
-      Left = 753
+      Left = 892
       Top = 58
       Width = 24
       Height = 13
@@ -563,8 +563,8 @@ object FrmCadCompra: TFrmCadCompra
       TabOrder = 20
     end
     object edt_ICMS: TsEdit
-      Left = 819
-      Top = 74
+      Left = 624
+      Top = 73
       Width = 56
       Height = 21
       Color = clWhite
@@ -617,8 +617,8 @@ object FrmCadCompra: TFrmCadCompra
       BoundLabel.UseSkinColor = True
     end
     object edt_IPI: TsEdit
-      Left = 885
-      Top = 74
+      Left = 694
+      Top = 73
       Width = 56
       Height = 21
       Color = clWhite
@@ -874,8 +874,8 @@ object FrmCadCompra: TFrmCadCompra
       BoundLabel.UseSkinColor = True
     end
     object edt_BCICMS: TsEdit
-      Left = 621
-      Top = 74
+      Left = 762
+      Top = 73
       Width = 56
       Height = 21
       Color = clWhite
@@ -900,8 +900,8 @@ object FrmCadCompra: TFrmCadCompra
       BoundLabel.UseSkinColor = True
     end
     object edt_ValorICMS: TsEdit
-      Left = 687
-      Top = 74
+      Left = 830
+      Top = 73
       Width = 56
       Height = 21
       Color = clWhite
@@ -926,8 +926,8 @@ object FrmCadCompra: TFrmCadCompra
       BoundLabel.UseSkinColor = True
     end
     object edt_ValorIPI: TsEdit
-      Left = 753
-      Top = 74
+      Left = 892
+      Top = 73
       Width = 56
       Height = 21
       Color = clWhite
@@ -1672,7 +1672,7 @@ object FrmCadCompra: TFrmCadCompra
   end
   object sGroupBox8: TsGroupBox
     Left = 8
-    Top = 123
+    Top = 354
     Width = 951
     Height = 61
     Caption = 'C'#225'lculo do Imposto'

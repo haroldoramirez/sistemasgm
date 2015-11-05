@@ -1,9 +1,9 @@
 inherited FrmCadCfop: TFrmCadCfop
   Caption = 'Cadastro de CFOP'
-  ClientHeight = 215
+  ClientHeight = 209
   ClientWidth = 328
   ExplicitWidth = 334
-  ExplicitHeight = 244
+  ExplicitHeight = 238
   PixelsPerInch = 96
   TextHeight = 13
   inherited lbl5: TsLabel
@@ -28,9 +28,9 @@ inherited FrmCadCfop: TFrmCadCfop
   object lbl_Pais: TsLabel [2]
     Left = 8
     Top = 61
-    Width = 36
+    Width = 55
     Height = 13
-    Caption = 'Nome *'
+    Caption = 'Descri'#231#227'o *'
     ParentFont = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4276545
@@ -222,7 +222,6 @@ inherited FrmCadCfop: TFrmCadCfop
     Font.Name = 'Tahoma'
     Font.Style = []
     MaxLength = 8
-    NumbersOnly = True
     ParentFont = False
     TabOrder = 5
     SkinData.SkinSection = 'EDIT'

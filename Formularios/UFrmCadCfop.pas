@@ -57,7 +57,7 @@ begin
   dataAtual := Date;
   if edt_Nome.Text = '' then
     begin
-      ShowMessage('Campo Nome não pode estar em branco!');
+      ShowMessage('Campo Descrição não pode estar em branco!');
       edt_Nome.SetFocus;
     end
   else

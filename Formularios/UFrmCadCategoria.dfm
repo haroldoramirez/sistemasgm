@@ -1,9 +1,9 @@
 inherited FrmCadCategoria: TFrmCadCategoria
   Caption = 'Cadastro Categoria'
-  ClientHeight = 223
-  ClientWidth = 381
-  ExplicitWidth = 387
-  ExplicitHeight = 252
+  ClientHeight = 214
+  ClientWidth = 378
+  ExplicitWidth = 384
+  ExplicitHeight = 243
   PixelsPerInch = 96
   TextHeight = 13
   object lbl_Codigo: TsLabel [0]

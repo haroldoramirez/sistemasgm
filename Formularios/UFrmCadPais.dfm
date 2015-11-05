@@ -1,9 +1,9 @@
 inherited FrmCadPais: TFrmCadPais
   Caption = 'Cadastro Pa'#237's'
-  ClientHeight = 224
+  ClientHeight = 218
   ClientWidth = 381
   ExplicitWidth = 387
-  ExplicitHeight = 253
+  ExplicitHeight = 247
   PixelsPerInch = 96
   TextHeight = 13
   object lbl_Codigo: TsLabel [0]

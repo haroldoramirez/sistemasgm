@@ -217,11 +217,19 @@ begin
           if self.edt_DataUltAlteracao.Date <> dataAtual then
             umProduto.setDataAlteracao(dataAtual);
            msg := umaCtrlProduto.Salvar(umProduto);
-          if Copy(msg,0,16) = 'Ocorreu um erro!' then
-              Application.MessageBox(PChar(msg), 'Erro!', MB_OK + MB_ICONSTOP)
-          else
+           if Copy(msg,0,4) = 'Esse' then
+            begin
               ShowMessage(msg);
-          Close;
+              edt_Descricao.SetFocus;
+            end
+          else
+          begin
+            if Copy(msg,0,16) = 'Ocorreu um erro!' then
+              Application.MessageBox(PChar(msg), 'Erro!', MB_OK + MB_ICONSTOP)
+            else
+              ShowMessage(msg);
+            Close;
+          end;
       end
     else
       if self.btn_Salvar.Caption = 'Excluir' then
@@ -362,6 +370,8 @@ begin
   self.edt_Observacao.Clear;
   self.edt_DataCadastro.Date := dataAtual;
   self.edt_DataUltAlteracao.Date := dataAtual;
+  if umProduto.getUnidade <> ''  then
+    self.comboBoxUnidade.Clear;
 end;
 
 procedure TFrmCadProduto.btn_SairClick(Sender: TObject);

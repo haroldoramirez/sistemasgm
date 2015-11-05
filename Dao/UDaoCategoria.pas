@@ -168,12 +168,21 @@ begin
             beginTrans;
             QCategoria.Close;
             if umCategoria.getId = 0 then
+            begin
+              if(Self.Buscar(umCategoria)) then
+                begin
+                  Result := 'Esta Categoria já existe!';
+                  Self.AtualizaGrid;
+                  Exit;
+                end;
                 QCategoria.SQL := UpdateCategoria.InsertSQL
+            end
             else
             begin
                 QCategoria.SQL := UpdateCategoria.ModifySQL;
                 QCategoria.Params.ParamByName('OLD_idcategoria').Value := umCategoria.getId;
             end;
+
             QCategoria.Params.ParamByName('descricao').Value := umCategoria.getDescricao;
             QCategoria.Params.ParamByName('datacadastro').Value := umCategoria.getDataCadastro;
             QCategoria.Params.ParamByName('dataalteracao').Value := umCategoria.getDataAlteracao;

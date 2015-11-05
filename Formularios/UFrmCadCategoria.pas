@@ -49,44 +49,50 @@ var
   dataAtual : TDateTime;
   msg: string;
 begin
+    inherited;
     dataAtual := Date;
-  inherited;
     if edt_Categoria.Text = '' then
       begin
-          ShowMessage('Campo País não pode estar em branco!');
+          ShowMessage('Campo Categoria não pode estar em branco!');
           edt_Categoria.SetFocus;
       end
     else
     if self.btn_Salvar.Caption = 'Salvar' then
+    begin
+      UmCategoria.setDescricao(edt_Categoria.Text);
+      UmCategoria.setDataCadastro(edt_DataCadastro.Date);
+      if self.edt_DataUltAlteracao.Date <> dataAtual then
+        UmCategoria.setDataAlteracao(dataAtual);
+      msg := umaCtrlCategoria.Salvar(UmCategoria);
+      if Copy(msg,0,4) = 'Esta' then
       begin
-          UmCategoria.setDescricao(edt_Categoria.Text);
-          UmCategoria.setDataCadastro(edt_DataCadastro.Date);
-          if self.edt_DataUltAlteracao.Date <> dataAtual then
-            UmCategoria.setDataAlteracao(dataAtual);
-           msg := umaCtrlCategoria.Salvar(UmCategoria);
-          if Copy(msg,0,16) = 'Ocorreu um erro!' then
-              Application.MessageBox(PChar(msg), 'Erro!', MB_OK + MB_ICONSTOP)
-          else
-              ShowMessage(msg);
-          Close;
+          ShowMessage(msg);
+          edt_Categoria.SetFocus;
       end
-    else
-      if self.btn_Salvar.Caption = 'Excluir' then
-        begin
-            msg := umaCtrlCategoria.Excluir(umCategoria);
-            showmessage(msg);
-            self.HabilitaCampos;
-            self.btn_Salvar.Caption := 'Salvar';
-            close;
-        end;
+      else
+      begin
+        if Copy(msg,0,16) = 'Ocorreu um erro!' then
+            Application.MessageBox(PChar(msg), 'Erro!', MB_OK + MB_ICONSTOP)
+        else
+            ShowMessage(msg);
+        close;
+      end;
+    end
+  else
+  if self.btn_Salvar.Caption = 'Excluir' then
+  begin
+    msg := umaCtrlCategoria.Excluir(umCategoria);
+    showmessage(msg);
+    close;
+  end;
 end;
 
 procedure TFrmCadCategoria.CarregaObj;
 begin
     Self.edt_IdCategoria.Text          := IntToStr(umCategoria.getId);
     Self.edt_Categoria.Text            := UmCategoria.getDescricao;
-    Self.edt_DataCadastro.Date     := umCategoria.getDataCadastro;
-    Self.edt_DataUltAlteracao.Date := umCategoria.getDataAlteracao;
+    Self.edt_DataCadastro.Date         := umCategoria.getDataCadastro;
+    Self.edt_DataUltAlteracao.Date     := umCategoria.getDataAlteracao;
 end;
 
 procedure TFrmCadCategoria.ConhecaObj(vCategoria: Categoria; vCtrlCategoria: CtrlCategoria);

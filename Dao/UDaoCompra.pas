@@ -107,7 +107,6 @@ begin
         result := false;
       QCompra.Refresh;
     end;
-   // Self.AtualizaGrid;
 end;
 
 function DaoCompra.VerificarProduto (obj : TObject) : Boolean;
@@ -146,13 +145,6 @@ begin
     begin
         if not QCompra.Active then
             QCompra.Open;
-
-//        if umaCompra.getNumNota <> 0 then
-//          begin
-//            QCompra.Close;
-//            QCompra.SQL.Text := 'select * from compra where numnota = '+IntToStr(umaCompra.getNumNota);
-//            QCompra.Open;
-//          end;
 
         umaCompra.setIdCompra(QCompraidcompra.AsInteger);
         umaCompra.setNumNota(QCompranumnota.AsInteger);
@@ -252,44 +244,12 @@ begin
 end;
 
 function DaoCompra.Excluir(obj: TObject): string;
-//var
-//    umaCompra: Compra;
-//    i : integer;
 begin
-//    umaCompra := Compra(obj);
-//    with umDM do
-//    begin
-//        try
-//            beginTrans;
-//
-//            QParcelas.SQL := UpdateParcelas.DeleteSQL;
-//            QParcelas.Params.ParamByName('OLD_idcondicaopagamento').Value := umaCompra.getId;
-//
-//            QCompra.SQL := UpdateCompra.DeleteSQL;
-//            QCompra.Params.ParamByName('OLD_idcondicaopagamento').Value := umaCompra.getId;
-//
-//            QParcelas.ExecSQL;
-//            QCompra.ExecSQL;
-//
-//            Commit;
-//            result := 'Compra excluído com sucesso!';
-//        except
-//            on e:Exception do
-//            begin
-//                rollback;
-//                if pos('chave estrangeira',e.Message)>0 then
-//                    result := 'Ocorreu um erro! O Compra não pode ser excluído pois ja está sendo usado pelo sistema.'
-//                else
-//                    result := 'Ocorreu um erro! Compra não foi excluído. Erro: '+e.Message;
-//            end;
-//        end;
-//    end;
-//    Self.AtualizaGrid;
+
 end;
 
 function DaoCompra.GetDS: TDataSource;
 begin
-    //-----Formatar Grid-----//
     umDM.QCompra.FieldByName('numnota').DisplayLabel := 'NN';
     umDM.QCompra.FieldByName('serienota').DisplayLabel := 'SN';
 
@@ -305,7 +265,6 @@ begin
     (umDM.QCompra.FieldByName('valor_desconto') as TFloatField).DisplayFormat := '0.00';
     (umDM.QCompra.FieldByName('total_produto') as TFloatField).DisplayFormat  := '0.00';
     (umDM.QCompra.FieldByName('total_nota') as TFloatField).DisplayFormat     := '0.00';
-    //----------------------//
 
     Self.AtualizaGrid;
     result := umDM.DSCompra;
@@ -370,6 +329,7 @@ begin
 
             QCompra.Params.ParamByName('idusuario').Value := umaCompra.getUmUsuario.getIdUsuario;
             QCompra.Params.ParamByName('idcondicaopagamento').Value := umaCompra.getUmaCondicaoPagamento.getId;
+
             if (umaCompra.getUmaTransportadora.getId <> 0) then
               QCompra.Params.ParamByName('idtransportadora').Value := umaCompra.getUmaTransportadora.getId;
             QCompra.Params.ParamByName('tipofrete').Value := umaCompra.getTipoFrete;
@@ -399,7 +359,8 @@ begin
                 umaCompra.setIdCompra(QGenerica.Fields.FieldByName('idcompra').Value);
               end;
 
-           numNotaAux := QProdutoCompranumnota.AsInteger; //Recupera o numNota da tabela relacional
+           numNotaAux := QProdutoCompranumnota.AsInteger;
+           //Recupera o numNota da tabela relacional
            //Faz Relacao com os Itens da Compra
            for i := 1 to umaCompra.CountProdutos do
             begin
@@ -435,7 +396,8 @@ begin
 
                 quantidade := umaCompra.getProdutoCompra(i-1).getQuantidade;
                 if (cancelar) then
-                begin                     //Diminui o estoque do produto correspondente
+                begin
+                  //Diminui o estoque do produto correspondente
                   umaCompra.getProdutoCompra(i-1).setQuantidade( quantidade - umaCompra.getProdutoCompra(i-1).getQuantidadeCompra);
                   if(umaCompra.getProdutoCompra(i-1).getQuantidade = 0) then
                   begin
@@ -450,16 +412,17 @@ begin
                   begin
                     umaCompra.getProdutoCompra(i-1).setICMS(umaCompra.getProdutoCompra(i-1).getICMSAnterior);
                     umaCompra.getProdutoCompra(i-1).setIPI(umaCompra.getProdutoCompra(i-1).getIPIAnterior);
-                  //umaCompra.getProdutoCompra(i-1).setPrecoCompra(umaCompra.getProdutoCompra(i-1).getPrecoCompraAnt);
+                    //umaCompra.getProdutoCompra(i-1).setPrecoCompra(umaCompra.getProdutoCompra(i-1).getPrecoCompraAnt);
                     umaCompra.getProdutoCompra(i-1).getPrecoCompra;
                   end;
                 end
                 else
-                begin                     //Aumenta o estoque do produto correspondente
+                begin
+                  //Aumenta o estoque do produto correspondente
                   umaCompra.getProdutoCompra(i-1).setQuantidade( quantidade + umaCompra.getProdutoCompra(i-1).getQuantidadeCompra);
                   umaCompra.getProdutoCompra(i-1).setICMS(umaCompra.getProdutoCompra(i-1).getICMSCompra);
                   umaCompra.getProdutoCompra(i-1).setIPI(umaCompra.getProdutoCompra(i-1).getIPICompra);
-                //umaCompra.getProdutoCompra(i-1).setPrecoCompra(umaCompra.getProdutoCompra(i-1).getValorUnitarioCompra);
+                  //umaCompra.getProdutoCompra(i-1).setPrecoCompra(umaCompra.getProdutoCompra(i-1).getValorUnitarioCompra);
                   umaCompra.getProdutoCompra(i-1).getPrecoCompra;
                 end;
 

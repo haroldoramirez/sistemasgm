@@ -3,7 +3,6 @@ inherited FrmCadCondicaoPagamento: TFrmCadCondicaoPagamento
   ClientHeight = 490
   ClientWidth = 346
   OnActivate = FormActivate
-  ExplicitTop = -49
   ExplicitWidth = 352
   ExplicitHeight = 519
   PixelsPerInch = 96

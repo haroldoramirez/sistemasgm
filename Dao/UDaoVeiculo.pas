@@ -183,8 +183,8 @@ begin
             end
             else
             begin
-                  QVeiculo.SQL := UpdateVeiculo.ModifySQL;
-                  QVeiculo.Params.ParamByName('OLD_idveiculo').Value := umVeiculo.getId;
+                QVeiculo.SQL := UpdateVeiculo.ModifySQL;
+                QVeiculo.Params.ParamByName('OLD_idveiculo').Value := umVeiculo.getId;
             end;
 
             QVeiculo.Params.ParamByName('antt').Value := umVeiculo.getAntt;

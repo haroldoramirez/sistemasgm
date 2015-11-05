@@ -87,11 +87,11 @@ begin
     end
   else
   if self.btn_Salvar.Caption = 'Excluir' then
-    begin
-        msg := umaCtrlPais.Excluir(umPais);
-        ShowMessage(msg);
-        Close;
-    end;
+  begin
+    msg := umaCtrlPais.Excluir(umPais);
+    ShowMessage(msg);
+    Close;
+  end;
 end;
 
 procedure TFrmCadPais.CarregaObj;

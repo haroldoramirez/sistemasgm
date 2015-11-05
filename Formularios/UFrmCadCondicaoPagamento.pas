@@ -125,8 +125,6 @@ begin
       begin
         if (self.gridParcelas.Cells[0, k] = '') then
         begin
-          // numparcela := StrToInt(self.edt_NumParcela.Text);
-          // self.gridParcelas.Cells[0,k] := IntToStr(k)+'/'+IntToStr(numparcela);
           self.gridParcelas.Cells[0, k] := IntToStr(k);
         end;
         if (self.gridParcelas.Cells[1, k] = '') then
@@ -160,7 +158,6 @@ begin
         for i := 1 to (gridParcelas.RowCount - 1)do
         begin
           case j of
-            // 0: gridParcelas.Cells[j,i] := IntToStr(i)+'/'+IntToStr(numparcela);
             0: gridParcelas.Cells[j, i] := IntToStr(i);
             1: begin
                  dias := dias + StrToInt(self.edt_NumDias.Text);

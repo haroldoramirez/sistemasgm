@@ -286,7 +286,15 @@ begin
             beginTrans;
             QProduto.Close;
             if umProduto.getId = 0 then
+              begin
+              if(Self.Buscar(umProduto)) then
+                begin
+                  Result := 'Esse Produto já existe!';
+                  Self.AtualizaGrid;
+                  Exit;
+                end;
                 QProduto.SQL := UpdateProduto.InsertSQL
+              end
             else
             begin
               QProduto.SQL := UpdateProduto.ModifySQL;
