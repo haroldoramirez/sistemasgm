@@ -629,7 +629,7 @@ end;
 
 procedure TFrmCadCompra.btn_BuscarTransportadoraClick(Sender: TObject);
 begin
-      BuscarFavorecido('T', 'Transportadora');
+    BuscarFavorecido('T', 'Transportadora');
 end;
 
 procedure TFrmCadCompra.edt_IdProdutoExit(Sender: TObject);
@@ -794,7 +794,6 @@ begin
       umaCompra.addProdutoCompra(umaCompra.getUmProdutoCompra);
 
       CarregaGridProduto;
-//      CalcValorNota;
 
       LimpaGridParcelas(True);
       Self.edt_IdCondicaoPagamentoExit(Sender);
@@ -850,7 +849,7 @@ var i : Integer;
 begin
   if ((self.gridProduto.RowCount - 1) = 1 ) and (umaCompra.CountProdutos = 0)then
   begin
-    for i := 0 to  self.gridProduto.ColCount -1  do
+    for i := 0 to self.gridProduto.ColCount -1 do
        self.gridProduto.Cells[i,1] := EmptyStr;
     self.gridProduto.RowCount := 1;
 
@@ -1058,6 +1057,7 @@ begin
          self.gridParcelas.Cells[3,i] := FormatFloat('#0.00', StrToFloat(self.gridParcelas.Cells[3,i])+valorFinal);
        end;
     end;
+
     Self.edt_IdCondicaoPagamento.Enabled := False;
     Self.edt_CondicaoPagamento.Enabled := False;
     Self.btn_BuscarCondicaoPagamento.Enabled := False;
@@ -1273,7 +1273,8 @@ begin
             umaCompra.setDataAlteracao(dataAtual);
           umaCompra.setObservacao(edt_Observacao.Text);
 
-          umaCompra.setTipo(True); //Garantir que os dados vem de uma Compra
+          //Garantir que os dados vem de uma Compra
+          umaCompra.setTipo(True);
 
           msg := umaCtrlCompra.Salvar(UmaCompra);
           if (Copy(msg,0,11) = 'Esse Número') then
@@ -1293,6 +1294,7 @@ begin
 end;
 
 //----Validar Data----//
+
 procedure TFrmCadCompra.edt_DataCompraExit(Sender: TObject);
 var DataAtual : TDateTime;
 begin
@@ -1307,7 +1309,6 @@ begin
       Self.edt_DataCompra.SetFocus;
     end;
   end;
-
 end;
 
 procedure TFrmCadCompra.edt_DataEmissaoExit(Sender: TObject);
@@ -1326,7 +1327,7 @@ begin
   end;
 end;
 
-//-----------------//
+//---Final Valida Data--------------//
 
 procedure TFrmCadCompra.edt_ValorFreteExit(Sender: TObject);
 begin
@@ -1360,6 +1361,7 @@ begin
   end;
 end;
 
+//Calcula Total da Nota
 procedure TFrmCadCompra.edt_TotalNotaExit(Sender: TObject);
 var verifica     : Boolean;
     totalProduto, totalNota : Real;
@@ -1391,10 +1393,10 @@ begin
       end;
       if (valorfrete <> 0) and (valorfreteAux <> valorfrete)then
       begin
-        valorfreteAux := valorfrete;
-        verifica := False;
-        totalnota     := StrToFloat(Self.edt_TotalNota.Text);
-        valorfrete := StrToFloat(Self.edt_ValorFrete.Text);
+        valorfreteAux           := valorfrete;
+        verifica                := False;
+        totalnota               := StrToFloat(Self.edt_TotalNota.Text);
+        valorfrete              := StrToFloat(Self.edt_ValorFrete.Text);
         Self.edt_TotalNota.Text := FormatFloat('#0.00', totalnota + valorfrete);
       end;
       if (verifica) and (valordesconto = 0) and (valorfrete = 0)then
@@ -1407,6 +1409,7 @@ begin
     end;
 end;
 
+//Calcula Item Produto
 procedure TFrmCadCompra.CalcItemProduto;
 var qtdItem, valorProdutoItem, descontoItem, totalItem : Real;
 begin
@@ -1639,7 +1642,7 @@ begin
     if (edt_ICMS.Text <> '') then
     begin
       icmsTot := StrToFloat(edt_ICMS.Text)/100;
-      totAux :=  StrToFloat(edt_Total.Text) * icmsTot;
+      totAux  := StrToFloat(edt_Total.Text) * icmsTot;
       edt_ValorICMS.Text := FormatFloat('#0.00', totAux);
     end;
 end;
