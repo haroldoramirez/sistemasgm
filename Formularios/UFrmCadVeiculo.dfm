@@ -1,9 +1,9 @@
 inherited FrmCadVeiculo: TFrmCadVeiculo
   Caption = 'Cadastro de Ve'#237'culo'
-  ClientHeight = 217
+  ClientHeight = 214
   ClientWidth = 390
   ExplicitWidth = 396
-  ExplicitHeight = 246
+  ExplicitHeight = 243
   PixelsPerInch = 96
   TextHeight = 13
   inherited lbl5: TsLabel

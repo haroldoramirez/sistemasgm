@@ -234,8 +234,6 @@ begin
 
             for i := 0 to umaCondicaoPagamento.p - 1 do
               begin
-//                  if not QParcelas.Active then
-//                      QParcelas.Open;
                   QParcelas.SQL := UpdateParcelas.InsertSQL;
                   QParcelas.Params.ParamByName('idcondicaopagamento').Value := umaCondicaoPagamento.getId;
                   QParcelas.Params.ParamByName('numparcela').Value := umaCondicaoPagamento.getParcela(i).getNumParcela;

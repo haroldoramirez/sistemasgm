@@ -3744,7 +3744,6 @@
   object QCfop: TZQuery
     Connection = DB
     UpdateObject = UpdateCfop
-    Active = True
     SQL.Strings = (
       'select * from cfop;')
     Params = <>
@@ -3759,14 +3758,15 @@
       Required = True
       Size = 100
     end
-    object QCfopnumero: TIntegerField
-      FieldName = 'numero'
-    end
     object QCfopdatacadastro: TDateField
       FieldName = 'datacadastro'
     end
     object QCfopdataalteracao: TDateField
       FieldName = 'dataalteracao'
+    end
+    object QCfopnumero: TWideStringField
+      FieldName = 'numero'
+      Size = 5
     end
   end
   object DSCfop: TDataSource

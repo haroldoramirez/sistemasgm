@@ -61,7 +61,6 @@ procedure CondicaoPagamento.removeParcela;
 begin
   dec(p);
   setLength(ListaParcela,p);
-//  ListaParcela[p-1] := Parcelas.CrieObjeto;
 end;
 
 procedure CondicaoPagamento.setUmaFormaPagamento(

@@ -340,7 +340,6 @@ inherited FrmCadCondicaoPagamento: TFrmCadCondicaoPagamento
       Width = 17
       Height = 21
       TabOrder = 1
-      OnClick = ud_NumParcelaClick
     end
     object edt_NumDias: TsEdit
       Left = 81

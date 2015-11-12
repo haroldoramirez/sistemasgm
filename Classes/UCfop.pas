@@ -7,7 +7,7 @@ interface
     protected
         Id              : Integer;
         Nome            : string[100];
-        Numero          : Integer;
+        Numero          : string[5];
         DataCadastro    : TDateTime;
         DataAlteracao   : TDateTime;
     public
@@ -16,13 +16,13 @@ interface
 
         Procedure setId (vId : Integer);
         Procedure setNome (vNome : string);
-        Procedure setNumero (vNumero : Integer);
+        Procedure setNumero (vNumero : string);
         Procedure setDataCadastro (vDataCadastro : TDateTime);
         Procedure setDataAlteracao (vDataAlteracao : TDateTime);
 
         Function getId : integer;
         Function getNome : String;
-        Function getNumero : Integer;
+        Function getNumero : string;
         Function getDataCadastro :TDateTime;
         Function getDataAlteracao : TDateTime;
     end;
@@ -37,7 +37,7 @@ begin
      dataAtual       := Date;
      Id              := 0;
      Nome            := '';
-     Numero          := 0;
+     Numero          := '';
      DataCadastro    := dataAtual;
      DataAlteracao   := dataAtual;
 
@@ -68,7 +68,7 @@ begin
     Result := Nome;
 end;
 
-function Cfop.getNumero: Integer;
+function Cfop.getNumero: String;
 begin
     Result := Numero;
 end;
@@ -93,7 +93,7 @@ begin
     Nome := vNome;
 end;
 
-procedure Cfop.setNumero(vNumero: Integer);
+procedure Cfop.setNumero(vNumero: string);
 begin
     Numero := vNumero;
 end;

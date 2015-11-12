@@ -349,11 +349,6 @@ type
     QCfop: TZQuery;
     DSCfop: TDataSource;
     UpdateCfop: TZUpdateSQL;
-    QCfopidcfop: TIntegerField;
-    QCfopnome: TWideStringField;
-    QCfopnumero: TIntegerField;
-    QCfopdatacadastro: TDateField;
-    QCfopdataalteracao: TDateField;
     QProdutocst: TWideStringField;
     QProdutoidncm: TIntegerField;
     QProdutounidade: TWideStringField;
@@ -376,6 +371,11 @@ type
     QProdutoCompraipi: TFloatField;
     QProdutoCompraidcfop: TIntegerField;
     UpdateProdutoCompra: TZUpdateSQL;
+    QCfopidcfop: TIntegerField;
+    QCfopnome: TWideStringField;
+    QCfopdatacadastro: TDateField;
+    QCfopdataalteracao: TDateField;
+    QCfopnumero: TWideStringField;
 
   private
     { Private declarations }

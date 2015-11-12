@@ -663,7 +663,7 @@ begin
         self.edt_Produto.Text    := umaCompra.getUmProdutoCompra.getDescricao;
         self.edt_Unidade.Text    := umaCompra.getumProdutoCompra.getUnidade;
         self.edt_IdCFOP.Text     := IntToStr(umaCompra.getumProdutoCompra.getUmCfop.getId);
-        self.edt_CPOF.Text       := IntToStr(umaCompra.getumProdutoCompra.getUmCfop.getNumero);
+        self.edt_CPOF.Text       := umaCompra.getumProdutoCompra.getUmCfop.getNumero;
         self.edt_CST.Text        := umaCompra.getumProdutoCompra.getCST;
         self.edt_NCM.Text        := IntToStr(umaCompra.getumProdutoCompra.getUmNcm.getNumero);
 
@@ -794,7 +794,7 @@ begin
       umaCompra.addProdutoCompra(umaCompra.getUmProdutoCompra);
 
       CarregaGridProduto;
-      CalcValorNota;
+//      CalcValorNota;
 
       LimpaGridParcelas(True);
       Self.edt_IdCondicaoPagamentoExit(Sender);
@@ -844,13 +844,19 @@ end;
 procedure TFrmCadCompra.CarregaGridProduto;
 var i : Integer;
     qtdAnt, precoAnt, totalAnt, qtdRec, precoRec, totalRec, resultQtd : Double;
-     resultAnt, resultRec : String;
+    resultAnt, resultRec : String;
+    valorTotalProduto, valorProdutoItem, valorProdutoNOTA, valorTotalICMS, valoricmsNOTA,
+    valorDescontoNOTA, valorTotalDesconto : Real;
 begin
   if ((self.gridProduto.RowCount - 1) = 1 ) and (umaCompra.CountProdutos = 0)then
   begin
     for i := 0 to  self.gridProduto.ColCount -1  do
        self.gridProduto.Cells[i,1] := EmptyStr;
     self.gridProduto.RowCount := 1;
+
+    edt_TotalNota.Text      := FormatFloat('#0.00', 0);
+    edt_BaseICMS.Text       := FormatFloat('#0.00', 0);
+    edt_ValorDesconto.Text  := FormatFloat('#0.00', 0);
   end
   else
   begin
@@ -863,7 +869,7 @@ begin
         self.gridProduto.Cells[1, i]  := umaCompra.getProdutoCompra(i-1).getDescricao;
         self.gridProduto.Cells[2, i]  := umaCompra.getProdutoCompra(i-1).getNCMSH;
         self.gridProduto.Cells[3, i]  := umaCompra.getProdutoCompra(i-1).getCSTCompra;
-        self.gridProduto.Cells[4, i]  := IntToStr(umaCompra.getProdutoCompra(i-1).getUmCfop.getNumero);
+        self.gridProduto.Cells[4, i]  := umaCompra.getProdutoCompra(i-1).getUmCfop.getNumero;
         self.gridProduto.Cells[5, i]  := umaCompra.getProdutoCompra(i-1).getUnidadeCompra;
         self.gridProduto.Cells[6, i]  := FormatFloat('#0.000', umaCompra.getProdutoCompra(i-1).getQuantidadeCompra);
         self.gridProduto.Cells[7, i]  := FormatFloat('#0.00', umaCompra.getProdutoCompra(i-1).getValorUnitarioCompra);
@@ -880,6 +886,12 @@ begin
         baseicms  := baseicms  + umaCompra.getProdutoCompra(i-1).getBaseIcmsCompra;
         valoricms := valoricms + umaCompra.getProdutoCompra(i-1).getValorIcmsCompra;
         valoripi  := valoripi  + umaCompra.getProdutoCompra(i-1).getValorIpiCompra;
+
+        //Calculo da nota
+        edt_TotalNota.Text      := FormatFloat('#0.00', total);
+        edt_BaseICMS.Text       := FormatFloat('#0.00', baseicms);
+        edt_ValorDesconto.Text  := FormatFloat('#0.00', desconto);
+
 
         //Calculo para a media ponderada
         if self.btn_Salvar.Caption = 'Cancelar' then
@@ -923,7 +935,7 @@ begin
       Self.edt_CPOF.Clear;
       umaCtrlCfop := CtrlCfop.CrieObjeto;
       umaCompra.getumProdutoCompra.getUmCfop.setId(StrToInt(Self.edt_IdCfop.Text));
-      umaCompra.getumProdutoCompra.getUmCfop.setNumero(0);
+      umaCompra.getumProdutoCompra.getUmCfop.setNumero('');
       if not umaCtrlCfop.Buscar(umaCompra.getumProdutoCompra.getUmCfop) then
         begin
             MessageDlg('Nenhum registro encontrado!',  mtInformation, [mbOK], 0);
@@ -934,7 +946,7 @@ begin
         begin
             umaCtrlCfop.Carrega(umaCompra.getumProdutoCompra.getUmCfop);
             Self.edt_IdCfop.Text := IntToStr(umaCompra.getumProdutoCompra.getUmCfop.getId);
-            Self.edt_CPOF.Text := IntToStr(umaCompra.getumProdutoCompra.getUmCfop.getNumero);
+            Self.edt_CPOF.Text := umaCompra.getumProdutoCompra.getUmCfop.getNumero;
         end;
       umCfop := Cfop.CrieObjeto;
       umaCtrlCfop.Buscar(umCfop);
@@ -987,7 +999,7 @@ begin
   umFrmConCfop.btn_Sair.Caption := 'Selecionar';
   umFrmConCfop.ShowModal;
   self.edt_IdCfop.Text := inttostr(umaCompra.getumProdutoCompra.getUmCfop.getId);
-  self.edt_CPOF.Text   := inttostr(umaCompra.getumProdutoCompra.getUmCfop.getNumero);
+  self.edt_CPOF.Text   := umaCompra.getumProdutoCompra.getUmCfop.getNumero;
 end;
 
 procedure TFrmCadCompra.btn_BuscarCondicaoPagamentoClick(Sender: TObject);

@@ -38,7 +38,6 @@ type
     rg_GerarParcelas: TRadioGroup;
     edt_Porcentagem: TsEdit;
     procedure FormActivate(Sender: TObject);
-    procedure ud_NumParcelaClick(Sender: TObject; Button: TUDBtnType);
     procedure btn_Add_GerarClick(Sender: TObject);
     procedure gridParcelasSelectCell(Sender: TObject; ACol, ARow: Integer;
       var CanSelect: Boolean);
@@ -184,9 +183,6 @@ begin
         DesabilitaCampos;
     end;
   end;
-  // insereParcelas;
-  // limpaCampoParcela;
-  // self.edtNParcelas.ReadOnly := true;
 end;
 
 procedure TFrmCadCondicaoPagamento.btn_BuscarClick(Sender: TObject);
@@ -459,7 +455,6 @@ begin
   self.gridParcelas.Cells[0, 0] := 'Nº Parcela';
   self.gridParcelas.Cells[1, 0] := 'Dia';
   self.gridParcelas.Cells[2, 0] := 'Porcentagem';
-  // self.gridParcelas.RowCount := 1;
 end;
 
 procedure TFrmCadCondicaoPagamento.gridParcelasSelectCell
@@ -532,17 +527,6 @@ begin
     edt_Porcentagem.Text := '100';
     edt_Porcentagem.Enabled := false;
   end;
-end;
-
-procedure TFrmCadCondicaoPagamento.ud_NumParcelaClick
-  (Sender: TObject; Button: TUDBtnType);
-begin
-  inherited;
-  // ud_NumParcela.Max := 30;
-  // ud_NumParcela.Min := 1;
-  // ud_NumParcela.Increment := 1;
-  // ud_NumParcela.Associate := Self.edt_NumParcela;
-
 end;
 
 end.

@@ -1353,7 +1353,7 @@ object FrmCadCompra: TFrmCadCompra
       TabOrder = 5
     end
     object btn_GerarParcelas: TsBitBtn
-      Left = 350
+      Left = 348
       Top = 35
       Width = 30
       Height = 25
@@ -1609,8 +1609,8 @@ object FrmCadCompra: TFrmCadCompra
     TabOrder = 8
     SkinData.SkinSection = 'GROUPBOX'
     object edt_Observacao: TsMemo
-      Left = 9
-      Top = 17
+      Left = 12
+      Top = 19
       Width = 395
       Height = 86
       Color = clWhite
@@ -1932,7 +1932,7 @@ object FrmCadCompra: TFrmCadCompra
       BoundLabel.UseSkinColor = True
     end
     object edt_TotalNota: TsEdit
-      Left = 870
+      Left = 865
       Top = 33
       Width = 78
       Height = 21

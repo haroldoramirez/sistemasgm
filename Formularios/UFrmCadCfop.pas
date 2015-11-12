@@ -70,7 +70,7 @@ begin
   if self.btn_Salvar.Caption = 'Salvar' then
     begin
       umCfop.setNome(edt_Nome.Text);
-      umCfop.setNumero(strtoint(edt_Numero.Text));
+      umCfop.setNumero(edt_Numero.Text);
       umCfop.setDataCadastro(edt_DataCadastro.Date);
       if self.edt_DataUltAlteracao.Date <> dataAtual then
         umCfop.setDataAlteracao(dataAtual);
@@ -102,7 +102,7 @@ procedure TFrmCadCfop.CarregaObj;
 begin
     Self.edt_IdCfop.Text           := IntToStr(umCfop.getId);
     Self.edt_Nome.Text             := umCfop.getNome;
-    Self.edt_Numero.Text           := IntToStr(umCfop.getNumero);
+    Self.edt_Numero.Text           := umCfop.getNumero;
     Self.edt_DataCadastro.Date     := umCfop.getDataCadastro;
     Self.edt_DataUltAlteracao.Date := umCfop.getDataAlteracao;
 end;

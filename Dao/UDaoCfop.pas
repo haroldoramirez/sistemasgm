@@ -101,7 +101,7 @@ begin
 
         umCfop.setId(QCfopidcfop.AsInteger);
         umCfop.setNome(QCfopnome.AsString);
-        umCfop.setNumero(QCfopnumero.AsInteger);
+        umCfop.setNumero(QCfopnumero.AsString);
         umCfop.setDataCadastro(QCfopdatacadastro.AsDateTime);
         umCfop.setDataAlteracao(QCfopdataalteracao.AsDateTime);
     end;

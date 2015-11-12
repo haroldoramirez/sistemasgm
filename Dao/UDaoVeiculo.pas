@@ -195,12 +195,12 @@ begin
 
             QVeiculo.ExecSQL;
             Commit;
-            result := 'O Veículo "' + umVeiculo.getAntt + '" foi salvo com sucesso!';
+            result := 'O Veículo "' + umVeiculo.getPlaca + '" foi salvo com sucesso!';
         except
           on e: Exception do
           begin
               rollback;
-              Result := 'Não foi possível salvar o Veículo ' + umVeiculo.getAntt + 'Erro: '+e.Message;
+              Result := 'Não foi possível salvar o Veículo ' + umVeiculo.getPlaca + 'Erro: '+e.Message;
           end;
         end;
     end;
