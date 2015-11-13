@@ -7,6 +7,7 @@ interface
     function addMascara(valor:String; tipo:Integer) : String;
     function removeMascara(valor:String) : String;
     function removeEspacos(texto:String) : String;
+
 implementation
 
 {Comuns}

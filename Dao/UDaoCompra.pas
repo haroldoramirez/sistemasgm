@@ -360,6 +360,7 @@ begin
               end;
 
            numNotaAux := QProdutoCompranumnota.AsInteger;
+
            //Recupera o numNota da tabela relacional
            //Faz Relacao com os Itens da Compra
            for i := 1 to umaCompra.CountProdutos do
@@ -374,6 +375,7 @@ begin
                     QProdutoCompra.SQL := UpdateProdutoCompra.ModifySQL;
                     cancelar := True;
                   end;
+
                 QProdutoCompra.Params.ParamByName('idcompra').Value := umaCompra.getIdCompra;
                 QProdutoCompra.Params.ParamByName('numnota').Value := umaCompra.getNumNota;
                 QProdutoCompra.Params.ParamByName('serienota').Value := umaCompra.getSerieNota;
@@ -397,6 +399,7 @@ begin
                 quantidade := umaCompra.getProdutoCompra(i-1).getQuantidade;
                 if (cancelar) then
                 begin
+
                   //Diminui o estoque do produto correspondente
                   umaCompra.getProdutoCompra(i-1).setQuantidade( quantidade - umaCompra.getProdutoCompra(i-1).getQuantidadeCompra);
                   if(umaCompra.getProdutoCompra(i-1).getQuantidade = 0) then
@@ -412,7 +415,6 @@ begin
                   begin
                     umaCompra.getProdutoCompra(i-1).setICMS(umaCompra.getProdutoCompra(i-1).getICMSAnterior);
                     umaCompra.getProdutoCompra(i-1).setIPI(umaCompra.getProdutoCompra(i-1).getIPIAnterior);
-                    //umaCompra.getProdutoCompra(i-1).setPrecoCompra(umaCompra.getProdutoCompra(i-1).getPrecoCompraAnt);
                     umaCompra.getProdutoCompra(i-1).getPrecoCompra;
                   end;
                 end
@@ -422,7 +424,6 @@ begin
                   umaCompra.getProdutoCompra(i-1).setQuantidade( quantidade + umaCompra.getProdutoCompra(i-1).getQuantidadeCompra);
                   umaCompra.getProdutoCompra(i-1).setICMS(umaCompra.getProdutoCompra(i-1).getICMSCompra);
                   umaCompra.getProdutoCompra(i-1).setIPI(umaCompra.getProdutoCompra(i-1).getIPICompra);
-                  //umaCompra.getProdutoCompra(i-1).setPrecoCompra(umaCompra.getProdutoCompra(i-1).getValorUnitarioCompra);
                   umaCompra.getProdutoCompra(i-1).getPrecoCompra;
                 end;
 
@@ -467,6 +468,7 @@ begin
                 QContasPagar.ExecSQL;
               end;
             Commit;
+
             if umaCompra.getStatus = 'CANCELADA' then
               result := 'Compra Cancelada com sucesso!'
             else

@@ -215,7 +215,7 @@ type
       procedure BuscarFavorecido(T:string; Tipo:String);
       procedure CalcItemProduto;
 
-      //calcula o valor total da nova o valor do desconto e a base de calc ICMS
+      //calcula o valor total da nota o valor do desconto e a base de calc ICMS
       procedure CalcValorNota;
 
       //Produto
@@ -315,7 +315,6 @@ begin
    Self.edt_Quantidade.Enabled := True;
    Self.edt_PrecoCusto.Enabled := True;
    Self.edt_Desconto.Enabled := True;
-   Self.edt_BCICMS.Enabled := True;
    Self.edt_ValorICMS.Enabled := True;
    Self.edt_ValorIPI.Enabled := True;
    Self.edt_ICMS.Enabled := True;
@@ -353,19 +352,13 @@ end;
 
 procedure TFrmCadCompra.HabilitaCampos;
 begin
-   Self.edt_BaseICMS.Enabled := True;
-   Self.edt_TotalICMS.Enabled := True;
    Self.edt_ValorFrete.Enabled := True;
-   Self.edt_ValorDesconto.Enabled := True;
-   Self.edt_TotalIpi.Enabled := True;
    Self.edt_IdTransportadora.Enabled := True;
    Self.btn_BuscarTransportadora.Enabled := True;
    Self.edt_IdProduto.Enabled := True;
    Self.btn_BuscarProduto.Enabled := True;
    Self.btn_Add_Produto.Enabled := True;
    Self.btn_LimparProdutos.Enabled := True;
-   Self.edt_TotalProduto.Enabled := True;
-   Self.edt_TotalNota.Enabled := True;
    Self.rg_TipoFrete.Enabled := True;
    Self.edt_Observacao.Enabled := True;
    Self.edt_DataEmissao.Enabled := True;
@@ -472,6 +465,7 @@ begin
         Self.edt_CondicaoPagamento.Clear;
         umaCompra.getUmFornecedor.setId(0);
         Self.DesbilitaCampos;
+        Self.edt_IdFornecedor.SetFocus;
       end
       else
       begin
@@ -610,6 +604,7 @@ begin
       self.edt_IdTransportadora.Clear;
       self.edt_Transportadora.Clear;
       umaCompra.getUmaTransportadora.setId(0);
+      self.edt_IdTransportadora.SetFocus;
     end
     else
     begin
@@ -890,6 +885,7 @@ begin
         edt_TotalNota.Text      := FormatFloat('#0.00', total);
         edt_BaseICMS.Text       := FormatFloat('#0.00', baseicms);
         edt_ValorDesconto.Text  := FormatFloat('#0.00', desconto);
+        edt_TotalProduto.Text   := FormatFloat('#0.00', total);
 
 
         //Calculo para a media ponderada
@@ -1018,8 +1014,7 @@ procedure TFrmCadCompra.btn_GerarParcelasClick(Sender: TObject);
 begin
   if (Self.edt_TotalNota.Text = '') or (StrToFloat(Self.edt_TotalNota.Text) = 0)then
   begin
-    ShowMessage('O campo V. Total da Nota não pode estar em branco ou igual a 0! ');
-    edt_TotalNota.SetFocus;
+    ShowMessage('Adicionar ao menos um Produto para Gerar as Parcelas!');
   end
   else
     CarregaParcelas;
@@ -1046,6 +1041,7 @@ begin
        self.gridParcelas.Cells[3,i] := valor;
 
        valorFinal := valorFinal + StrToFloat(self.gridParcelas.Cells[3,i]);
+
        if (valorFinal > TotalNota) and (i = umaCompra.getUmaCondicaoPagamento.p) then
        begin
          valorFinal := TotalNota - valorFinal;
@@ -1081,6 +1077,8 @@ begin
    gridProduto.RowCount := 0;
 end;
 
+
+//calcula média ponderada
 procedure TFrmCadCompra.MediaPonderada(qtdCompra : Real; precoCompra : Real);
 var totalAnt : Real;
 begin
@@ -1269,8 +1267,10 @@ begin
           umaCompra.setDataEmissao(edt_DataEmissao.Date);
           umaCompra.setDataCompra(edt_DataCompra.Date);
           umaCompra.setDataCadastro(edt_DataCadastro.Date);
+
           if self.edt_DataAlteracao.Date <> dataAtual then
             umaCompra.setDataAlteracao(dataAtual);
+
           umaCompra.setObservacao(edt_Observacao.Text);
 
           //Garantir que os dados vem de uma Compra
@@ -1328,7 +1328,6 @@ begin
 end;
 
 //---Final Valida Data--------------//
-
 procedure TFrmCadCompra.edt_ValorFreteExit(Sender: TObject);
 begin
   if (Self.edt_ValorFrete.Text = '') then
@@ -1415,7 +1414,7 @@ var qtdItem, valorProdutoItem, descontoItem, totalItem : Real;
 begin
     qtdItem := StrToFloat(edt_Quantidade.Text);
     valorProdutoItem := StrToFloat(edt_PrecoCusto.Text);
-    totalItem :=  valorProdutoItem * qtdItem;
+    totalItem := valorProdutoItem * qtdItem;
     totalItemAnt := totalItem;
     edt_Total.Text := FormatFloat('#0.00', totalItem);
     edt_BCICMS.Text := FormatFloat('#0.00', totalItem);
@@ -1690,7 +1689,7 @@ begin
     self.gridProduto.ColWidths[1] := 230;
     self.gridProduto.ColWidths[2] := 51;
     self.gridProduto.ColWidths[3] := 35;
-    self.gridProduto.ColWidths[4] := 55;
+    self.gridProduto.ColWidths[4] := 35;
     self.gridProduto.ColWidths[5] := 48;
     self.gridProduto.ColWidths[6] := 63;
     self.gridProduto.ColWidths[7] := 59;
@@ -1698,7 +1697,7 @@ begin
     self.gridProduto.ColWidths[9] := 49;
     self.gridProduto.ColWidths[10] := 49;
     self.gridProduto.ColWidths[11] := 40;
-    self.gridProduto.ColWidths[12] := 40;
+    self.gridProduto.ColWidths[12] := 49;
     self.gridProduto.ColWidths[13] := 40;
     self.gridProduto.ColWidths[14] := 40;
 
@@ -1712,11 +1711,11 @@ begin
     self.gridProduto.Cells[7,0] := 'V.Unitário';
     self.gridProduto.Cells[8,0] := 'Desconto';
     self.gridProduto.Cells[9,0] := 'V.Total';
-    self.gridProduto.Cells[10,0] := 'BC.ICMS';
-    self.gridProduto.Cells[11,0] := 'V.ICMS';
-    self.gridProduto.Cells[12,0] := 'V.IPI';
-    self.gridProduto.Cells[13,0] := '%ICMS';
-    self.gridProduto.Cells[14,0] := '%IPI';
+    self.gridProduto.Cells[10,0] := '%ICMS';
+    self.gridProduto.Cells[11,0] := '%IPI';
+    self.gridProduto.Cells[12,0] := 'BC.ICMS';
+    self.gridProduto.Cells[13,0] := 'V.ICMS';
+    self.gridProduto.Cells[14,0] := 'V.IPI';
 
     for count := 0 to Self.ComponentCount - 1 do
       if Self.Components[count] is TsEdit then

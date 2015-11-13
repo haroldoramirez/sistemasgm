@@ -5,7 +5,7 @@ interface
     type CondicaoPagamento = class(Generico)
 
     protected
-    umaFormaPagamento : FormaPagamento;
+    umaFormaPagamento: FormaPagamento;
     ListaParcela: array of Parcelas;
     public
         p : Integer;
