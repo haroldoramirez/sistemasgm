@@ -1,4 +1,4 @@
-object FrmConContasReceber: TFrmConContasReceber
+﻿object FrmConContasReceber: TFrmConContasReceber
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
@@ -94,7 +94,7 @@ object FrmConContasReceber: TFrmConContasReceber
       Width = 75
       Height = 33
       Caption = 'Consultar'
-      TabOrder = 5
+      TabOrder = 4
       OnClick = btn_ConsultarClick
       SkinData.SkinSection = 'BUTTON'
     end
@@ -174,16 +174,6 @@ object FrmConContasReceber: TFrmConContasReceber
         'Conta Cancelada'
         'Todas as Contas')
     end
-    object btn_Relatorio: TsButton
-      Left = 738
-      Top = 67
-      Width = 75
-      Height = 33
-      Caption = 'Relat'#243'rio'
-      TabOrder = 4
-      OnClick = btn_RelatorioClick
-      SkinData.SkinSection = 'BUTTON'
-    end
   end
   object gridConsulta: TDBGrid
     Left = 6
@@ -207,7 +197,7 @@ object FrmConContasReceber: TFrmConContasReceber
     TabOrder = 2
     SkinData.SkinSection = 'GROUPBOX'
     object btn_Visualizar: TsBitBtn
-      Left = 417
+      Left = 644
       Top = 17
       Width = 75
       Height = 33
@@ -219,7 +209,7 @@ object FrmConContasReceber: TFrmConContasReceber
       SkinData.SkinSection = 'BUTTON'
     end
     object btn_Receber: TsBitBtn
-      Left = 312
+      Left = 556
       Top = 17
       Width = 75
       Height = 33
@@ -230,16 +220,28 @@ object FrmConContasReceber: TFrmConContasReceber
       OnClick = btn_ReceberClick
       SkinData.SkinSection = 'BUTTON'
     end
-    object btn_Sair: TsBitBtn
-      Left = 522
+    object btn_Relatorio: TsBitBtn
+      Left = 733
+      Top = 17
+      Width = 75
+      Height = 33
+      Caption = 'Relat'#243'rio'
+      DoubleBuffered = True
+      ParentDoubleBuffered = False
+      TabOrder = 2
+      OnClick = btn_RelatorioClick
+      SkinData.SkinSection = 'BUTTON'
+    end
+    object sBitBtn1: TsBitBtn
+      Left = 822
       Top = 17
       Width = 75
       Height = 33
       Caption = 'Sair'
       DoubleBuffered = True
       ParentDoubleBuffered = False
-      TabOrder = 2
-      OnClick = btn_SairClick
+      TabOrder = 3
+      OnClick = btn_RelatórioClick
       SkinData.SkinSection = 'BUTTON'
     end
   end

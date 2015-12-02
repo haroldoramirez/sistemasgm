@@ -194,7 +194,6 @@ begin
   inherited;
    if Self.edt_IdFuncionario.Text <> '' then
      begin
-       // umUsuario := Usuario.CrieObjeto;
         Self.edt_Funcionario.Clear;
         umaCtrlFuncionario := CtrlFuncionario.CrieObjeto;
         umUsuario.getUmFuncionario.setId(StrToInt(Self.edt_IdFuncionario.Text));

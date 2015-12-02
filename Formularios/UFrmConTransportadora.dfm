@@ -1,7 +1,8 @@
 inherited FrmConTransportadora: TFrmConTransportadora
   Caption = '\'
+  ClientHeight = 436
   ExplicitWidth = 660
-  ExplicitHeight = 471
+  ExplicitHeight = 465
   PixelsPerInch = 96
   TextHeight = 13
   inherited sGroupBox1: TsGroupBox
@@ -25,7 +26,6 @@ inherited FrmConTransportadora: TFrmConTransportadora
     end
     inherited edt_Id: TsEdit
       MaxLength = 5
-      NumbersOnly = True
       OnKeyPress = edt_IdKeyPress
     end
     inherited edt_Descricao: TsEdit
@@ -61,6 +61,8 @@ inherited FrmConTransportadora: TFrmConTransportadora
     end
   end
   inherited sGroupBox2: TsGroupBox
+    Top = 374
+    ExplicitTop = 374
     inherited btn_Novo: TsBitBtn
       OnClick = btn_NovoClick
     end
@@ -73,7 +75,7 @@ inherited FrmConTransportadora: TFrmConTransportadora
   end
   object gridConsulta: TDBGrid [2]
     Left = 8
-    Top = 191
+    Top = 125
     Width = 638
     Height = 243
     Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]

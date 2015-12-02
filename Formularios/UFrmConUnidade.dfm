@@ -11,6 +11,8 @@ inherited FrmConUnidade: TFrmConUnidade
     end
   end
   inherited sGroupBox2: TsGroupBox
+    Top = 376
+    ExplicitTop = 376
     inherited btn_Novo: TsBitBtn
       OnClick = btn_NovoClick
     end
@@ -23,7 +25,7 @@ inherited FrmConUnidade: TFrmConUnidade
   end
   object gridConsulta: TDBGrid [2]
     Left = 8
-    Top = 191
+    Top = 127
     Width = 638
     Height = 243
     Font.Charset = DEFAULT_CHARSET

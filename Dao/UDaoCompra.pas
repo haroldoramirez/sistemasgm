@@ -289,7 +289,7 @@ begin
             beginTrans;
             QCompra.Close;
 
-             //Buscar a Conta a Pagar
+            //Buscar a Conta a Pagar
             umaContaPagar.setNumNota(umaCompra.getNumNota);
             umaContaPagar.setSerieNota(umaCompra.getSerieNota);
             umaContaPagar.getUmFornecedor.setId(umaCompra.getUmFornecedor.getId);
@@ -323,6 +323,7 @@ begin
                 QCompra.Params.ParamByName('OLD_serienota').Value := umaCompra.getSerieNota;
                 QCompra.Params.ParamByName('OLD_idfornecedor').Value := umaCompra.getUmFornecedor.getId;
             end;
+
             QCompra.Params.ParamByName('numnota').Value := umaCompra.getNumNota;
             QCompra.Params.ParamByName('serienota').Value := umaCompra.getSerieNota;
             QCompra.Params.ParamByName('idfornecedor').Value := umaCompra.getUmFornecedor.getId;
@@ -397,6 +398,7 @@ begin
                 QProdutoCompra.Params.ParamByName('ipi').Value := umaCompra.getProdutoCompra(i-1).getIPICompra;
 
                 quantidade := umaCompra.getProdutoCompra(i-1).getQuantidade;
+
                 if (cancelar) then
                 begin
 

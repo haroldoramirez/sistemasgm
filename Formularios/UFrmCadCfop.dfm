@@ -28,9 +28,9 @@ inherited FrmCadCfop: TFrmCadCfop
   object lbl_Pais: TsLabel [2]
     Left = 8
     Top = 61
-    Width = 55
+    Width = 36
     Height = 13
-    Caption = 'Descri'#231#227'o *'
+    Caption = 'Nome *'
     ParentFont = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 4276545

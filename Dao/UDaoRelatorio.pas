@@ -15,8 +15,6 @@ interface
       procedure rl_RelacaoProdutos;
       procedure rl_Compra;
       procedure rl_Venda;
-      procedure rl_OrdemServico;
-
   end;
 
 implementation
@@ -77,15 +75,5 @@ begin
     frxRelatorio.ShowReport(true);
   end;
 end;
-
-procedure DaoRelatorio.rl_OrdemServico;
-begin
-  with umDmRelatorio do
-  begin
-    frxRelatorio.LoadFromFile(ExtractFilePath(Application.ExeName)+'Relatorios\RLOrdemServico.fr3');
-    frxRelatorio.ShowReport(true);
-  end;
-end;
-
 end.
 

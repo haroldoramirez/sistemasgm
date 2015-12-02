@@ -11,7 +11,7 @@ uses
 type
   TFrmConProduto = class(TFrmConsulta)
     gridConsulta: TDBGrid;
-    btn_Relatorio: TsButton;
+    btn_Relatorio: TsBitBtn;
     procedure btn_NovoClick(Sender: TObject);
     procedure btn_EditarClick(Sender: TObject);
     procedure btn_ExcluirClick(Sender: TObject);
@@ -99,11 +99,11 @@ end;
 
 procedure TFrmConProduto.btn_RelatorioClick(Sender: TObject);
 begin
-  inherited;
-  if (umaCtrlProduto.RelacaoProduto(0)) then
-    umaDaoRelatorio.rl_RelacaoProdutos
-  else
-    MessageDlg('Nenhum registro encontrado!', mtInformation,[mbOK],0)
+//  inherited;
+//  if (umaCtrlProduto.RelacaoProduto(0)) then
+//    umaDaoRelatorio.rl_RelacaoProdutos
+//  else
+//    MessageDlg('Nenhum registro encontrado!', mtInformation,[mbOK],0)
 end;
 
 procedure TFrmConProduto.btn_SairClick(Sender: TObject);
@@ -124,7 +124,6 @@ begin
   umaDaoRelatorio := DaoRelatorio.CrieObjeto;
   umFrmCadProduto := TFrmCadProduto.Create(nil);
   Self.gridConsulta.DataSource := umaCtrlProduto.GetDS;
-  self.btn_Relatorio.Hide;
 end;
 
 procedure TFrmConProduto.desabilitaCampos;

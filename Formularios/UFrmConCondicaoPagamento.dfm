@@ -2,7 +2,8 @@ inherited FrmConCondicaoPagamento: TFrmConCondicaoPagamento
   Caption = 'Consulta Condi'#231#227'o de Pagamento'
   ClientHeight = 457
   OnActivate = FormActivate
-  ExplicitHeight = 485
+  ExplicitWidth = 660
+  ExplicitHeight = 486
   PixelsPerInch = 96
   TextHeight = 13
   inherited sGroupBox1: TsGroupBox
@@ -152,8 +153,8 @@ inherited FrmConCondicaoPagamento: TFrmConCondicaoPagamento
     end
   end
   inherited sGroupBox2: TsGroupBox
-    Top = 165
-    ExplicitTop = 165
+    Top = 394
+    ExplicitTop = 394
     inherited btn_Novo: TsBitBtn
       OnClick = btn_NovoClick
     end
@@ -166,7 +167,7 @@ inherited FrmConCondicaoPagamento: TFrmConCondicaoPagamento
   end
   object gridConsulta: TDBGrid [2]
     Left = 8
-    Top = 228
+    Top = 167
     Width = 638
     Height = 221
     Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]

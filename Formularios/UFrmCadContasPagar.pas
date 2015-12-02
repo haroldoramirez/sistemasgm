@@ -64,7 +64,7 @@ type
     edt_IdFuncionario: TsEdit;
     edt_Funcionario: TsEdit;
     btn_BuscarFuncionario: TsBitBtn;
-    sGroupBox3: TsGroupBox;
+    group_Condicao: TsGroupBox;
     lbl_IdCondicaoPagamento: TsLabel;
     lbl_CondicaoPagamento: TsLabel;
     edt_CondicaoPagamento: TsEdit;
@@ -867,8 +867,8 @@ end;
 procedure TFrmCadContasPagar.FormActivate(Sender: TObject);
 var count : Integer;
 begin
-  self.gridParcelas.Cells[0,0] := 'Nº Parcela';
-  self.gridParcelas.Cells[1,0] := 'Data Vencimento';
+  self.gridParcelas.Cells[0,0] := 'Parcela';
+  self.gridParcelas.Cells[1,0] := 'Vencimento';
   self.gridParcelas.Cells[2,0] := 'Porcentagem';
   self.gridParcelas.Cells[3,0] := 'Valor R$';
 

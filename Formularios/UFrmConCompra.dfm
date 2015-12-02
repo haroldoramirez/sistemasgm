@@ -32,14 +32,14 @@ object FrmConCompra: TFrmConCompra
   end
   object sGroupBox2: TsGroupBox
     Left = 8
-    Top = 386
+    Top = 387
     Width = 908
     Height = 58
     TabOrder = 2
     SkinData.SkinSection = 'GROUPBOX'
     object btn_Novo: TsBitBtn
-      Left = 267
-      Top = 15
+      Left = 436
+      Top = 14
       Width = 75
       Height = 33
       Caption = 'Novo'
@@ -50,8 +50,8 @@ object FrmConCompra: TFrmConCompra
       SkinData.SkinSection = 'BUTTON'
     end
     object btn_Sair: TsBitBtn
-      Left = 566
-      Top = 15
+      Left = 818
+      Top = 14
       Width = 75
       Height = 33
       Caption = 'Sair'
@@ -62,8 +62,8 @@ object FrmConCompra: TFrmConCompra
       SkinData.SkinSection = 'BUTTON'
     end
     object btn_Cancelar: TsBitBtn
-      Left = 466
-      Top = 15
+      Left = 628
+      Top = 14
       Width = 75
       Height = 33
       Caption = 'Cancelar'
@@ -74,8 +74,8 @@ object FrmConCompra: TFrmConCompra
       SkinData.SkinSection = 'BUTTON'
     end
     object btn_Finalizar: TsBitBtn
-      Left = 367
-      Top = 15
+      Left = 532
+      Top = 14
       Width = 75
       Height = 33
       Caption = 'Visualizar'
@@ -83,6 +83,18 @@ object FrmConCompra: TFrmConCompra
       ParentDoubleBuffered = False
       TabOrder = 1
       OnClick = btn_FinalizarClick
+      SkinData.SkinSection = 'BUTTON'
+    end
+    object btn_Relatorio: TsBitBtn
+      Left = 723
+      Top = 14
+      Width = 75
+      Height = 33
+      Caption = 'Relat'#243'rio'
+      DoubleBuffered = True
+      ParentDoubleBuffered = False
+      TabOrder = 4
+      OnClick = btn_RelatorioClick
       SkinData.SkinSection = 'BUTTON'
     end
   end
@@ -163,7 +175,7 @@ object FrmConCompra: TFrmConCompra
       Width = 75
       Height = 33
       Caption = 'Consultar'
-      TabOrder = 3
+      TabOrder = 2
       OnClick = btn_ConsultarClick
       SkinData.SkinSection = 'BUTTON'
     end
@@ -182,7 +194,7 @@ object FrmConCompra: TFrmConCompra
       Font.Style = []
       MaxLength = 10
       ParentFont = False
-      TabOrder = 4
+      TabOrder = 3
       Text = '  /  /    '
       BoundLabel.Indent = 0
       BoundLabel.Font.Charset = DEFAULT_CHARSET
@@ -212,7 +224,7 @@ object FrmConCompra: TFrmConCompra
       Font.Style = []
       MaxLength = 10
       ParentFont = False
-      TabOrder = 5
+      TabOrder = 4
       Text = '  /  /    '
       BoundLabel.Indent = 0
       BoundLabel.Font.Charset = DEFAULT_CHARSET
@@ -241,16 +253,6 @@ object FrmConCompra: TFrmConCompra
         'Compra Finalizada'
         'Compra Cancelada'
         'Todas as Compras')
-    end
-    object btn_Relatorio: TsButton
-      Left = 735
-      Top = 69
-      Width = 75
-      Height = 33
-      Caption = 'Rel'#225'torio'
-      TabOrder = 2
-      OnClick = btn_RelatorioClick
-      SkinData.SkinSection = 'BUTTON'
     end
   end
 end

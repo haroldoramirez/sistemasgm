@@ -1,9 +1,9 @@
 inherited FrmCadUsuario: TFrmCadUsuario
   Caption = 'Cadastro Usu'#225'rio'
-  ClientHeight = 299
+  ClientHeight = 293
   ClientWidth = 388
   ExplicitWidth = 394
-  ExplicitHeight = 327
+  ExplicitHeight = 322
   PixelsPerInch = 96
   TextHeight = 13
   object lbl_IdUsuario: TsLabel [0]
@@ -85,7 +85,7 @@ inherited FrmCadUsuario: TFrmCadUsuario
     Font.Style = []
   end
   object lbl_DataUltAlteracao: TsLabel [6]
-    Left = 282
+    Left = 114
     Top = 188
     Width = 72
     Height = 13
@@ -109,13 +109,13 @@ inherited FrmCadUsuario: TFrmCadUsuario
     ExplicitTop = 234
     ExplicitWidth = 374
     inherited btn_Salvar: TsBitBtn
-      Left = 109
+      Left = 215
       OnClick = btn_SalvarClick
-      ExplicitLeft = 109
+      ExplicitLeft = 215
     end
     inherited btn_Sair: TsBitBtn
-      Left = 190
-      ExplicitLeft = 190
+      Left = 296
+      ExplicitLeft = 296
     end
   end
   object edt_IdUsuario: TsEdit
@@ -283,7 +283,7 @@ inherited FrmCadUsuario: TFrmCadUsuario
     GlyphMode.Grayed = False
   end
   object edt_DataUltAlteracao: TsDateEdit
-    Left = 282
+    Left = 114
     Top = 207
     Width = 100
     Height = 21

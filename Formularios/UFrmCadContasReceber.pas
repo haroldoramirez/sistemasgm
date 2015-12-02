@@ -697,7 +697,7 @@ begin
     else if campo = 'desconto' then
     begin
       DescontoAnt := StrToFloat(valorCampo);
-//      DescontoAux := StrToFloat(edt_ValorTotal.Text) * valorTotal;
+//    DescontoAux := StrToFloat(edt_ValorTotal.Text) * valorTotal;
       DescontoAux := valorTotal;
       valorAux := DescontoAux;
     end;

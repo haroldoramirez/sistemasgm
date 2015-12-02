@@ -38,8 +38,8 @@ object FrmConVenda: TFrmConVenda
     TabOrder = 1
     SkinData.SkinSection = 'GROUPBOX'
     object btn_Novo: TsBitBtn
-      Left = 267
-      Top = 15
+      Left = 465
+      Top = 14
       Width = 75
       Height = 33
       Caption = 'Novo'
@@ -50,8 +50,8 @@ object FrmConVenda: TFrmConVenda
       SkinData.SkinSection = 'BUTTON'
     end
     object btn_Sair: TsBitBtn
-      Left = 566
-      Top = 15
+      Left = 819
+      Top = 14
       Width = 75
       Height = 33
       Caption = 'Sair'
@@ -62,8 +62,8 @@ object FrmConVenda: TFrmConVenda
       SkinData.SkinSection = 'BUTTON'
     end
     object btn_Cancelar: TsBitBtn
-      Left = 466
-      Top = 15
+      Left = 642
+      Top = 14
       Width = 75
       Height = 33
       Caption = 'Cancelar'
@@ -74,8 +74,8 @@ object FrmConVenda: TFrmConVenda
       SkinData.SkinSection = 'BUTTON'
     end
     object btn_Finalizar: TsBitBtn
-      Left = 367
-      Top = 15
+      Left = 554
+      Top = 14
       Width = 75
       Height = 34
       Caption = 'Visualizar'
@@ -83,6 +83,18 @@ object FrmConVenda: TFrmConVenda
       ParentDoubleBuffered = False
       TabOrder = 1
       OnClick = btn_FinalizarClick
+      SkinData.SkinSection = 'BUTTON'
+    end
+    object btn_Relatorio: TsBitBtn
+      Left = 730
+      Top = 14
+      Width = 75
+      Height = 33
+      Caption = 'Relat'#243'rio'
+      DoubleBuffered = True
+      ParentDoubleBuffered = False
+      TabOrder = 4
+      OnClick = btn_RelatorioClick
       SkinData.SkinSection = 'BUTTON'
     end
   end
@@ -163,7 +175,7 @@ object FrmConVenda: TFrmConVenda
       Width = 75
       Height = 33
       Caption = 'Consultar'
-      TabOrder = 5
+      TabOrder = 4
       OnClick = btn_ConsultarClick
       SkinData.SkinSection = 'BUTTON'
     end
@@ -241,16 +253,6 @@ object FrmConVenda: TFrmConVenda
         'Venda Finalizada'
         'Venda Cancelada'
         'Todas as Vendas')
-    end
-    object btn_Relatorio: TsButton
-      Left = 735
-      Top = 69
-      Width = 75
-      Height = 33
-      Caption = 'Rel'#225'torio'
-      TabOrder = 4
-      OnClick = btn_RelatorioClick
-      SkinData.SkinSection = 'BUTTON'
     end
   end
 end

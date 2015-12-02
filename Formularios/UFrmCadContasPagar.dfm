@@ -4,8 +4,8 @@ object FrmCadContasPagar: TFrmCadContasPagar
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'Contas a Pagar'
-  ClientHeight = 623
-  ClientWidth = 503
+  ClientHeight = 554
+  ClientWidth = 572
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,14 +18,14 @@ object FrmCadContasPagar: TFrmCadContasPagar
   PixelsPerInch = 96
   TextHeight = 13
   object sGroupBox11: TsGroupBox
-    Left = 7
-    Top = 565
-    Width = 490
+    Left = 8
+    Top = 493
+    Width = 559
     Height = 58
     TabOrder = 11
     SkinData.SkinSection = 'GROUPBOX'
     object btn_Pagar: TsBitBtn
-      Left = 318
+      Left = 384
       Top = 13
       Width = 75
       Height = 33
@@ -37,7 +37,7 @@ object FrmCadContasPagar: TFrmCadContasPagar
       SkinData.SkinSection = 'BUTTON'
     end
     object btn_Sair: TsBitBtn
-      Left = 404
+      Left = 472
       Top = 13
       Width = 75
       Height = 33
@@ -581,18 +581,18 @@ object FrmCadContasPagar: TFrmCadContasPagar
     end
   end
   object sGroupBox4: TsGroupBox
-    Left = 8
-    Top = 489
-    Width = 354
-    Height = 75
+    Left = 362
+    Top = 395
+    Width = 205
+    Height = 92
     Caption = 'Observa'#231#227'o'
     TabOrder = 9
     SkinData.SkinSection = 'GROUPBOX'
     object edt_Observacao: TsMemo
-      Left = 9
+      Left = 3
       Top = 23
-      Width = 334
-      Height = 42
+      Width = 190
+      Height = 58
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4276545
@@ -615,9 +615,9 @@ object FrmCadContasPagar: TFrmCadContasPagar
     end
   end
   object sGroupBox5: TsGroupBox
-    Left = 366
-    Top = 489
-    Width = 131
+    Left = 362
+    Top = 314
+    Width = 205
     Height = 75
     Caption = 'Status'
     TabOrder = 10
@@ -625,7 +625,7 @@ object FrmCadContasPagar: TFrmCadContasPagar
     object edt_Status: TsEdit
       Left = 8
       Top = 32
-      Width = 115
+      Width = 185
       Height = 21
       Color = clWhite
       Enabled = False
@@ -1060,10 +1060,10 @@ object FrmCadContasPagar: TFrmCadContasPagar
       SkinData.SkinSection = 'BUTTON'
     end
   end
-  object sGroupBox3: TsGroupBox
+  object group_Condicao: TsGroupBox
     Left = 7
     Top = 309
-    Width = 490
+    Width = 349
     Height = 178
     Caption = 'Condi'#231#227'o de Pagamento'
     TabOrder = 8
@@ -1097,7 +1097,7 @@ object FrmCadContasPagar: TFrmCadContasPagar
     object edt_CondicaoPagamento: TsEdit
       Left = 64
       Top = 37
-      Width = 284
+      Width = 178
       Height = 21
       Color = clWhite
       Enabled = False
@@ -1148,8 +1148,8 @@ object FrmCadContasPagar: TFrmCadContasPagar
       BoundLabel.UseSkinColor = True
     end
     object btn_BuscarCondicaoPagamento: TsBitBtn
-      Left = 358
-      Top = 35
+      Left = 248
+      Top = 33
       Width = 30
       Height = 25
       DoubleBuffered = True
@@ -1196,7 +1196,7 @@ object FrmCadContasPagar: TFrmCadContasPagar
     object gridParcelas: TStringGrid
       Left = 10
       Top = 64
-      Width = 472
+      Width = 336
       Height = 105
       ColCount = 4
       DefaultColWidth = 93
@@ -1206,8 +1206,8 @@ object FrmCadContasPagar: TFrmCadContasPagar
       TabOrder = 5
     end
     object btn_GerarParcelas: TsBitBtn
-      Left = 419
-      Top = 35
+      Left = 282
+      Top = 33
       Width = 30
       Height = 25
       DoubleBuffered = True
@@ -1252,8 +1252,8 @@ object FrmCadContasPagar: TFrmCadContasPagar
       SkinData.SkinSection = 'BUTTON'
     end
     object btn_LimparParcelas: TsBitBtn
-      Left = 452
-      Top = 35
+      Left = 316
+      Top = 33
       Width = 30
       Height = 25
       DoubleBuffered = True

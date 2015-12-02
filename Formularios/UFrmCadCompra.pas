@@ -886,6 +886,8 @@ begin
         edt_BaseICMS.Text       := FormatFloat('#0.00', baseicms);
         edt_ValorDesconto.Text  := FormatFloat('#0.00', desconto);
         edt_TotalProduto.Text   := FormatFloat('#0.00', total);
+        edt_TotalICMS.Text      := FormatFloat('#0.00', valoricms);
+        edt_TotalIpi.Text       := FormatFloat('#0.00', valoripi);
 
 
         //Calculo para a media ponderada
@@ -1189,7 +1191,7 @@ begin
   end
   else if (self.gridProduto.RowCount <= 1) and (self.btn_Salvar.Caption = 'Salvar') then
   begin
-    ShowMessage('Compra tem que ter no minímo 1 produto! ');
+    ShowMessage('Favor adicionar um produto para ser incluso na lista! ');
     edt_IdProduto.SetFocus;
   end
   else if (self.gridParcelas.RowCount <= 1) and (self.btn_Salvar.Caption = 'Salvar') then

@@ -10,14 +10,13 @@ inherited FrmConVeiculo: TFrmConVeiculo
       Caption = 'Antt'
       ExplicitWidth = 21
     end
-    inherited edt_Id: TsEdit
-      NumbersOnly = True
-    end
     inherited btn_Consultar: TsButton
       OnClick = btn_ConsultarClick
     end
   end
   inherited sGroupBox2: TsGroupBox
+    Top = 376
+    ExplicitTop = 376
     inherited btn_Novo: TsBitBtn
       OnClick = btn_NovoClick
     end
@@ -30,7 +29,7 @@ inherited FrmConVeiculo: TFrmConVeiculo
   end
   object gridConsulta: TDBGrid [2]
     Left = 8
-    Top = 191
+    Top = 127
     Width = 638
     Height = 243
     TabOrder = 2

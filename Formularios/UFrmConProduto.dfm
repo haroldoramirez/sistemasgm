@@ -1,7 +1,10 @@
 inherited FrmConProduto: TFrmConProduto
   Caption = 'Consulta Produto'
-  ExplicitWidth = 660
-  ExplicitHeight = 471
+  ClientHeight = 439
+  ClientWidth = 651
+  ExplicitTop = -21
+  ExplicitWidth = 657
+  ExplicitHeight = 468
   PixelsPerInch = 96
   TextHeight = 13
   inherited sGroupBox1: TsGroupBox
@@ -24,34 +27,43 @@ inherited FrmConProduto: TFrmConProduto
       ExplicitTop = 82
     end
     inherited btn_Consultar: TsButton
-      TabOrder = 3
       OnClick = btn_ConsultarClick
     end
-    object btn_Relatorio: TsButton
-      Left = 465
-      Top = 70
+  end
+  inherited sGroupBox2: TsGroupBox
+    Top = 376
+    ExplicitTop = 376
+    inherited btn_Novo: TsBitBtn
+      Left = 209
+      OnClick = btn_NovoClick
+      ExplicitLeft = 209
+    end
+    inherited btn_Editar: TsBitBtn
+      Left = 294
+      OnClick = btn_EditarClick
+      ExplicitLeft = 294
+    end
+    inherited btn_Excluir: TsBitBtn
+      Left = 379
+      OnClick = btn_ExcluirClick
+      ExplicitLeft = 379
+    end
+    object btn_Relatorio: TsBitBtn
+      Left = 464
+      Top = 15
       Width = 75
       Height = 33
       Caption = 'Relat'#243'rio'
-      TabOrder = 2
+      DoubleBuffered = True
+      ParentDoubleBuffered = False
+      TabOrder = 4
       OnClick = btn_RelatorioClick
       SkinData.SkinSection = 'BUTTON'
     end
   end
-  inherited sGroupBox2: TsGroupBox
-    inherited btn_Novo: TsBitBtn
-      OnClick = btn_NovoClick
-    end
-    inherited btn_Editar: TsBitBtn
-      OnClick = btn_EditarClick
-    end
-    inherited btn_Excluir: TsBitBtn
-      OnClick = btn_ExcluirClick
-    end
-  end
   object gridConsulta: TDBGrid [2]
     Left = 8
-    Top = 191
+    Top = 127
     Width = 638
     Height = 243
     Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]

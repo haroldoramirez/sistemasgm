@@ -23,10 +23,10 @@ type
     sGroupBox2: TsGroupBox;
     btn_Visualizar: TsBitBtn;
     btn_Pagar: TsBitBtn;
-    btn_Sair: TsBitBtn;
+    btn_Relatorio: TsBitBtn;
     btn_Cancelar: TsBitBtn;
     btn_Novo: TsBitBtn;
-    btn_Relatorio: TsButton;
+    sBitBtn1: TsBitBtn;
     procedure btn_NovoClick(Sender: TObject);
     procedure btn_PagarClick(Sender: TObject);
     procedure btn_SairClick(Sender: TObject);
@@ -64,7 +64,6 @@ begin
   umaCtrlFornecedor   := CtrlFornecedor.CrieObjeto;
   umFrmCadContasPagar := TFrmCadContasPagar.Create(nil);
   Self.gridConsulta.DataSource := umaCtrlContasPagar.GetDS;
-  self.btn_Relatorio.Hide;
 end;
 
 procedure TFrmConContasPagar.CarregaObj(status: String; botao:String);
@@ -80,7 +79,7 @@ begin
     MessageDlg('ATENÇÃO: Não há conta para '+botao+' !',mtWarning,[mbOK],0)
   else
   if (umaContaPagar.getIdCompra <> 0) and (status = 'CANCELADA') then
-    MessageDlg('ATENÇÃO: O cancelamento dessa conta deve ser realizado somente pelo módulo Compra!',mtWarning,[mbOK],0)
+    MessageDlg('ATENÇÃO: O cancelamento dessa conta deve ser realizado somente pela Compra!',mtWarning,[mbOK],0)
   else
   if (umaContaPagar.getStatus = status) or ((umaContaPagar.getStatus = 'CANCELADA') and (botao <> 'Visualizar')) then
     ShowMessage('Essa Conta já foi '+umaContaPagar.getStatus+'!')
@@ -108,6 +107,7 @@ begin
       btn_Pagar.Caption := botao;
       ConhecaObj(umaContaPagar,umaCtrlContasPagar);
       CarregaObj;
+      group_Condicao.Hide;
       ShowModal;
     end;
 end;
@@ -139,8 +139,8 @@ end;
 
 procedure TFrmConContasPagar.btn_RelatorioClick(Sender: TObject);
 begin
-  if (Self.Consultar) then
-    umaDaoRelatorio.rl_ContasPagar;
+//  if (Self.Consultar) then
+//    umaDaoRelatorio.rl_ContasPagar;
 end;
 
 procedure TFrmConContasPagar.btn_ConsultarClick(Sender: TObject);

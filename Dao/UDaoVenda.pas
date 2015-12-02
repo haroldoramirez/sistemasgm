@@ -221,39 +221,8 @@ begin
 end;
 
 function DaoVenda.Excluir(obj: TObject): string;
-var
-    umaVenda: Venda;
-    i : integer;
 begin
-//    umaVenda := Venda(obj);
-//    with umDM do
-//    begin
-//        try
-//            beginTrans;
-//
-//            QParcelas.SQL := UpdateParcelas.DeleteSQL;
-//            QParcelas.Params.ParamByName('OLD_idcondicaopagamento').Value := umaVenda.getId;
-//
-//            QVenda.SQL := UpdateVenda.DeleteSQL;
-//            QVenda.Params.ParamByName('OLD_idcondicaopagamento').Value := umaVenda.getId;
-//
-//            QParcelas.ExecSQL;
-//            QVenda.ExecSQL;
-//
-//            Commit;
-//            result := 'Venda excluído com sucesso!';
-//        except
-//            on e:Exception do
-//            begin
-//                rollback;
-//                if pos('chave estrangeira',e.Message)>0 then
-//                    result := 'Ocorreu um erro! O Venda não pode ser excluído pois ja está sendo usado pelo sistema.'
-//                else
-//                    result := 'Ocorreu um erro! Venda não foi excluído. Erro: '+e.Message;
-//            end;
-//        end;
-//    end;
-//    Self.AtualizaGrid;
+
 end;
 
 function DaoVenda.GetDS: TDataSource;
@@ -304,7 +273,7 @@ begin
             begin
                 if (umaDaoContasReceber.VerificarContas(umaContaReceber)) then
                 begin
-                   result := 'Essa Compra não pode ser Cancelada pois 1 ou mais das parcelas já foram recebidas!';
+                   result := 'Essa Venda não pode ser Cancelada pois 1 ou mais das parcelas já foram recebidas!';
                    Self.AtualizaGrid;
                    Exit;
                 end;

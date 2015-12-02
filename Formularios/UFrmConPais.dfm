@@ -12,7 +12,6 @@ inherited FrmConPais: TFrmConPais
     end
     inherited edt_Id: TsEdit
       MaxLength = 5
-      NumbersOnly = True
       OnKeyPress = edt_IdKeyPress
     end
     inherited edt_Descricao: TsEdit
@@ -23,6 +22,8 @@ inherited FrmConPais: TFrmConPais
     end
   end
   inherited sGroupBox2: TsGroupBox
+    Top = 376
+    ExplicitTop = 376
     inherited btn_Novo: TsBitBtn
       OnClick = btn_NovoClick
     end
@@ -39,7 +40,7 @@ inherited FrmConPais: TFrmConPais
   end
   object gridConsulta: TDBGrid [2]
     Left = 8
-    Top = 191
+    Top = 127
     Width = 638
     Height = 243
     Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]

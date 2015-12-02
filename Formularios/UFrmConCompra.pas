@@ -25,7 +25,7 @@ type
     edt_DataInicio: TsDateEdit;
     edt_DataFinal: TsDateEdit;
     rg_TipoConsulta: TsRadioGroup;
-    btn_Relatorio: TsButton;
+    btn_Relatorio: TsBitBtn;
     procedure btn_NovoClick(Sender: TObject);
     procedure btn_SairClick(Sender: TObject);
     procedure btn_FinalizarClick(Sender: TObject);
@@ -33,6 +33,7 @@ type
     procedure btn_ConsultarClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure btn_RelatorioClick(Sender: TObject);
+    //procedure btn_RelatorioClick(Sender: TObject);
   private
     umaCompra       : Compra;
     umaCtrlCompra   : CtrlCompra;
@@ -59,7 +60,6 @@ begin
   umaDaoRelatorio := DaoRelatorio.CrieObjeto;
   umFrmCadCompra  := TFrmCadCompra.Create(nil);
   self.gridConsulta.DataSource := umaCtrlCompra.GetDS;
-  self.btn_Relatorio.Hide;
 end;
 
 procedure TFrmConCompra.btn_NovoClick(Sender: TObject);
@@ -72,6 +72,12 @@ begin
    ConhecaObj(umaCompra, umaCtrlCompra);
    ShowModal;
   end;
+end;
+
+procedure TFrmConCompra.btn_RelatorioClick(Sender: TObject);
+begin
+//  if (Self.Consultar) then
+//    umaDaoRelatorio.rl_Compra;
 end;
 
 procedure TFrmConCompra.btn_CancelarClick(Sender: TObject);
@@ -117,12 +123,6 @@ begin
   consCompra.destrua_se;
 end;
 
-procedure TFrmConCompra.btn_RelatorioClick(Sender: TObject);
-begin
-  if (Self.Consultar) then
-    umaDaoRelatorio.rl_Compra;
-end;
-
 procedure TFrmConCompra.btn_ConsultarClick(Sender: TObject);
 begin
   Self.Consultar;
@@ -155,7 +155,7 @@ end;
 
 procedure TFrmConCompra.btn_SairClick(Sender: TObject);
 begin
-    Close;
+  close;
 end;
 
 end.

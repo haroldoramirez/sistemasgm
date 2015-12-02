@@ -94,7 +94,7 @@ object FrmConContasPagar: TFrmConContasPagar
       Width = 75
       Height = 33
       Caption = 'Consultar'
-      TabOrder = 5
+      TabOrder = 4
       OnClick = btn_ConsultarClick
       SkinData.SkinSection = 'BUTTON'
     end
@@ -174,16 +174,6 @@ object FrmConContasPagar: TFrmConContasPagar
         'Conta Cancelada'
         'Todas as Contas')
     end
-    object btn_Relatorio: TsButton
-      Left = 738
-      Top = 67
-      Width = 75
-      Height = 33
-      Caption = 'Relat'#243'rio'
-      TabOrder = 4
-      OnClick = btn_RelatorioClick
-      SkinData.SkinSection = 'BUTTON'
-    end
   end
   object gridConsulta: TDBGrid
     Left = 6
@@ -207,7 +197,7 @@ object FrmConContasPagar: TFrmConContasPagar
     TabOrder = 2
     SkinData.SkinSection = 'GROUPBOX'
     object btn_Visualizar: TsBitBtn
-      Left = 417
+      Left = 545
       Top = 17
       Width = 75
       Height = 33
@@ -219,7 +209,7 @@ object FrmConContasPagar: TFrmConContasPagar
       SkinData.SkinSection = 'BUTTON'
     end
     object btn_Pagar: TsBitBtn
-      Left = 311
+      Left = 454
       Top = 17
       Width = 75
       Height = 33
@@ -230,20 +220,20 @@ object FrmConContasPagar: TFrmConContasPagar
       OnClick = btn_PagarClick
       SkinData.SkinSection = 'BUTTON'
     end
-    object btn_Sair: TsBitBtn
-      Left = 631
+    object btn_Relatorio: TsBitBtn
+      Left = 727
       Top = 17
       Width = 75
       Height = 33
-      Caption = 'Sair'
+      Caption = 'Relat'#243'rio'
       DoubleBuffered = True
       ParentDoubleBuffered = False
       TabOrder = 4
-      OnClick = btn_SairClick
+      OnClick = btn_RelatorioClick
       SkinData.SkinSection = 'BUTTON'
     end
     object btn_Cancelar: TsBitBtn
-      Left = 524
+      Left = 636
       Top = 17
       Width = 75
       Height = 33
@@ -255,7 +245,7 @@ object FrmConContasPagar: TFrmConContasPagar
       SkinData.SkinSection = 'BUTTON'
     end
     object btn_Novo: TsBitBtn
-      Left = 204
+      Left = 364
       Top = 17
       Width = 75
       Height = 33
@@ -264,6 +254,18 @@ object FrmConContasPagar: TFrmConContasPagar
       ParentDoubleBuffered = False
       TabOrder = 0
       OnClick = btn_NovoClick
+      SkinData.SkinSection = 'BUTTON'
+    end
+    object sBitBtn1: TsBitBtn
+      Left = 819
+      Top = 16
+      Width = 75
+      Height = 33
+      Caption = 'Sair'
+      DoubleBuffered = True
+      ParentDoubleBuffered = False
+      TabOrder = 5
+      OnClick = btn_SairClick
       SkinData.SkinSection = 'BUTTON'
     end
   end

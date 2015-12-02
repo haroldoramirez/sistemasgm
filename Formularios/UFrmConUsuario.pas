@@ -83,9 +83,9 @@ begin
     MessageDlg('ATENÇÃO: Você não o possui perfil de administrador para bloquear esse usuário!',mtWarning,[mbOK],0)
   else
   if (umUsuario.getIdUsuario = 0) then
-    MessageDlg('ATENÇÃO: Não há cadastro para ser bloaqueado!',mtWarning,[mbOK],0)
+    MessageDlg('ATENÇÃO: Não há cadastro para ser bloqueado!',mtWarning,[mbOK],0)
   else if umUsuario.getStatus = 'BLOQUEADO' then
-    MessageDlg('ATENÇÃO: Esse cadastro já está bloaqueado!',mtWarning,[mbOK],0)
+    MessageDlg('ATENÇÃO: Esse cadastro já está bloqueado!',mtWarning,[mbOK],0)
   else
   begin
     umFrmCadUsuario.ConhecaObj(umUsuario, umaCtrlUsuario);

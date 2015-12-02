@@ -25,7 +25,7 @@ type
     edt_DataInicio: TsDateEdit;
     edt_DataFinal: TsDateEdit;
     rg_TipoConsulta: TsRadioGroup;
-    btn_Relatorio: TsButton;
+    btn_Relatorio: TsBitBtn;
     procedure btn_NovoClick(Sender: TObject);
     procedure btn_CancelarClick(Sender: TObject);
     procedure btn_FinalizarClick(Sender: TObject);
@@ -101,6 +101,12 @@ begin
   end;
 end;
 
+procedure TFrmConVenda.btn_RelatorioClick(Sender: TObject);
+begin
+//  if (Self.Consultar) then
+//    umaDaoRelatorio.rl_Venda;
+end;
+
 function TFrmConVenda.Consultar: Boolean;
 var  consVenda: Venda;
 begin
@@ -124,12 +130,6 @@ begin
   consVenda.destrua_se;
 end;
 
-procedure TFrmConVenda.btn_RelatorioClick(Sender: TObject);
-begin
-  if (Self.Consultar) then
-    umaDaoRelatorio.rl_Venda;
-end;
-
 procedure TFrmConVenda.btn_ConsultarClick(Sender: TObject);
 begin
   Self.Consultar
@@ -142,7 +142,6 @@ begin
   umaDaoRelatorio := DaoRelatorio.CrieObjeto;
   umFrmCadVenda   := TFrmCadVenda.Create(nil);
   self.gridConsulta.DataSource := umaCtrlVenda.GetDS;
-  self.btn_Relatorio.Hide;
 end;
 
 procedure TFrmConVenda.FormActivate(Sender: TObject);

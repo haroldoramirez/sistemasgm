@@ -23,13 +23,13 @@ type
     sGroupBox2: TsGroupBox;
     btn_Visualizar: TsBitBtn;
     btn_Receber: TsBitBtn;
-    btn_Sair: TsBitBtn;
-    btn_Relatorio: TsButton;
+    btn_Relatorio: TsBitBtn;
+    sBitBtn1: TsBitBtn;
     procedure btn_ConsultarClick(Sender: TObject);
     procedure btn_ReceberClick(Sender: TObject);
     procedure btn_VisualizarClick(Sender: TObject);
     procedure btn_CancelarClick(Sender: TObject);
-    procedure btn_SairClick(Sender: TObject);
+    procedure btn_RelatórioClick(Sender: TObject);
     procedure btn_NovoClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure btn_RelatorioClick(Sender: TObject);
@@ -61,7 +61,6 @@ begin
   umaDaoRelatorio       := DaoRelatorio.CrieObjeto;
   umFrmCadContasReceber := TFrmCadContasReceber.Create(nil);
   Self.gridConsulta.DataSource := umaCtrlContasReceber.GetDS;
-  self.btn_Relatorio.Hide;
 end;
 
 procedure TFrmConContasReceber.CarregaObj(status, botao: String);
@@ -135,8 +134,8 @@ end;
 
 procedure TFrmConContasReceber.btn_RelatorioClick(Sender: TObject);
 begin
-  if (Self.Consultar) then
-    umaDaoRelatorio.rl_ContasReceber;
+//  if (Self.Consultar) then
+//    umaDaoRelatorio.rl_ContasReceber;
 end;
 
 procedure TFrmConContasReceber.btn_ConsultarClick(Sender: TObject);
@@ -179,7 +178,7 @@ begin
       TsEdit(Components[count]).CharCase := ecUpperCase;
 end;
 
-procedure TFrmConContasReceber.btn_SairClick(Sender: TObject);
+procedure TFrmConContasReceber.btn_RelatórioClick(Sender: TObject);
 begin
   Close;
 end;

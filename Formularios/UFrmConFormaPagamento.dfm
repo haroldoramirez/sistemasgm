@@ -1,6 +1,8 @@
 inherited FrmConFormaPagamento: TFrmConFormaPagamento
   Caption = 'Consulta Forma de Pagamento'
   OnActivate = FormActivate
+  ExplicitWidth = 660
+  ExplicitHeight = 471
   PixelsPerInch = 96
   TextHeight = 13
   inherited sGroupBox1: TsGroupBox
@@ -13,6 +15,8 @@ inherited FrmConFormaPagamento: TFrmConFormaPagamento
     end
   end
   inherited sGroupBox2: TsGroupBox
+    Top = 376
+    ExplicitTop = 376
     inherited btn_Novo: TsBitBtn
       Top = 16
       OnClick = btn_NovoClick
@@ -35,7 +39,7 @@ inherited FrmConFormaPagamento: TFrmConFormaPagamento
   end
   object gridConsulta: TDBGrid [2]
     Left = 8
-    Top = 191
+    Top = 127
     Width = 638
     Height = 243
     Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
