@@ -69,6 +69,8 @@ type
     lbl_DataCadastro: TsLabel;
     edt_DataAlteracao: TsDateEdit;
     edt_DataCadastro: TsDateEdit;
+    lbl_ValorTotal: TLabel;
+    edt_ValorTotal: TEdit;
     procedure btn_BuscarClienteClick(Sender: TObject);
     procedure edt_IdClienteExit(Sender: TObject);
     procedure btn_BuscarCondicaoPagamentoClick(Sender: TObject);
@@ -112,11 +114,13 @@ type
       procedure DesbilitaCampos;
       procedure LimpaCampos;
       procedure CarregaObj;
+
       //Produto
       procedure LimpaGridProduto;
       procedure CarregaGridProduto;
       procedure SomaQuantidadeProduto(idProd: Integer; qtdProd : Real);
       function VerificaProduto : Boolean;
+      //procedure CalcItemProduto;
 
       //Parcelas
       procedure LimpaGridParcelas(verifica : Boolean);
@@ -140,8 +144,6 @@ uses UAplicacao;
 procedure TFrmCadVenda.addCondicaoPgto(vCondicaoPgto: CondicaoPagamento);
 begin
   umaVenda.setUmaCondicaoPagamento(vCondicaoPgto);
-//  umaCtrlCondicaoPagamento := CtrlCondicaoPagamento.CrieObjeto;
-//  umaCtrlCondicaoPagamento.Carrega(umaVenda.getUmaCondicaoPagamento);
 end;
 
 procedure TFrmCadVenda.btn_Add_ProdutoClick(Sender: TObject);
@@ -182,6 +184,7 @@ begin
         CarregaGridProduto;
 
         LimpaGridParcelas(True);
+
         Self.edt_IdCondicaoPagamentoExit(Sender);
         HabilitaParcelas;
 
@@ -519,14 +522,6 @@ begin
            valorFinal := TotalNota - valorFinal;
            self.gridParcelas.Cells[3,i] := FormatFloat('#0.00', StrToFloat(self.gridParcelas.Cells[3,i])+valorFinal);
          end;
-
-//         if (i = umaVenda.getUmaCondicaoPagamento.p) then
-//         begin
-//           valorFinal := StrToFloat(Self.edt_Total.text) - valorFinal;
-//           self.gridParcelas.Cells[3,1] := FormatFloat('#0.00', valorFinal);
-//         end
-//         else
-//           valorFinal := valorFinal + StrToFloat(self.gridParcelas.Cells[3,i]);
       end;
     Self.edt_IdCondicaoPagamento.Enabled := False;
     Self.edt_CondicaoPagamento.Enabled := False;
@@ -577,14 +572,13 @@ begin
   self.gridProduto.Enabled := True;
   self.gridParcelas.Enabled := True;
   Self.btn_Salvar.Enabled := False;
+  Self.edt_ValorTotal.Enabled := False;
 
   if Self.btn_Salvar.Caption = 'Salvar' then
   begin
     Self.edt_SerieNota.Enabled := True;
     Self.edt_IdCliente.Enabled := True;
-//    Self.edt_IdFuncionario.Enabled := True;
     Self.btn_BuscarCliente.Enabled := True;
-//    Self.btn_BuscarFuncionario.Enabled := True;
     Self.btn_Salvar.Enabled := True;
   end
   else if Self.btn_Salvar.Caption = 'Finalizar' then
@@ -764,7 +758,6 @@ begin
   Self.btn_LimparProdutos.Enabled := True;
   self.gridProduto.Enabled := True;
   self.gridParcelas.Enabled := True;
-
   HabilitaParcelas;
 end;
 
@@ -867,15 +860,18 @@ begin
    CampoNumero(Sender, Key);
 end;
 
+
 procedure TFrmCadVenda.edt_ValorKeyPress(Sender: TObject; var Key: Char);
 begin
    CampoReal(Sender, Key, Self.edt_Valor.Text);
 end;
 
+
 procedure TFrmCadVenda.edt_QuantidadeKeyPress(Sender: TObject; var Key: Char);
 begin
    CampoReal(Sender, Key, Self.edt_Quantidade.Text);
 end;
+
 
 procedure TFrmCadVenda.edt_DescontoKeyPress(Sender: TObject; var Key: Char);
 begin

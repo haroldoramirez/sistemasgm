@@ -99,11 +99,11 @@ end;
 
 procedure TFrmConProduto.btn_RelatorioClick(Sender: TObject);
 begin
-//  inherited;
-//  if (umaCtrlProduto.RelacaoProduto(0)) then
-//    umaDaoRelatorio.rl_RelacaoProdutos
-//  else
-//    MessageDlg('Nenhum registro encontrado!', mtInformation,[mbOK],0)
+  inherited;
+  if (umaCtrlProduto.RelacaoProduto(0)) then
+    umaDaoRelatorio.rl_RelacaoProdutos
+  else
+    MessageDlg('Nenhum registro encontrado!', mtInformation,[mbOK],0)
 end;
 
 procedure TFrmConProduto.btn_SairClick(Sender: TObject);

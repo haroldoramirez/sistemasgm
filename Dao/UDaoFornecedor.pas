@@ -269,7 +269,6 @@ begin
     umDM.QFornecedor.FieldByName('nome_razaosocial').DisplayLabel := 'nome';
     umDM.QFornecedor.FieldByName('nome_razaosocial').DisplayWidth := 60;
     umDM.QFornecedor.FieldByName('logradouro').DisplayWidth := 60;
-//    Self.AtualizaGrid;
     result := umDM.DSFornecedor;
 end;
 

@@ -249,6 +249,7 @@ begin
    umaCompra := vCompra;
    umaCtrlCompra := vCtrlCompra;
    Self.DesbilitaCampos;
+   Self.rg_TipoFrete.ItemIndex := 3;
    self.LimpaCampos;
    Self.btn_BuscarFuncionario.Hide;
    if umaCompra.getNumNota = 0 then
@@ -315,7 +316,6 @@ begin
    Self.edt_Quantidade.Enabled := True;
    Self.edt_PrecoCusto.Enabled := True;
    Self.edt_Desconto.Enabled := True;
-   Self.edt_ValorICMS.Enabled := True;
    Self.edt_ValorIPI.Enabled := True;
    Self.edt_ICMS.Enabled := True;
    Self.edt_IPI.Enabled := True;
@@ -352,17 +352,14 @@ end;
 
 procedure TFrmCadCompra.HabilitaCampos;
 begin
-   Self.edt_ValorFrete.Enabled := True;
-   Self.edt_IdTransportadora.Enabled := True;
-   Self.btn_BuscarTransportadora.Enabled := True;
    Self.edt_IdProduto.Enabled := True;
    Self.btn_BuscarProduto.Enabled := True;
    Self.btn_Add_Produto.Enabled := True;
    Self.btn_LimparProdutos.Enabled := True;
-   Self.rg_TipoFrete.Enabled := True;
    Self.edt_Observacao.Enabled := True;
    Self.edt_DataEmissao.Enabled := True;
    Self.edt_DataCompra.Enabled := True;
+   self.rg_TipoFrete.Enabled := True;
    HabilitaParcelas;
 end;
 
@@ -1184,11 +1181,6 @@ begin
     ShowMessage('Favor informar o valor Total do Produto da Nota! ');
     edt_TotalProduto.SetFocus;
   end
-  else if (self.edt_TotalNota.Text = '') and (self.btn_Salvar.Caption = 'Salvar') then
-  begin
-    ShowMessage('Favor informar o valor Total da Nota! ');
-    edt_TotalNota.SetFocus;
-  end
   else if (self.gridProduto.RowCount <= 1) and (self.btn_Salvar.Caption = 'Salvar') then
   begin
     ShowMessage('Favor adicionar um produto para ser incluso na lista! ');
@@ -1486,11 +1478,11 @@ begin
     else
     begin
       edt_Desconto.Text := FormatFloat('#0.00', StrToFloat(edt_Desconto.Text));
-      edt_Total.Text := FormatFloat('#0.00', StrToFloat(edt_Total.Text)+descItemAnt);
-      descItemAnt := StrToFloat(edt_Desconto.Text);
-      descItemAux := StrToFloat(edt_Total.Text)- StrToFloat(edt_Desconto.Text);
-      totalItemAnt := descItemAux;
-      edt_Total.Text :=  FormatFloat('#0.00', descItemAux);
+      edt_Total.Text    := FormatFloat('#0.00', StrToFloat(edt_Total.Text)+descItemAnt);
+      descItemAnt       := StrToFloat(edt_Desconto.Text);
+      descItemAux       := StrToFloat(edt_Total.Text)- StrToFloat(edt_Desconto.Text);
+      totalItemAnt      := descItemAux;
+      edt_Total.Text    :=  FormatFloat('#0.00', descItemAux);
     end;
   end;
 end;

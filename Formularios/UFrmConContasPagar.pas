@@ -108,6 +108,8 @@ begin
       ConhecaObj(umaContaPagar,umaCtrlContasPagar);
       CarregaObj;
       group_Condicao.Hide;
+      lbl_NumParcela.Show;
+      edt_NumParcela.Show;
       ShowModal;
     end;
 end;
@@ -139,13 +141,13 @@ end;
 
 procedure TFrmConContasPagar.btn_RelatorioClick(Sender: TObject);
 begin
-//  if (Self.Consultar) then
-//    umaDaoRelatorio.rl_ContasPagar;
+  if (Self.Consultar) then
+    umaDaoRelatorio.rl_ContasPagar;
 end;
 
 procedure TFrmConContasPagar.btn_ConsultarClick(Sender: TObject);
 begin
-  Self.Consultar;
+    Self.Consultar;
 end;
 
 procedure TFrmConContasPagar.btn_NovoClick(Sender: TObject);
@@ -156,6 +158,7 @@ begin
    begin
      btn_Pagar.Caption := 'Salvar';
      ConhecaObj(umaContaPagar, umaCtrlContasPagar);
+     group_Condicao.Show;
      ShowModal;
    end;
 end;

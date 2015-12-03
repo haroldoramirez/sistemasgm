@@ -52,11 +52,11 @@ object FrmCadVenda: TFrmCadVenda
       Font.Style = []
     end
     object lbl_Quantidade: TsLabel
-      Left = 365
+      Left = 341
       Top = 20
-      Width = 61
+      Width = 56
       Height = 13
-      Caption = 'Qtd/Unidade'
+      Caption = 'Quantidade'
       ParentFont = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4276545
@@ -65,7 +65,7 @@ object FrmCadVenda: TFrmCadVenda
       Font.Style = []
     end
     object lbl_Valor: TsLabel
-      Left = 434
+      Left = 409
       Top = 20
       Width = 24
       Height = 13
@@ -80,9 +80,9 @@ object FrmCadVenda: TFrmCadVenda
     object lbl_Total: TsLabel
       Left = 646
       Top = 199
-      Width = 24
+      Width = 63
       Height = 13
-      Caption = 'Total'
+      Caption = 'V. Total Nota'
       ParentFont = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4276545
@@ -91,7 +91,7 @@ object FrmCadVenda: TFrmCadVenda
       Font.Style = []
     end
     object lbl_Desconto: TsLabel
-      Left = 503
+      Left = 477
       Top = 20
       Width = 45
       Height = 13
@@ -102,6 +102,13 @@ object FrmCadVenda: TFrmCadVenda
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = []
+    end
+    object lbl_ValorTotal: TLabel
+      Left = 548
+      Top = 20
+      Width = 37
+      Height = 13
+      Caption = 'V. Total'
     end
     object edt_Produto: TsEdit
       Left = 67
@@ -216,7 +223,7 @@ object FrmCadVenda: TFrmCadVenda
       TabOrder = 8
     end
     object edt_Quantidade: TsEdit
-      Left = 365
+      Left = 341
       Top = 37
       Width = 60
       Height = 21
@@ -242,7 +249,7 @@ object FrmCadVenda: TFrmCadVenda
       BoundLabel.UseSkinColor = True
     end
     object edt_Valor: TsEdit
-      Left = 434
+      Left = 407
       Top = 37
       Width = 60
       Height = 21
@@ -269,7 +276,7 @@ object FrmCadVenda: TFrmCadVenda
       BoundLabel.UseSkinColor = True
     end
     object btn_Add_Produto: TsBitBtn
-      Left = 645
+      Left = 614
       Top = 35
       Width = 30
       Height = 25
@@ -316,7 +323,7 @@ object FrmCadVenda: TFrmCadVenda
       SkinData.SkinSection = 'BUTTON'
     end
     object btn_LimparProdutos: TsBitBtn
-      Left = 681
+      Left = 646
       Top = 35
       Width = 30
       Height = 25
@@ -388,7 +395,7 @@ object FrmCadVenda: TFrmCadVenda
       BoundLabel.UseSkinColor = True
     end
     object edt_Desconto: TsEdit
-      Left = 503
+      Left = 477
       Top = 37
       Width = 61
       Height = 21
@@ -412,6 +419,13 @@ object FrmCadVenda: TFrmCadVenda
       BoundLabel.Layout = sclLeft
       BoundLabel.MaxWidth = 0
       BoundLabel.UseSkinColor = True
+    end
+    object edt_ValorTotal: TEdit
+      Left = 548
+      Top = 37
+      Width = 60
+      Height = 21
+      TabOrder = 10
     end
   end
   object sGroupBox2: TsGroupBox

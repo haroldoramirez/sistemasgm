@@ -163,6 +163,8 @@ begin
   self.LimpaCampos;
   self.edt_IdFuncionario.Text := IntToStr(idLogado);
   self.edt_Funcionario.Text   := nomeLogado;
+  self.lbl_NumParcela.Hide;
+  Self.edt_NumParcela.Hide;
 end;
 
 procedure TFrmCadContasPagar.edt_IdFavorecidoExit(Sender: TObject);

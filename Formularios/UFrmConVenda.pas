@@ -103,8 +103,8 @@ end;
 
 procedure TFrmConVenda.btn_RelatorioClick(Sender: TObject);
 begin
-//  if (Self.Consultar) then
-//    umaDaoRelatorio.rl_Venda;
+  if (Self.Consultar) then
+    umaDaoRelatorio.rl_Venda;
 end;
 
 function TFrmConVenda.Consultar: Boolean;

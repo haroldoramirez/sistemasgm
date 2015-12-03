@@ -230,7 +230,6 @@ begin
     //-----Formatar Grid-----//
     umDM.QVenda.FieldByName('numnota').DisplayLabel := 'NN';
     umDM.QVenda.FieldByName('serienota').DisplayLabel := 'SN';
-    umDM.QVenda.FieldByName('idordemservico').DisplayLabel := 'NumOS';
 
     umDM.QVenda.FieldByName('numnota').DisplayWidth := 5;
     umDM.QVenda.FieldByName('serienota').DisplayWidth := 5;

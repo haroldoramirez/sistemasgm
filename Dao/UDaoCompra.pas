@@ -220,8 +220,8 @@ begin
           QProdutoCompra.Next;
         end;
     end;
-    result := umaCompra;
     Self.AtualizaGrid;
+    result := umaCompra;
 end;
 
 constructor DaoCompra.CrieObjeto;
@@ -266,7 +266,6 @@ begin
     (umDM.QCompra.FieldByName('total_produto') as TFloatField).DisplayFormat  := '0.00';
     (umDM.QCompra.FieldByName('total_nota') as TFloatField).DisplayFormat     := '0.00';
 
-    Self.AtualizaGrid;
     result := umDM.DSCompra;
 end;
 

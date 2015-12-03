@@ -25,6 +25,7 @@ type
     btn_Receber: TsBitBtn;
     btn_Relatorio: TsBitBtn;
     sBitBtn1: TsBitBtn;
+    btn_Novo: TsBitBtn;
     procedure btn_ConsultarClick(Sender: TObject);
     procedure btn_ReceberClick(Sender: TObject);
     procedure btn_VisualizarClick(Sender: TObject);
@@ -103,6 +104,9 @@ begin
     btn_Receber.Caption := botao;
     ConhecaObj(umaContaReceber,umaCtrlContasReceber);
     CarregaObj;
+    group_Condicao.Hide;
+    lbl_NumParcela.Show;
+    edt_NumParcela.Show;
     ShowModal;
   end;
 end;
@@ -134,8 +138,8 @@ end;
 
 procedure TFrmConContasReceber.btn_RelatorioClick(Sender: TObject);
 begin
-//  if (Self.Consultar) then
-//    umaDaoRelatorio.rl_ContasReceber;
+  if (Self.Consultar) then
+    umaDaoRelatorio.rl_ContasReceber;
 end;
 
 procedure TFrmConContasReceber.btn_ConsultarClick(Sender: TObject);
@@ -151,6 +155,7 @@ begin
    begin
      btn_Receber.Caption := 'Salvar';
      ConhecaObj(umaContaReceber, umaCtrlContasReceber);
+     group_Condicao.Show;
      ShowModal;
    end;
 end;

@@ -230,12 +230,10 @@ type
     QCompracondiçãoPgto: TStringField;
     QComprafornecedor: TStringField;
     QVendacondiçãoPgto: TStringField;
-    QVendacliente: TStringField;
     QCompratransportadora: TStringField;
     QContasPagarnumnota: TIntegerField;
     QContasPagarserienota: TWideStringField;
     QContasPagarnumparcela: TIntegerField;
-    QContasPagaridfornecedor: TIntegerField;
     QContasPagaridusuario: TIntegerField;
     QContasPagaridformapagamento: TIntegerField;
     QContasPagardataemissao: TDateField;
@@ -251,7 +249,6 @@ type
     QContasPagarobservacao: TWideStringField;
     QContasPagaridcontapagar: TIntegerField;
     QContasPagaridcompra: TIntegerField;
-    QContasPagarfornecedor: TStringField;
     QContasPagarformaPgto: TStringField;
     QFornecedoridfornecedor: TIntegerField;
     QFornecedornome_razaosocial: TWideStringField;
@@ -376,6 +373,9 @@ type
     QCfopdatacadastro: TDateField;
     QCfopdataalteracao: TDateField;
     QCfopnumero: TWideStringField;
+    QVendacliente: TStringField;
+    QContasPagarfornecedor: TStringField;
+    QContasPagaridfornecedor: TIntegerField;
 
   private
     { Private declarations }

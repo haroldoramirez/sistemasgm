@@ -223,7 +223,7 @@ begin
   with umDM do
   begin
     QContasPagar.Close;
-    QContasPagar.sql.Text := 'select * from contapagar order by numnota, serienota, numparcela';
+    QContasPagar.sql.Text := 'select * from contapagar INNER JOIN fornecedor on (fornecedor.idfornecedor = contapagar.idfornecedor) order by numnota, serienota, numparcela';
     QContasPagar.Open;
   end;
 end;
@@ -277,8 +277,8 @@ begin
         umaContasPagar.addParcelas(umaContasPagar.getUmaCondicaoPagamento.getParcela);
 
     end;
+//    Self.AtualizaGrid;
     result := umaContasPagar;
-    Self.AtualizaGrid;
 end;
 
 constructor DaoContasPagar.CrieObjeto;
@@ -345,7 +345,7 @@ begin
     umDM.QContasPagar.FieldByName('desconto').DisplayWidth := 5;
 
    //-----------------------------//
-    AtualizaGrid;
+    Self.AtualizaGrid;
     result := umDM.DSContasPagar;
 end;
 

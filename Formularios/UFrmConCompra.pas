@@ -33,7 +33,6 @@ type
     procedure btn_ConsultarClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure btn_RelatorioClick(Sender: TObject);
-    //procedure btn_RelatorioClick(Sender: TObject);
   private
     umaCompra       : Compra;
     umaCtrlCompra   : CtrlCompra;
@@ -76,8 +75,8 @@ end;
 
 procedure TFrmConCompra.btn_RelatorioClick(Sender: TObject);
 begin
-//  if (Self.Consultar) then
-//    umaDaoRelatorio.rl_Compra;
+  if (Self.Consultar) then
+    umaDaoRelatorio.rl_Compra;
 end;
 
 procedure TFrmConCompra.btn_CancelarClick(Sender: TObject);

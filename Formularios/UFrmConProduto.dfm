@@ -2,7 +2,6 @@ inherited FrmConProduto: TFrmConProduto
   Caption = 'Consulta Produto'
   ClientHeight = 439
   ClientWidth = 651
-  ExplicitTop = -21
   ExplicitWidth = 657
   ExplicitHeight = 468
   PixelsPerInch = 96

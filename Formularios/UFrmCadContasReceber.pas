@@ -67,6 +67,15 @@ type
     edt_IdFuncionario: TsEdit;
     edt_Funcionario: TsEdit;
     btn_BuscarFuncionario: TsBitBtn;
+    group_Condicao: TsGroupBox;
+    lbl_IdCondicaoPagamento: TsLabel;
+    lbl_CondicaoPagamento: TsLabel;
+    edt_CondicaoPagamento: TsEdit;
+    edt_IdCondicaoPagamento: TsEdit;
+    btn_BuscarCondicaoPagamento: TsBitBtn;
+    gridParcelas: TStringGrid;
+    btn_GerarParcelas: TsBitBtn;
+    btn_LimparParcelas: TsBitBtn;
     procedure edt_NumNotaKeyPress(Sender: TObject; var Key: Char);
     procedure edt_IdClienteKeyPress(Sender: TObject; var Key: Char);
     procedure edt_IdFuncionarioKeyPress(Sender: TObject; var Key: Char);
@@ -84,10 +93,10 @@ type
     procedure btn_BuscarFuncionarioClick(Sender: TObject);
     procedure edt_IdFormaPagamentoExit(Sender: TObject);
     procedure btn_BuscarFormaPagamentoClick(Sender: TObject);
-//    procedure edt_IdCondicaoPagamentoExit(Sender: TObject);
-//    procedure btn_BuscarCondicaoPagamentoClick(Sender: TObject);
-//    procedure btn_GerarParcelasClick(Sender: TObject);
-//    procedure btn_LimparParcelasClick(Sender: TObject);
+    procedure edt_IdCondicaoPagamentoExit(Sender: TObject);
+    procedure btn_BuscarCondicaoPagamentoClick(Sender: TObject);
+    procedure btn_GerarParcelasClick(Sender: TObject);
+    procedure btn_LimparParcelasClick(Sender: TObject);
     procedure edt_MultaExit(Sender: TObject);
     procedure edt_JurosExit(Sender: TObject);
     procedure edt_DescontosExit(Sender: TObject);
@@ -121,8 +130,8 @@ type
 
     //Parcelas
     procedure LimpaGridParcelas(verifica : Boolean);
-//    procedure CarregaParcelas;
-//    procedure HabilitaParcelas;
+    procedure CarregaParcelas;
+    procedure HabilitaParcelas;
     //Condicao Pagamento
     procedure addCondicaoPgto(vCondicaoPgto : CondicaoPagamento);
   end;
@@ -148,6 +157,8 @@ begin
   self.LimpaCampos;
   self.edt_IdFuncionario.Text := IntToStr(idLogado);
   self.edt_Funcionario.Text   := nomeLogado;
+  self.lbl_NumParcela.Hide;
+  Self.edt_NumParcela.Hide;
 end;
 
 procedure TFrmCadContasReceber.edt_IdClienteExit(Sender: TObject);
@@ -165,8 +176,8 @@ begin
         MessageDlg('Nenhum registro encontrado!',  mtInformation, [mbOK], 0);
         self.edt_IdCliente.Clear;
         self.edt_Cliente.Clear;
-//        Self.edt_IdCondicaoPagamento.Clear;
-//        Self.edt_CondicaoPagamento.Clear;
+        Self.edt_IdCondicaoPagamento.Clear;
+        Self.edt_CondicaoPagamento.Clear;
         umaContaReceber.getUmCliente.setId(0);
       end
       else
@@ -175,8 +186,8 @@ begin
         umaCtrlCliente.Carrega(umaContaReceber.getUmCliente);
         Self.edt_IdCliente.Text := IntToStr(umaContaReceber.getUmCliente.getId);
         Self.edt_Cliente.Text := umaContaReceber.getUmCliente.getNome_RazaoSoCial;
-//      Self.edt_IdCondicaoPagamento.Text := IntToStr(umaContaReceber.getUmCliente.getUmaCondicaoPgto.getId);
-//      Self.edt_CondicaoPagamento.Text := umaContaReceber.getUmCliente.getUmaCondicaoPgto.getDescricao;
+        Self.edt_IdCondicaoPagamento.Text := IntToStr(umaContaReceber.getUmCliente.getUmaCondicaoPgto.getId);
+        Self.edt_CondicaoPagamento.Text := umaContaReceber.getUmCliente.getUmaCondicaoPgto.getDescricao;
         //Adiciona a Condicao Pagamento na Compra
         addCondicaoPgto(umaContaReceber.getUmCliente.getUmaCondicaoPgto);
         VerificaNota;
@@ -188,8 +199,8 @@ begin
    begin
      self.edt_IdCliente.Clear;
      self.edt_Cliente.Clear;
-//     Self.edt_IdCondicaoPagamento.Clear;
-//     Self.edt_CondicaoPagamento.Clear;
+     Self.edt_IdCondicaoPagamento.Clear;
+     Self.edt_CondicaoPagamento.Clear;
    end;
 end;
 
@@ -204,8 +215,8 @@ begin
     LimpaGridParcelas(true);
     self.edt_IdCliente.Text  := inttostr(umaContaReceber.getUmCliente.getId);
     self.edt_Cliente.Text    := umaContaReceber.getUmCliente.getNome_RazaoSoCial;
-//  Self.edt_IdCondicaoPagamento.Text := IntToStr(umaContaReceber.getUmCliente.getUmaCondicaoPgto.getId);
-//  Self.edt_CondicaoPagamento.Text := umaContaReceber.getUmCliente.getUmaCondicaoPgto.getDescricao;
+    Self.edt_IdCondicaoPagamento.Text := IntToStr(umaContaReceber.getUmCliente.getUmaCondicaoPgto.getId);
+    Self.edt_CondicaoPagamento.Text := umaContaReceber.getUmCliente.getUmaCondicaoPgto.getDescricao;
     //Adiciona a Condicao Pagamento na Venda
     addCondicaoPgto(umaContaReceber.getUmCliente.getUmaCondicaoPgto);
     VerificaNota;
@@ -300,49 +311,49 @@ begin
   umaContaReceber.setUmaCondicaoPagamento(vCondicaoPgto);
 end;
 
-//procedure TFrmCadContasReceber.edt_IdCondicaoPagamentoExit(Sender: TObject);
-//begin
-//  if Self.edt_IdCondicaoPagamento.Text <> '' then
-//  begin
-//    LimpaGridParcelas(true);
-////    Self.edt_CondicaoPagamento.Clear;
-//    umaCtrlCondicaoPagamento := CtrlCondicaoPagamento.CrieObjeto;
-//    umaContaReceber.getUmaCondicaoPagamento.setId(StrToInt(Self.edt_IdCondicaoPagamento.Text));
-//    umaContaReceber.getUmaCondicaoPagamento.setDescricao(Self.edt_CondicaoPagamento.Text);
-//    umaContaReceber.getUmaCondicaoPagamento.getUmaFormaPagamento.setId(0);
-//    if not umaCtrlCondicaoPagamento.Buscar(umaContaReceber.getUmaCondicaoPagamento) then
-//    begin
-//      MessageDlg('Nenhum registro encontrado!',  mtInformation, [mbOK], 0);
-//      self.edt_IdCondicaoPagamento.Clear;
-//      self.edt_CondicaoPagamento.Clear;
-//      umaContaReceber.getUmaCondicaoPagamento.setId(0);
-//    end
-//    else
-//    begin
-//      umaCtrlCondicaoPagamento.Carrega(umaContaReceber.getUmaCondicaoPagamento);
-//      Self.edt_IdCondicaoPagamento.Text := IntToStr(umaContaReceber.getUmaCondicaoPagamento.getId);
-//      Self.edt_CondicaoPagamento.Text := umaContaReceber.getUmaCondicaoPagamento.getDescricao;
-//    end;
-//    umaCondicaoPagamento := CondicaoPagamento.CrieObjeto;
-//    umaCtrlCondicaoPagamento.Buscar(umaCondicaoPagamento);
-//  end
-//  else
-//  begin
-//   self.edt_IdCondicaoPagamento.Clear;
-//   self.edt_CondicaoPagamento.Clear;
-//  end;
-//end;
+procedure TFrmCadContasReceber.edt_IdCondicaoPagamentoExit(Sender: TObject);
+begin
+  if Self.edt_IdCondicaoPagamento.Text <> '' then
+  begin
+    LimpaGridParcelas(true);
+//    Self.edt_CondicaoPagamento.Clear;
+    umaCtrlCondicaoPagamento := CtrlCondicaoPagamento.CrieObjeto;
+    umaContaReceber.getUmaCondicaoPagamento.setId(StrToInt(Self.edt_IdCondicaoPagamento.Text));
+    umaContaReceber.getUmaCondicaoPagamento.setDescricao(Self.edt_CondicaoPagamento.Text);
+    umaContaReceber.getUmaCondicaoPagamento.getUmaFormaPagamento.setId(0);
+    if not umaCtrlCondicaoPagamento.Buscar(umaContaReceber.getUmaCondicaoPagamento) then
+    begin
+      MessageDlg('Nenhum registro encontrado!',  mtInformation, [mbOK], 0);
+      self.edt_IdCondicaoPagamento.Clear;
+      self.edt_CondicaoPagamento.Clear;
+      umaContaReceber.getUmaCondicaoPagamento.setId(0);
+    end
+    else
+    begin
+      umaCtrlCondicaoPagamento.Carrega(umaContaReceber.getUmaCondicaoPagamento);
+      Self.edt_IdCondicaoPagamento.Text := IntToStr(umaContaReceber.getUmaCondicaoPagamento.getId);
+      Self.edt_CondicaoPagamento.Text := umaContaReceber.getUmaCondicaoPagamento.getDescricao;
+    end;
+    umaCondicaoPagamento := CondicaoPagamento.CrieObjeto;
+    umaCtrlCondicaoPagamento.Buscar(umaCondicaoPagamento);
+  end
+  else
+  begin
+   self.edt_IdCondicaoPagamento.Clear;
+   self.edt_CondicaoPagamento.Clear;
+  end;
+end;
 
-//procedure TFrmCadContasReceber.btn_BuscarCondicaoPagamentoClick(Sender: TObject);
-//begin
-////  LimpaGridParcelas(true);
-//  umFrmConCondicaoPagamento := TFrmConCondicaoPagamento.Create(nil);
-//  umFrmConCondicaoPagamento.ConhecaObj(umaContaReceber.getUmaCondicaoPagamento);
-//  umFrmConCondicaoPagamento.btn_Sair.Caption := 'Selecionar';
-//  umFrmConCondicaoPagamento.ShowModal;
-//  self.edt_IdCondicaoPagamento.Text := inttostr(umaContaReceber.getUmaCondicaoPagamento.getId);
-//  self.edt_CondicaoPagamento.Text   := umaContaReceber.getUmaCondicaoPagamento.getDescricao;
-//end;
+procedure TFrmCadContasReceber.btn_BuscarCondicaoPagamentoClick(Sender: TObject);
+begin
+//  LimpaGridParcelas(true);
+  umFrmConCondicaoPagamento := TFrmConCondicaoPagamento.Create(nil);
+  umFrmConCondicaoPagamento.ConhecaObj(umaContaReceber.getUmaCondicaoPagamento);
+  umFrmConCondicaoPagamento.btn_Sair.Caption := 'Selecionar';
+  umFrmConCondicaoPagamento.ShowModal;
+  self.edt_IdCondicaoPagamento.Text := inttostr(umaContaReceber.getUmaCondicaoPagamento.getId);
+  self.edt_CondicaoPagamento.Text   := umaContaReceber.getUmaCondicaoPagamento.getDescricao;
+end;
 
 function TFrmCadContasReceber.VerificaNota: Boolean;
 var consContasReceber : ContasReceber;
@@ -364,8 +375,8 @@ begin
       Self.edt_Descontos.Clear;
       Self.edt_ValorTotal.Clear;
       Self.edt_Observacao.Clear;
-//      Self.edt_IdCondicaoPagamento.Clear;
-//      Self.edt_CondicaoPagamento.Clear;
+      Self.edt_IdCondicaoPagamento.Clear;
+      Self.edt_CondicaoPagamento.Clear;
       LimpaGridParcelas(False);
       DesabilitaCampos;
       edt_NumNota.SetFocus;
@@ -421,49 +432,49 @@ begin
   end;
 end;
 
-//procedure TFrmCadContasReceber.btn_GerarParcelasClick(Sender: TObject);
-//begin
-//  Self.CarregaParcelas;
-//end;
+procedure TFrmCadContasReceber.btn_GerarParcelasClick(Sender: TObject);
+begin
+  Self.CarregaParcelas;
+end;
 
-//procedure TFrmCadContasReceber.CarregaParcelas;
-//var i : Integer;
-//    valorFinal : Real;
-//    valor : string;
-//begin
-//  valorFinal:= 0;
-//  if edt_ValorTotal.Text <> '' then
-//  begin
-//    for i := 1 to umaContaReceber.getUmaCondicaoPagamento.p do
-//    begin
-//       umaContaReceber.CrieObjetoParcela;
-//       umaContaReceber.addParcelas(umaContaReceber.getUmaCondicaoPagamento.getParcela(i-1));
-//       self.gridParcelas.RowCount := i+1;
-//       self.gridParcelas.Cells[0,i] := IntToStr(umaContaReceber.getUmaCondicaoPagamento.getParcela(i-1).getNumParcela);
-//       self.gridParcelas.Cells[1,i] := DateToStr(Date + (umaContaReceber.getUmaCondicaoPagamento.getParcela(i-1).getDias));
-//       self.gridParcelas.Cells[2,i] := FloatToStr(umaContaReceber.getUmaCondicaoPagamento.getParcela(i-1).getPorcentagem);
-//       valor := FormatFloat('#0.00',(StrToFloat(Self.gridParcelas.Cells[2,i])/100) * StrToFloat(Self.edt_ValorTotal.text));
-//       self.gridParcelas.Cells[3,i] := valor;
-//       if (i = umaContaReceber.getUmaCondicaoPagamento.p)then
-//       begin
-//         valorFinal := StrToFloat(Self.edt_ValorTotal.text) - valorFinal;
-//         self.gridParcelas.Cells[3,1] := FloatToStr(valorFinal);
-//       end
-//       else
-//         valorFinal := valorFinal + StrToFloat(self.gridParcelas.Cells[3,i]);
-//    end;
-//    Self.edt_IdCondicaoPagamento.Enabled := False;
-//    Self.edt_CondicaoPagamento.Enabled := False;
-//    Self.btn_BuscarCondicaoPagamento.Enabled := False;
-//    Self.btn_GerarParcelas.Enabled := False;
-//  end;
-//end;
+procedure TFrmCadContasReceber.CarregaParcelas;
+var i : Integer;
+    valorFinal : Real;
+    valor : string;
+begin
+  valorFinal:= 0;
+  if edt_ValorTotal.Text <> '' then
+  begin
+    for i := 1 to umaContaReceber.getUmaCondicaoPagamento.p do
+    begin
+       umaContaReceber.CrieObjetoParcela;
+       umaContaReceber.addParcelas(umaContaReceber.getUmaCondicaoPagamento.getParcela(i-1));
+       self.gridParcelas.RowCount := i+1;
+       self.gridParcelas.Cells[0,i] := IntToStr(umaContaReceber.getUmaCondicaoPagamento.getParcela(i-1).getNumParcela);
+       self.gridParcelas.Cells[1,i] := DateToStr(Date + (umaContaReceber.getUmaCondicaoPagamento.getParcela(i-1).getDias));
+       self.gridParcelas.Cells[2,i] := FloatToStr(umaContaReceber.getUmaCondicaoPagamento.getParcela(i-1).getPorcentagem);
+       valor := FormatFloat('#0.00',(StrToFloat(Self.gridParcelas.Cells[2,i])/100) * StrToFloat(Self.edt_ValorTotal.text));
+       self.gridParcelas.Cells[3,i] := valor;
+       if (i = umaContaReceber.getUmaCondicaoPagamento.p)then
+       begin
+         valorFinal := StrToFloat(Self.edt_ValorTotal.text) - valorFinal;
+         self.gridParcelas.Cells[3,1] := FloatToStr(valorFinal);
+       end
+       else
+         valorFinal := valorFinal + StrToFloat(self.gridParcelas.Cells[3,i]);
+    end;
+    Self.edt_IdCondicaoPagamento.Enabled := False;
+    Self.edt_CondicaoPagamento.Enabled := False;
+    Self.btn_BuscarCondicaoPagamento.Enabled := False;
+    Self.btn_GerarParcelas.Enabled := False;
+  end;
+end;
 
-//procedure TFrmCadContasReceber.btn_LimparParcelasClick(Sender: TObject);
-//begin
-//  HabilitaParcelas;
-//  Self.LimpaGridParcelas(False);
-//end;
+procedure TFrmCadContasReceber.btn_LimparParcelasClick(Sender: TObject);
+begin
+  HabilitaParcelas;
+  Self.LimpaGridParcelas(False);
+end;
 
 procedure TFrmCadContasReceber.btn_ReceberClick(Sender: TObject);
 var msg: string;
@@ -510,11 +521,11 @@ begin
     ShowMessage('Campo Valor Total não pode estar em branco!');
     edt_ValorTotal.SetFocus;
   end
-//  else if (gridParcelas.RowCount <= 1) and (self.btn_Receber.Caption = 'Salvar') then
-//  begin
-//    ShowMessage('Favor gerar as parcelas!');
-//    btn_GerarParcelas.SetFocus;
-//  end
+  else if (gridParcelas.RowCount <= 1) and (self.btn_Receber.Caption = 'Salvar') then
+  begin
+    ShowMessage('Favor gerar as parcelas!');
+    btn_GerarParcelas.SetFocus;
+  end
   else
   if self.btn_Receber.Caption = 'Salvar' then
   begin
@@ -612,16 +623,16 @@ begin
   Self.btn_Receber.Enabled    := True;
   Self.edt_ValorTotal.Enabled := True;
   Self.edt_Observacao.Enabled := True;
-//  Self.HabilitaParcelas;
+  Self.HabilitaParcelas;
 end;
 
-//procedure TFrmCadContasReceber.HabilitaParcelas;
-//begin
-//  Self.edt_IdCondicaoPagamento.Enabled := True;
-//  Self.btn_BuscarCondicaoPagamento.Enabled := True;
-//  Self.btn_GerarParcelas.Enabled := True;
-//  Self.btn_LimparParcelas.Enabled := True;
-//end;
+procedure TFrmCadContasReceber.HabilitaParcelas;
+begin
+  Self.edt_IdCondicaoPagamento.Enabled := True;
+  Self.btn_BuscarCondicaoPagamento.Enabled := True;
+  Self.btn_GerarParcelas.Enabled := True;
+  Self.btn_LimparParcelas.Enabled := True;
+end;
 
 procedure TFrmCadContasReceber.LimpaCampos;
 var i : Integer;
@@ -631,7 +642,7 @@ begin
       TsEdit(Self.Components[i]).Clear;
   Self.edt_Observacao.Clear;
   Self.edt_DataEmissao.Date := Date;
-//  Self.edt_DataVencimento.Date := Date;
+  Self.edt_DataVencimento.Date := Date;
   if (Self.btn_Receber.Caption <> 'Salvar') then
     Self.edt_DataPagamento.Date := Date;
 end;
@@ -639,14 +650,14 @@ end;
 procedure TFrmCadContasReceber.LimpaGridParcelas(verifica: Boolean);
 var k,j,i : integer;
 begin
-//  if (verifica) then
-//  for k := 0 to umaContaReceber.getUmCliente.getUmaCondicaoPgto.p -1 do
-//     umaContaReceber.getUmaCondicaoPagamento.removeParcela;
-//
-//  for j := 0 to (gridParcelas.ColCount - 1) do
-//  for i := 1 to gridParcelas.RowCount do
-//    gridParcelas.Cells[j,i] := '';
-//  gridParcelas.RowCount := 0;
+  if (verifica) then
+  for k := 0 to umaContaReceber.getUmCliente.getUmaCondicaoPgto.p -1 do
+     umaContaReceber.getUmaCondicaoPagamento.removeParcela;
+
+  for j := 0 to (gridParcelas.ColCount - 1) do
+  for i := 1 to gridParcelas.RowCount do
+    gridParcelas.Cells[j,i] := '';
+  gridParcelas.RowCount := 0;
 end;
 
 procedure TFrmCadContasReceber.edt_MultaExit(Sender: TObject);
@@ -753,29 +764,29 @@ end;
 
 procedure TFrmCadContasReceber.edt_MultaKeyPress(Sender: TObject; var Key: Char);
 begin
-//  HabilitaParcelas;
-//  Self.LimpaGridParcelas(False);
+  HabilitaParcelas;
+  Self.LimpaGridParcelas(False);
   CampoReal(Sender, Key, edt_Multa.Text);
 end;
 
 procedure TFrmCadContasReceber.edt_JurosKeyPress(Sender: TObject; var Key: Char);
 begin
-//  HabilitaParcelas;
-//  Self.LimpaGridParcelas(False);
+  HabilitaParcelas;
+  Self.LimpaGridParcelas(False);
   CampoReal(Sender, Key, edt_Juros.Text);
 end;
 
 procedure TFrmCadContasReceber.edt_DescontosKeyPress(Sender: TObject; var Key: Char);
 begin
-//  HabilitaParcelas;
-//  Self.LimpaGridParcelas(False);
+  HabilitaParcelas;
+  Self.LimpaGridParcelas(False);
   CampoReal(Sender, Key, edt_Descontos.Text);
 end;
 
 procedure TFrmCadContasReceber.edt_ValorTotalKeyPress(Sender: TObject; var Key: Char);
 begin
-//  HabilitaParcelas;
-//  Self.LimpaGridParcelas(False);
+  HabilitaParcelas;
+  Self.LimpaGridParcelas(False);
   CampoReal(Sender, Key, edt_ValorTotal.Text);
   if ((Key = #8) or (Key = #0)) and ((Length(Self.edt_ValorTotal.Text) = 1) or (Self.edt_ValorTotal.Text = '')) then
   begin
@@ -802,10 +813,10 @@ end;
 procedure TFrmCadContasReceber.FormActivate(Sender: TObject);
 var count : Integer;
 begin
-//  self.gridParcelas.Cells[0,0] := 'Nº Parcela';
-//  self.gridParcelas.Cells[1,0] := 'Data Vencimento';
-//  self.gridParcelas.Cells[2,0] := 'Porcentagem';
-//  self.gridParcelas.Cells[3,0] := 'Valor R$';
+  self.gridParcelas.Cells[0,0] := 'Nº Parcela';
+  self.gridParcelas.Cells[1,0] := 'Data Vencimento';
+  self.gridParcelas.Cells[2,0] := 'Porcentagem';
+  self.gridParcelas.Cells[3,0] := 'Valor R$';
 
   for count := 0 to Self.ComponentCount - 1 do
     if Self.Components[count] is TsEdit then

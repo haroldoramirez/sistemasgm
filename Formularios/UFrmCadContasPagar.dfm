@@ -775,7 +775,7 @@ object FrmCadContasPagar: TFrmCadContasPagar
       Font.Style = []
     end
     object edt_NumNota: TsEdit
-      Left = 9
+      Left = 7
       Top = 30
       Width = 65
       Height = 21

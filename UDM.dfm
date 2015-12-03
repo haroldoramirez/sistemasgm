@@ -1384,17 +1384,14 @@
       Required = True
       Size = 2
     end
-    object QVendaidordemservico: TIntegerField
-      FieldName = 'idordemservico'
-    end
     object QVendacliente: TStringField
       FieldKind = fkLookup
       FieldName = 'cliente'
-      LookupDataSet = QFuncionario
-      LookupKeyFields = 'idfuncionario'
-      LookupResultField = 'nome'
+      LookupDataSet = QCliente
+      LookupKeyFields = 'idcliente'
+      LookupResultField = 'nome_razaosocial'
       KeyFields = 'idcliente'
-      Size = 30
+      Size = 50
       Lookup = True
     end
     object QVendacondiçãoPgto: TStringField
@@ -2935,7 +2932,6 @@
   object QContasPagar: TZQuery
     Connection = DB
     UpdateObject = UpdateContasPagar
-    Active = True
     SQL.Strings = (
       'select * from contapagar;')
     Params = <>
@@ -2954,10 +2950,6 @@
       FieldName = 'numparcela'
       Required = True
     end
-    object QContasPagaridfornecedor: TIntegerField
-      FieldName = 'idfornecedor'
-      Required = True
-    end
     object QContasPagarfornecedor: TStringField
       FieldKind = fkLookup
       FieldName = 'fornecedor'
@@ -2965,7 +2957,7 @@
       LookupKeyFields = 'idfornecedor'
       LookupResultField = 'nome_razaosocial'
       KeyFields = 'idfornecedor'
-      Size = 30
+      Size = 50
       Lookup = True
     end
     object QContasPagarformaPgto: TStringField
@@ -3036,6 +3028,10 @@
     end
     object QContasPagaridformapagamento: TIntegerField
       FieldName = 'idformapagamento'
+      Required = True
+    end
+    object QContasPagaridfornecedor: TIntegerField
+      FieldName = 'idfornecedor'
       Required = True
     end
   end

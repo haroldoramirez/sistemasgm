@@ -191,7 +191,7 @@
   end
   object sGroupBox2: TsGroupBox
     Left = 6
-    Top = 383
+    Top = 384
     Width = 910
     Height = 58
     TabOrder = 2
@@ -242,6 +242,18 @@
       ParentDoubleBuffered = False
       TabOrder = 3
       OnClick = btn_RelatórioClick
+      SkinData.SkinSection = 'BUTTON'
+    end
+    object btn_Novo: TsBitBtn
+      Left = 471
+      Top = 17
+      Width = 75
+      Height = 33
+      Caption = 'Novo'
+      DoubleBuffered = True
+      ParentDoubleBuffered = False
+      TabOrder = 4
+      OnClick = btn_NovoClick
       SkinData.SkinSection = 'BUTTON'
     end
   end

@@ -389,6 +389,7 @@ begin
           QContasReceber.Params.ParamByName('OLD_numnota').Value := umaContasReceber.getNumNota;
           QContasReceber.Params.ParamByName('OLD_serienota').Value := umaContasReceber.getSerieNota;
           QContasReceber.Params.ParamByName('OLD_numparcela').Value := numParcela;
+          QContasReceber.Params.ParamByName('OLD_idcliente').Value := umaContasReceber.getUmCliente.getId;
         end;
         QContasReceber.Params.ParamByName('numnota').Value := umaContasReceber.getNumNota;
         QContasReceber.Params.ParamByName('serienota').Value := umaContasReceber.getSerieNota;
