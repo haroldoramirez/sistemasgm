@@ -93,6 +93,8 @@ type
     procedure edt_QuantidadeKeyPress(Sender: TObject; var Key: Char);
     procedure edt_IdCondicaoPagamentoKeyPress(Sender: TObject; var Key: Char);
     procedure edt_IdProdutoKeyPress(Sender: TObject; var Key: Char);
+    procedure edt_QuantidadeExit(Sender: TObject);
+    procedure edt_DescontoExit(Sender: TObject);
   private
       umaVenda                  : Venda;
       umaCtrlVenda              : CtrlVenda;
@@ -109,6 +111,7 @@ type
       umFrmConCondicaoPagamento : TFrmConCondicaoPagamento;
       umaCtrlCondicaoPagamento  : CtrlCondicaoPagamento;
   public
+      totalItemAnt, descItemAnt, descItemAux : Real;
       procedure ConhecaObj(vVenda: Venda; vCtrlVenda: CtrlVenda);
       procedure HabilitaCampos;
       procedure DesbilitaCampos;
@@ -120,7 +123,7 @@ type
       procedure CarregaGridProduto;
       procedure SomaQuantidadeProduto(idProd: Integer; qtdProd : Real);
       function VerificaProduto : Boolean;
-      //procedure CalcItemProduto;
+      procedure CalcItemProduto;
 
       //Parcelas
       procedure LimpaGridParcelas(verifica : Boolean);
@@ -165,7 +168,11 @@ begin
     end
   else if StrToFloat(edt_Valor.Text) <= 0 then
     begin
-        ShowMessage('Impossível adionar um produto com valor zero!');
+        ShowMessage('Impossível adicionar um produto com valor zero!');
+    end
+  else if StrToFloat(edt_ValorTotal.Text) <= 0 then
+    begin
+        ShowMessage('Não é possível adicionar um produto com valor zero!');
     end
   else if (edt_Desconto.Text <> '') and (StrToFloat(edt_Desconto.Text) > StrToFloat(edt_Valor.Text) ) then
     begin
@@ -193,6 +200,7 @@ begin
         Self.edt_Quantidade.Clear;
         Self.edt_Valor.Clear;
         Self.edt_Desconto.Clear;
+        self.edt_ValorTotal.Text := FormatFloat('#0.00', 0);
     end;
 end;
 
@@ -259,6 +267,8 @@ begin
       self.edt_Produto.Text    := umaVenda.getUmProdutoVenda.getDescricao;
       Self.edt_Quantidade.Text := inttostr(1);
       Self.edt_Valor.Text := floattostr(umaVenda.getUmProdutoVenda.getPrecoVenda);
+
+      Self.edt_ValorTotal.Text :=    FormatFloat('#0.00', StrToFloat(edt_Valor.Text) * StrToFloat(edt_Quantidade.Text));
      end;
 end;
 
@@ -546,6 +556,7 @@ begin
    end;
   self.edt_IdFuncionario.Text := IntToStr(idLogado);
   self.edt_Funcionario.Text   := nomeLogado;
+  self.edt_ValorTotal.Text    := FormatFloat('#0.00', 0);
 end;
 
 procedure TFrmCadVenda.DesbilitaCampos;
@@ -733,6 +744,8 @@ begin
         self.edt_Produto.Text    := umaVenda.getUmProdutoVenda.getDescricao;
         Self.edt_Quantidade.Text := inttostr(1);
         Self.edt_Valor.Text := floattostr(umaVenda.getUmProdutoVenda.getPrecoVenda);
+
+        Self.edt_ValorTotal.Text := FormatFloat('#0.00', StrToFloat(edt_Valor.Text) * StrToFloat(edt_Quantidade.Text));
       end;
       umProduto := Produto.CrieObjeto;
       umaCtrlProduto.Buscar(umProduto);
@@ -850,6 +863,17 @@ begin
       TsEdit(Components[count]).CharCase := ecUpperCase;
 end;
 
+//Calcula Item Produto
+procedure TFrmCadVenda.CalcItemProduto;
+var qtdItem, valorProdutoItem, descontoItem, totalItem : Real;
+begin
+    qtdItem := StrToFloat(edt_Quantidade.Text);
+    valorProdutoItem := StrToFloat(edt_Valor.Text);
+    totalItem := valorProdutoItem * qtdItem;
+    totalItemAnt := totalItem;
+    edt_ValorTotal.Text := FormatFloat('#0.00', totalItem);
+end;
+
 procedure TFrmCadVenda.edt_IdClienteKeyPress(Sender: TObject; var Key: Char);
 begin
    CampoNumero(Sender, Key);
@@ -872,10 +896,52 @@ begin
    CampoReal(Sender, Key, Self.edt_Quantidade.Text);
 end;
 
+procedure TFrmCadVenda.edt_QuantidadeExit(Sender: TObject);
+begin
+     if (edt_Quantidade.Text = '') then
+      edt_Quantidade.Text := FormatFloat('#0.00', 0)
+    else
+      edt_Quantidade.Text := FormatFloat('#0.00', StrToFloat(edt_Quantidade.Text));
+    if (edt_Valor.Text <> '') then
+      Self.CalcItemProduto;
+end;
 
 procedure TFrmCadVenda.edt_DescontoKeyPress(Sender: TObject; var Key: Char);
 begin
    CampoReal(Sender, Key, Self.edt_Desconto.Text);
+end;
+
+procedure TFrmCadVenda.edt_DescontoExit(Sender: TObject);
+var  vTotal, vDesc : Real;
+begin
+  if (edt_Desconto.Text = '') then
+  begin
+    if (edt_Quantidade.Text = '') then
+      edt_Quantidade.Text := FormatFloat('#0.00', 0);
+    if (edt_Valor.Text = '') then
+      edt_Valor.Text := FormatFloat('#0.00', 0);
+    edt_Desconto.Text := FormatFloat('#0.00', 0);
+    Self.CalcItemProduto;
+    descItemAnt := 0;
+    descItemAux := 0;
+  end
+  else if (edt_Desconto.Text <> '' ) and (StrToFloat(edt_Desconto.Text) <> 0 ) and (StrToFloat(edt_Desconto.Text) <> descItemAnt) then
+  begin
+    if (edt_Desconto.Text <> '') and (StrToFloat(edt_Desconto.Text) > StrToFloat(edt_Valor.Text)) then
+    begin
+        ShowMessage('Desconto não pode ser maior que o valor do produto!');
+        edt_Desconto.SetFocus;
+    end
+    else
+    begin
+      edt_Desconto.Text := FormatFloat('#0.00', StrToFloat(edt_Desconto.Text));
+      edt_ValorTotal.Text    := FormatFloat('#0.00', StrToFloat(edt_ValorTotal.Text)+descItemAnt);
+      descItemAnt       := StrToFloat(edt_Desconto.Text);
+      descItemAux       := StrToFloat(edt_ValorTotal.Text)- StrToFloat(edt_Desconto.Text);
+      totalItemAnt      := descItemAux;
+      edt_ValorTotal.Text    :=  FormatFloat('#0.00', descItemAux);
+    end;
+  end;
 end;
 
 procedure TFrmCadVenda.edt_IdCondicaoPagamentoKeyPress(Sender: TObject; var Key: Char);

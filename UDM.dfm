@@ -2295,7 +2295,8 @@
       'WHERE'
       '  contareceber.numnota = :OLD_numnota AND'
       '  contareceber.serienota = :OLD_serienota AND'
-      '  contareceber.numparcela = :OLD_numparcela')
+      '  contareceber.numparcela = :OLD_numparcela AND'
+      ' contareceber.idcliente = :OLD_idcliente')
     UseSequenceFieldForRefreshSQL = False
     Left = 857
     Top = 144
@@ -2398,6 +2399,11 @@
       item
         DataType = ftUnknown
         Name = 'OLD_numparcela'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'OLD_idcliente'
         ParamType = ptUnknown
       end>
   end

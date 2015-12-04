@@ -3,9 +3,9 @@ object FrmCadContasReceber: TFrmCadContasReceber
   Top = 55
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  Caption = 'Receber Contas a Receber'
-  ClientHeight = 544
-  ClientWidth = 520
+  Caption = 'Contas a Receber'
+  ClientHeight = 493
+  ClientWidth = 580
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,13 +19,13 @@ object FrmCadContasReceber: TFrmCadContasReceber
   TextHeight = 13
   object sGroupBox11: TsGroupBox
     Left = 8
-    Top = 479
-    Width = 508
+    Top = 434
+    Width = 566
     Height = 58
     TabOrder = 0
     SkinData.SkinSection = 'GROUPBOX'
     object btn_Receber: TsBitBtn
-      Left = 334
+      Left = 389
       Top = 14
       Width = 75
       Height = 33
@@ -37,7 +37,7 @@ object FrmCadContasReceber: TFrmCadContasReceber
       SkinData.SkinSection = 'BUTTON'
     end
     object btn_Sair: TsBitBtn
-      Left = 419
+      Left = 479
       Top = 14
       Width = 75
       Height = 33
@@ -49,10 +49,10 @@ object FrmCadContasReceber: TFrmCadContasReceber
       SkinData.SkinSection = 'BUTTON'
     end
   end
-  object sGroupBox1: TsGroupBox
-    Left = 8
-    Top = 129
-    Width = 489
+  object group_FormaPagamento: TsGroupBox
+    Left = 262
+    Top = 71
+    Width = 315
     Height = 58
     TabOrder = 1
     SkinData.SkinSection = 'GROUPBOX'
@@ -112,7 +112,7 @@ object FrmCadContasReceber: TFrmCadContasReceber
     object edt_FormaPagamento: TsEdit
       Left = 69
       Top = 30
-      Width = 228
+      Width = 207
       Height = 21
       Color = clWhite
       Enabled = False
@@ -136,8 +136,8 @@ object FrmCadContasReceber: TFrmCadContasReceber
       BoundLabel.UseSkinColor = True
     end
     object btn_BuscarFormaPagamento: TsBitBtn
-      Left = 302
-      Top = 28
+      Left = 282
+      Top = 27
       Width = 30
       Height = 25
       DoubleBuffered = True
@@ -184,7 +184,7 @@ object FrmCadContasReceber: TFrmCadContasReceber
   end
   object sGroupBox7: TsGroupBox
     Left = 8
-    Top = 190
+    Top = 128
     Width = 347
     Height = 58
     TabOrder = 2
@@ -353,7 +353,7 @@ object FrmCadContasReceber: TFrmCadContasReceber
   end
   object sGroupBox6: TsGroupBox
     Left = 8
-    Top = 250
+    Top = 186
     Width = 241
     Height = 58
     TabOrder = 3
@@ -480,8 +480,8 @@ object FrmCadContasReceber: TFrmCadContasReceber
     end
   end
   object sGroupBox9: TsGroupBox
-    Left = 253
-    Top = 250
+    Left = 254
+    Top = 186
     Width = 102
     Height = 58
     TabOrder = 4
@@ -528,8 +528,8 @@ object FrmCadContasReceber: TFrmCadContasReceber
   end
   object sGroupBox10: TsGroupBox
     Left = 361
-    Top = 190
-    Width = 136
+    Top = 128
+    Width = 216
     Height = 58
     TabOrder = 5
     SkinData.SkinSection = 'GROUPBOX'
@@ -579,18 +579,18 @@ object FrmCadContasReceber: TFrmCadContasReceber
     end
   end
   object sGroupBox4: TsGroupBox
-    Left = 362
-    Top = 407
-    Width = 154
-    Height = 75
+    Left = 423
+    Top = 334
+    Width = 153
+    Height = 94
     Caption = 'Observa'#231#227'o'
     TabOrder = 6
     SkinData.SkinSection = 'GROUPBOX'
     object edt_Observacao: TsMemo
-      Left = 3
-      Top = 15
-      Width = 142
-      Height = 42
+      Left = 10
+      Top = 22
+      Width = 127
+      Height = 59
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 4276545
@@ -613,9 +613,9 @@ object FrmCadContasReceber: TFrmCadContasReceber
     end
   end
   object sGroupBox5: TsGroupBox
-    Left = 362
-    Top = 326
-    Width = 154
+    Left = 423
+    Top = 253
+    Width = 151
     Height = 75
     Caption = 'Status'
     TabOrder = 7
@@ -623,7 +623,7 @@ object FrmCadContasReceber: TFrmCadContasReceber
     object edt_Status: TsEdit
       Left = 8
       Top = 32
-      Width = 115
+      Width = 129
       Height = 21
       Color = clWhite
       Enabled = False
@@ -649,9 +649,9 @@ object FrmCadContasReceber: TFrmCadContasReceber
     end
   end
   object sGroupBox8: TsGroupBox
-    Left = 362
-    Top = 250
-    Width = 135
+    Left = 361
+    Top = 186
+    Width = 215
     Height = 58
     TabOrder = 8
     SkinData.SkinSection = 'GROUPBOX'
@@ -703,7 +703,7 @@ object FrmCadContasReceber: TFrmCadContasReceber
   object sGroupBox12: TsGroupBox
     Left = 8
     Top = 5
-    Width = 489
+    Width = 569
     Height = 60
     TabOrder = 9
     SkinData.SkinSection = 'GROUPBOX'
@@ -760,7 +760,7 @@ object FrmCadContasReceber: TFrmCadContasReceber
       Font.Style = []
     end
     object lbl3: TsLabel
-      Left = 367
+      Left = 452
       Top = 11
       Width = 114
       Height = 13
@@ -853,7 +853,7 @@ object FrmCadContasReceber: TFrmCadContasReceber
     object edt_Cliente: TsEdit
       Left = 216
       Top = 30
-      Width = 230
+      Width = 314
       Height = 21
       Color = clWhite
       Enabled = False
@@ -877,7 +877,7 @@ object FrmCadContasReceber: TFrmCadContasReceber
       BoundLabel.UseSkinColor = True
     end
     object btn_BuscarCliente: TsBitBtn
-      Left = 451
+      Left = 536
       Top = 28
       Width = 30
       Height = 25
@@ -926,7 +926,7 @@ object FrmCadContasReceber: TFrmCadContasReceber
   object sGroupBox2: TsGroupBox
     Left = 8
     Top = 69
-    Width = 489
+    Width = 255
     Height = 58
     TabOrder = 10
     SkinData.SkinSection = 'GROUPBOX'
@@ -987,7 +987,7 @@ object FrmCadContasReceber: TFrmCadContasReceber
     object edt_Funcionario: TsEdit
       Left = 69
       Top = 30
-      Width = 228
+      Width = 143
       Height = 21
       Color = clWhite
       Enabled = False
@@ -1011,8 +1011,8 @@ object FrmCadContasReceber: TFrmCadContasReceber
       BoundLabel.UseSkinColor = True
     end
     object btn_BuscarFuncionario: TsBitBtn
-      Left = 302
-      Top = 28
+      Left = 218
+      Top = 29
       Width = 30
       Height = 25
       DoubleBuffered = True
@@ -1060,8 +1060,8 @@ object FrmCadContasReceber: TFrmCadContasReceber
   end
   object group_Condicao: TsGroupBox
     Left = 7
-    Top = 304
-    Width = 349
+    Top = 250
+    Width = 410
     Height = 178
     Caption = 'Condi'#231#227'o de Pagamento'
     TabOrder = 11
@@ -1147,7 +1147,7 @@ object FrmCadContasReceber: TFrmCadContasReceber
     end
     object btn_BuscarCondicaoPagamento: TsBitBtn
       Left = 248
-      Top = 33
+      Top = 35
       Width = 30
       Height = 25
       DoubleBuffered = True
@@ -1194,7 +1194,7 @@ object FrmCadContasReceber: TFrmCadContasReceber
     object gridParcelas: TStringGrid
       Left = 10
       Top = 64
-      Width = 336
+      Width = 383
       Height = 105
       ColCount = 4
       DefaultColWidth = 93
@@ -1205,7 +1205,7 @@ object FrmCadContasReceber: TFrmCadContasReceber
     end
     object btn_GerarParcelas: TsBitBtn
       Left = 282
-      Top = 33
+      Top = 35
       Width = 30
       Height = 25
       DoubleBuffered = True
@@ -1251,7 +1251,7 @@ object FrmCadContasReceber: TFrmCadContasReceber
     end
     object btn_LimparParcelas: TsBitBtn
       Left = 316
-      Top = 33
+      Top = 35
       Width = 30
       Height = 25
       DoubleBuffered = True

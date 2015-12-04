@@ -236,6 +236,7 @@ object FrmCadVenda: TFrmCadVenda
       MaxLength = 5
       ParentFont = False
       TabOrder = 3
+      OnExit = edt_QuantidadeExit
       OnKeyPress = edt_QuantidadeKeyPress
       SkinData.SkinSection = 'EDIT'
       BoundLabel.Indent = 0
@@ -408,6 +409,7 @@ object FrmCadVenda: TFrmCadVenda
       MaxLength = 5
       ParentFont = False
       TabOrder = 5
+      OnExit = edt_DescontoExit
       OnKeyPress = edt_DescontoKeyPress
       SkinData.SkinSection = 'EDIT'
       BoundLabel.Indent = 0

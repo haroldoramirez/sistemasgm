@@ -107,6 +107,7 @@ begin
     group_Condicao.Hide;
     lbl_NumParcela.Show;
     edt_NumParcela.Show;
+    group_FormaPagamento.Show;
     ShowModal;
   end;
 end;
@@ -156,6 +157,7 @@ begin
      btn_Receber.Caption := 'Salvar';
      ConhecaObj(umaContaReceber, umaCtrlContasReceber);
      group_Condicao.Show;
+     //group_FormaPagamento.Hide;
      ShowModal;
    end;
 end;

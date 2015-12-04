@@ -15,7 +15,7 @@ type
     sGroupBox11: TsGroupBox;
     btn_Receber: TsBitBtn;
     btn_Sair: TsBitBtn;
-    sGroupBox1: TsGroupBox;
+    group_FormaPagamento: TsGroupBox;
     lbl_IdFormaPagamento: TsLabel;
     lbl_FormaPagamento: TsLabel;
     edt_IdFormaPagamento: TsEdit;
@@ -316,7 +316,6 @@ begin
   if Self.edt_IdCondicaoPagamento.Text <> '' then
   begin
     LimpaGridParcelas(true);
-//    Self.edt_CondicaoPagamento.Clear;
     umaCtrlCondicaoPagamento := CtrlCondicaoPagamento.CrieObjeto;
     umaContaReceber.getUmaCondicaoPagamento.setId(StrToInt(Self.edt_IdCondicaoPagamento.Text));
     umaContaReceber.getUmaCondicaoPagamento.setDescricao(Self.edt_CondicaoPagamento.Text);
@@ -511,7 +510,7 @@ begin
     ShowMessage('Campo Funcionário não pode estar em branco!');
     edt_IdFuncionario.SetFocus;
   end
-  else if edt_IdFormaPagamento.Text = '' then
+  else if (edt_IdFormaPagamento.Text = '') then
   begin
     ShowMessage('Campo Forma de Pagamento não pode estar em branco!');
     edt_IdFormaPagamento.SetFocus;
@@ -562,6 +561,7 @@ begin
       umaContaReceber.getUmUsuario.getUmFuncionario.setNome_RazaoSoCial(nomeLogado);
 
       umaContaReceber.getUmaFormaPagamento.setId(StrToInt(edt_IdFormaPagamento.Text));
+
       umaContaReceber.setValor(StrToFloat(edt_Valor.Text));
       umaContaReceber.setMulta(StrToFloat(edt_Multa.Text));
       umaContaReceber.setJuros(StrToFloat(edt_Juros.Text));
@@ -571,6 +571,7 @@ begin
       umaContaReceber.setDataVencimento(edt_DataVencimento.Date);
       umaContaReceber.setDataPagamento(edt_DataPagamento.Date);
       umaContaReceber.setObservacao(edt_Observacao.Text);
+
 
       msg := umaCtrlContasReceber.Salvar(UmaContaReceber);
       if Copy(msg,0,16) = 'Ocorreu um erro!' then
@@ -595,6 +596,8 @@ begin
 
   if Self.btn_Receber.Caption = 'Salvar' then
   begin
+    Self.edt_IdFormaPagamento.Enabled := True;
+    Self.btn_BuscarFormaPagamento.Enabled := True;
     Self.edt_NumNota.Enabled := True;
     Self.edt_SerieNota.Enabled := True;
     Self.edt_IdCliente.Enabled := True;
@@ -651,7 +654,7 @@ procedure TFrmCadContasReceber.LimpaGridParcelas(verifica: Boolean);
 var k,j,i : integer;
 begin
   if (verifica) then
-  for k := 0 to umaContaReceber.getUmCliente.getUmaCondicaoPgto.p -1 do
+  for k := 0 to umaContaReceber.getUmaCondicaoPagamento.p -1 do
      umaContaReceber.getUmaCondicaoPagamento.removeParcela;
 
   for j := 0 to (gridParcelas.ColCount - 1) do
