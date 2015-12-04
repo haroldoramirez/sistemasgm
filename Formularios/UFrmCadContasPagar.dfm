@@ -52,7 +52,7 @@ object FrmCadContasPagar: TFrmCadContasPagar
   object sGroupBox1: TsGroupBox
     Left = 8
     Top = 129
-    Width = 489
+    Width = 559
     Height = 58
     TabOrder = 2
     SkinData.SkinSection = 'GROUPBOX'
@@ -531,7 +531,7 @@ object FrmCadContasPagar: TFrmCadContasPagar
   object sGroupBox10: TsGroupBox
     Left = 361
     Top = 190
-    Width = 136
+    Width = 206
     Height = 58
     TabOrder = 4
     SkinData.SkinSection = 'GROUPBOX'
@@ -581,17 +581,17 @@ object FrmCadContasPagar: TFrmCadContasPagar
     end
   end
   object sGroupBox4: TsGroupBox
-    Left = 362
+    Left = 423
     Top = 395
-    Width = 205
+    Width = 144
     Height = 92
     Caption = 'Observa'#231#227'o'
     TabOrder = 9
     SkinData.SkinSection = 'GROUPBOX'
     object edt_Observacao: TsMemo
-      Left = 3
+      Left = 6
       Top = 23
-      Width = 190
+      Width = 113
       Height = 58
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
@@ -615,17 +615,17 @@ object FrmCadContasPagar: TFrmCadContasPagar
     end
   end
   object sGroupBox5: TsGroupBox
-    Left = 362
+    Left = 423
     Top = 314
-    Width = 205
+    Width = 144
     Height = 75
     Caption = 'Status'
     TabOrder = 10
     SkinData.SkinSection = 'GROUPBOX'
     object edt_Status: TsEdit
-      Left = 8
+      Left = 7
       Top = 32
-      Width = 185
+      Width = 113
       Height = 21
       Color = clWhite
       Enabled = False
@@ -653,7 +653,7 @@ object FrmCadContasPagar: TFrmCadContasPagar
   object sGroupBox8: TsGroupBox
     Left = 362
     Top = 250
-    Width = 135
+    Width = 205
     Height = 58
     TabOrder = 7
     SkinData.SkinSection = 'GROUPBOX'
@@ -705,7 +705,7 @@ object FrmCadContasPagar: TFrmCadContasPagar
   object sGroupBox12: TsGroupBox
     Left = 8
     Top = 5
-    Width = 489
+    Width = 559
     Height = 60
     TabOrder = 0
     SkinData.SkinSection = 'GROUPBOX'
@@ -762,8 +762,8 @@ object FrmCadContasPagar: TFrmCadContasPagar
       Font.Style = []
     end
     object lbl3: TsLabel
-      Left = 367
-      Top = 11
+      Left = 425
+      Top = 6
       Width = 114
       Height = 13
       Caption = 'Campos Obrigat'#243'rios(*)'
@@ -855,7 +855,7 @@ object FrmCadContasPagar: TFrmCadContasPagar
     object edt_Favorecido: TsEdit
       Left = 216
       Top = 30
-      Width = 230
+      Width = 302
       Height = 21
       Color = clWhite
       Enabled = False
@@ -879,7 +879,7 @@ object FrmCadContasPagar: TFrmCadContasPagar
       BoundLabel.UseSkinColor = True
     end
     object btn_BuscarFavorecido: TsBitBtn
-      Left = 451
+      Left = 524
       Top = 28
       Width = 30
       Height = 25
@@ -928,7 +928,7 @@ object FrmCadContasPagar: TFrmCadContasPagar
   object sGroupBox2: TsGroupBox
     Left = 8
     Top = 69
-    Width = 489
+    Width = 559
     Height = 58
     TabOrder = 1
     SkinData.SkinSection = 'GROUPBOX'
@@ -1063,7 +1063,7 @@ object FrmCadContasPagar: TFrmCadContasPagar
   object group_Condicao: TsGroupBox
     Left = 7
     Top = 309
-    Width = 349
+    Width = 410
     Height = 178
     Caption = 'Condi'#231#227'o de Pagamento'
     TabOrder = 8
@@ -1196,7 +1196,7 @@ object FrmCadContasPagar: TFrmCadContasPagar
     object gridParcelas: TStringGrid
       Left = 10
       Top = 64
-      Width = 336
+      Width = 391
       Height = 105
       ColCount = 4
       DefaultColWidth = 93
