@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="PostgreSQL" id="Project_10325dfb" html="y" template="Default" database="PostgreSQL" >
+	<schema name="public" catalogname="sgmdb" schemaname="public" >
+		<table name="cargo" >
+			<column name="idcargo" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="descricao" type="varchar" length="100" decimal="0" jt="12" mandatory="y" />
+			<column name="datacadastro" type="date" length="13" decimal="0" jt="91" />
+			<column name="dataalteracao" type="date" length="13" decimal="0" jt="91" mandatory="y" />
+			<index name="cargo_pkey" unique="PRIMARY_KEY" >
+				<column name="idcargo" />
+			</index>
+		</table>
+		<table name="categoria" >
+			<column name="idcategoria" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="descricao" type="varchar" length="100" decimal="0" jt="12" mandatory="y" />
+			<column name="datacadastro" type="date" length="13" decimal="0" jt="91" />
+			<column name="dataalteracao" type="date" length="13" decimal="0" jt="91" />
+			<index name="categoria_pkey" unique="PRIMARY_KEY" >
+				<column name="idcategoria" />
+			</index>
+		</table>
+		<table name="cfop" >
+			<column name="idcfop" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="nome" type="varchar" length="100" decimal="0" jt="12" mandatory="y" />
+			<column name="datacadastro" type="date" length="13" decimal="0" jt="91" />
+			<column name="dataalteracao" type="date" length="13" decimal="0" jt="91" />
+			<column name="numero" type="varchar" length="5" decimal="0" jt="12" />
+			<index name="cfop_pkey" unique="PRIMARY_KEY" >
+				<column name="idcfop" />
+			</index>
+		</table>
+		<table name="cidade" >
+			<column name="idcidade" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="descricao" type="varchar" length="100" decimal="0" jt="12" mandatory="y" />
+			<column name="ddd" type="varchar" length="2" decimal="0" jt="12" />
+			<column name="idestado" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="datacadastro" type="date" length="13" decimal="0" jt="91" />
+			<column name="dataalteracao" type="date" length="13" decimal="0" jt="91" />
+			<index name="cidade_pkey" unique="PRIMARY_KEY" >
+				<column name="idcidade" />
+			</index>
+			<fk name="cidade_idestado_fkey" to_schema="public" to_table="estado" >
+				<fk_column name="idestado" pk="idestado" />
+			</fk>
+		</table>
+		<table name="cliente" >
+			<column name="idcliente" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="nome_razaosocial" type="varchar" length="100" decimal="0" jt="12" mandatory="y" />
+			<column name="logradouro" type="varchar" length="100" decimal="0" jt="12" mandatory="y" />
+			<column name="numero" type="varchar" length="10" decimal="0" jt="12" mandatory="y" />
+			<column name="cep" type="varchar" length="9" decimal="0" jt="12" />
+			<column name="bairro" type="varchar" length="50" decimal="0" jt="12" mandatory="y" />
+			<column name="complemento" type="varchar" length="50" decimal="0" jt="12" />
+			<column name="idcidade" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="email" type="varchar" length="100" decimal="0" jt="12" />
+			<column name="telefone" type="varchar" length="20" decimal="0" jt="12" />
+			<column name="celular" type="varchar" length="20" decimal="0" jt="12" />
+			<column name="cpf_cnpj" type="varchar" length="18" decimal="0" jt="12" />
+			<column name="rg_ie" type="varchar" length="10" decimal="0" jt="12" />
+			<column name="tipopessoa" type="varchar" length="8" decimal="0" jt="12" mandatory="y" />
+			<column name="idcondicaopagamento" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="datanasc_fund" type="date" length="13" decimal="0" jt="91" />
+			<column name="datacadastro" type="date" length="13" decimal="0" jt="91" mandatory="y" />
+			<column name="dataalteracao" type="date" length="13" decimal="0" jt="91" mandatory="y" />
+			<column name="observacao" type="varchar" length="255" decimal="0" jt="12" />
+			<index name="cliente_pkey" unique="PRIMARY_KEY" >
+				<column name="idcliente" />
+			</index>
+			<fk name="cliente_idcidade_fkey" to_schema="public" to_table="cidade" >
+				<fk_column name="idcidade" pk="idcidade" />
+			</fk>
+			<fk name="cliente_idcondicaopagamento_fkey" to_schema="public" to_table="condicaopagamento" >
+				<fk_column name="idcondicaopagamento" pk="idcondicaopagamento" />
+			</fk>
+		</table>
+		<table name="compra" >
+			<column name="idcompra" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="numnota" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="serienota" type="varchar" length="2" decimal="0" jt="12" mandatory="y" />
+			<column name="idfornecedor" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="idcondicaopagamento" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="idusuario" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="idtransportadora" type="integer" length="10" decimal="0" jt="4" />
+			<column name="tipofrete" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="base_icms" type="real" length="8" decimal="8" jt="7" mandatory="y" />
+			<column name="valor_frete" type="real" length="8" decimal="8" jt="7" />
+			<column name="total_icms" type="real" length="8" decimal="8" jt="7" />
+			<column name="total_ipi" type="real" length="8" decimal="8" jt="7" />
+			<column name="valor_desconto" type="real" length="8" decimal="8" jt="7" mandatory="y" />
+			<column name="total_produto" type="real" length="8" decimal="8" jt="7" mandatory="y" />
+			<column name="total_nota" type="real" length="8" decimal="8" jt="7" mandatory="y" />
+			<column name="status" type="varchar" length="15" decimal="0" jt="12" mandatory="y" />
+			<column name="datacompra" type="date" length="13" decimal="0" jt="91" mandatory="y" />
+			<column name="dataemissao" type="date" length="13" decimal="0" jt="91" mandatory="y" />
+			<column name="datacadastro" type="date" length="13" decimal="0" jt="91" mandatory="y" />
+			<column name="dataalteracao" type="date" length="13" decimal="0" jt="91" mandatory="y" />
+			<column name="observacao" type="varchar" length="255" decimal="0" jt="12" />
+			<index name="compra_pkey" unique="PRIMARY_KEY" >
+				<column name="idcompra" />
+				<column name="numnota" />
+				<column name="serienota" />
+				<column name="idfornecedor" />
+			</index>
+			<fk name="compra_idcondicaopagamento_fkey" to_schema="public" to_table="condicaopagamento" >
+				<fk_column name="idcondicaopagamento" pk="idcondicaopagamento" />
+			</fk>
+			<fk name="compra_idfornecedor_fkey" to_schema="public" to_table="fornecedor" >
+				<fk_column name="idfornecedor" pk="idfornecedor" />
+			</fk>
+			<fk name="usuario_compra_fk" to_schema="public" to_table="usuario" >
+				<fk_column name="idusuario" pk="idusuario" />
+			</fk>
+		</table>
+		<table name="condicaopagamento" >
+			<column name="idcondicaopagamento" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="idformapagamento" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="descricao" type="varchar" length="100" decimal="0" jt="12" mandatory="y" />
+			<column name="datacadastro" type="date" length="13" decimal="0" jt="91" mandatory="y" />
+			<column name="dataalteracao" type="date" length="13" decimal="0" jt="91" mandatory="y" />
+			<index name="condicaopagamento_pkey" unique="PRIMARY_KEY" >
+				<column name="idcondicaopagamento" />
+			</index>
+			<fk name="condicaopagamento_idformapagamento_fkey" to_schema="public" to_table="formapagamento" >
+				<fk_column name="idformapagamento" pk="idformapagamento" />
+			</fk>
+		</table>
+		<table name="contapagar" >
+			<column name="idcontapagar" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="numnota" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="serienota" type="varchar" length="2" decimal="0" jt="12" mandatory="y" />
+			<column name="numparcela" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="idfornecedor" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="idcompra" type="integer" length="10" decimal="0" jt="4" />
+			<column name="idusuario" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="idformapagamento" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="dataemissao" type="date" length="13" decimal="0" jt="91" mandatory="y" />
+			<column name="datavencimento" type="date" length="13" decimal="0" jt="91" mandatory="y" />
+			<column name="datapagamento" type="date" length="13" decimal="0" jt="91" />
+			<column name="valor" type="real" length="8" decimal="8" jt="7" />
+			<column name="multa" type="real" length="8" decimal="8" jt="7" />
+			<column name="juros" type="real" length="8" decimal="8" jt="7" />
+			<column name="desconto" type="real" length="8" decimal="8" jt="7" />
+			<column name="status" type="varchar" length="15" decimal="0" jt="12" />
+			<column name="datacadastro" type="date" length="13" decimal="0" jt="91" />
+			<column name="dataalteracao" type="date" length="13" decimal="0" jt="91" />
+			<column name="observacao" type="varchar" length="255" decimal="0" jt="12" />
+			<index name="contapagar_pkey" unique="PRIMARY_KEY" >
+				<column name="idcontapagar" />
+				<column name="numnota" />
+				<column name="serienota" />
+				<column name="numparcela" />
+				<column name="idfornecedor" />
+			</index>
+			<fk name="contapagar_idformapagamento_fkey" to_schema="public" to_table="formapagamento" >
+				<fk_column name="idformapagamento" pk="idformapagamento" />
+			</fk>
+			<fk name="usuario_contapagar_fk" to_schema="public" to_table="usuario" >
+				<fk_column name="idusuario" pk="idusuario" />
+			</fk>
+		</table>
+		<table name="contareceber" >
+			<column name="numnota" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="serienota" type="varchar" length="2" decimal="0" jt="12" mandatory="y" />
+			<column name="numparcela" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="idcliente" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="idformapagamento" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="idusuario" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="dataemissao" type="date" length="13" decimal="0" jt="91" />
+			<column name="datavencimento" type="date" length="13" decimal="0" jt="91" />
+			<column name="datapagamento" type="date" length="13" decimal="0" jt="91" />
+			<column name="valor" type="real" length="8" decimal="8" jt="7" />
+			<column name="juros" type="real" length="8" decimal="8" jt="7" />
+			<column name="multa" type="real" length="8" decimal="8" jt="7" />
+			<column name="desconto" type="real" length="8" decimal="8" jt="7" />
+			<column name="status" type="varchar" length="15" decimal="0" jt="12" mandatory="y" />
+			<column name="datacadastro" type="date" length="13" decimal="0" jt="91" />
+			<column name="dataalteracao" type="date" length="13" decimal="0" jt="91" />
+			<column name="observacao" type="varchar" length="255" decimal="0" jt="12" />
+			<index name="contareceber_pkey" unique="PRIMARY_KEY" >
+				<column name="numnota" />
+				<column name="serienota" />
+				<column name="numparcela" />
+			</index>
+			<fk name="contareceber_idcliente_fkey" to_schema="public" to_table="cliente" >
+				<fk_column name="idcliente" pk="idcliente" />
+			</fk>
+			<fk name="contareceber_idformapagamento_fkey" to_schema="public" to_table="formapagamento" >
+				<fk_column name="idformapagamento" pk="idformapagamento" />
+			</fk>
+			<fk name="usuario_contareceber_fk" to_schema="public" to_table="usuario" >
+				<fk_column name="idusuario" pk="idusuario" />
+			</fk>
+			<fk name="contareceber_numnota_fkey" to_schema="public" to_table="venda" >
+				<fk_column name="serienota" pk="serienota" />
+				<fk_column name="numnota" pk="numnota" />
+			</fk>
+		</table>
+		<table name="estado" >
+			<column name="idestado" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="descricao" type="varchar" length="100" decimal="0" jt="12" mandatory="y" />
+			<column name="uf" type="varchar" length="3" decimal="0" jt="12" />
+			<column name="idpais" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="datacadastro" type="date" length="13" decimal="0" jt="91" />
+			<column name="dataalteracao" type="date" length="13" decimal="0" jt="91" />
+			<index name="estado_pkey" unique="PRIMARY_KEY" >
+				<column name="idestado" />
+			</index>
+			<fk name="estado_idpais_fkey" to_schema="public" to_table="pais" >
+				<fk_column name="idpais" pk="idpais" />
+			</fk>
+		</table>
+		<table name="formapagamento" >
+			<column name="idformapagamento" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="descricao" type="varchar" length="100" decimal="0" jt="12" mandatory="y" />
+			<column name="datacadastro" type="date" length="13" decimal="0" jt="91" />
+			<column name="dataalteracao" type="date" length="13" decimal="0" jt="91" />
+			<index name="formapagamento_pkey" unique="PRIMARY_KEY" >
+				<column name="idformapagamento" />
+			</index>
+		</table>
+		<table name="fornecedor" >
+			<column name="idfornecedor" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="nome_razaosocial" type="varchar" length="100" decimal="0" jt="12" mandatory="y" />
+			<column name="logradouro" type="varchar" length="100" decimal="0" jt="12" mandatory="y" />
+			<column name="numero" type="varchar" length="10" decimal="0" jt="12" mandatory="y" />
+			<column name="cep" type="varchar" length="9" decimal="0" jt="12" />
+			<column name="bairro" type="varchar" length="50" decimal="0" jt="12" mandatory="y" />
+			<column name="complemento" type="varchar" length="50" decimal="0" jt="12" />
+			<column name="idcidade" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="email" type="varchar" length="100" decimal="0" jt="12" />
+			<column name="telefone" type="varchar" length="20" decimal="0" jt="12" />
+			<column name="celular" type="varchar" length="20" decimal="0" jt="12" />
+			<column name="cpf_cnpj" type="varchar" length="18" decimal="0" jt="12" />
+			<column name="rg_ie" type="varchar" length="10" decimal="0" jt="12" />
+			<column name="tipopessoa" type="varchar" length="8" decimal="0" jt="12" mandatory="y" />
+			<column name="tipofavorecido" type="varchar" length="1" decimal="0" jt="12" mandatory="y" />
+			<column name="datanasc_fund" type="date" length="13" decimal="0" jt="91" mandatory="y" />
+			<column name="idcondicaopagamento" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="datacadastro" type="date" length="13" decimal="0" jt="91" mandatory="y" />
+			<column name="dataalteracao" type="date" length="13" decimal="0" jt="91" mandatory="y" />
+			<column name="observacao" type="varchar" length="255" decimal="0" jt="12" />
+			<index name="fornecedor_pkey" unique="PRIMARY_KEY" >
+				<column name="idfornecedor" />
+			</index>
+			<fk name="fornecedor_idcidade_fkey" to_schema="public" to_table="cidade" >
+				<fk_column name="idcidade" pk="idcidade" />
+			</fk>
+		</table>
+		<table name="funcionario" >
+			<column name="idfuncionario" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="nome" type="varchar" length="100" decimal="0" jt="12" mandatory="y" />
+			<column name="idcargo" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="logradouro" type="varchar" length="100" decimal="0" jt="12" mandatory="y" />
+			<column name="numero" type="varchar" length="10" decimal="0" jt="12" />
+			<column name="cep" type="varchar" length="9" decimal="0" jt="12" mandatory="y" />
+			<column name="bairro" type="varchar" length="50" decimal="0" jt="12" mandatory="y" />
+			<column name="complemento" type="varchar" length="50" decimal="0" jt="12" />
+			<column name="idcidade" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="email" type="varchar" length="100" decimal="0" jt="12" />
+			<column name="telefone" type="varchar" length="20" decimal="0" jt="12" />
+			<column name="celular" type="varchar" length="20" decimal="0" jt="12" />
+			<column name="cpf" type="varchar" length="14" decimal="0" jt="12" />
+			<column name="rg" type="varchar" length="10" decimal="0" jt="12" />
+			<column name="datanascimento" type="date" length="13" decimal="0" jt="91" mandatory="y" />
+			<column name="ctps" type="varchar" length="8" decimal="0" jt="12" />
+			<column name="cnh" type="varchar" length="11" decimal="0" jt="12" />
+			<column name="datavencimento" type="date" length="13" decimal="0" jt="91" />
+			<column name="datacadastro" type="date" length="13" decimal="0" jt="91" mandatory="y" />
+			<column name="dataalteracao" type="date" length="13" decimal="0" jt="91" />
+			<column name="dataadmissao" type="date" length="13" decimal="0" jt="91" />
+			<column name="datademissao" type="date" length="13" decimal="0" jt="91" />
+			<column name="observacao" type="varchar" length="255" decimal="0" jt="12" />
+			<index name="funcionario_pkey" unique="PRIMARY_KEY" >
+				<column name="idfuncionario" />
+			</index>
+			<fk name="funcionario_idcargo_fkey" to_schema="public" to_table="cargo" >
+				<fk_column name="idcargo" pk="idcargo" />
+			</fk>
+			<fk name="funcionario_idcidade_fkey" to_schema="public" to_table="cidade" >
+				<fk_column name="idcidade" pk="idcidade" />
+			</fk>
+		</table>
+		<table name="marca" >
+			<column name="idmarca" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="descricao" type="varchar" length="50" decimal="0" jt="12" mandatory="y" />
+			<column name="datacadastro" type="date" length="13" decimal="0" jt="91" />
+			<column name="dataalteracao" type="date" length="13" decimal="0" jt="91" />
+			<index name="marca_pkey" unique="PRIMARY_KEY" >
+				<column name="idmarca" />
+			</index>
+		</table>
+		<table name="ncm" >
+			<column name="idncm" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="numero" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="porcentagem_ipi" type="real" length="8" decimal="8" jt="7" />
+			<column name="datacadastro" type="date" length="13" decimal="0" jt="91" />
+			<column name="dataalteracao" type="date" length="13" decimal="0" jt="91" />
+			<index name="ncm_pkey" unique="PRIMARY_KEY" >
+				<column name="idncm" />
+			</index>
+		</table>
+		<table name="pais" >
+			<column name="idpais" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="descricao" type="varchar" length="100" decimal="0" jt="12" mandatory="y" />
+			<column name="ddi" type="varchar" length="4" decimal="0" jt="12" />
+			<column name="sigla" type="varchar" length="4" decimal="0" jt="12" />
+			<column name="datacadastro" type="date" length="13" decimal="0" jt="91" />
+			<column name="dataalteracao" type="date" length="13" decimal="0" jt="91" />
+			<index name="pais_pkey" unique="PRIMARY_KEY" >
+				<column name="idpais" />
+			</index>
+		</table>
+		<table name="parcelas" >
+			<column name="idcondicaopagamento" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="numparcela" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="numdias" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="porcentagem" type="float8" length="17" decimal="17" jt="6" />
+			<index name="parcelas_pkey" unique="PRIMARY_KEY" >
+				<column name="idcondicaopagamento" />
+				<column name="numparcela" />
+			</index>
+			<fk name="parcelas_idcondicaopagamento_fkey" to_schema="public" to_table="condicaopagamento" >
+				<fk_column name="idcondicaopagamento" pk="idcondicaopagamento" />
+			</fk>
+		</table>
+		<table name="produto" >
+			<column name="idproduto" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="descricao" type="varchar" length="60" decimal="0" jt="12" mandatory="y" />
+			<column name="quantidade" type="real" length="8" decimal="8" jt="7" />
+			<column name="icms" type="real" length="8" decimal="8" jt="7" />
+			<column name="ipi" type="real" length="8" decimal="8" jt="7" />
+			<column name="preco_compra" type="float8" length="17" decimal="17" jt="6" />
+			<column name="preco_venda" type="float8" length="17" decimal="17" jt="6" mandatory="y" />
+			<column name="icms_anterior" type="real" length="8" decimal="8" jt="7" />
+			<column name="ipi_anterior" type="real" length="8" decimal="8" jt="7" />
+			<column name="preco_compra_ant" type="real" length="8" decimal="8" jt="7" />
+			<column name="idmarca" type="integer" length="10" decimal="0" jt="4" />
+			<column name="idcategoria" type="integer" length="10" decimal="0" jt="4" />
+			<column name="observacao" type="varchar" length="255" decimal="0" jt="12" />
+			<column name="datacadastro" type="date" length="13" decimal="0" jt="91" />
+			<column name="dataalteracao" type="date" length="13" decimal="0" jt="91" />
+			<column name="cst" type="varchar" length="4" decimal="0" jt="12" />
+			<column name="idncm" type="integer" length="10" decimal="0" jt="4" />
+			<column name="unidade" type="varchar" length="4" decimal="0" jt="12" />
+			<index name="produto_pkey" unique="PRIMARY_KEY" >
+				<column name="idproduto" />
+			</index>
+			<fk name="produto_idmarca_fkey" to_schema="public" to_table="marca" >
+				<fk_column name="idmarca" pk="idmarca" />
+			</fk>
+			<fk name="produto_idncm_fkey" to_schema="public" to_table="ncm" >
+				<fk_column name="idncm" pk="idncm" />
+			</fk>
+		</table>
+		<table name="produto_compra" >
+			<column name="idcompra" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="numnota" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="serienota" type="varchar" length="2" decimal="0" jt="12" mandatory="y" />
+			<column name="idfornecedor" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="idproduto" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="ncm_sh" type="varchar" length="8" decimal="0" jt="12" mandatory="y" />
+			<column name="cst" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="unidade" type="varchar" length="20" decimal="0" jt="12" mandatory="y" />
+			<column name="quantidade" type="real" length="8" decimal="8" jt="7" mandatory="y" />
+			<column name="precocusto" type="real" length="8" decimal="8" jt="7" mandatory="y" />
+			<column name="desconto" type="real" length="8" decimal="8" jt="7" />
+			<column name="valortotal" type="real" length="8" decimal="8" jt="7" mandatory="y" />
+			<column name="baseicms" type="real" length="8" decimal="8" jt="7" mandatory="y" />
+			<column name="valoricms" type="real" length="8" decimal="8" jt="7" mandatory="y" />
+			<column name="valoripi" type="real" length="8" decimal="8" jt="7" />
+			<column name="icms" type="real" length="8" decimal="8" jt="7" mandatory="y" />
+			<column name="ipi" type="real" length="8" decimal="8" jt="7" />
+			<column name="idcfop" type="integer" length="10" decimal="0" jt="4" />
+			<index name="produto_compra_pkey" unique="PRIMARY_KEY" >
+				<column name="idcompra" />
+				<column name="numnota" />
+				<column name="serienota" />
+				<column name="idfornecedor" />
+				<column name="idproduto" />
+			</index>
+			<fk name="produto_compra_idcfop_fkey" to_schema="public" to_table="cfop" >
+				<fk_column name="idcfop" pk="idcfop" />
+			</fk>
+			<fk name="produto_compra_idfornecedor_fkey" to_schema="public" to_table="compra" >
+				<fk_column name="numnota" pk="numnota" />
+				<fk_column name="serienota" pk="serienota" />
+				<fk_column name="idfornecedor" pk="idfornecedor" />
+				<fk_column name="idcompra" pk="idcompra" />
+			</fk>
+			<fk name="produto_compra_idproduto_fkey" to_schema="public" to_table="produto" >
+				<fk_column name="idproduto" pk="idproduto" />
+			</fk>
+		</table>
+		<table name="produto_fornecedor" >
+			<column name="idfornecedor" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="idproduto" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<index name="produto_fornecedor_pkey" unique="PRIMARY_KEY" >
+				<column name="idfornecedor" />
+				<column name="idproduto" />
+			</index>
+			<fk name="produto_fornecedor_idfornecedor_fkey" to_schema="public" to_table="fornecedor" >
+				<fk_column name="idfornecedor" pk="idfornecedor" />
+			</fk>
+		</table>
+		<table name="produto_venda" >
+			<column name="idproduto_venda" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="numnota" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="idproduto" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="serienota" type="varchar" length="2" decimal="0" jt="12" mandatory="y" />
+			<column name="valorunitario" type="real" length="8" decimal="8" jt="7" mandatory="y" />
+			<column name="quantidade" type="real" length="8" decimal="8" jt="7" />
+			<column name="desconto" type="real" length="8" decimal="8" jt="7" />
+			<index name="produto_venda_pkey" unique="PRIMARY_KEY" >
+				<column name="idproduto_venda" />
+				<column name="numnota" />
+				<column name="idproduto" />
+				<column name="serienota" />
+			</index>
+			<fk name="produto_venda_idproduto_fkey" to_schema="public" to_table="produto" >
+				<fk_column name="idproduto" pk="idproduto" />
+			</fk>
+			<fk name="produto_venda_numnota_fkey" to_schema="public" to_table="venda" >
+				<fk_column name="serienota" pk="serienota" />
+				<fk_column name="numnota" pk="numnota" />
+			</fk>
+		</table>
+		<table name="unidade" >
+			<column name="idunidade" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="descricao" type="varchar" length="20" decimal="0" jt="12" mandatory="y" />
+			<column name="datacadastro" type="date" length="13" decimal="0" jt="91" />
+			<column name="dataalteracao" type="date" length="13" decimal="0" jt="91" />
+			<index name="unidade_pk" unique="PRIMARY_KEY" >
+				<column name="idunidade" />
+			</index>
+		</table>
+		<table name="usuario" >
+			<column name="idusuario" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="login" type="varchar" length="30" decimal="0" jt="12" mandatory="y" />
+			<column name="senha" type="varchar" length="10" decimal="0" jt="12" mandatory="y" />
+			<column name="idfuncionario" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="status" type="varchar" length="15" decimal="0" jt="12" mandatory="y" />
+			<column name="perfil" type="varchar" length="3" decimal="0" jt="12" mandatory="y" />
+			<column name="datacadastro" type="date" length="13" decimal="0" jt="91" mandatory="y" />
+			<column name="dataalteracao" type="date" length="13" decimal="0" jt="91" mandatory="y" />
+			<index name="usuario_pk" unique="PRIMARY_KEY" >
+				<column name="idusuario" />
+			</index>
+			<fk name="funcionario_usuario_fk" to_schema="public" to_table="funcionario" >
+				<fk_column name="idfuncionario" pk="idfuncionario" />
+			</fk>
+		</table>
+		<table name="veiculo" >
+			<column name="idveiculo" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="antt" type="varchar" length="20" decimal="0" jt="12" mandatory="y" />
+			<column name="placa" type="varchar" length="8" decimal="0" jt="12" mandatory="y" />
+			<column name="uf" type="varchar" length="2" decimal="0" jt="12" mandatory="y" />
+			<column name="datacadastro" type="date" length="13" decimal="0" jt="91" />
+			<column name="dataalteracao" type="date" length="13" decimal="0" jt="91" />
+			<index name="veiculo_pkey" unique="PRIMARY_KEY" >
+				<column name="idveiculo" />
+			</index>
+		</table>
+		<table name="venda" >
+			<column name="numnota" type="serial" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="serienota" type="varchar" length="2" decimal="0" jt="12" mandatory="y" />
+			<column name="idordemservico" type="integer" length="10" decimal="0" jt="4" />
+			<column name="idcliente" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="idcondicaopagamento" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="idusuario" type="integer" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="status" type="varchar" length="15" decimal="0" jt="12" />
+			<column name="datavenda" type="date" length="13" decimal="0" jt="91" mandatory="y" />
+			<column name="dataemissao" type="date" length="13" decimal="0" jt="91" mandatory="y" />
+			<column name="datacadastro" type="date" length="13" decimal="0" jt="91" mandatory="y" />
+			<column name="dataalteracao" type="date" length="13" decimal="0" jt="91" mandatory="y" />
+			<column name="observacao" type="varchar" length="255" decimal="0" jt="12" />
+			<index name="venda_pkey" unique="PRIMARY_KEY" >
+				<column name="numnota" />
+				<column name="serienota" />
+			</index>
+			<fk name="venda_idcliente_fkey" to_schema="public" to_table="cliente" >
+				<fk_column name="idcliente" pk="idcliente" />
+			</fk>
+			<fk name="venda_idcondicaopagamento_fkey" to_schema="public" to_table="condicaopagamento" >
+				<fk_column name="idcondicaopagamento" pk="idcondicaopagamento" />
+			</fk>
+			<fk name="usuario_venda_fk" to_schema="public" to_table="usuario" >
+				<fk_column name="idusuario" pk="idusuario" />
+			</fk>
+		</table>
+		<sequence name="compra_idcompra_seq" start="1" />
+		<sequence name="contapagar_idcontapagar_seq" start="1" />
+		<sequence name="idcargo_seq" start="1" />
+		<sequence name="idcategoria_seq" start="1" />
+		<sequence name="idcfop_seq" start="1" />
+		<sequence name="idcidade_seq" start="1" />
+		<sequence name="idcliente_seq" start="1" />
+		<sequence name="idcondicaopagamento_seq" start="1" />
+		<sequence name="idestado_seq" start="1" />
+		<sequence name="idformapagamento_seq" start="1" />
+		<sequence name="idfornecedor_seq" start="1" />
+		<sequence name="idfuncionario_seq" start="1" />
+		<sequence name="idmarca_seq" start="1" />
+		<sequence name="idncm_seq" start="1" />
+		<sequence name="idpais_seq" start="1" />
+		<sequence name="idproduto_seq" start="1" />
+		<sequence name="idusuario_seq" start="1" />
+		<sequence name="idveiculo_seq" start="1" />
+		<sequence name="numnota_seq" start="1" />
+		<sequence name="produto_venda_idproduto_venda_seq" start="1" />
+		<sequence name="unidade_idunidade_seq" start="1" />
+	</schema>
+	<connector name="PostgreSQL" database="PostgreSQL" driver_class="org.postgresql.Driver" driver_jar="postgresql-9.4-1203.jdbc41.jar" host="localhost" port="5432" instance="sgmdb" user="postgres" passwd="aGFyb2xkbw==" />
+	<layout id="Layout_14ca528" name="public" show_relation_columns="y" >
+		<entity schema="public" name="cargo" color="bfd4f5" x="210" y="45" />
+		<entity schema="public" name="categoria" color="bfd4f5" x="375" y="45" />
+		<entity schema="public" name="cfop" color="c8f5bf" x="570" y="675" />
+		<entity schema="public" name="cidade" color="c8f5bf" x="210" y="1095" />
+		<entity schema="public" name="cliente" color="f5ddbf" x="1320" y="450" />
+		<entity schema="public" name="compra" color="c8f5bf" x="900" y="450" />
+		<entity schema="public" name="condicaopagamento" color="f5ddbf" x="1125" y="450" />
+		<entity schema="public" name="contapagar" color="bfbff5" x="1125" y="1380" />
+		<entity schema="public" name="contareceber" color="bfbff5" x="1500" y="1095" />
+		<entity schema="public" name="estado" color="c8f5bf" x="210" y="1290" />
+		<entity schema="public" name="formapagamento" color="bfbff5" x="1305" y="1380" />
+		<entity schema="public" name="fornecedor" color="d2bff5" x="570" y="1095" />
+		<entity schema="public" name="funcionario" color="c8f5bf" x="375" y="1095" />
+		<entity schema="public" name="marca" color="bfd4f5" x="360" y="825" />
+		<entity schema="public" name="ncm" color="bfd4f5" x="360" y="450" />
+		<entity schema="public" name="pais" color="c8f5bf" x="45" y="1290" />
+		<entity schema="public" name="parcelas" color="f5ddbf" x="1125" y="630" />
+		<entity schema="public" name="produto" color="bfd4f5" x="180" y="450" />
+		<entity schema="public" name="produto_compra" color="c8f5bf" x="735" y="675" />
+		<entity schema="public" name="produto_fornecedor" color="d2bff5" x="765" y="1500" />
+		<entity schema="public" name="produto_venda" color="d2bff5" x="765" y="1095" />
+		<entity schema="public" name="unidade" color="bfd4f5" x="375" y="210" />
+		<entity schema="public" name="usuario" color="c8f5bf" x="735" y="450" />
+		<entity schema="public" name="veiculo" color="bfd4f5" x="210" y="210" />
+		<entity schema="public" name="venda" color="bfbff5" x="1305" y="1095" />
+		<browser id="Browse_2627eee2" name="condicaopagamento" >
+			<browse_table schema="public" entity="condicaopagamento" x="-2147483648" y="-2147483648" width="-2147483648" height="-2147483648" >
+				<browse_table schema="public" entity="formapagamento" fk="condicaopagamento_idformapagamento_fkey" x="-2147483648" y="-2147483648" width="-2147483648" height="-2147483648" record_view="y" />
+			</browse_table>
+		</browser>
+	</layout>
+</project>
